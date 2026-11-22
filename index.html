@@ -23,6 +23,24 @@ a{color:#3E6582}a:hover{color:#2E4D64}
   .hero{grid-template-columns:minmax(0,1fr);gap:28px;padding:20px 16px 56px}
   .hero-img{order:-1;height:clamp(170px,48vw,240px);min-height:0;contain:none;object-position:47% 32%;border-radius:12px}
 }
+/* 代表紹介：写真｜名前・経歴（横並び） */
+.founder{display:grid;grid-template-columns:clamp(220px,32%,380px) minmax(0,1fr);grid-template-areas:"img head" "img body";grid-template-rows:auto 1fr;gap:20px clamp(28px,4.5vw,48px);align-items:start}
+.founder-img{grid-area:img;display:block;width:100%;height:auto;aspect-ratio:380/480;object-fit:cover;object-position:48% 22%;border-radius:16px}
+.founder-head{grid-area:head}
+.founder-body{grid-area:body}
+/* サービス01：写真｜説明（横並び、写真の高さは説明文に揃える） */
+.service-main{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);align-items:stretch}
+.service-img{display:block;width:100%;height:100%;min-height:300px;contain:size;object-fit:cover;object-position:37% 25%}
+.service-text{padding:clamp(28px,4.5vw,48px)}
+@media (max-width: 767px){
+  /* 代表紹介：小さな写真を名前の左に置き、経歴は下に全幅で */
+  .founder{grid-template-columns:112px minmax(0,1fr);grid-template-areas:"img head" "body body";grid-template-rows:auto auto;gap:24px 16px;align-items:center}
+  .founder-img{border-radius:12px}
+  /* サービス01：写真を上に横長の帯で */
+  .service-main{grid-template-columns:minmax(0,1fr)}
+  .service-img{height:clamp(180px,50vw,240px);min-height:0;contain:none;object-position:37% 22%}
+  .service-text{padding:28px 24px 32px}
+}
 /* スマホ用 画面下固定ボタン */
 .sp-cta{display:none}
 @media (max-width: 767px){
@@ -145,12 +163,14 @@ a{color:#3E6582}a:hover{color:#2E4D64}
 <h2 style="margin: 0; font-family: 'Zen Kaku Gothic New', sans-serif; font-weight: 900; font-size: clamp(28px, 3.4vw, 42px); line-height: 1.45"><span style="display: inline-block">注文住宅のプロがつくった会社だから、</span><span style="display: inline-block">「建てられる土地」がわかる。</span></h2>
 <p style="margin: 0; font-size: 17px; color: #4A5562; line-height: 1.9">「家づくりの成功は、正しい土地選びから始まる。」<br>注文住宅で500棟以上を手がけた清水の目線を、宅建士を中心とした22名のチーム全員で共有。建物から逆算して土地を選びます。</p>
 </div>
-<div style="display: flex; flex-wrap: wrap; gap: 48px; align-items: stretch">
-<img src="images/shimizu.jpg" alt="いえプロ不動産 統括代表 清水崇志" style="flex: 0 1 380px; min-width: 0; width: 100%; height: 480px; object-fit: cover; object-position: 50% 25%; border-radius: 16px; display: block">
-<div style="flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 32px">
-<div style="display: flex; flex-direction: column; gap: 8px">
+<div class="founder">
+<img class="founder-img" src="images/shimizu.jpg" alt="いえプロ不動産 統括代表 清水崇志">
+<div class="founder-head" style="display: flex; flex-direction: column; gap: 8px">
 <p style="margin: 0; font-size: 26px; font-weight: 700; color: #1B2530">清水 崇志</p>
-<p style="margin: 0 0 12px; font-size: 14px; color: #4A5562">株式会社Gハウス　いえプロ不動産 統括代表（創業者）</p>
+<p style="margin: 0; font-size: 14px; color: #4A5562">株式会社Gハウス　いえプロ不動産 統括代表（創業者）</p>
+</div>
+<div class="founder-body" style="min-width: 0; display: flex; flex-direction: column; gap: 32px">
+<div style="display: flex; flex-direction: column; gap: 8px">
 <div style="display: flex; flex-wrap: wrap; gap: 4px 20px; padding: 14px 0; border-bottom: 1px solid #DDE3E9">
 <span style="flex: 0 0 132px; font-size: 14px; font-weight: 700; color: #B04A12">分譲デベロッパー</span>
 <span style="flex: 1 1 260px; min-width: 0; font-size: 15px; color: #222A33">営業2年・用地仕入れ3年。25歳で宅建士を取得</span>
@@ -192,9 +212,9 @@ a{color:#3E6582}a:hover{color:#2E4D64}
 <p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.12em; color: #D5E3EE">SOLUTION</p>
 <h2 style="margin: 0; font-family: 'Zen Kaku Gothic New', sans-serif; font-weight: 900; font-size: clamp(26px, 3.2vw, 38px); line-height: 1.4">いえプロの「土地探し連携」で、<br>御社は家づくりに集中できます。</h2>
 </div>
-<div style="background: #FFFFFF; color: #222A33; border-radius: 20px; overflow: hidden; display: flex; flex-wrap: wrap">
-<img src="images/staff.jpg" alt="打ち合わせで説明する担当スタッフ" style="flex: 1 1 380px; min-width: 0; width: 100%; height: 400px; object-fit: cover; object-position: 35% 30%; display: block">
-<div style="flex: 1.2 1 420px; min-width: 0; padding: 48px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; gap: 16px">
+<div class="service-main" style="background: #FFFFFF; color: #222A33; border-radius: 20px; overflow: hidden">
+<img class="service-img" src="images/staff.jpg" alt="打ち合わせで説明する担当スタッフ">
+<div class="service-text" style="min-width: 0; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; gap: 16px">
 <div style="display: flex; align-items: center; gap: 14px">
 <span style="font-family: 'Zen Kaku Gothic New', sans-serif; font-weight: 900; font-size: 64px; line-height: 1; color: #3E6582">01</span>
 <span style="font-size: 13px; font-weight: 700; color: #FFFFFF; background: #B04A12; border-radius: 999px; padding: 4px 14px">いちばんの強み</span>
