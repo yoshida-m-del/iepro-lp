@@ -1,0 +1,1170 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>土地探し連携｜ハウスメーカー・工務店様向け｜いえプロ不動産</title>
+<meta name="description" content="土地なしのお客様をいえプロ不動産にご紹介ください。24時間以内にご連絡し、プランが入る土地探しからローン・契約・引渡しまで担当します。関西圏全域対応。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;family=Zen+Kaku+Gothic+New:wght@700;900&amp;family=Outfit:wght@700;800&amp;display=swap">
+<script>document.documentElement.classList.add('js');</script>
+<style>
+/* ===== 案B：信頼感×成約重視（BtoB王道） ===== */
+:root{
+  --navy-900:#1B2F42;
+  --navy-800:#1F3547;
+  --navy-700:#2B4A61;
+  --blue:#3E6582;
+  --blue-tint:#E4ECF2;
+  --bg:#F3F6F9;
+  --white:#FFFFFF;
+  --line:#DDE3E9;
+  --text:#222A33;
+  --muted:#4A5562;
+  --orange:#B04A12;
+  --orange-deep:#7A3009;
+  --orange-tint:#FBEDE5;
+  --orange-on-dark:#F2A06C;
+  --font-head:'Zen Kaku Gothic New','Hiragino Kaku Gothic ProN',sans-serif;
+  --font-body:'Noto Sans JP','Hiragino Kaku Gothic ProN',Meiryo,sans-serif;
+  --font-num:'Outfit','Zen Kaku Gothic New',sans-serif;
+  --sec-pad:clamp(80px,11vw,144px);
+  --radius:16px;
+  --shadow:0 10px 30px rgba(27,47,66,.08);
+  --shadow-lift:0 18px 40px rgba(27,47,66,.16);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:88px;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:16px;line-height:1.8;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:var(--blue)}a:hover{color:#2E4D64}
+h1,h2,h3,p,ul,ol{margin:0}
+.nb{display:inline-block}
+.num{font-family:var(--font-num);font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+/* overflow:clip は sticky を妨げない（hidden はフォールバック） */
+.sec{position:relative;padding:var(--sec-pad) 0;overflow:hidden;overflow:clip}
+.nowrap{display:inline-block;white-space:nowrap}
+.sec-white{background:var(--white)}
+.sec-light{background:var(--bg)}
+
+/* 見出し：英字ラベル＋罫線＋和文 */
+.sec-head{display:flex;flex-direction:column;gap:14px;max-width:820px;position:relative;z-index:1}
+.sec-head.center{margin:0 auto;text-align:center;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:14px;font-family:var(--font-num);font-size:13px;font-weight:700;letter-spacing:.24em;color:var(--blue)}
+.eyebrow::before{content:"";width:32px;height:2px;background:var(--orange)}
+.sec-head.center .eyebrow::after{content:"";width:32px;height:2px;background:var(--orange)}
+.h2{font-family:var(--font-head);font-weight:900;font-size:clamp(26px,3.4vw,42px);line-height:1.45;color:var(--navy-900);word-break:keep-all}
+.lead{font-size:16px;color:var(--muted);max-width:36em}
+.on-dark .eyebrow{color:#A9C2D6}
+.on-dark .h2{color:var(--white)}
+.on-dark .lead{color:#D5E0EA}
+@media (max-width:359px){.h2{font-size:23px}}
+
+/* 家の形の飾り */
+.deco-house{position:absolute;width:clamp(260px,34vw,460px);height:auto;color:var(--navy-900);opacity:.05;pointer-events:none;z-index:0}
+.on-dark .deco-house,.deco-house.light{color:var(--white)}
+.deco-tr{top:-40px;right:-60px}
+.deco-bl{bottom:-60px;left:-80px;transform:scaleX(-1)}
+
+/* ボタン */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:14px 32px;border-radius:999px;font-weight:700;font-size:17px;text-decoration:none;line-height:1.3;transition:transform .15s ease,box-shadow .15s ease,background-color .2s,color .2s}
+.btn-main{background:var(--orange);color:var(--white);box-shadow:0 6px 0 var(--orange-deep)}
+.btn-main:hover{color:var(--white);background:#BC5218}
+.btn-main:active{transform:translateY(4px);box-shadow:0 2px 0 var(--orange-deep)}
+.btn-main .arrow{display:inline-block;transition:transform .2s ease}
+.btn-main:hover .arrow{transform:translateX(5px)}
+.btn-line{background:transparent;color:var(--blue);border:2px solid var(--blue)}
+.btn-line:hover{background:var(--blue);color:var(--white)}
+.btn-line-white{background:transparent;color:var(--white);border:2px solid rgba(255,255,255,.85)}
+.btn-line-white:hover{background:var(--white);color:var(--navy-800)}
+.cta-stack{display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+.bubble{position:relative;display:inline-block;background:var(--white);color:var(--orange);font-size:13px;font-weight:700;line-height:1.4;padding:6px 14px;border-radius:999px;border:1.5px solid var(--orange);margin-left:20px}
+.bubble::after{content:"";position:absolute;left:26px;bottom:-7px;width:10px;height:10px;background:var(--white);border-right:1.5px solid var(--orange);border-bottom:1.5px solid var(--orange);transform:rotate(45deg)}
+.btn-row{display:flex;flex-wrap:wrap;align-items:flex-end;gap:16px 20px}
+
+/* ===== ヘッダー ===== */
+.site-header{position:sticky;top:0;z-index:90;background:rgba(255,255,255,.97);border-bottom:1px solid var(--line);backdrop-filter:blur(6px)}
+.site-header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:10px;padding-bottom:10px}
+.logo img{height:56px;width:auto}
+.gnav{display:flex;align-items:center;gap:24px;font-size:14px;font-weight:500}
+.gnav a{color:var(--text);text-decoration:none;min-height:44px;display:inline-flex;align-items:center}
+.gnav a:hover{color:var(--orange)}
+.gnav .gnav-cta{background:var(--orange);color:var(--white);padding:0 22px;border-radius:999px;font-weight:700;box-shadow:0 4px 0 var(--orange-deep)}
+.gnav .gnav-cta:hover{color:var(--white)}
+.gnav .gnav-cta:active{transform:translateY(3px);box-shadow:0 1px 0 var(--orange-deep)}
+@media (max-width:959px){.gnav .gnav-link{display:none}}
+@media (max-width:767px){.logo img{height:44px}.gnav .gnav-cta{padding:0 16px;font-size:13px}}
+
+/* ===== ファーストビュー ===== */
+.hero{position:relative;overflow:hidden;background:linear-gradient(135deg,var(--navy-800) 0%,var(--navy-700) 100%);color:var(--white)}
+.hero::before{content:"";position:absolute;inset:auto -10% -40% auto;width:60%;height:120%;background:radial-gradient(closest-side,rgba(255,255,255,.07),transparent);pointer-events:none}
+.hero-inner{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:72px 24px 80px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(28px,4.5vw,64px);align-items:center}
+.hero-text{min-width:0;display:flex;flex-direction:column;gap:24px;container-type:inline-size}
+.hero-tag{align-self:flex-start;font-size:14px;font-weight:700;color:var(--white);border:1.5px solid rgba(255,255,255,.6);border-radius:999px;padding:4px 16px}
+.hero-title{font-family:var(--font-head);font-weight:900;line-height:1.4;font-size:clamp(26px,3.8vw,52px)}
+@supports (font-size:1cqi){.hero-title{font-size:clamp(22px,8.2cqi,52px)}}
+.hero-title .accent{color:var(--orange-on-dark)}
+.hero-copy{font-size:17px;color:#DCE6EF}
+.hero-photo{position:relative;min-width:0}
+.hero-photo::before{content:"";position:absolute;inset:18px -18px -18px 18px;border:2px solid rgba(255,255,255,.25);border-radius:24px}
+.hero-photo img{position:relative;width:100%;aspect-ratio:4/4.4;object-fit:cover;object-position:47% 30%;border-radius:24px;box-shadow:0 24px 50px rgba(0,0,0,.25)}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));background:var(--white);color:var(--text);border-radius:var(--radius);box-shadow:0 14px 30px rgba(0,0,0,.18);overflow:hidden}
+.stat{padding:16px 14px 14px;text-align:center;display:flex;flex-direction:column;gap:2px;min-width:0}
+.stat+.stat{border-left:1px solid var(--line)}
+.stat-label{font-size:12px;font-weight:700;color:var(--muted);line-height:1.5}
+.stat-val{color:var(--orange);font-weight:800;line-height:1.1;white-space:nowrap}
+.stat-val .num{font-size:clamp(30px,3.6vw,44px)}
+.stat-val .unit{font-size:14px;font-weight:700;margin-left:2px;font-family:var(--font-body)}
+.stat-val.text{font-family:var(--font-head);font-weight:900;font-size:clamp(18px,2vw,24px);padding:6px 0 4px}
+@media (max-width:1023px){.hero-inner{padding:56px 24px 64px}}
+@media (max-width:767px){
+  .hero-inner{grid-template-columns:minmax(0,1fr);padding:20px 16px 56px;gap:24px}
+  .hero-photo{order:-1}
+  .hero-photo::before{display:none}
+  .hero-photo img{aspect-ratio:auto;height:clamp(170px,48vw,240px);object-position:47% 32%;border-radius:14px}
+  .hero-copy{font-size:16px}
+  .hero-copy br{display:none}
+  .stat{padding:12px 4px 10px}
+  .stat-label{font-size:11px}
+  .stat-val .num{font-size:clamp(24px,8vw,32px)}
+  .stat-val .unit{font-size:11px}
+  .stat-val.text{font-size:clamp(14px,4.4vw,18px)}
+  .hero .btn-row{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;width:100%}
+  .hero .cta-stack{align-items:stretch}
+  .hero .bubble{align-self:flex-start}
+  .hero .btn{width:100%}
+}
+
+/* ===== 取引先（マーキー） ===== */
+.partners{background:var(--white);border-bottom:1px solid var(--line);padding:28px 0}
+.partners .wrap{display:flex;align-items:center;gap:16px 32px}
+.partners-label{flex:none;font-size:14px;font-weight:700;color:var(--navy-800);line-height:1.5}
+.partners-label small{display:block;font-size:12px;font-weight:400;color:var(--muted)}
+.marquee{flex:1 1 auto;min-width:0;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.marquee-track{display:flex;width:max-content;animation:marquee 48s linear infinite}
+.marquee:hover .marquee-track{animation-play-state:paused}
+.marquee-list{display:flex;gap:12px;padding-right:12px;list-style:none;margin:0}
+.marquee-list li{font-size:15px;font-weight:700;color:var(--navy-800);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:6px 18px;white-space:nowrap}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (max-width:767px){.partners .wrap{flex-direction:column;align-items:stretch}.partners-label small{display:inline;margin-left:8px}}
+
+/* ===== お悩み → 解決 ===== */
+.pain-grid{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.2fr);gap:clamp(32px,5vw,64px);align-items:start;margin-top:0}
+.pain-list{list-style:none;padding:8px 32px;background:#E9EDF1;border-radius:20px}
+.pain-item{display:flex;gap:18px;padding:24px 0}
+.pain-item+.pain-item{border-top:1px dashed #C3CCD5}
+.pain-item svg{flex:none;width:30px;height:30px;margin-top:2px;color:#7A8794}
+.pain-item h3{font-size:18px;font-weight:700;line-height:1.5;color:var(--text)}
+.pain-item p{font-size:15px;color:var(--muted);margin-top:4px}
+.connector{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:20px;margin:48px auto 0;text-align:center}
+.connector-arrow{width:0;height:0;border-left:56px solid transparent;border-right:56px solid transparent;border-top:44px solid var(--orange)}
+.solve{font-family:var(--font-head);font-weight:900;font-size:clamp(28px,4.6vw,56px);line-height:1.4;color:var(--navy-900)}
+.solve .hl{color:var(--orange);background:linear-gradient(transparent 66%,var(--orange-tint) 66%);padding:0 4px}
+.ba{position:relative;z-index:1;margin-top:48px;background:var(--white);border-radius:20px;box-shadow:var(--shadow);overflow:hidden}
+.ba-title{font-family:var(--font-head);font-weight:900;font-size:20px;color:var(--navy-900);padding:24px 28px 0}
+.ba table{width:100%;border-collapse:collapse;margin-top:16px}
+.ba th,.ba td{padding:18px 24px;text-align:left;vertical-align:top;font-size:15px;line-height:1.7}
+.ba thead th{font-size:14px;font-weight:700;letter-spacing:.04em}
+.ba thead .col-before{background:#E9EDF1;color:var(--muted)}
+.ba thead .col-after{background:var(--navy-800);color:var(--white)}
+.ba thead .col-gap{width:48px;background:var(--white)}
+.ba tbody tr+tr td{border-top:1px solid var(--line)}
+.ba td.before{color:var(--muted);background:#F7F9FB;width:46%}
+.ba td.gap{width:48px;text-align:center;color:var(--orange);font-weight:900;font-size:20px;vertical-align:middle}
+.ba td.after{font-weight:700;color:var(--navy-900);width:46%}
+.ba td.after small{display:block;font-weight:400;color:var(--muted);font-size:14px;margin-top:2px}
+.ba-note{font-size:13px;color:var(--muted);padding:14px 28px 22px}
+@media (max-width:767px){
+  .pain-grid{grid-template-columns:minmax(0,1fr)}
+  .pain-list{padding:4px 20px}
+  .pain-item{gap:14px;padding:20px 0}
+  .pain-item h3{font-size:17px}
+  .connector-arrow{border-left-width:40px;border-right-width:40px;border-top-width:32px}
+  .ba-title{padding:20px 20px 0;font-size:18px}
+  .ba thead{display:none}
+  .ba table,.ba tbody,.ba tr,.ba td{display:block;width:100%}
+  .ba tbody tr{padding:0 16px 16px}
+  .ba tbody tr+tr{border-top:1px solid var(--line);padding-top:16px}
+  .ba tbody tr+tr td{border-top:none}
+  .ba td,.ba td.before,.ba td.after,.ba td.gap{width:100%;box-sizing:border-box}
+  .ba td{padding:12px 14px;border-radius:10px}
+  .ba td.before::before,.ba td.after::before{display:block;font-size:12px;font-weight:700;margin-bottom:2px}
+  .ba td.before::before{content:"これまで";color:var(--muted)}
+  .ba td.after{background:var(--orange-tint)}
+  .ba td.after::before{content:"いえプロ連携後";color:var(--orange)}
+  .ba td.gap{padding:4px 0;font-size:16px}
+  .ba td.gap span{display:inline-block;transform:rotate(90deg)}
+  .ba-note{padding:12px 20px 20px}
+}
+
+/* ===== 代表紹介 ===== */
+.founder{position:relative;z-index:1;display:grid;grid-template-columns:clamp(220px,32%,380px) minmax(0,1fr);grid-template-areas:"img head" "img body";grid-template-rows:auto 1fr;gap:20px clamp(28px,4.5vw,56px);align-items:start;margin-top:48px}
+.founder-photo{grid-area:img;position:relative}
+.founder-photo::before{content:"";position:absolute;inset:20px -16px -16px 20px;background:var(--navy-800);border-radius:var(--radius)}
+.founder-photo img{position:relative;width:100%;aspect-ratio:380/480;object-fit:cover;object-position:48% 22%;border-radius:var(--radius)}
+.founder-head{grid-area:head;display:flex;flex-direction:column;gap:6px}
+.founder-name{font-family:var(--font-head);font-weight:900;font-size:28px;color:var(--navy-900)}
+.founder-role{font-size:14px;color:var(--muted)}
+.founder-body{grid-area:body;min-width:0;display:flex;flex-direction:column;gap:28px}
+.career{display:flex;flex-direction:column}
+.career-row{display:flex;flex-wrap:wrap;gap:4px 20px;padding:14px 0;border-bottom:1px solid var(--line)}
+.career-row dt{flex:0 0 132px;font-size:14px;font-weight:700;color:var(--orange)}
+.career-row dd{flex:1 1 260px;min-width:0;margin:0;font-size:15px}
+.fs-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.fs-card{background:var(--bg);border-radius:14px;padding:20px 22px;display:flex;flex-direction:column;gap:2px;border-top:3px solid var(--navy-800)}
+.fs-label{font-size:13px;color:var(--muted)}
+.fs-num{font-family:var(--font-num);font-weight:800;font-size:46px;line-height:1.1;color:var(--navy-800);white-space:nowrap;font-variant-numeric:tabular-nums}
+.fs-num .ja{font-family:var(--font-head);font-weight:900;font-size:.62em;margin-left:2px}
+.fs-desc{font-size:15px;font-weight:700}
+@media (max-width:767px){
+  .founder{grid-template-columns:112px minmax(0,1fr);grid-template-areas:"img head" "body body";grid-template-rows:auto auto;gap:24px 16px;align-items:center;margin-top:32px}
+  .founder-photo::before{inset:8px -6px -6px 8px;border-radius:12px}
+  .founder-photo img{border-radius:12px}
+  .founder-name{font-size:22px}
+  .fs-grid{gap:8px}
+  .fs-card{padding:14px 4px 12px;text-align:center;border-radius:12px}
+  .fs-label{font-size:11px;line-height:1.5}
+  .fs-num{font-size:clamp(24px,8vw,32px)}
+  .fs-desc{font-size:clamp(10px,3vw,11px);line-height:1.45}
+}
+
+/* ===== サービス ===== */
+.svc-grid{position:relative;z-index:1;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;margin-top:48px}
+.svc-card{background:var(--white);border-radius:var(--radius);padding:28px 26px;display:flex;flex-direction:column;gap:12px;box-shadow:var(--shadow);border-top:4px solid var(--blue);transition:transform .25s ease,box-shadow .25s ease}
+.svc-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lift)}
+.svc-no{font-family:var(--font-num);font-weight:800;font-size:40px;line-height:1;color:var(--blue)}
+.svc-card h3{font-size:19px;font-weight:700;line-height:1.5;color:var(--navy-900)}
+.svc-card p{font-size:15px;color:var(--muted)}
+.svc-featured{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);padding:0;overflow:hidden;border-top:none;border-left:6px solid var(--orange)}
+.svc-featured img{width:100%;height:100%;min-height:320px;contain:size;object-fit:cover;object-position:37% 25%}
+.svc-featured-text{padding:clamp(28px,4.5vw,52px);display:flex;flex-direction:column;justify-content:center;gap:16px;min-width:0}
+.svc-featured .svc-no{font-size:64px;color:var(--orange)}
+.svc-badge{display:inline-block;font-size:13px;font-weight:700;color:var(--orange);background:var(--orange-tint);border-radius:999px;padding:4px 14px}
+.svc-featured h3{font-family:var(--font-head);font-weight:900;font-size:clamp(24px,2.6vw,32px);line-height:1.45}
+.svc-featured p{font-size:16px;line-height:1.9}
+@media (max-width:1023px){.svc-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:767px){
+  .svc-grid{grid-template-columns:minmax(0,1fr);gap:16px;margin-top:32px}
+  .svc-featured{grid-template-columns:minmax(0,1fr);border-left:none;border-top:5px solid var(--orange)}
+  .svc-featured img{height:clamp(180px,50vw,240px);min-height:0;contain:none;object-position:37% 22%}
+  .svc-featured-text{padding:24px 22px 28px}
+  .svc-card{padding:24px 22px}
+}
+
+/* ===== 実績 ===== */
+.results{background:var(--navy-900);color:var(--white)}
+.rs-big{position:relative;z-index:1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:56px;border-top:1px solid rgba(255,255,255,.14);border-bottom:1px solid rgba(255,255,255,.14)}
+.rs-item{padding:36px 16px;text-align:center;display:flex;flex-direction:column;gap:4px;min-width:0}
+.rs-item+.rs-item{border-left:1px solid rgba(255,255,255,.14)}
+.rs-label{font-size:15px;color:#C5CED8}
+.rs-num{font-family:var(--font-num);font-weight:800;font-size:clamp(56px,7vw,96px);line-height:1.1;font-variant-numeric:tabular-nums;white-space:nowrap}
+.rs-unit{font-family:var(--font-body);font-size:20px;font-weight:700;color:var(--orange-on-dark);margin-left:6px}
+.rs-desc{font-size:13px;color:#C5CED8}
+.rs-desc-short{display:none}
+.rs-small{position:relative;z-index:1;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin-top:40px}
+.rs-small>div{border-left:3px solid var(--orange-on-dark);padding:4px 0 4px 16px}
+.rs-small p:first-child{font-size:13px;color:#C5CED8}
+.rs-val{font-size:24px;font-weight:700}
+.rs-note{position:relative;z-index:1;text-align:center;font-size:13px;color:#C5CED8;margin-top:40px}
+@media (max-width:767px){
+  .rs-big{margin-top:36px;border:none;gap:8px}
+  .rs-item{padding:14px 4px 12px;border-radius:10px;background:rgba(255,255,255,.06);gap:2px}
+  .rs-item+.rs-item{border-left:none}
+  .rs-label{font-size:12px;line-height:1.5}
+  .rs-num{font-size:clamp(26px,8.6vw,36px);line-height:1.15}
+  .rs-unit{font-size:11px;margin-left:2px}
+  .rs-desc{font-size:11px;line-height:1.5}
+  .rs-desc-long{display:none}
+  .rs-desc-short{display:inline}
+  .rs-small{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:28px}
+  .rs-val{font-size:20px}
+  .rs-note{margin-top:28px}
+}
+
+/* ===== CTA帯 ===== */
+.cta-band{position:relative;overflow:hidden;background:linear-gradient(135deg,var(--navy-800),var(--navy-700));color:var(--white);padding:clamp(48px,7vw,72px) 0}
+.cta-band .wrap{position:relative;z-index:1;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:28px 40px}
+.cta-band-text{flex:1 1 420px;min-width:0;display:flex;flex-direction:column;gap:8px}
+.cta-band-title{font-family:var(--font-head);font-weight:900;font-size:clamp(21px,2.6vw,30px);line-height:1.5}
+.cta-band-sub{font-size:15px;color:#D5E0EA}
+.cta-band .btn-row{flex:none}
+.cta-band.accent{border-top:4px solid var(--orange)}
+@media (max-width:767px){
+  .cta-band .btn-row{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;width:100%}
+  .cta-band .cta-stack{align-items:stretch}
+  .cta-band .bubble{align-self:flex-start}
+  .cta-band .btn{width:100%}
+}
+
+/* ===== 協業の流れ（縦タイムライン） ===== */
+.flow-wrap{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(32px,5vw,72px);align-items:start}
+.flow-head{position:sticky;top:120px}
+@media (max-width:767px){.flow-head{position:static}}
+.flow-legend{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.timeline{list-style:none;padding:0;position:relative}
+.timeline::before{content:"";position:absolute;left:23px;top:24px;bottom:24px;border-left:2px dashed #AFC0CE}
+.step{position:relative;display:grid;grid-template-columns:48px minmax(0,1fr);gap:20px;padding-bottom:20px}
+.step:last-child{padding-bottom:0}
+.step-no{position:relative;z-index:1;width:48px;height:48px;border-radius:50%;background:var(--orange);color:var(--white);display:flex;align-items:center;justify-content:center;font-family:var(--font-num);font-weight:800;font-size:20px;box-shadow:0 0 0 6px var(--bg)}
+.step-card{background:var(--white);border-radius:14px;padding:20px 24px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:6px}
+.step-tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{display:inline-flex;align-items:center;font-size:12px;font-weight:700;line-height:1.4;border-radius:999px;padding:4px 12px}
+.tag-you{background:var(--orange-tint);color:var(--orange)}
+.tag-iepro{background:var(--blue-tint);color:#2E4D64}
+.tag-both{background:var(--navy-800);color:var(--white)}
+.tag-time{background:var(--white);color:var(--orange);border:1.5px solid var(--orange);padding:3px 11px}
+.step-card h3{font-size:19px;font-weight:700;color:var(--navy-900);line-height:1.5}
+.step-card p{font-size:15px;color:var(--muted)}
+.step.last .step-no{background:var(--white);color:var(--orange);border:3px solid var(--orange)}
+.step.last .step-card{background:var(--navy-800);color:var(--white)}
+.step.last .step-card h3{color:var(--white)}
+.step.last .step-card p{color:#D5E0EA}
+@media (max-width:767px){
+  .flow-wrap{grid-template-columns:minmax(0,1fr)}
+  .step{gap:14px}
+  .step-card{padding:18px 18px}
+}
+
+/* ===== メリット ===== */
+.bn-grid{position:relative;z-index:1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-top:48px}
+.bn-card{background:var(--bg);border-radius:var(--radius);padding:32px 36px;display:flex;flex-direction:column;gap:16px;transition:transform .25s ease,box-shadow .25s ease}
+.bn-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lift)}
+.bn-card h3{display:flex;align-items:center;gap:12px;font-family:var(--font-head);font-weight:900;font-size:22px;color:var(--navy-900)}
+.bn-card h3 .tag{font-family:var(--font-body)}
+.check-list{list-style:none;padding:0;display:flex;flex-direction:column;gap:10px}
+.check-list li{position:relative;padding-left:32px;font-size:16px}
+.check-list li::before{content:"";position:absolute;left:0;top:.3em;width:20px;height:20px;border-radius:50%;background:var(--orange) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 12.5 4 4 8-9'/%3E%3C/svg%3E") center/14px no-repeat}
+.bn-card.you{border-top:4px solid var(--orange)}
+.bn-card.client{border-top:4px solid var(--blue)}
+.bn-card.client .check-list li::before{background-color:var(--blue)}
+.bn-close{position:relative;z-index:1;text-align:center;font-family:var(--font-head);font-weight:900;font-size:clamp(19px,2.4vw,26px);margin-top:40px;color:var(--navy-900)}
+.bn-close em{font-style:normal;color:var(--orange)}
+@media (max-width:767px){.bn-grid{grid-template-columns:minmax(0,1fr);margin-top:32px}.bn-card{padding:26px 22px}}
+
+/* ===== 会社概要 ===== */
+.co-grid{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:clamp(32px,5vw,64px);align-items:start}
+.cs-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:24px}
+.cs-card{background:var(--white);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:2px;box-shadow:var(--shadow)}
+.cs-num{font-family:var(--font-num);font-weight:800;font-size:34px;line-height:1.2;color:var(--navy-800);white-space:nowrap;font-variant-numeric:tabular-nums}
+.cs-unit{font-family:var(--font-head);font-size:16px;margin-left:2px}
+.cs-desc{font-size:13px;color:var(--muted)}
+.co-table{background:var(--white);border-radius:var(--radius);padding:12px 32px;box-shadow:var(--shadow)}
+.co-table .career-row:last-child{border-bottom:none}
+@media (max-width:767px){
+  .co-grid{grid-template-columns:minmax(0,1fr)}
+  .cs-grid{gap:8px}
+  .cs-card{padding:14px 14px 12px;border-radius:12px}
+  .cs-num{font-size:26px}
+  .cs-unit{font-size:13px}
+  .cs-desc{font-size:12px;line-height:1.5}
+  .co-table{padding:8px 20px}
+}
+
+/* ===== FAQ ===== */
+.faq-list{position:relative;z-index:1;max-width:880px;margin:48px auto 0;display:flex;flex-direction:column;gap:12px}
+.faq-item{background:var(--white);border-radius:14px;box-shadow:0 2px 8px rgba(27,47,66,.05);border:1px solid var(--line)}
+.faq-item summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:16px;padding:18px 22px;min-height:64px}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary:focus-visible{outline:3px solid var(--orange);outline-offset:2px;border-radius:14px}
+.qa-mark{flex:none;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-num);font-weight:800;font-size:16px}
+.qa-q{background:var(--navy-800);color:var(--white)}
+.qa-a{border:2px solid var(--orange);color:var(--orange)}
+.faq-item h3{flex:1;font-size:17px;font-weight:700;line-height:1.6;color:var(--navy-900)}
+.faq-toggle{flex:none;position:relative;width:20px;height:20px}
+.faq-toggle::before,.faq-toggle::after{content:"";position:absolute;left:2px;right:2px;top:9px;height:2px;background:var(--orange);transition:transform .25s ease}
+.faq-toggle::after{transform:rotate(90deg)}
+.faq-item[open] .faq-toggle::after{transform:rotate(0)}
+.faq-answer{display:flex;gap:16px;padding:0 22px 22px;align-items:flex-start}
+.faq-answer p{font-size:15px;color:var(--muted);padding-top:5px}
+@media (max-width:767px){.faq-item summary{padding:14px 16px;gap:12px}.faq-item h3{font-size:16px}.faq-answer{padding:0 16px 18px;gap:12px}}
+
+/* ===== お問い合わせ ===== */
+.contact{background:var(--navy-900);color:var(--white)}
+.contact-grid{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(32px,5vw,64px);align-items:start}
+.contact-summary{position:sticky;top:104px;display:flex;flex-direction:column;gap:20px}
+.contact-summary .h2{color:var(--white)}
+.contact-summary .lead{color:#D5E0EA}
+.promise{list-style:none;padding:0;display:flex;flex-direction:column;gap:10px}
+.promise li{display:flex;align-items:center;gap:12px;font-weight:700;font-size:16px}
+.promise li::before{content:"";flex:none;width:24px;height:24px;border-radius:50%;background:var(--orange) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 12.5 4 4 8-9'/%3E%3C/svg%3E") center/16px no-repeat}
+.tel-box{border-top:1px solid rgba(255,255,255,.18);padding-top:20px;display:flex;flex-direction:column;gap:4px}
+.tel-box .small{font-size:14px;color:#D5E0EA}
+.tel-num{font-family:var(--font-num);font-size:34px;font-weight:800;letter-spacing:.03em;font-variant-numeric:tabular-nums}
+.tel-num a{color:var(--white);text-decoration:none;display:inline-flex;align-items:center;min-height:44px}
+.form-card{background:var(--white);color:var(--text);border-radius:20px;padding:40px 36px;display:flex;flex-direction:column;gap:20px;box-shadow:0 24px 50px rgba(0,0,0,.25);border-top:6px solid var(--orange)}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.f-row{display:flex;flex-direction:column;gap:6px}
+.f-row-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(180px,100%),1fr));gap:16px}
+.f-label{font-size:14px;font-weight:700}
+.req{display:inline-block;font-size:11px;font-weight:700;color:var(--white);background:#A33A0E;border-radius:4px;padding:1px 6px;margin-left:6px;vertical-align:2px}
+.opt{font-weight:400;color:var(--muted)}
+.f-input{font:inherit;font-size:16px;padding:12px 14px;border:1px solid #B3BCC6;border-radius:8px;min-height:48px;width:100%;background:var(--white);color:var(--text)}
+textarea.f-input{resize:vertical;min-height:120px}
+.f-input:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(62,101,130,.2)}
+.f-fieldset{margin:0;padding:0;border:none;display:flex;flex-direction:column;gap:10px}
+.f-fieldset legend{padding:0;margin-bottom:10px;font-size:14px;font-weight:700}
+.f-radio{display:flex;align-items:center;gap:12px;border:1px solid #B3BCC6;border-radius:10px;padding:12px 16px;min-height:52px;font-size:16px;cursor:pointer;transition:border-color .2s,background-color .2s}
+.f-radio input{width:20px;height:20px;margin:0;flex:none;accent-color:var(--orange)}
+.f-radio:has(input:checked){border:2px solid var(--orange);background:var(--orange-tint);font-weight:700;padding:11px 15px}
+.f-submit{font:inherit;font-size:18px;font-weight:700;background:var(--orange);color:var(--white);border:none;border-radius:999px;padding:16px;min-height:60px;cursor:pointer;box-shadow:0 6px 0 var(--orange-deep);transition:transform .15s ease,box-shadow .15s ease,background-color .2s;margin-bottom:6px}
+.f-submit:hover{background:#BC5218}
+.f-submit:active{transform:translateY(4px);box-shadow:0 2px 0 var(--orange-deep)}
+.f-submit:disabled{cursor:default;transform:none}
+@media (max-width:767px){
+  .contact-grid{grid-template-columns:minmax(0,1fr)}
+  .contact-summary{position:static}
+  .form-card{padding:28px 20px}
+  .tel-num{font-size:30px}
+}
+
+/* ===== フッター ===== */
+.site-footer{background:#14222F;color:#C5CED8;padding:48px 0}
+.site-footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;font-size:13px}
+.foot-info{display:flex;flex-direction:column;gap:6px}
+.foot-info img{height:72px;width:auto;align-self:flex-start;margin-bottom:8px}
+.site-footer a{color:#C5CED8}
+.foot-copy{align-self:flex-end}
+
+/* ===== スマホ用 画面下固定ボタン ===== */
+.sp-cta{display:none}
+@media (max-width:767px){
+  .sp-cta{position:fixed;left:0;right:0;bottom:0;z-index:100;display:flex;gap:8px;padding:8px 12px calc(8px + env(safe-area-inset-bottom,0px));background:rgba(255,255,255,.97);border-top:1px solid var(--line);box-shadow:0 -4px 16px rgba(27,37,48,.08);transition:transform .25s ease,visibility .25s}
+  .sp-cta a{flex:1 1 0;display:flex;align-items:center;justify-content:center;gap:6px;min-height:52px;border-radius:999px;font-size:16px;font-weight:700;text-decoration:none}
+  .sp-cta .sp-cta-tel{background:var(--white);color:var(--blue);border:2px solid var(--blue)}
+  .sp-cta .sp-cta-main{background:var(--orange);color:var(--white);box-shadow:0 4px 0 var(--orange-deep)}
+  .sp-cta.is-hidden{transform:translateY(110%);visibility:hidden}
+  .site-footer{padding-bottom:calc(48px + 68px + env(safe-area-inset-bottom,0px))}
+}
+
+/* ===== 表示アニメーション ===== */
+.js .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.js .reveal.is-in{opacity:1;transform:none}
+.js .reveal-img img{clip-path:inset(0 0 100% 0);transition:clip-path 1s cubic-bezier(.2,.7,.2,1)}
+.js .reveal-img.is-in img{clip-path:inset(0 0 0 0)}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none !important;transition:none !important}
+  .js .reveal{opacity:1;transform:none}
+  .js .reveal-img img{clip-path:none}
+  .marquee{-webkit-mask-image:none;mask-image:none}
+  .marquee-track{width:auto;flex-wrap:wrap}
+  .marquee-list{flex-wrap:wrap;padding-right:0}
+  .marquee-list[aria-hidden="true"]{display:none}
+  .svc-card:hover,.bn-card:hover{transform:none}
+}
+/* 会社概要：本店の写真（Googleドライブの素材から） */
+.co-photos{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:clamp(12px,2vw,24px);margin-top:clamp(40px,5vw,64px)}
+.co-photos img{display:block;width:100%;height:clamp(200px,28vw,380px);object-fit:cover;border-radius:16px}
+@media (max-width:767px){.co-photos{grid-template-columns:minmax(0,1fr)}.co-photos img{height:clamp(180px,52vw,260px)}}
+</style>
+</head>
+<body>
+
+<!-- 家の形の飾り（共通シンボル） -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="house" viewBox="0 0 200 180">
+    <path fill-rule="evenodd" d="M100 8 L192 86 H168 V172 H32 V86 H8 Z M140 22 H160 V62 L140 45 Z M52 100 H82 V130 H52 Z M118 100 H148 V130 H118 Z M86 172 V124 H114 V172 Z"/>
+  </symbol>
+</svg>
+
+<header class="site-header">
+<div class="wrap">
+<a class="logo" href="#"><img src="../images/logo.png" alt="いえプロ不動産"></a>
+<nav class="gnav" aria-label="ページ内メニュー">
+<a class="gnav-link" href="#pain">お悩み</a>
+<a class="gnav-link" href="#service">サービス</a>
+<a class="gnav-link" href="#results">実績</a>
+<a class="gnav-link" href="#flow">協業の流れ</a>
+<a class="gnav-link" href="#faq">よくある質問</a>
+<a class="gnav-cta" href="#contact">お問い合わせ</a>
+</nav>
+</div>
+</header>
+
+<main>
+
+<!-- ファーストビュー -->
+<section class="hero">
+<div class="hero-inner">
+<div class="hero-text">
+<p class="hero-tag">注文住宅を手がける工務店さまへ</p>
+<h1 class="hero-title"><span class="nowrap">土地探しは、<span class="accent">いえプロ。</span></span><br><span class="nb">家づくりは、</span><span class="nb">御社で。</span></h1>
+<p class="hero-copy">土地なしのお客様を、いえプロにご紹介ください。<br>24時間以内にご連絡し、御社のプランが入る土地を探して、ローン・契約・引渡しまで担当します。<br>土地が決まったら、建築は御社へ。</p>
+<div class="stats" role="list">
+<div class="stat" role="listitem"><p class="stat-label">土地仲介 年間</p><p class="stat-val"><span class="num">112</span><span class="unit">件</span></p></div>
+<div class="stat" role="listitem"><p class="stat-label">ご紹介からの成約率</p><p class="stat-val"><span class="num">40</span><span class="unit">%</span></p></div>
+<div class="stat" role="listitem"><p class="stat-label">対応エリア</p><p class="stat-val text">関西圏全域</p></div>
+</div>
+<div class="btn-row">
+<div class="cta-stack">
+<span class="bubble">費用は無料・1件から相談可</span>
+<a class="btn btn-main" href="#contact">無料で相談する<span class="arrow" aria-hidden="true">→</span></a>
+</div>
+<a class="btn btn-line-white" href="tel:0661851252">電話で問い合わせる</a>
+</div>
+</div>
+<div class="hero-photo"><!-- 写真素材: ロゴ・写真素材/スタッフ・事務所写真/portrait2/250227_group_089.jpg --><img src="../images/team-outdoor.jpg" alt="いえプロ不動産のスタッフ集合写真"></div>
+</div>
+</section>
+
+<!-- 取引先 -->
+<section id="partners" class="partners" aria-label="お取引のあるハウスメーカー">
+<div class="wrap">
+<p class="partners-label">お取引のあるハウスメーカー<small>※順不同</small></p>
+<div class="marquee">
+<div class="marquee-track">
+<ul class="marquee-list">
+<li>積水ハウス</li><li>大和ハウス</li><li>ヘーベルハウス</li><li>住友林業</li><li>一条工務店</li><li>住友不動産</li><li>アイ工務店</li><li>ヤマト住建</li><li>タマホーム</li><li>アイデザインホーム</li><li>Gハウス</li>
+</ul>
+<ul class="marquee-list" aria-hidden="true">
+<li>積水ハウス</li><li>大和ハウス</li><li>ヘーベルハウス</li><li>住友林業</li><li>一条工務店</li><li>住友不動産</li><li>アイ工務店</li><li>ヤマト住建</li><li>タマホーム</li><li>アイデザインホーム</li><li>Gハウス</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<!-- お悩み → 解決 -->
+<section id="pain" class="sec sec-light">
+<svg class="deco-house deco-tr" aria-hidden="true"><use href="#house"/></svg>
+<div class="wrap">
+<div class="pain-grid">
+<div class="sec-head reveal">
+<p class="eyebrow">PROBLEM</p>
+<h2 class="h2"><span class="nb">こんなお悩み、</span><span class="nb">ありませんか？</span></h2>
+<p class="lead">注文住宅の商談では、お客様の多くがまだ土地を持っていません。土地探しが長引くほど、受注のチャンスは遠のいてしまいます。</p>
+</div>
+<ul class="pain-list reveal">
+<li class="pain-item">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"></rect><path d="m8 12.5 2.5 2.5L16 9.5"></path></svg>
+<div><h3><span class="nb">土地なし客の</span><span class="nb">商談が</span><span class="nb">止まってしまう</span></h3><p>建てたい家のイメージはあるのに、土地が見つからず検討が進まない。</p></div>
+</li>
+<li class="pain-item">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"></rect><path d="m8 12.5 2.5 2.5L16 9.5"></path></svg>
+<div><h3><span class="nb">土地探しに</span><span class="nb">営業の時間を</span><span class="nb">取られる</span></h3><p>物件調査や不動産会社とのやり取りに追われ、本来の家づくりの提案に集中できない。</p></div>
+</li>
+<li class="pain-item">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"></rect><path d="m8 12.5 2.5 2.5L16 9.5"></path></svg>
+<div><h3><span class="nb">購入後に</span><span class="nb">建てられない</span><span class="nb">問題が発覚</span></h3><p>法規制や高低差、地盤の問題が後から見つかり、プランの大幅な見直しが必要になる。</p></div>
+</li>
+<li class="pain-item">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"></rect><path d="m8 12.5 2.5 2.5L16 9.5"></path></svg>
+<div><h3><span class="nb">土地と建物を</span><span class="nb">セットで</span><span class="nb">提案する</span><span class="nb">他社に流れる</span></h3><p>土地情報を持つ会社にお客様が先に相談し、そのまま契約されてしまう。</p></div>
+</li>
+</ul>
+</div>
+
+<div class="connector reveal">
+<span class="connector-arrow" aria-hidden="true"></span>
+<p class="solve"><span class="nb">その悩み、</span><span class="nb"><span class="hl">いえプロ</span>が解決します。</span></p>
+</div>
+
+<div class="ba reveal">
+<p class="ba-title"><span class="nb">連携すると、</span><span class="nb">こう変わります。</span></p>
+<table>
+<thead>
+<tr><th scope="col" class="col-before">これまで</th><th class="col-gap" aria-hidden="true"></th><th scope="col" class="col-after">いえプロ連携後</th></tr>
+</thead>
+<tbody>
+<tr>
+<td class="before">土地なし客の商談が止まってしまう</td>
+<td class="gap" aria-hidden="true"><span>→</span></td>
+<td class="after">土地なしのお客様の受け皿ができる<small>ご紹介から24時間以内に、いえプロからご連絡します。</small></td>
+</tr>
+<tr>
+<td class="before">土地探しに営業の時間を取られる</td>
+<td class="gap" aria-hidden="true"><span>→</span></td>
+<td class="after">営業が建築提案に集中できる<small>ローン・価格交渉・契約・決済・お引渡しまで、不動産の手続きはいえプロが担います。</small></td>
+</tr>
+<tr>
+<td class="before">購入後に建てられない問題が発覚</td>
+<td class="gap" aria-hidden="true"><span>→</span></td>
+<td class="after">御社のプランが入る土地だけをご提案<small>接道・法規制・高低差などを事前に確認し、建築可否は御社と一緒に確認します。</small></td>
+</tr>
+<tr>
+<td class="before">土地と建物をセットで提案する他社に流れる</td>
+<td class="gap" aria-hidden="true"><span>→</span></td>
+<td class="after">お客様は御社のお客様のまま<small>建築は御社にお任せいただく前提で動き、他の住宅会社をすすめることはありません。</small></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+
+<!-- 代表紹介 -->
+<section id="founder" class="sec sec-white">
+<div class="wrap">
+<div class="sec-head reveal">
+<p class="eyebrow">FOUNDER</p>
+<h2 class="h2"><span class="nb">注文住宅のプロが</span><span class="nb">つくった会社だから、</span><span class="nb">「建てられる土地」が</span><span class="nb">わかる。</span></h2>
+<p class="lead" style="max-width:none">「家づくりの成功は、正しい土地選びから始まる。」<br>注文住宅で500棟以上を手がけた清水の目線を、宅建士を中心とした22名のチーム全員で共有。建物から逆算して土地を選びます。</p>
+</div>
+<div class="founder">
+<div class="founder-photo reveal-img reveal"><img src="../images/shimizu.jpg" alt="いえプロ不動産 統括代表 清水崇志"></div>
+<div class="founder-head">
+<p class="founder-name">清水 崇志</p>
+<p class="founder-role"><span class="nb">株式会社Gハウス</span>　<span class="nb"><span class="nb">いえプロ不動産</span> <span class="nb">統括代表（創業者）</span></span></p>
+</div>
+<div class="founder-body">
+<dl class="career" style="margin:0">
+<div class="career-row"><dt>分譲デベロッパー</dt><dd><span class="nb">営業2年・</span><span class="nb">用地仕入れ3年。</span><span class="nb">25歳で</span><span class="nb">宅建士を取得</span></dd></div>
+<div class="career-row"><dt>住宅事業</dt><dd><span class="nb">プレイングマネージャーとして</span><span class="nb">住宅営業を牽引</span></dd></div>
+<div class="career-row"><dt>Gハウス</dt><dd><span class="nb">2023年9月、</span><span class="nb">いえプロ不動産を</span><span class="nb">立ち上げ</span></dd></div>
+</dl>
+<div class="fs-grid">
+<div class="fs-card"><p class="fs-label"><span class="nb">販売実績</span></p><p class="fs-num">500</p><p class="fs-desc"><span class="nb">棟以上</span></p></div>
+<div class="fs-card"><p class="fs-label"><span class="nb">住宅営業</span></p><p class="fs-num">10<span class="ja">年</span></p><p class="fs-desc"><span class="nb">連続</span><span class="nb">トップセールス</span></p></div>
+<div class="fs-card"><p class="fs-label"><span class="nb">いえプロ</span> <span class="nb">3年目</span></p><p class="fs-num">10<span class="ja">億</span></p><p class="fs-desc"><span class="nb">円の</span><span class="nb">売上規模へ</span></p></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- サービス -->
+<section id="service" class="sec sec-light">
+<svg class="deco-house deco-bl" aria-hidden="true"><use href="#house"/></svg>
+<div class="wrap">
+<div class="sec-head center reveal">
+<p class="eyebrow">SOLUTION</p>
+<h2 class="h2"><span class="nb">いえプロの</span><span class="nb">「土地探し連携」で、</span><br><span class="nb">御社は</span><span class="nb">家づくりに</span><span class="nb">集中できます。</span></h2>
+</div>
+<div class="svc-grid">
+<article class="svc-card svc-featured reveal">
+<div class="reveal-img reveal" style="min-width:0"><!-- 写真素材: ロゴ・写真素材/スタッフ・事務所写真/image/250227_image_346.jpg --><img src="../images/service-meeting.jpg" alt="チームで打ち合わせをするスタッフ"></div>
+<div class="svc-featured-text">
+<div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><span class="svc-no">01</span><span class="svc-badge">いちばんの強み</span></div>
+<h3><span class="nb">土地の話も、</span><span class="nb">建物の話も。</span></h3>
+<p>注文住宅・建売住宅・企画住宅と、住宅を販売してきた経験者が在籍しています。間取りや建築費とのバランス、工務店さまの段取りを理解したうえで、お客様と土地探しを進めます。「建物の話が通じる不動産会社」だから、商談の流れを止めません。</p>
+</div>
+</article>
+<article class="svc-card reveal">
+<p class="svc-no">02</p>
+<h3><span class="nb">建てられる土地を、</span><span class="nb">建築コストまで</span><span class="nb">見て提案</span></h3>
+<p>接道・法規制・高低差などを事前に確認し、御社のプランが入る土地だけをご提案。土地価格以外にかかる目に見えない建築コストもご案内します。</p>
+</article>
+<article class="svc-card reveal">
+<p class="svc-no">03</p>
+<h3><span class="nb">市場に出る前の</span><span class="nb">土地情報</span></h3>
+<p>売却相談 年間2,400件の反響から、公開前の土地情報に触れられます。自社で仕入れる土地（年間30区画）と仲介の土地、両方からご提案します。</p>
+</article>
+<article class="svc-card reveal">
+<p class="svc-no">04</p>
+<h3><span class="nb">ローンから</span><span class="nb">引渡しまで</span><span class="nb">一貫対応</span></h3>
+<p>ローン手続き、価格交渉、契約・決済、お引渡しまで、不動産の手続きはいえプロが担います。</p>
+</article>
+<article class="svc-card reveal">
+<p class="svc-no">05</p>
+<h3><span class="nb">お客様は</span><span class="nb">御社の</span><span class="nb">お客様のまま</span></h3>
+<p>建築は御社にお任せいただく前提で動きます。ご紹介のお客様に、他の住宅会社をすすめることはありません。</p>
+</article>
+</div>
+</div>
+</section>
+
+<!-- 実績 -->
+<section id="results" class="sec results on-dark">
+<svg class="deco-house deco-tr" aria-hidden="true"><use href="#house"/></svg>
+<div class="wrap">
+<div class="sec-head center reveal">
+<p class="eyebrow">TRACK RECORD</p>
+<h2 class="h2"><span class="nb">土地の仕入れから</span><span class="nb">仲介まで、</span><span class="nb">自社で一貫して</span><span class="nb">手がけています。</span></h2>
+</div>
+<div class="rs-big">
+<div class="rs-item">
+<p class="rs-label">土地仲介</p>
+<p class="rs-num"><span class="count" data-to="112">112</span><span class="rs-unit">件／年</span></p>
+<p class="rs-desc"><span class="rs-desc-long">注文住宅の土地付け仲介件数</span><span class="rs-desc-short">注文住宅の土地付け</span></p>
+</div>
+<div class="rs-item">
+<p class="rs-label">取引件数</p>
+<p class="rs-num"><span class="count" data-to="210">210</span><span class="rs-unit">件／年</span></p>
+<p class="rs-desc"><span class="rs-desc-long">すべての契約件数</span><span class="rs-desc-short">すべての契約</span></p>
+</div>
+<div class="rs-item">
+<p class="rs-label">土地仕入れ</p>
+<p class="rs-num"><span class="count" data-to="30">30</span><span class="rs-unit">区画／年</span></p>
+<p class="rs-desc"><span class="rs-desc-long">自社で仕入れた建築用地</span><span class="rs-desc-short">自社仕入れの用地</span></p>
+</div>
+</div>
+<div class="rs-small">
+<div><p>紹介からの成約率</p><p class="rs-val"><span class="num">40</span>%</p></div>
+<div><p>紹介から契約まで</p><p class="rs-val"><span class="num">1〜2</span>カ月</p></div>
+<div><p>主なエリア</p><p class="rs-val">関西圏全域</p></div>
+<div><p>売上高（1期目比）</p><p class="rs-val"><span class="num">6.5</span>倍</p></div>
+</div>
+<p class="rs-note">※件数は第3期の実績です。第4期は土地仲介210件を目標にしています。</p>
+</div>
+</section>
+
+<!-- CTA 1 -->
+<section class="cta-band accent" aria-label="ご紹介のご案内">
+<svg class="deco-house deco-bl light" aria-hidden="true"><use href="#house"/></svg>
+<div class="wrap">
+<div class="cta-band-text">
+<p class="cta-band-title"><span class="nb">土地なしのお客様、</span><span class="nb">1組から</span><span class="nb">ご紹介ください。</span></p>
+<p class="cta-band-sub"><span class="nb">ご紹介から</span><span class="nb">24時間以内に、</span><span class="nb">いえプロから</span><span class="nb">ご連絡します。</span></p>
+</div>
+<div class="btn-row">
+<div class="cta-stack">
+<span class="bubble">24時間以内に連絡</span>
+<a class="btn btn-main" href="#contact">お客様を紹介する<span class="arrow" aria-hidden="true">→</span></a>
+</div>
+<a class="btn btn-line-white" href="tel:0661851252">電話で相談する</a>
+</div>
+</div>
+</section>
+
+<!-- 協業の流れ -->
+<section id="flow" class="sec sec-light">
+<div class="wrap">
+<div class="flow-wrap">
+<div class="sec-head flow-head reveal">
+<p class="eyebrow">FLOW</p>
+<h2 class="h2">協業の流れ</h2>
+<p class="lead">ご紹介から24時間以内にご連絡し、土地の決済・お引渡しまでいえプロが担当します。建築可否は必ず御社と一緒に確認するので、建てられない土地を買ってしまう心配はありません。</p>
+<div class="flow-legend" aria-label="担当の見方">
+<span class="tag tag-you">御社のご担当</span>
+<span class="tag tag-iepro">いえプロのご担当</span>
+<span class="tag tag-both">御社×いえプロ</span>
+</div>
+</div>
+<ol class="timeline">
+<li class="step reveal">
+<span class="step-no" aria-hidden="true">1</span>
+<div class="step-card">
+<div class="step-tags"><span class="tag tag-you">STEP1｜御社</span></div>
+<h3>お客様のご紹介</h3>
+<p>土地なしのお客様をご紹介ください。</p>
+</div>
+</li>
+<li class="step reveal">
+<span class="step-no" aria-hidden="true">2</span>
+<div class="step-card">
+<div class="step-tags"><span class="tag tag-iepro">STEP2｜いえプロ</span><span class="tag tag-time">24時間以内</span></div>
+<h3>条件の整理</h3>
+<p>24時間以内にご連絡し、プラン・予算・エリアを整理します。</p>
+</div>
+</li>
+<li class="step reveal">
+<span class="step-no" aria-hidden="true">3</span>
+<div class="step-card">
+<div class="step-tags"><span class="tag tag-iepro">STEP3｜いえプロ</span></div>
+<h3>土地のご提案</h3>
+<p>現地調査のうえ、候補地をご提案します。</p>
+</div>
+</li>
+<li class="step reveal">
+<span class="step-no" aria-hidden="true">4</span>
+<div class="step-card">
+<div class="step-tags"><span class="tag tag-both">STEP4｜御社×いえプロ</span></div>
+<h3>建築可否の確認</h3>
+<p>プランが入るか、御社と一緒に確認します。</p>
+</div>
+</li>
+<li class="step reveal">
+<span class="step-no" aria-hidden="true">5</span>
+<div class="step-card">
+<div class="step-tags"><span class="tag tag-iepro">STEP5｜いえプロ</span><span class="tag tag-time">ご紹介から契約まで1〜2カ月目安</span></div>
+<h3>ローン〜引渡し</h3>
+<p>ローン、買付（価格交渉）から契約・決済（引渡し）まで担当します。</p>
+</div>
+</li>
+<li class="step last reveal">
+<span class="step-no" aria-hidden="true">6</span>
+<div class="step-card">
+<div class="step-tags"><span class="tag tag-you">STEP6｜御社</span></div>
+<h3>建築請負契約へ</h3>
+<p>土地決定後、御社で建築を進めていただきます。</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</section>
+
+<!-- CTA 2 -->
+<section class="cta-band" aria-label="ご相談のご案内">
+<svg class="deco-house deco-tr light" aria-hidden="true"><use href="#house"/></svg>
+<div class="wrap">
+<div class="cta-band-text">
+<p class="cta-band-title"><span class="nb">「今の商談、</span><span class="nb">土地が決まらない」</span><span class="nb">その1件から。</span></p>
+<p class="cta-band-sub"><span class="nb">まずは</span><span class="nb">お気軽に</span><span class="nb">ご相談ください。</span><span class="nb">ご紹介から</span><span class="nb">契約までは</span><span class="nb">1〜2カ月が</span><span class="nb">目安です。</span></p>
+</div>
+<div class="btn-row">
+<div class="cta-stack">
+<span class="bubble">1件から相談可</span>
+<a class="btn btn-main" href="#contact">お客様を紹介する<span class="arrow" aria-hidden="true">→</span></a>
+</div>
+<a class="btn btn-line-white" href="tel:0661851252">電話で相談する</a>
+</div>
+</div>
+</section>
+
+<!-- メリット -->
+<section id="benefits" class="sec sec-white">
+<div class="wrap">
+<div class="sec-head center reveal">
+<p class="eyebrow">BENEFITS</p>
+<h2 class="h2">協業のメリット</h2>
+</div>
+<div class="bn-grid">
+<div class="bn-card you reveal">
+<h3>御社のメリット</h3>
+<ul class="check-list">
+<li>土地なしのお客様の受け皿ができる</li>
+<li>営業が建築提案に集中できる</li>
+<li>土地決定までの期間を短縮できる</li>
+<li>建築をわかっている仲介なので話がしやすい</li>
+</ul>
+</div>
+<div class="bn-card client reveal">
+<h3>お客様のメリット</h3>
+<ul class="check-list">
+<li>建てたいプランに合う土地だけを提案</li>
+<li>土地と建物の窓口が連携しスムーズ</li>
+<li>トータル予算が把握できる（目に見えない建築コストもわかる）</li>
+</ul>
+</div>
+</div>
+<p class="bn-close reveal"><span class="nb">ご紹介いただいたお客様は、</span><span class="nb"><em>御社のお客様として</em></span><span class="nb">対応します。</span></p>
+</div>
+</section>
+
+<!-- 会社概要 -->
+<section id="company" class="sec sec-light">
+<svg class="deco-house deco-tr" aria-hidden="true"><use href="#house"/></svg>
+<div class="wrap">
+<div class="co-grid">
+<div class="reveal">
+<div class="sec-head">
+<p class="eyebrow">COMPANY PROFILE</p>
+<h2 class="h2"><span class="nb">1957年創業、</span><span class="nb">Gハウスの</span><span class="nb">不動産事業部です。</span></h2>
+</div>
+<div class="cs-grid">
+<div class="cs-card"><p class="cs-num">2023.09</p><p class="cs-desc"><span class="nb">事業スタート</span></p></div>
+<div class="cs-card"><p class="cs-num">22<span class="cs-unit">名</span></p><p class="cs-desc"><span class="nb">体制</span><span class="nb">（宅建士 半数）</span></p></div>
+</div>
+</div>
+<dl class="co-table reveal" style="margin:0">
+<div class="career-row"><dt>位置付け</dt><dd>株式会社Gハウス 不動産事業部（屋号：いえプロ不動産）</dd></div>
+<div class="career-row"><dt>母体</dt><dd>株式会社Gハウス（1957年創業・売上70億円・従業員160名）</dd></div>
+<div class="career-row"><dt>代表者</dt><dd>代表取締役社長　趙 晃啓／統括代表　清水 崇志</dd></div>
+<div class="career-row"><dt>拠点</dt><dd>大阪（本店）・東京支店（品川区・五反田）2027年1月〜</dd></div>
+</dl>
+</div>
+<div class="co-photos">
+<!-- 写真素材: ロゴ・写真素材/スタッフ・事務所写真/office/250227_office_002.jpg -->
+<img src="../images/office-exterior.jpg" alt="いえプロ不動産 本店の外観" loading="lazy">
+<!-- 写真素材: ロゴ・写真素材/スタッフ・事務所写真/office/250227_office_005.jpg -->
+<img src="../images/office-interior.jpg" alt="いえプロ不動産 本店の店内" loading="lazy">
+</div>
+</div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="sec sec-white">
+<div class="wrap">
+<div class="sec-head center reveal">
+<p class="eyebrow">FAQ</p>
+<h2 class="h2">よくある質問</h2>
+</div>
+<div class="faq-list">
+<details class="faq-item">
+<summary><span class="qa-mark qa-q" aria-hidden="true">Q</span><h3><span class="nb">工務店側の</span><span class="nb">費用は</span><span class="nb">かかりますか？</span></h3><span class="faq-toggle" aria-hidden="true"></span></summary>
+<div class="faq-answer"><span class="qa-mark qa-a" aria-hidden="true">A</span><p>いいえ、無料です。工務店さまに費用をご負担いただくことはありません。</p></div>
+</details>
+<details class="faq-item">
+<summary><span class="qa-mark qa-q" aria-hidden="true">Q</span><h3><span class="nb">お客様を</span><span class="nb">他の住宅会社に</span><span class="nb">取られる心配は</span><span class="nb">ありませんか？</span></h3><span class="faq-toggle" aria-hidden="true"></span></summary>
+<div class="faq-answer"><span class="qa-mark qa-a" aria-hidden="true">A</span><p>ありません。建築は御社にお任せいただく前提で土地探しを進め、他社へのご紹介は行いません。</p></div>
+</details>
+<details class="faq-item">
+<summary><span class="qa-mark qa-q" aria-hidden="true">Q</span><h3><span class="nb">紹介してから、</span><span class="nb">どのくらいで</span><span class="nb">動いてもらえますか？</span></h3><span class="faq-toggle" aria-hidden="true"></span></summary>
+<div class="faq-answer"><span class="qa-mark qa-a" aria-hidden="true">A</span><p>ご紹介から24時間以内に、いえプロからお客様へご連絡します。ご紹介から契約までは、1〜2カ月が目安です。</p></div>
+</details>
+<details class="faq-item">
+<summary><span class="qa-mark qa-q" aria-hidden="true">Q</span><h3><span class="nb">対応エリアを</span><span class="nb">教えてください。</span></h3><span class="faq-toggle" aria-hidden="true"></span></summary>
+<div class="faq-answer"><span class="qa-mark qa-a" aria-hidden="true">A</span><p>関西圏全域に対応しています。エリアの詳細はお気軽にお問い合わせください。</p></div>
+</details>
+<details class="faq-item">
+<summary><span class="qa-mark qa-q" aria-hidden="true">Q</span><h3><span class="nb">1件だけの紹介でも</span><span class="nb">相談できますか？</span></h3><span class="faq-toggle" aria-hidden="true"></span></summary>
+<div class="faq-answer"><span class="qa-mark qa-a" aria-hidden="true">A</span><p>はい、1件からご相談いただけます。「今の商談で土地が見つからない」というお客様が1組いらっしゃるだけでも、お気軽にお声がけください。</p></div>
+</details>
+<details class="faq-item">
+<summary><span class="qa-mark qa-q" aria-hidden="true">Q</span><h3><span class="nb">打ち合わせに</span><span class="nb">工務店の担当者も</span><span class="nb">同席できますか？</span></h3><span class="faq-toggle" aria-hidden="true"></span></summary>
+<div class="faq-answer"><span class="qa-mark qa-a" aria-hidden="true">A</span><p>はい。ヒアリングや現地案内に同席いただくことで、建物プランに合った土地選びがスムーズに進みます。</p></div>
+</details>
+</div>
+</div>
+</section>
+
+<!-- お問い合わせ -->
+<section id="contact" class="sec contact on-dark">
+<svg class="deco-house deco-bl" aria-hidden="true"><use href="#house"/></svg>
+<div class="wrap">
+<div class="contact-grid">
+<div class="contact-summary">
+<p class="eyebrow">CONTACT</p>
+<h2 class="h2"><span class="nb">まずは</span><span class="nb">土地なしのお客様</span><br><span class="nb">1組から</span><span class="nb">ご相談ください。</span></h2>
+<p class="lead">連携の進め方や条件を、担当者が直接ご説明します。「今の商談で土地が決まらない」といったご相談だけでも歓迎です。</p>
+<ul class="promise">
+<li>費用は無料</li>
+<li>1件から相談可</li>
+<li>ご紹介から24時間以内に連絡</li>
+</ul>
+<div class="tel-box">
+<p class="small">お電話でのお問い合わせ</p>
+<p class="tel-num"><a href="tel:0661851252">06-6185-1252</a></p>
+<p class="small">営業時間 9:00〜18:00（定休日：火・水）</p>
+</div>
+</div>
+<div id="contact-form" class="form-card">
+<div class="hp" aria-hidden="true"><label for="f-website">ウェブサイト（入力しないでください）</label><input id="f-website" type="text" name="website" tabindex="-1" autocomplete="off"></div>
+<div class="f-row">
+<label for="f-company" class="f-label">会社名<span class="req">必須</span></label>
+<input id="f-company" class="f-input" type="text" placeholder="株式会社〇〇工務店" autocomplete="organization">
+</div>
+<div class="f-row">
+<label for="f-name" class="f-label">ご担当者名<span class="req">必須</span></label>
+<input id="f-name" class="f-input" type="text" placeholder="山田 太郎" autocomplete="name">
+</div>
+<div class="f-row-2">
+<div class="f-row">
+<label for="f-tel" class="f-label">電話番号</label>
+<input id="f-tel" class="f-input" type="tel" placeholder="03-0000-0000" autocomplete="tel">
+</div>
+<div class="f-row">
+<label for="f-mail" class="f-label">メールアドレス<span class="req">必須</span></label>
+<input id="f-mail" class="f-input" type="email" placeholder="example@company.jp" autocomplete="email">
+</div>
+</div>
+<div class="f-row">
+<fieldset class="f-fieldset">
+<legend>お問い合わせ内容<span class="req">必須</span></legend>
+<label class="f-radio"><input type="radio" name="f-type" value="refer" checked>土地なしのお客様を紹介したい</label>
+<label class="f-radio"><input type="radio" name="f-type" value="partner">協業について話を聞きたい</label>
+<label class="f-radio"><input type="radio" name="f-type" value="other">その他</label>
+</fieldset>
+</div>
+<div class="f-row">
+<label for="f-msg" class="f-label">ご相談内容<span class="opt">（任意）</span></label>
+<textarea id="f-msg" class="f-input" rows="4" placeholder="お客様をご紹介の場合は、希望エリア・ご予算・建てたいプランなど、わかる範囲でご記入ください"></textarea>
+</div>
+<button id="f-submit" class="f-submit" type="button">無料で相談する</button>
+</div>
+</div>
+</div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+<div class="wrap">
+<div class="foot-info">
+<img src="../images/logo-footer.png" alt="いえプロ不動産">
+<span>いえプロ不動産</span>
+<span>〒535-0022　大阪府大阪市旭区新森6-3-25 エクセレント新森1階</span>
+<span>TEL：<a href="tel:0661851252">06-6185-1252</a>　FAX：06-6185-1253</span>
+<span>営業時間 9:00〜18:00　定休日 火・水</span>
+<span>宅地建物取引業免許 国土交通大臣（1）第11002号</span>
+</div>
+<div class="foot-copy">© いえプロ不動産</div>
+</div>
+</footer>
+
+<nav class="sp-cta" aria-label="お問い合わせ">
+<a class="sp-cta-tel" href="tel:0661851252"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg>電話で相談</a>
+<a class="sp-cta-main" href="#contact-form">お客様を紹介する</a>
+</nav>
+
+<script>
+(function () {
+  // ▼ Apps Script をデプロイしたときの「ウェブアプリのURL」をここに貼り付けます
+  var GAS_URL = 'https://script.google.com/macros/s/AKfycbxt3gUifXN2yyDs7eRIECfYBPTSiqIsBkhVSzVhafHJxXqEA6aqtT5UA9z5pGeBlGkR/exec';
+
+  var loadedAt = Date.now();
+  var card = document.getElementById('contact-form');
+  var btn = document.getElementById('f-submit');
+  var btnText = btn.textContent;
+  var ERR_COLOR = '#A33A0E';
+  var BORDER = '#B3BCC6';
+
+  function field(id) { return document.getElementById(id); }
+
+  function setError(el, msg) {
+    var box = el.closest('div');
+    var err = box.querySelector('.f-error');
+    if (!msg) {
+      if (err) err.remove();
+      if (el.tagName !== 'FIELDSET') el.style.borderColor = BORDER;
+      el.removeAttribute('aria-invalid');
+      return;
+    }
+    if (!err) {
+      err = document.createElement('p');
+      err.className = 'f-error';
+      err.setAttribute('role', 'alert');
+      err.style.cssText = 'margin: 0; font-size: 14px; font-weight: 700; color: ' + ERR_COLOR;
+      box.appendChild(err);
+    }
+    err.textContent = msg;
+    if (el.tagName !== 'FIELDSET') el.style.borderColor = ERR_COLOR;
+    el.setAttribute('aria-invalid', 'true');
+  }
+
+  function validate() {
+    var first = null;
+    var checks = [
+      [field('f-company'), function (v) { return v ? '' : '会社名を入力してください'; }],
+      [field('f-name'), function (v) { return v ? '' : 'ご担当者名を入力してください'; }],
+      [field('f-tel'), function (v) { return !v || /^[0-9０-９\-－()（）+＋\s]+$/.test(v) ? '' : '電話番号は数字とハイフンで入力してください'; }],
+      [field('f-mail'), function (v) {
+        if (!v) return 'メールアドレスを入力してください';
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) ? '' : 'メールアドレスの形式が正しくありません（例：example@company.jp）';
+      }]
+    ];
+    checks.forEach(function (c) {
+      var msg = c[1](c[0].value.trim());
+      setError(c[0], msg);
+      if (msg && !first) first = c[0];
+    });
+    var fs = card.querySelector('fieldset');
+    var typeMsg = card.querySelector('input[name="f-type"]:checked') ? '' : 'お問い合わせ内容を選択してください';
+    setError(fs, typeMsg);
+    if (typeMsg && !first) first = fs.querySelector('input');
+    return first;
+  }
+
+  // 入力し直したらエラー表示を消す
+  ['f-company', 'f-name', 'f-tel', 'f-mail'].forEach(function (id) {
+    field(id).addEventListener('input', function () { setError(field(id), ''); });
+  });
+  card.querySelectorAll('input[name="f-type"]').forEach(function (r) {
+    r.addEventListener('change', function () { setError(card.querySelector('fieldset'), ''); });
+  });
+
+  function showMessage(msg) {
+    var p = card.querySelector('.f-send-error');
+    if (!p) {
+      p = document.createElement('p');
+      p.className = 'f-send-error';
+      p.setAttribute('role', 'alert');
+      p.style.cssText = 'margin: 0; font-size: 14px; font-weight: 700; color: ' + ERR_COLOR;
+      btn.insertAdjacentElement('afterend', p);
+    }
+    p.textContent = msg;
+  }
+
+  btn.addEventListener('click', function () {
+    var first = validate();
+    if (first) { first.focus(); return; }
+
+    var checked = card.querySelector('input[name="f-type"]:checked');
+    var body = new URLSearchParams({
+      company: field('f-company').value.trim(),
+      name: field('f-name').value.trim(),
+      tel: field('f-tel').value.trim(),
+      mail: field('f-mail').value.trim(),
+      type: checked ? checked.value : '',
+      msg: field('f-msg').value.trim(),
+      website: field('f-website').value,
+      elapsed: String(Date.now() - loadedAt)
+    });
+
+    btn.disabled = true;
+    btn.style.opacity = '0.6';
+    btn.textContent = '送信中…';
+    showMessage('');
+
+    fetch(GAS_URL, { method: 'POST', body: body })
+      .then(function (res) { return res.json(); })
+      .then(function (data) {
+        if (!data.ok) throw new Error(data.error || 'error');
+        card.innerHTML = '';
+        var done = document.createElement('p');
+        done.setAttribute('role', 'status');
+        done.style.cssText = 'margin: 0; padding: 40px 0; text-align: center; font-size: 18px; font-weight: 700; line-height: 1.8';
+        done.textContent = '送信が完了しました。24時間以内にご連絡します。';
+        card.appendChild(done);
+        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      })
+      .catch(function () {
+        btn.disabled = false;
+        btn.style.opacity = '';
+        btn.textContent = btnText;
+        showMessage('送信できませんでした。時間をおいて再度お試しいただくか、お電話（06-6185-1252）でお問い合わせください。');
+      });
+  });
+})();
+</script>
+<script>
+// スマホ用 画面下固定ボタン：お問い合わせフォームが見えている間は隠す
+(function () {
+  var bar = document.querySelector('.sp-cta');
+  var form = document.getElementById('contact-form');
+  if (!bar || !form) return;
+
+  bar.querySelector('.sp-cta-main').addEventListener('click', function (e) {
+    e.preventDefault();
+    form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  if (!('IntersectionObserver' in window)) return;
+  new IntersectionObserver(function (entries) {
+    var visible = entries[0].isIntersecting;
+    bar.classList.toggle('is-hidden', visible);
+    bar.setAttribute('aria-hidden', visible ? 'true' : 'false');
+  }, { threshold: 0.15 }).observe(form);
+})();
+</script>
+<script>
+// 表示アニメーション（フェードイン／写真の開き）と実績数字のカウントアップ
+(function () {
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var items = document.querySelectorAll('.reveal');
+  var counts = document.querySelectorAll('.count');
+
+  if (reduce || !('IntersectionObserver' in window)) {
+    items.forEach(function (el) { el.classList.add('is-in'); });
+    return;
+  }
+
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (!en.isIntersecting) return;
+      en.target.classList.add('is-in');
+      io.unobserve(en.target);
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  items.forEach(function (el) { io.observe(el); });
+
+  function run(el) {
+    var to = parseInt(el.getAttribute('data-to'), 10);
+    var start = null;
+    var dur = 1400;
+    function tick(t) {
+      if (!start) start = t;
+      var p = Math.min((t - start) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = String(Math.round(to * eased));
+      if (p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  counts.forEach(function (el) { el.textContent = '0'; });
+  var cio = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (!en.isIntersecting) return;
+      run(en.target);
+      cio.unobserve(en.target);
+    });
+  }, { threshold: 0.6 });
+  counts.forEach(function (el) { cio.observe(el); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+# GitHub Pages の設定：公開サイトには LP（index.html と images）だけを出す
+exclude:
+  - patterns
+  - gas
+  - CLAUDE.md
+  - README.md
