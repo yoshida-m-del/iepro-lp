@@ -435,6 +435,12 @@ p,li,dd,dt,summary,label,legend{text-wrap:pretty}
 p,h1,.h2,.h3,.hero-text,.cta-title,.resolve-text,.benefit-close,li,dt,dd,summary,label,legend,.btn,.s-label,.f-label,.f-desc,.rs-label,.rs-desc,.k,.c-desc,.who{word-break:auto-phrase}
 .f-desc .nb{white-space:nowrap}
 @media (max-width:1023px){.br-pc{display:none}}
+
+/* ファーストビューの数字：見出しは上、数字は下にそろえ、見出しが2行になっても数字の高さを横一列にする */
+.hero-stats li{justify-content:space-between}
+.hero-stats .s-val{line-height:1.1}
+.hero-stats .s-text{line-height:clamp(37px,3.74vw,48px);padding-top:0;white-space:nowrap}
+@media (max-width:767px){.hero-stats .s-text{line-height:clamp(31px,9.2vw,37px);padding-top:0}}
 </style>
 <script>document.documentElement.classList.add('js');</script>
 </head>
