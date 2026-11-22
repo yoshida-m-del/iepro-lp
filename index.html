@@ -72,6 +72,30 @@ a{color:#3E6582}a:hover{color:#2E4D64}
   .rs-small{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 16px}
   .rs-val{font-size:20px}
 }
+/* 代表紹介の数字カード／会社概要の数字ブロック：パソコンは従来どおり */
+.fs-grid{grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr));gap:16px}
+.fs-card{border-radius:16px;padding:24px 28px;gap:4px}
+.fs-label{font-size:14px}
+.fs-num{font-size:52px}
+.fs-desc{font-size:16px}
+.cs-grid{grid-template-columns:repeat(auto-fit,minmax(min(140px,100%),1fr));gap:12px}
+.cs-card{border-radius:14px;padding:20px}
+.cs-num{font-size:32px}
+.cs-unit{font-size:16px}
+.cs-desc{font-size:13px}
+/* スマホ：数字カードを横一列にしてコンパクトに */
+@media (max-width: 767px){
+  .fs-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+  .fs-card{border-radius:12px;padding:14px 4px 12px;gap:2px;text-align:center}
+  .fs-label{font-size:11px;line-height:1.5}
+  .fs-num{font-size:clamp(24px,8vw,32px)}
+  .fs-desc{font-size:clamp(10px,3vw,11px);line-height:1.45}
+  .cs-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .cs-card{border-radius:12px;padding:14px 14px 12px}
+  .cs-num{font-size:26px}
+  .cs-unit{font-size:13px}
+  .cs-desc{font-size:12px;line-height:1.5}
+}
 /* スマホ用 画面下固定ボタン */
 .sp-cta{display:none}
 @media (max-width: 767px){
@@ -215,21 +239,21 @@ a{color:#3E6582}a:hover{color:#2E4D64}
 <span style="flex: 1 1 260px; min-width: 0; font-size: 15px; color: #222A33">いえプロ不動産を立ち上げ、3年目で粗利2.5億円規模に</span>
 </div>
 </div>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); gap: 16px">
-<div style="background: #F5F7F9; border-radius: 16px; padding: 24px 28px; display: flex; flex-direction: column; gap: 4px">
-<p style="margin: 0; font-size: 14px; color: #4A5562">販売実績</p>
-<p style="margin: 0; font-family: 'Zen Kaku Gothic New', sans-serif; font-weight: 900; font-size: 52px; line-height: 1.1; color: #3E6582; white-space: nowrap">500</p>
-<p style="margin: 0; font-size: 16px; font-weight: 700; color: #222A33">棟以上</p>
+<div class="fs-grid" style="display: grid">
+<div class="fs-card" style="background: #F5F7F9; display: flex; flex-direction: column">
+<p class="fs-label" style="margin: 0; color: #4A5562"><span class="nb">販売実績</span></p>
+<p class="fs-num" style="margin: 0; font-family: 'Zen Kaku Gothic New', sans-serif; font-weight: 900; line-height: 1.1; color: #3E6582; white-space: nowrap">500</p>
+<p class="fs-desc" style="margin: 0; font-weight: 700; color: #222A33"><span class="nb">棟以上</span></p>
 </div>
-<div style="background: #F5F7F9; border-radius: 16px; padding: 24px 28px; display: flex; flex-direction: column; gap: 4px">
-<p style="margin: 0; font-size: 14px; color: #4A5562">住宅営業</p>
-<p style="margin: 0; font-family: 'Zen Kaku Gothic New', sans-serif; font-weight: 900; font-size: 52px; line-height: 1.1; color: #3E6582; white-space: nowrap">10年</p>
-<p style="margin: 0; font-size: 16px; font-weight: 700; color: #222A33">連続トップセールス</p>
+<div class="fs-card" style="background: #F5F7F9; display: flex; flex-direction: column">
+<p class="fs-label" style="margin: 0; color: #4A5562"><span class="nb">住宅営業</span></p>
+<p class="fs-num" style="margin: 0; font-family: 'Zen Kaku Gothic New', sans-serif; font-weight: 900; line-height: 1.1; color: #3E6582; white-space: nowrap">10年</p>
+<p class="fs-desc" style="margin: 0; font-weight: 700; color: #222A33"><span class="nb">連続</span><span class="nb">トップセールス</span></p>
 </div>
-<div style="background: #F5F7F9; border-radius: 16px; padding: 24px 28px; display: flex; flex-direction: column; gap: 4px">
-<p style="margin: 0; font-size: 14px; color: #4A5562">いえプロ 3年目</p>
-<p style="margin: 0; font-family: 'Zen Kaku Gothic New', sans-serif; font-weight: 900; font-size: 52px; line-height: 1.1; color: #3E6582; white-space: nowrap">10億</p>
-<p style="margin: 0; font-size: 16px; font-weight: 700; color: #222A33">円の売上規模へ</p>
+<div class="fs-card" style="background: #F5F7F9; display: flex; flex-direction: column">
+<p class="fs-label" style="margin: 0; color: #4A5562"><span class="nb">いえプロ</span> <span class="nb">3年目</span></p>
+<p class="fs-num" style="margin: 0; font-family: 'Zen Kaku Gothic New', sans-serif; font-weight: 900; line-height: 1.1; color: #3E6582; white-space: nowrap">10億</p>
+<p class="fs-desc" style="margin: 0; font-weight: 700; color: #222A33"><span class="nb">円の</span><span class="nb">売上規模へ</span></p>
 </div>
 </div>
 </div>
@@ -504,9 +528,9 @@ a{color:#3E6582}a:hover{color:#2E4D64}
 <div style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
 <p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.12em; color: #3E6582">COMPANY PROFILE</p>
 <h2 style="margin: 0; font-family: 'Zen Kaku Gothic New', sans-serif; font-weight: 900; font-size: clamp(26px, 3.2vw, 38px); line-height: 1.4"><span class="nb">1957年創業、</span><span class="nb">Gハウスの</span><span class="nb">不動産事業部です。</span></h2>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(140px, 100%), 1fr)); gap: 12px">
-<div style="background: #FFFFFF; border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 2px"><p style="margin: 0; font-family: 'Zen Kaku Gothic New', sans-serif; font-weight: 900; font-size: 32px; line-height: 1.2; color: #3E6582">2023.09</p><p style="margin: 0; font-size: 13px; color: #4A5562">事業スタート</p></div>
-<div style="background: #FFFFFF; border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 2px"><p style="margin: 0; font-family: 'Zen Kaku Gothic New', sans-serif; font-weight: 900; font-size: 32px; line-height: 1.2; color: #3E6582">22<span style="font-size: 16px; margin-left: 2px">名</span></p><p style="margin: 0; font-size: 13px; color: #4A5562">体制（宅建士 半数）</p></div>
+<div class="cs-grid" style="display: grid">
+<div class="cs-card" style="background: #FFFFFF; display: flex; flex-direction: column; gap: 2px"><p class="cs-num" style="margin: 0; font-family: 'Zen Kaku Gothic New', sans-serif; font-weight: 900; line-height: 1.2; color: #3E6582; white-space: nowrap">2023.09</p><p class="cs-desc" style="margin: 0; color: #4A5562"><span class="nb">事業スタート</span></p></div>
+<div class="cs-card" style="background: #FFFFFF; display: flex; flex-direction: column; gap: 2px"><p class="cs-num" style="margin: 0; font-family: 'Zen Kaku Gothic New', sans-serif; font-weight: 900; line-height: 1.2; color: #3E6582; white-space: nowrap">22<span class="cs-unit" style="margin-left: 2px">名</span></p><p class="cs-desc" style="margin: 0; color: #4A5562"><span class="nb">体制</span><span class="nb">（宅建士 半数）</span></p></div>
 </div>
 </div>
 <div style="flex: 1.3 1 440px; min-width: 0; background: #FFFFFF; border-radius: 16px; padding: 12px 32px; display: flex; flex-direction: column">
