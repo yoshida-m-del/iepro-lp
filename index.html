@@ -96,6 +96,15 @@ a{color:#3E6582}a:hover{color:#2E4D64}
   .cs-unit{font-size:13px}
   .cs-desc{font-size:12px;line-height:1.5}
 }
+/* 相談枠・ボタン2つ並び：パソコンは従来どおり */
+.cta-box{padding:36px 40px;gap:24px}
+.btn-pair{display:flex;flex-wrap:wrap;gap:12px}
+.btn-pair-hero{gap:16px}
+/* スマホ：枠の左右余白を揃え、ボタンは幅いっぱい・同じ幅で縦に並べる */
+@media (max-width: 767px){
+  .cta-box{padding:26px 20px;gap:20px}
+  .btn-pair{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;width:100%}
+}
 /* スマホ用 画面下固定ボタン */
 .sp-cta{display:none}
 @media (max-width: 767px){
@@ -134,9 +143,9 @@ a{color:#3E6582}a:hover{color:#2E4D64}
 <p style="margin: 0; display: inline-block; align-self: flex-start; font-size: 14px; font-weight: 700; color: #3E6582; border: 1.5px solid #3E6582; border-radius: 999px; padding: 4px 16px">注文住宅を手がける工務店さまへ</p>
 <h1 class="hero-title" style="margin: 0; font-family: 'Zen Kaku Gothic New', sans-serif; font-weight: 900; line-height: 1.4; color: #1B2530"><span style="display: inline-block; white-space: nowrap">土地探しは、いえプロ。</span><br><span style="display: inline-block">家づくりは、</span><span style="display: inline-block">御社で。</span></h1>
 <p style="margin: 0; font-size: 18px; color: #4A5562">土地なしのお客様を、いえプロにご紹介ください。<br>24時間以内にご連絡し、御社のプランが入る土地を探して、ローン・契約・引渡しまで担当します。<br>土地が決まったら、建築は御社へ。</p>
-<div style="display: flex; flex-wrap: wrap; gap: 16px; margin-top: 8px">
-<a href="#contact" style="text-decoration: none; background: #B04A12; color: #FFFFFF; font-weight: 700; font-size: 17px; padding: 16px 32px; border-radius: 8px; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center">無料で相談する</a>
-<a href="tel:0661851252" style="text-decoration: none; background: #FFFFFF; color: #3E6582; border: 2px solid #3E6582; font-weight: 700; font-size: 17px; padding: 14px 30px; border-radius: 8px; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center">電話で問い合わせる</a>
+<div class="btn-pair btn-pair-hero" style="margin-top: 8px">
+<a href="#contact" style="text-decoration: none; background: #B04A12; color: #FFFFFF; font-weight: 700; font-size: 17px; padding: 16px 32px; border-radius: 8px; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center">無料で相談する</a>
+<a href="tel:0661851252" style="text-decoration: none; background: #FFFFFF; color: #3E6582; border: 2px solid #3E6582; font-weight: 700; font-size: 17px; padding: 14px 30px; border-radius: 8px; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center">電話で問い合わせる</a>
 </div>
 <div style="display: flex; flex-wrap: wrap; gap: 12px">
 <p style="margin: 0; font-size: 14px; font-weight: 700; color: #3E6582; background: #E4ECF2; border-radius: 6px; padding: 6px 14px">土地仲介 年間112件</p>
@@ -350,14 +359,14 @@ a{color:#3E6582}a:hover{color:#2E4D64}
 
 
 <section style="padding: 72px 24px 0">
-<div style="max-width: 1100px; margin: 0 auto; background: #FFFFFF; border: 2px solid #B04A12; border-radius: 20px; padding: 36px 40px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px">
+<div class="cta-box" style="max-width: 1100px; margin: 0 auto; background: #FFFFFF; border: 2px solid #B04A12; border-radius: 20px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between">
 <div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 6px">
-<p style="margin: 0; font-family: 'Zen Kaku Gothic New', sans-serif; font-weight: 900; font-size: clamp(20px, 2.4vw, 26px); line-height: 1.5; color: #1B2530">土地なしのお客様、1組からご紹介ください。</p>
-<p style="margin: 0; font-size: 15px; color: #4A5562">ご紹介から24時間以内に、いえプロからご連絡します。</p>
+<p style="margin: 0; font-family: 'Zen Kaku Gothic New', sans-serif; font-weight: 900; font-size: clamp(20px, 2.4vw, 26px); line-height: 1.5; color: #1B2530"><span class="nb">土地なしのお客様、</span><span class="nb">1組から</span><span class="nb">ご紹介ください。</span></p>
+<p style="margin: 0; font-size: 15px; color: #4A5562"><span class="nb">ご紹介から</span><span class="nb">24時間以内に、</span><span class="nb">いえプロから</span><span class="nb">ご連絡します。</span></p>
 </div>
-<div style="display: flex; flex-wrap: wrap; gap: 12px">
-<a href="#contact" style="text-decoration: none; background: #B04A12; color: #FFFFFF; font-weight: 700; font-size: 16px; padding: 14px 28px; border-radius: 8px; min-height: 48px; box-sizing: border-box; display: inline-flex; align-items: center">お客様を紹介する</a>
-<a href="tel:0661851252" style="text-decoration: none; background: #FFFFFF; color: #3E6582; border: 2px solid #3E6582; font-weight: 700; font-size: 16px; padding: 12px 24px; border-radius: 8px; min-height: 48px; box-sizing: border-box; display: inline-flex; align-items: center">電話で相談する</a>
+<div class="btn-pair">
+<a href="#contact" style="text-decoration: none; background: #B04A12; color: #FFFFFF; font-weight: 700; font-size: 16px; padding: 14px 28px; border-radius: 8px; min-height: 48px; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center">お客様を紹介する</a>
+<a href="tel:0661851252" style="text-decoration: none; background: #FFFFFF; color: #3E6582; border: 2px solid #3E6582; font-weight: 700; font-size: 16px; padding: 12px 24px; border-radius: 8px; min-height: 48px; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center">電話で相談する</a>
 </div>
 </div>
 </section>
@@ -410,14 +419,14 @@ a{color:#3E6582}a:hover{color:#2E4D64}
 
 
 <section style="padding: 0 24px 104px">
-<div style="max-width: 1100px; margin: 0 auto; background: #FFFFFF; border: 2px solid #B04A12; border-radius: 20px; padding: 36px 40px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px">
+<div class="cta-box" style="max-width: 1100px; margin: 0 auto; background: #FFFFFF; border: 2px solid #B04A12; border-radius: 20px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between">
 <div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 6px">
-<p style="margin: 0; font-family: 'Zen Kaku Gothic New', sans-serif; font-weight: 900; font-size: clamp(20px, 2.4vw, 26px); line-height: 1.5; color: #1B2530">「今の商談、土地が決まらない」その1件から。</p>
-<p style="margin: 0; font-size: 15px; color: #4A5562">まずはお気軽にご相談ください。ご紹介から契約までは1〜2カ月が目安です。</p>
+<p style="margin: 0; font-family: 'Zen Kaku Gothic New', sans-serif; font-weight: 900; font-size: clamp(20px, 2.4vw, 26px); line-height: 1.5; color: #1B2530"><span class="nb">「今の商談、</span><span class="nb">土地が決まらない」</span><span class="nb">その1件から。</span></p>
+<p style="margin: 0; font-size: 15px; color: #4A5562"><span class="nb">まずは</span><span class="nb">お気軽に</span><span class="nb">ご相談ください。</span><span class="nb">ご紹介から</span><span class="nb">契約までは</span><span class="nb">1〜2カ月が</span><span class="nb">目安です。</span></p>
 </div>
-<div style="display: flex; flex-wrap: wrap; gap: 12px">
-<a href="#contact" style="text-decoration: none; background: #B04A12; color: #FFFFFF; font-weight: 700; font-size: 16px; padding: 14px 28px; border-radius: 8px; min-height: 48px; box-sizing: border-box; display: inline-flex; align-items: center">お客様を紹介する</a>
-<a href="tel:0661851252" style="text-decoration: none; background: #FFFFFF; color: #3E6582; border: 2px solid #3E6582; font-weight: 700; font-size: 16px; padding: 12px 24px; border-radius: 8px; min-height: 48px; box-sizing: border-box; display: inline-flex; align-items: center">電話で相談する</a>
+<div class="btn-pair">
+<a href="#contact" style="text-decoration: none; background: #B04A12; color: #FFFFFF; font-weight: 700; font-size: 16px; padding: 14px 28px; border-radius: 8px; min-height: 48px; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center">お客様を紹介する</a>
+<a href="tel:0661851252" style="text-decoration: none; background: #FFFFFF; color: #3E6582; border: 2px solid #3E6582; font-weight: 700; font-size: 16px; padding: 12px 24px; border-radius: 8px; min-height: 48px; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center">電話で相談する</a>
 </div>
 </div>
 </section>
