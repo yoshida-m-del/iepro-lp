@@ -466,7 +466,8 @@ a{color:#3E6582}a:hover{color:#2E4D64}
 <p style="margin: 0; font-size: 14px; color: #E3ECF3">営業時間 9:00〜18:00（定休日：火・水）</p>
 </div>
 </div>
-<div style="flex: 1 1 440px; min-width: 0; background: #FFFFFF; border-radius: 16px; padding: 40px 36px; box-sizing: border-box; display: flex; flex-direction: column; gap: 20px">
+<div id="contact-form" style="flex: 1 1 440px; min-width: 0; background: #FFFFFF; border-radius: 16px; padding: 40px 36px; box-sizing: border-box; display: flex; flex-direction: column; gap: 20px">
+<div aria-hidden="true" style="position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden"><label for="f-website">ウェブサイト（入力しないでください）</label><input id="f-website" type="text" name="website" tabindex="-1" autocomplete="off"></div>
 <div style="display: flex; flex-direction: column; gap: 6px">
 <label for="f-company" style="font-size: 14px; font-weight: 700">会社名 <span style="color: #A33A0E">必須</span></label>
 <input id="f-company" type="text" placeholder="株式会社〇〇工務店" style="font: inherit; font-size: 16px; padding: 12px 14px; border: 1px solid #B3BCC6; border-radius: 6px; min-height: 48px; box-sizing: border-box">
@@ -497,7 +498,7 @@ a{color:#3E6582}a:hover{color:#2E4D64}
 <label for="f-msg" style="font-size: 14px; font-weight: 700">ご相談内容（任意）</label>
 <textarea id="f-msg" rows="4" placeholder="お客様をご紹介の場合は、希望エリア・ご予算・建てたいプランなど、わかる範囲でご記入ください" style="font: inherit; font-size: 16px; padding: 12px 14px; border: 1px solid #B3BCC6; border-radius: 6px; box-sizing: border-box; resize: vertical"></textarea>
 </div>
-<button type="button" style="font: inherit; font-size: 18px; font-weight: 700; background: #B04A12; color: #FFFFFF; border: none; border-radius: 8px; padding: 16px; min-height: 56px; cursor: pointer">無料で相談する</button>
+<button id="f-submit" type="button" style="font: inherit; font-size: 18px; font-weight: 700; background: #B04A12; color: #FFFFFF; border: none; border-radius: 8px; padding: 16px; min-height: 56px; cursor: pointer">無料で相談する</button>
 </div>
 </div>
 </section>
@@ -516,5 +517,125 @@ a{color:#3E6582}a:hover{color:#2E4D64}
 </footer>
 
 </div>
+<script>
+(function () {
+  // ▼ Apps Script をデプロイしたときの「ウェブアプリのURL」をここに貼り付けます
+  var GAS_URL = 'https://script.google.com/macros/s/AKfycbxt3gUifXN2yyDs7eRIECfYBPTSiqIsBkhVSzVhafHJxXqEA6aqtT5UA9z5pGeBlGkR/exec';
+
+  var loadedAt = Date.now();
+  var card = document.getElementById('contact-form');
+  var btn = document.getElementById('f-submit');
+  var btnText = btn.textContent;
+  var ERR_COLOR = '#A33A0E';
+  var BORDER = '#B3BCC6';
+
+  function field(id) { return document.getElementById(id); }
+
+  function setError(el, msg) {
+    var box = el.closest('div');
+    var err = box.querySelector('.f-error');
+    if (!msg) {
+      if (err) err.remove();
+      if (el.tagName !== 'FIELDSET') el.style.borderColor = BORDER;
+      el.removeAttribute('aria-invalid');
+      return;
+    }
+    if (!err) {
+      err = document.createElement('p');
+      err.className = 'f-error';
+      err.setAttribute('role', 'alert');
+      err.style.cssText = 'margin: 0; font-size: 14px; font-weight: 700; color: ' + ERR_COLOR;
+      box.appendChild(err);
+    }
+    err.textContent = msg;
+    if (el.tagName !== 'FIELDSET') el.style.borderColor = ERR_COLOR;
+    el.setAttribute('aria-invalid', 'true');
+  }
+
+  function validate() {
+    var first = null;
+    var checks = [
+      [field('f-company'), function (v) { return v ? '' : '会社名を入力してください'; }],
+      [field('f-name'), function (v) { return v ? '' : 'ご担当者名を入力してください'; }],
+      [field('f-tel'), function (v) { return !v || /^[0-9０-９\-－()（）+＋\s]+$/.test(v) ? '' : '電話番号は数字とハイフンで入力してください'; }],
+      [field('f-mail'), function (v) {
+        if (!v) return 'メールアドレスを入力してください';
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) ? '' : 'メールアドレスの形式が正しくありません（例：example@company.jp）';
+      }]
+    ];
+    checks.forEach(function (c) {
+      var msg = c[1](c[0].value.trim());
+      setError(c[0], msg);
+      if (msg && !first) first = c[0];
+    });
+    var fs = card.querySelector('fieldset');
+    var typeMsg = card.querySelector('input[name="f-type"]:checked') ? '' : 'お問い合わせ内容を選択してください';
+    setError(fs, typeMsg);
+    if (typeMsg && !first) first = fs.querySelector('input');
+    return first;
+  }
+
+  // 入力し直したらエラー表示を消す
+  ['f-company', 'f-name', 'f-tel', 'f-mail'].forEach(function (id) {
+    field(id).addEventListener('input', function () { setError(field(id), ''); });
+  });
+  card.querySelectorAll('input[name="f-type"]').forEach(function (r) {
+    r.addEventListener('change', function () { setError(card.querySelector('fieldset'), ''); });
+  });
+
+  function showMessage(msg) {
+    var p = card.querySelector('.f-send-error');
+    if (!p) {
+      p = document.createElement('p');
+      p.className = 'f-send-error';
+      p.setAttribute('role', 'alert');
+      p.style.cssText = 'margin: 0; font-size: 14px; font-weight: 700; color: ' + ERR_COLOR;
+      btn.insertAdjacentElement('afterend', p);
+    }
+    p.textContent = msg;
+  }
+
+  btn.addEventListener('click', function () {
+    var first = validate();
+    if (first) { first.focus(); return; }
+
+    var checked = card.querySelector('input[name="f-type"]:checked');
+    var body = new URLSearchParams({
+      company: field('f-company').value.trim(),
+      name: field('f-name').value.trim(),
+      tel: field('f-tel').value.trim(),
+      mail: field('f-mail').value.trim(),
+      type: checked ? checked.value : '',
+      msg: field('f-msg').value.trim(),
+      website: field('f-website').value,
+      elapsed: String(Date.now() - loadedAt)
+    });
+
+    btn.disabled = true;
+    btn.style.opacity = '0.6';
+    btn.textContent = '送信中…';
+    showMessage('');
+
+    fetch(GAS_URL, { method: 'POST', body: body })
+      .then(function (res) { return res.json(); })
+      .then(function (data) {
+        if (!data.ok) throw new Error(data.error || 'error');
+        card.innerHTML = '';
+        var done = document.createElement('p');
+        done.setAttribute('role', 'status');
+        done.style.cssText = 'margin: 0; padding: 40px 0; text-align: center; font-size: 18px; font-weight: 700; line-height: 1.8';
+        done.textContent = '送信が完了しました。24時間以内にご連絡します。';
+        card.appendChild(done);
+        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      })
+      .catch(function () {
+        btn.disabled = false;
+        btn.style.opacity = '';
+        btn.textContent = btnText;
+        showMessage('送信できませんでした。時間をおいて再度お試しいただくか、お電話（06-6185-1252）でお問い合わせください。');
+      });
+  });
+})();
+</script>
 </body>
 </html>
