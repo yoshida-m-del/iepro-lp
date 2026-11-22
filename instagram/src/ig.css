@@ -1,0 +1,82 @@
+/* =========================================================
+   Instagram 投稿画像（LP 案A「上質・和モダン」と同じデザイン）
+   1枚 = .frame。HTML 上で縦に並べ、書き出し時に1枚ずつ切り出す
+   ========================================================= */
+:root{
+  --bg:#F7F5F1;
+  --bg-alt:#EFEBE4;
+  --plane:#E4DED3;
+  --ink:#1F2A33;
+  --ink-sub:#56606A;
+  --navy:#1F3346;
+  --navy-deep:#182A3A;
+  --blue:#3E6582;
+  --accent:#B04A12;
+  --accent-light:#E8A57C;
+  --line:#D6CFC3;
+  --line-dark:rgba(255,255,255,.24);
+  --f-mincho:"Shippori Mincho B1","Zen Old Mincho","Yu Mincho",serif;
+  --f-gothic:"Zen Kaku Gothic New","Yu Gothic",Meiryo,sans-serif;
+  --f-latin:"Cormorant Garamond","Times New Roman",serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0;background:#888}
+body{font-family:var(--f-gothic);color:var(--ink);-webkit-font-smoothing:antialiased}
+p,h1,h2,h3,ul,ol{margin:0;padding:0;list-style:none}
+img{display:block}
+.nb{display:inline-block}
+
+/* フレーム */
+.frame{position:relative;overflow:hidden;background:var(--bg);width:1080px}
+.feed{height:1350px}
+.story{height:1920px}
+.dark{background:var(--navy);color:#fff}
+.alt{background:var(--bg-alt)}
+
+/* 共通パーツ */
+.label{display:flex;align-items:center;gap:22px;font-family:var(--f-latin);font-weight:600;font-size:30px;letter-spacing:.32em;text-transform:uppercase;color:var(--accent);line-height:1}
+.label::before{content:"";width:56px;height:2px;background:currentColor;flex:none}
+.dark .label{color:var(--accent-light)}
+.mincho{font-family:var(--f-mincho);font-weight:600;font-feature-settings:"palt";letter-spacing:.06em}
+.h-xl{font-family:var(--f-mincho);font-weight:600;font-feature-settings:"palt";letter-spacing:.06em;font-size:92px;line-height:1.5}
+.h-l{font-family:var(--f-mincho);font-weight:600;font-feature-settings:"palt";letter-spacing:.06em;font-size:72px;line-height:1.55}
+.h-m{font-family:var(--f-mincho);font-weight:600;font-feature-settings:"palt";letter-spacing:.06em;font-size:56px;line-height:1.6}
+.sub{font-size:34px;line-height:1.9;letter-spacing:.06em;color:var(--ink-sub)}
+.dark .sub{color:#C9D2DB}
+.accent{color:var(--accent)}
+.dark .accent{color:var(--accent-light)}
+.num{font-family:var(--f-latin);font-weight:500;line-height:1;letter-spacing:-.01em;font-variant-numeric:lining-nums}
+.unit{font-family:var(--f-gothic);font-weight:700;color:var(--accent);letter-spacing:.04em}
+.dark .unit{color:var(--accent-light)}
+.logo{height:96px;width:auto}
+.foot{position:absolute;left:96px;right:96px;bottom:80px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.foot .cta{font-size:28px;letter-spacing:.1em;color:var(--ink-sub);display:flex;align-items:center;gap:16px}
+.dark .foot .cta{color:#C9D2DB}
+.foot .cta::after{content:"";width:64px;height:2px;background:currentColor}
+.rule{height:2px;background:var(--line)}
+.dark .rule{background:var(--line-dark)}
+.page{position:absolute;top:72px;right:96px;font-family:var(--f-latin);font-size:30px;letter-spacing:.2em;color:var(--ink-sub)}
+.dark .page{color:#C9D2DB}
+.swipe{font-family:var(--f-latin);font-size:30px;letter-spacing:.3em;color:var(--ink-sub);display:flex;align-items:center;gap:18px}
+.swipe::after{content:"";width:88px;height:2px;background:currentColor}
+.tag{display:inline-flex;align-items:center;font-size:26px;font-weight:700;letter-spacing:.1em;padding:8px 22px;border:2px solid currentColor;color:var(--accent);line-height:1.4}
+.dark .tag{color:var(--accent-light)}
+.photo{position:absolute;overflow:hidden}
+.photo img{width:100%;height:100%;object-fit:cover}
+.check{display:flex;gap:28px;align-items:flex-start;padding:34px 0;border-bottom:2px solid var(--line)}
+.check:first-child{border-top:2px solid var(--line)}
+.check .idx{font-family:var(--f-latin);font-style:italic;font-size:40px;color:var(--blue);line-height:1.3;flex:none;width:76px}
+.check h3{font-family:var(--f-mincho);font-weight:600;font-feature-settings:"palt";font-size:44px;line-height:1.5;letter-spacing:.05em}
+.check p{font-size:28px;line-height:1.8;color:var(--ink-sub);margin-top:6px;letter-spacing:.04em}
+
+/* 改行：文節の切れ目で改行し、最後の行に1〜2文字だけ残らないようにする */
+p,h1,h2,h3,li{word-break:auto-phrase;text-wrap:pretty}
+/* 電話番号などの欧文数字は高さをそろえる */
+.no,.page,.n,.idx,.k{font-variant-numeric:lining-nums}
+
+/* ハイライトのカバー（円形に切り抜かれるので中央に収める） */
+.hl{background:var(--bg-alt);display:flex;align-items:center;justify-content:center}
+.hl.navy{background:var(--navy)}
+.hl .mark{width:860px;height:860px;border-radius:50%;border:4px solid var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:44px}
+.hl svg{width:400px;height:400px;fill:none;stroke:var(--navy);stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
+.hl .en{font-family:var(--f-latin);font-weight:600;font-size:60px;letter-spacing:.32em;color:var(--accent);text-transform:uppercase;padding-left:.32em}

@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>フィード投稿（1080×1350）</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&amp;family=Shippori+Mincho+B1:wght@600;700&amp;family=Zen+Kaku+Gothic+New:wght@400;500;700&amp;display=swap">
+<link rel="stylesheet" href="ig.css">
+<style>
+/* F1 告知 */
+.f1 .photo{left:0;top:0;width:1080px;height:600px}
+.f1 .photo img{object-position:50% 30%}
+.f1 .body{position:absolute;left:96px;right:96px;top:676px}
+.f1 .h-xl{font-size:90px;line-height:1.4;margin-top:30px}
+.f1 .h-xl .sub-line{display:block;color:var(--blue);font-size:58px;margin-top:10px}
+.f1 .plane{position:absolute;left:0;top:552px;width:300px;height:96px;background:var(--plane)}
+
+/* F2 実績 */
+.f2 .body{position:absolute;left:96px;right:96px;top:116px}
+.f2 .h-l{margin-top:44px;font-size:56px}
+.f2 .stats{display:grid;grid-template-columns:repeat(2,1fr);margin-top:56px;border-top:2px solid var(--line-dark)}
+.f2 .stat{padding:36px 0 34px;border-bottom:2px solid var(--line-dark)}
+.f2 .stat:nth-child(odd){padding-right:40px;border-right:2px solid var(--line-dark)}
+.f2 .stat:nth-child(even){padding-left:48px}
+.f2 .k{font-size:28px;letter-spacing:.1em;color:#C9D2DB}
+.f2 .v{margin-top:14px;display:flex;align-items:baseline;gap:10px}
+.f2 .v .num{font-size:136px}
+.f2 .v .unit{font-size:32px}
+.f2 .note{margin-top:28px;font-size:24px;color:#C9D2DB;letter-spacing:.06em}
+
+/* F3 チーム */
+.f3 .photo{inset:0;width:1080px;height:1350px}
+.f3 .photo img{object-position:50% 40%}
+.f3 .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,31,41,0) 30%,rgba(20,31,41,.55) 52%,rgba(20,31,41,.92) 78%)}
+.f3 .body{position:absolute;left:96px;right:96px;bottom:230px;color:#fff}
+.f3 .h-l{margin-top:34px;font-size:64px}
+.f3 .sub{margin-top:22px;color:#E3E8EE;font-size:30px}
+</style>
+</head>
+<body>
+
+<!-- F1：告知（LPの紹介） -->
+<section class="frame feed f1">
+  <div class="photo"><img src="../../images/hero-consult.jpg" alt=""></div>
+  <div class="plane"></div>
+  <div class="body">
+    <p class="label">For House Builders</p>
+    <h1 class="h-xl"><span class="nb">土地探しは、</span><br><span class="nb">いえプロ。</span><span class="sub-line">家づくりは、御社で。</span></h1>
+  </div>
+  <div class="foot">
+    <img class="logo" src="../../images/logo.png" alt="">
+    <p class="cta">詳しくはプロフィールのリンクから</p>
+  </div>
+</section>
+
+<!-- F2：実績 -->
+<section class="frame feed dark f2">
+  <div class="body">
+    <p class="label">Track Record</p>
+    <h2 class="h-l"><span class="nb">土地の仕入れから仲介まで、</span><span class="nb">自社で一貫して</span><span class="nb">手がけています。</span></h2>
+    <div class="stats">
+      <div class="stat"><p class="k">土地仲介</p><p class="v"><span class="num">112</span><span class="unit">件／年</span></p></div>
+      <div class="stat"><p class="k">取引件数</p><p class="v"><span class="num">210</span><span class="unit">件／年</span></p></div>
+      <div class="stat"><p class="k">土地仕入れ</p><p class="v"><span class="num">30</span><span class="unit">区画／年</span></p></div>
+      <div class="stat"><p class="k">紹介からの成約率</p><p class="v"><span class="num">40</span><span class="unit">%</span></p></div>
+    </div>
+    <p class="note">※件数は第3期の実績です。</p>
+  </div>
+  <div class="foot">
+    <img class="logo" src="../../images/logo-footer.png" alt="">
+    <p class="cta">関西圏全域に対応</p>
+  </div>
+</section>
+
+<!-- F3：チーム -->
+<section class="frame feed f3">
+  <div class="photo"><img src="../../images/team-outdoor.jpg" alt=""></div>
+  <div class="shade"></div>
+  <div class="body">
+    <p class="label" style="color:var(--accent-light)">Our Team</p>
+    <h2 class="h-l"><span class="nb">「建てられる土地」が</span><span class="nb">わかるチームです。</span></h2>
+    <p class="sub">注文住宅で500棟以上を手がけた代表の目線を、<br>宅建士を中心とした22名のチーム全員で共有しています。</p>
+  </div>
+  <div class="foot">
+    <img class="logo" src="../../images/logo-footer.png" alt="">
+    <p class="cta" style="color:#E3E8EE">詳しくはプロフィールのリンクから</p>
+  </div>
+</section>
+
+</body>
+</html>

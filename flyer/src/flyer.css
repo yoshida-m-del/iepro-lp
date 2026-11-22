@@ -1,0 +1,81 @@
+/* =========================================================
+   A4 チラシ（LP 案A「上質・和モダン」と同じデザイン）
+   用紙：仕上がり 210×297mm ＋ 塗り足し 3mm → PDF は 216×303mm
+   文字・ロゴ・QR は仕上がり線から 10mm 以上内側（= 用紙の端から 13mm）に置く
+   ========================================================= */
+@page{size:216mm 303mm;margin:0}
+:root{
+  --bg:#F7F5F1;
+  --bg-alt:#EFEBE4;
+  --plane:#E4DED3;
+  --ink:#1F2A33;
+  --ink-sub:#4E5862;
+  --navy:#1F3346;
+  --navy-deep:#182A3A;
+  --blue:#3E6582;
+  --accent:#B04A12;
+  --accent-light:#E8A57C;
+  --line:#D6CFC3;
+  --line-dark:rgba(255,255,255,.28);
+  --f-mincho:"Shippori Mincho B1","Zen Old Mincho","Yu Mincho",serif;
+  --f-gothic:"Zen Kaku Gothic New","Yu Gothic",Meiryo,sans-serif;
+  --f-latin:"Cormorant Garamond","Times New Roman",serif;
+  --safe:13mm; /* 用紙の端から文字までの最小距離（塗り足し3mm＋10mm） */
+}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:#9a9a9a;font-family:var(--f-gothic);color:var(--ink);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+@media print{body{background:none}}
+p,h1,h2,h3,ul,ol,dl,dd{margin:0;padding:0;list-style:none}
+img{display:block}
+p,h1,h2,h3,li,dd,dt{word-break:auto-phrase;text-wrap:pretty}
+.nb{display:inline-block}
+
+.sheet{position:relative;width:216mm;height:303mm;overflow:hidden;background:var(--bg);page-break-after:always;break-after:page}
+.sheet:last-child{page-break-after:auto;break-after:auto}
+.pad{position:absolute;left:var(--safe);right:var(--safe)}
+
+/* 共通パーツ */
+.label{display:flex;align-items:center;gap:3.2mm;font-family:var(--f-latin);font-weight:600;font-size:8.5pt;letter-spacing:.3em;text-transform:uppercase;color:var(--accent);line-height:1}
+.label::before{content:"";width:8mm;height:.3mm;background:currentColor;flex:none}
+.on-dark .label{color:var(--accent-light)}
+.mincho{font-family:var(--f-mincho);font-weight:600;font-feature-settings:"palt";letter-spacing:.05em}
+.num{font-family:var(--f-latin);font-weight:500;line-height:1;font-variant-numeric:lining-nums}
+.unit{font-weight:700;color:var(--accent);letter-spacing:.04em}
+.on-dark .unit{color:var(--accent-light)}
+.photo{position:absolute;overflow:hidden}
+.photo img{width:100%;height:100%;object-fit:cover}
+.on-dark{background:var(--navy);color:#fff}
+.small{font-size:7pt;line-height:1.7;letter-spacing:.04em}
+
+/* 数字の帯 */
+.stats{display:grid;grid-template-columns:repeat(4,1fr)}
+.stats>div{padding:0 4mm;border-left:.3mm solid var(--line-dark)}
+.stats>div:first-child{border-left:none;padding-left:0}
+.stats .k{font-size:7.5pt;letter-spacing:.08em;color:#C9D2DB;line-height:1.4}
+.stats .v{display:flex;align-items:baseline;gap:1.2mm;margin-top:1.6mm;white-space:nowrap}
+.stats .v .num{font-size:30pt}
+.stats .v .unit{font-size:8pt}
+
+/* お問い合わせ */
+.tel{display:flex;align-items:baseline;gap:2.4mm;white-space:nowrap}
+.tel .t{font-family:var(--f-latin);font-weight:600;font-size:10pt;letter-spacing:.12em;color:var(--accent)}
+.tel .no{font-family:var(--f-latin);font-weight:600;font-size:27pt;letter-spacing:.03em;line-height:1;font-variant-numeric:lining-nums}
+.qr{display:flex;flex-direction:column;align-items:center;gap:1.6mm}
+.qr .code{width:22mm;height:22mm;background:#fff;padding:1.6mm}
+.qr .code img{width:100%;height:100%}
+.qr p{font-size:6.8pt;letter-spacing:.08em;line-height:1.4;text-align:center}
+.chips{display:flex;flex-wrap:wrap;gap:1.6mm}
+.chips span{font-size:7.5pt;font-weight:700;letter-spacing:.06em;border:.3mm solid currentColor;padding:.8mm 2.4mm;line-height:1.4;color:var(--accent)}
+.on-dark .chips span{color:var(--accent-light)}
+
+/* フッター（会社情報） */
+.company{display:flex;align-items:center;gap:6mm}
+.company .logo{height:13mm;width:auto}
+.company .info{font-size:6.8pt;line-height:1.75;letter-spacing:.04em;color:#C9D2DB}
+.company .info b{color:#fff;font-weight:700}
+
+/* 確認用のガイド線（?guides を付けて開いたときだけ表示。PDF には出ない） */
+.guides .sheet::before,.guides .sheet::after{content:"";position:absolute;pointer-events:none;z-index:99}
+.guides .sheet::before{inset:3mm;outline:.3mm solid rgba(255,0,0,.8)}
+.guides .sheet::after{inset:13mm;outline:.3mm dashed rgba(0,140,255,.9)}

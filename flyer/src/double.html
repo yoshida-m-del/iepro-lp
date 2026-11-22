@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>いえプロ不動産 チラシ（A4両面）</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&amp;family=Shippori+Mincho+B1:wght@600;700&amp;family=Zen+Kaku+Gothic+New:wght@400;500;700&amp;display=swap">
+<link rel="stylesheet" href="flyer.css">
+<style>
+/* ---------- 表面 ---------- */
+.fr .photo{left:0;top:0;width:216mm;height:104mm}
+.fr .photo img{object-position:50% 40%;transform:scale(1.06);transform-origin:60% 40%}
+.fr .plane{position:absolute;right:0;top:97mm;width:70mm;height:14mm;background:var(--plane)}
+.fr .hero{top:113mm}
+.fr h1{margin-top:4.5mm;font-size:30pt;line-height:1.38}
+.fr h1 .sub{display:block;font-size:18pt;color:var(--blue);margin-top:.6mm}
+.fr .lead{margin-top:4mm;font-size:9pt;line-height:1.95;letter-spacing:.04em;color:var(--ink-sub)}
+
+.fr .problem{top:174mm;display:grid;grid-template-columns:52mm 1fr;gap:8mm;align-items:start}
+.fr .problem h2{font-size:15pt;line-height:1.55;margin-top:3.5mm}
+.fr .checks{border-top:.3mm solid var(--line)}
+.fr .checks li{display:flex;gap:3.5mm;padding:2.6mm 0;border-bottom:.3mm solid var(--line)}
+.fr .checks .idx{font-family:var(--f-latin);font-style:italic;font-size:10pt;color:var(--blue);line-height:1.5;flex:none;width:8mm;font-variant-numeric:lining-nums}
+.fr .checks h3{font-family:var(--f-mincho);font-weight:600;font-feature-settings:"palt";font-size:10pt;line-height:1.5;letter-spacing:.04em}
+.fr .checks p{font-size:7.4pt;line-height:1.7;color:var(--ink-sub);margin-top:.6mm}
+
+.fr .resolve{top:241.5mm;text-align:center}
+.fr .resolve p{font-family:var(--f-mincho);font-weight:600;font-feature-settings:"palt";font-size:17pt;letter-spacing:.08em;line-height:1.5}
+.fr .resolve .accent{color:var(--accent)}
+
+.fr .band{position:absolute;left:0;right:0;top:256mm;bottom:0}
+.fr .band .pad{top:5mm}
+.fr .next{position:absolute;right:var(--safe);top:21.5mm;font-size:7.5pt;letter-spacing:.12em;color:#C9D2DB;display:flex;align-items:center;gap:2mm}
+.fr .next::after{content:"";width:8mm;height:.3mm;background:currentColor}
+
+/* ---------- 裏面 ---------- */
+.bk .head{top:14mm}
+.bk .head h2{margin-top:3.5mm;font-size:15pt;line-height:1.5}
+
+.bk .feature{top:37mm;display:grid;grid-template-columns:78mm 1fr;gap:7mm;align-items:center}
+.bk .feature .ph{height:50mm;overflow:hidden;border-radius:0 0 0 10mm}
+.bk .feature .ph img{width:100%;height:100%;object-fit:cover;object-position:50% 40%}
+.bk .feature .no{display:flex;align-items:center;gap:3mm}
+.bk .feature .no .n{font-family:var(--f-latin);font-style:italic;font-size:22pt;color:var(--accent);line-height:1}
+.bk .feature .no .tag{font-size:7pt;font-weight:700;letter-spacing:.1em;border:.3mm solid var(--accent);color:var(--accent);padding:.5mm 2mm}
+.bk .feature h3{font-family:var(--f-mincho);font-weight:600;font-feature-settings:"palt";font-size:14pt;line-height:1.5;letter-spacing:.05em;margin-top:2.6mm}
+.bk .feature p{font-size:8pt;line-height:1.85;color:var(--ink-sub);margin-top:2mm;letter-spacing:.03em}
+
+.bk .grid4{top:93mm;display:grid;grid-template-columns:repeat(4,1fr);border-top:.3mm solid var(--line)}
+.bk .grid4>div{padding:3.2mm 3mm 0;border-left:.3mm solid var(--line)}
+.bk .grid4>div:first-child{border-left:none;padding-left:0}
+.bk .grid4 .n{font-family:var(--f-latin);font-style:italic;font-size:13pt;color:var(--accent);line-height:1}
+.bk .grid4 h3{font-family:var(--f-mincho);font-weight:600;font-feature-settings:"palt";font-size:9pt;line-height:1.5;letter-spacing:.03em;margin-top:1.6mm}
+.bk .grid4 p{font-size:6.9pt;line-height:1.7;color:var(--ink-sub);margin-top:1.2mm}
+
+.bk .flow{top:133mm}
+.bk .flow .ttl{display:flex;align-items:baseline;justify-content:space-between;gap:4mm}
+.bk .flow h2{font-size:13pt;margin-top:3mm}
+.bk .flow .legend{display:flex;gap:4mm;font-size:6.8pt;color:var(--ink-sub);letter-spacing:.06em}
+.bk .flow .legend span{display:inline-flex;align-items:center;gap:1.4mm}
+.bk .flow .legend i{width:2.6mm;height:2.6mm;display:inline-block}
+.bk .steps{display:grid;grid-template-columns:repeat(6,1fr);gap:2mm;margin-top:3.5mm}
+.bk .steps li{background:#fff;border-top:.8mm solid var(--blue);padding:2.4mm 2.2mm 2.6mm}
+.bk .steps li.co{border-top-color:var(--accent)}
+.bk .steps .s{font-family:var(--f-latin);font-size:7pt;letter-spacing:.14em;color:var(--ink-sub)}
+.bk .steps .s b{font-style:italic;font-weight:500;font-size:11pt;letter-spacing:0;color:var(--blue);margin-left:.8mm}
+.bk .steps li.co .s b{color:var(--accent)}
+.bk .steps .w{font-size:6.4pt;font-weight:700;color:var(--blue);margin-top:.6mm;letter-spacing:.04em}
+.bk .steps li.co .w{color:var(--accent)}
+.bk .steps h3{font-family:var(--f-mincho);font-weight:600;font-feature-settings:"palt";font-size:8.4pt;line-height:1.45;margin-top:1mm}
+.bk .flow .note{font-size:7pt;color:var(--ink-sub);margin-top:2.4mm;letter-spacing:.04em}
+
+.bk .faq{top:180mm}
+.bk .faq h2{font-size:13pt;margin-top:3mm}
+.bk .qa{display:grid;grid-template-columns:1fr 1fr;gap:0 7mm;margin-top:3mm;border-top:.3mm solid var(--line)}
+.bk .qa>div{padding:2.4mm 0;border-bottom:.3mm solid var(--line)}
+.bk .qa .q{display:flex;gap:2mm;font-family:var(--f-mincho);font-weight:600;font-feature-settings:"palt";font-size:8.6pt;line-height:1.5}
+.bk .qa .q::before{content:"Q.";font-family:var(--f-latin);font-style:italic;color:var(--blue);font-size:10pt;line-height:1.3;flex:none}
+.bk .qa .a{font-size:7pt;line-height:1.7;color:var(--ink-sub);margin-top:.8mm;padding-left:5.2mm}
+
+.bk .cta{position:absolute;left:0;right:0;top:232mm;bottom:0}
+.bk .cta .main{top:5mm;display:flex;align-items:flex-start;justify-content:space-between;gap:6mm}
+.bk .cta h2{font-size:13pt;line-height:1.5}
+.bk .cta .chips{margin-top:2mm}
+.bk .cta .tel{margin-top:2.6mm}
+.bk .cta .tel .no{color:#fff}
+.bk .cta .tel .t{color:var(--accent-light)}
+.bk .cta .hours{font-size:7pt;color:#C9D2DB;margin-top:.6mm;letter-spacing:.04em}
+.bk .cta .qr p{color:#C9D2DB}
+.bk .cta .company{top:42.5mm;padding-top:2.6mm;border-top:.3mm solid var(--line-dark)}
+.bk .cta .company .logo{height:10mm}
+</style>
+</head>
+<body>
+<script>if(location.search.indexOf('guides')>-1)document.documentElement.classList.add('guides')</script>
+
+<!-- ========== 表面 ========== -->
+<section class="sheet fr">
+  <div class="photo"><img src="../img/team.jpg" alt=""></div>
+  <div class="plane"></div>
+
+  <div class="pad hero">
+    <p class="label">For House Builders</p>
+    <h1 class="mincho"><span class="nb">土地探しは、</span><span class="nb">いえプロ。</span><span class="sub">家づくりは、御社で。</span></h1>
+    <p class="lead">土地なしのお客様を、いえプロにご紹介ください。<br>24時間以内にご連絡し、御社のプランが入る土地を探して、ローン・契約・引渡しまで担当します。<br>土地が決まったら、建築は御社へ。</p>
+  </div>
+
+  <div class="pad problem">
+    <div>
+      <p class="label">Problem</p>
+      <h2 class="mincho"><span class="nb">こんなお悩み、</span><span class="nb">ありませんか？</span></h2>
+    </div>
+    <ul class="checks">
+      <li><span class="idx">(01)</span><div><h3>土地なし客の商談が止まってしまう</h3><p>建てたい家のイメージはあるのに、土地が見つからず検討が進まない。</p></div></li>
+      <li><span class="idx">(02)</span><div><h3>土地探しに営業の時間を取られる</h3><p>物件調査や不動産会社とのやり取りに追われ、家づくりの提案に集中できない。</p></div></li>
+      <li><span class="idx">(03)</span><div><h3>購入後に建てられない問題が発覚</h3><p>法規制や高低差、地盤の問題が後から見つかり、プランの大幅な見直しが必要になる。</p></div></li>
+      <li><span class="idx">(04)</span><div><h3>土地と建物をセットで提案する他社に流れる</h3><p>土地情報を持つ会社にお客様が先に相談し、そのまま契約されてしまう。</p></div></li>
+    </ul>
+  </div>
+
+  <div class="pad resolve"><p><span class="nb">その悩み、</span><span class="nb"><span class="accent">いえプロ</span>が解決します。</span></p></div>
+
+  <div class="band on-dark">
+    <div class="pad">
+      <div class="stats">
+        <div><p class="k">土地仲介</p><p class="v"><span class="num">112</span><span class="unit">件／年</span></p></div>
+        <div><p class="k">取引件数</p><p class="v"><span class="num">210</span><span class="unit">件／年</span></p></div>
+        <div><p class="k">土地仕入れ</p><p class="v"><span class="num">30</span><span class="unit">区画／年</span></p></div>
+        <div><p class="k">紹介からの成約率</p><p class="v"><span class="num">40</span><span class="unit">%</span></p></div>
+      </div>
+      <p class="small" style="color:#C9D2DB;margin-top:2mm">※件数は第3期の実績です。対応エリア：関西圏全域</p>
+    </div>
+    <p class="next">裏面へ</p>
+  </div>
+</section>
+
+<!-- ========== 裏面 ========== -->
+<section class="sheet bk">
+  <div class="pad head">
+    <p class="label">Solution</p>
+    <h2 class="mincho"><span class="nb">いえプロの「土地探し連携」で、</span><span class="nb">御社は家づくりに集中できます。</span></h2>
+  </div>
+
+  <div class="pad feature">
+    <div class="ph"><img src="../img/plan.jpg" alt=""></div>
+    <div>
+      <p class="no"><span class="n">01</span><span class="tag">いちばんの強み</span></p>
+      <h3><span class="nb">土地の話も、</span><span class="nb">建物の話も。</span></h3>
+      <p>注文住宅・建売住宅・企画住宅と、住宅を販売してきた経験者が在籍しています。間取りや建築費とのバランス、工務店さまの段取りを理解したうえで、お客様と土地探しを進めます。「建物の話が通じる不動産会社」だから、商談の流れを止めません。</p>
+    </div>
+  </div>
+
+  <div class="pad grid4">
+    <div><p class="n">02</p><h3><span class="nb">建てられる土地を、</span><span class="nb">建築コストまで</span><span class="nb">見て提案</span></h3><p>接道・法規制・高低差などを事前に確認し、御社のプランが入る土地だけをご提案します。</p></div>
+    <div><p class="n">03</p><h3><span class="nb">市場に出る前の</span><span class="nb">土地情報</span></h3><p>売却相談 年間2,400件の反響から、公開前の土地情報に触れられます。</p></div>
+    <div><p class="n">04</p><h3><span class="nb">ローンから</span><span class="nb">引渡しまで</span><span class="nb">一貫対応</span></h3><p>ローン手続き、価格交渉、契約・決済、お引渡しまで、いえプロが担います。</p></div>
+    <div><p class="n">05</p><h3><span class="nb">お客様は</span><span class="nb">御社の</span><span class="nb">お客様のまま</span></h3><p>ご紹介のお客様に、他の住宅会社をすすめることはありません。</p></div>
+  </div>
+
+  <div class="pad flow">
+    <div class="ttl">
+      <div><p class="label">Flow</p><h2 class="mincho">協業の流れ</h2></div>
+      <p class="legend"><span><i style="background:var(--accent)"></i>御社のご担当</span><span><i style="background:var(--blue)"></i>いえプロのご担当</span></p>
+    </div>
+    <ol class="steps">
+      <li class="co"><p class="s">STEP<b>01</b></p><p class="w">御社</p><h3>お客様のご紹介</h3></li>
+      <li><p class="s">STEP<b>02</b></p><p class="w">いえプロ</p><h3>条件の整理</h3></li>
+      <li><p class="s">STEP<b>03</b></p><p class="w">いえプロ</p><h3>土地のご提案</h3></li>
+      <li class="co"><p class="s">STEP<b>04</b></p><p class="w">御社×いえプロ</p><h3>建築可否の確認</h3></li>
+      <li><p class="s">STEP<b>05</b></p><p class="w">いえプロ</p><h3>ローン〜引渡し</h3></li>
+      <li class="co"><p class="s">STEP<b>06</b></p><p class="w">御社</p><h3>建築請負契約へ</h3></li>
+    </ol>
+    <p class="note">ご紹介から24時間以内にご連絡します。建築可否は必ず御社と一緒に確認するので、建てられない土地を買ってしまう心配はありません。</p>
+  </div>
+
+  <div class="pad faq">
+    <p class="label">Q &amp; A</p>
+    <h2 class="mincho">よくある質問</h2>
+    <div class="qa">
+      <div><p class="q">工務店側の費用はかかりますか？</p><p class="a">いいえ、無料です。工務店さまに費用をご負担いただくことはありません。</p></div>
+      <div><p class="q">お客様を他の住宅会社に取られる心配はありませんか？</p><p class="a">ありません。建築は御社にお任せいただく前提で進め、他社へのご紹介は行いません。</p></div>
+      <div><p class="q">1件だけの紹介でも相談できますか？</p><p class="a">はい、1件からご相談いただけます。</p></div>
+      <div><p class="q">打ち合わせに工務店の担当者も同席できますか？</p><p class="a">はい。同席いただくことで、建物プランに合った土地選びがスムーズに進みます。</p></div>
+    </div>
+  </div>
+
+  <div class="cta on-dark">
+    <div class="pad main">
+      <div>
+        <p class="label">Contact</p>
+        <h2 class="mincho" style="margin-top:3mm"><span class="nb">土地なしのお客様、</span><span class="nb">1組からご紹介ください。</span></h2>
+        <p class="chips"><span>工務店さまの費用は無料</span><span>ご紹介から24時間以内にご連絡</span><span>関西圏全域に対応</span></p>
+        <div class="tel"><span class="t">TEL</span><span class="no">06-6185-1252</span></div>
+        <p class="hours">営業時間 9:00〜18:00（定休日：火・水）／FAX 06-6185-1253</p>
+      </div>
+      <div class="qr">
+        <div class="code"><img src="../img/qr-lp.svg" alt="LPのQRコード"></div>
+        <p>詳しくは<br>こちらから</p>
+      </div>
+    </div>
+    <div class="pad company">
+      <img class="logo" src="../img/logo-white.png" alt="いえプロ不動産">
+      <p class="info"><b>いえプロ不動産</b>（株式会社Gハウス 不動産事業部）<br>〒535-0022 大阪府大阪市旭区新森6-3-25 エクセレント新森1階<br>宅地建物取引業免許 国土交通大臣（1）第11002号</p>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

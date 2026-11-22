@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>ストーリーズ（1080×1920）</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&amp;family=Shippori+Mincho+B1:wght@600;700&amp;family=Zen+Kaku+Gothic+New:wght@400;500;700&amp;display=swap">
+<link rel="stylesheet" href="ig.css">
+<style>
+/* ストーリーズは上 250px・下 340px に Instagram の表示が重なるため、文字はその間に置く */
+
+/* S1 告知（リンクスタンプを置く余白つき） */
+.s1 .photo{inset:0;width:1080px;height:1920px}
+.s1 .photo img{object-position:50% 35%}
+.s1 .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,31,41,.55) 0%,rgba(20,31,41,0) 20%,rgba(20,31,41,0) 34%,rgba(20,31,41,.78) 48%,rgba(20,31,41,.95) 70%)}
+.s1 .top{position:absolute;left:96px;top:270px}
+.s1 .body{position:absolute;left:96px;right:96px;top:850px;color:#fff}
+.s1 .h-xl{font-size:84px;line-height:1.42;margin-top:30px}
+.s1 .sub{margin-top:24px;color:#E3E8EE;font-size:30px;line-height:1.9}
+.s1 .link-space{visibility:hidden;position:absolute;left:96px;right:96px;top:1456px;height:110px;border:2px dashed rgba(255,255,255,.35);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.7);font-size:26px;letter-spacing:.12em}
+
+/* S2 お悩み */
+.s2 .body{position:absolute;left:96px;right:96px;top:270px}
+.s2 .h-l{margin-top:40px;font-size:76px}
+.s2 .list{margin-top:56px}
+.s2 .resolve{position:absolute;left:96px;right:96px;top:1290px;text-align:center}
+.s2 .resolve .bar{width:2px;height:64px;background:var(--accent);margin:0 auto 28px}
+.s2 .resolve p{font-family:var(--f-mincho);font-weight:600;font-feature-settings:"palt";font-size:64px;line-height:1.5;letter-spacing:.08em}
+
+/* S3 協業の流れ */
+.s3 .body{position:absolute;left:96px;right:96px;top:270px}
+.s3 .h-l{margin-top:36px;font-size:76px}
+.s3 .lead{margin-top:18px;font-size:32px;line-height:1.8;color:#C9D2DB;letter-spacing:.06em}
+.s3 .steps{margin-top:44px;position:relative}
+.s3 .steps::before{content:"";position:absolute;left:15px;top:20px;bottom:20px;width:2px;background:var(--line-dark)}
+.s3 .step{position:relative;display:grid;grid-template-columns:32px 1fr;gap:0 40px;padding:20px 0}
+.s3 .dot{width:32px;height:32px;border-radius:50%;margin-top:12px;border:2px solid #C9D2DB;background:var(--navy);position:relative;z-index:1}
+.s3 .step.co .dot{background:var(--accent-light);border-color:var(--accent-light)}
+.s3 .step-head{display:flex;align-items:baseline;gap:22px}
+.s3 .step-head .n{font-family:var(--f-latin);font-style:italic;font-size:44px;color:var(--accent-light);line-height:1.2}
+.s3 .step-head h3{font-family:var(--f-mincho);font-weight:600;font-feature-settings:"palt";font-size:44px;line-height:1.4;letter-spacing:.05em}
+.s3 .who{display:inline-block;margin-top:6px;font-size:24px;font-weight:700;letter-spacing:.1em;color:#C9D2DB}
+.s3 .step.co .who{color:var(--accent-light)}
+.s3 .legend{margin-top:22px;display:flex;gap:40px;font-size:26px;color:#C9D2DB;letter-spacing:.08em}
+.s3 .legend span{display:inline-flex;align-items:center;gap:12px}
+.s3 .legend i{width:22px;height:22px;border-radius:50%;display:inline-block}
+</style>
+</head>
+<body>
+
+<!-- S1：告知（中央下にリンクスタンプを貼る） -->
+<section class="frame story s1">
+  <div class="photo"><img src="../../images/hero-street.jpg" alt=""></div>
+  <div class="shade"></div>
+  <div class="top"><img class="logo" src="../../images/logo-footer.png" alt=""></div>
+  <div class="body">
+    <p class="label" style="color:var(--accent-light)">For House Builders</p>
+    <h1 class="h-xl"><span class="nb">土地なしのお客様、</span><br><span class="nb">1組から</span><br><span class="nb">ご紹介ください。</span></h1>
+    <p class="sub">ご紹介から24時間以内に、いえプロからご連絡します。<br>土地探しは、いえプロ。家づくりは、御社で。</p>
+  </div>
+  <div class="link-space">ここにリンクスタンプを貼る</div>
+</section>
+
+<!-- S2：お悩み -->
+<section class="frame story alt s2">
+  <div class="body">
+    <p class="label">Problem</p>
+    <h2 class="h-l"><span class="nb">こんなお悩み、</span><br><span class="nb">ありませんか？</span></h2>
+    <ul class="list">
+      <li class="check"><span class="idx">(01)</span><div><h3>土地なし客の商談が止まってしまう</h3></div></li>
+      <li class="check"><span class="idx">(02)</span><div><h3>土地探しに営業の時間を取られる</h3></div></li>
+      <li class="check"><span class="idx">(03)</span><div><h3>購入後に建てられない問題が発覚</h3></div></li>
+      <li class="check"><span class="idx">(04)</span><div><h3><span class="nb">土地と建物をセットで提案する</span><span class="nb">他社に流れる</span></h3></div></li>
+    </ul>
+  </div>
+  <div class="resolve">
+    <div class="bar"></div>
+    <p><span class="nb">その悩み、</span><br><span class="nb"><span class="accent">いえプロ</span>が解決します。</span></p>
+  </div>
+</section>
+
+<!-- S3：協業の流れ -->
+<section class="frame story dark s3">
+  <div class="body">
+    <p class="label">Flow</p>
+    <h2 class="h-l">協業の流れ</h2>
+    <p class="lead">ご紹介から24時間以内にご連絡し、<br>土地の決済・お引渡しまでいえプロが担当します。</p>
+    <ol class="steps">
+      <li class="step co"><span class="dot"></span><div><div class="step-head"><span class="n">01</span><h3>お客様のご紹介</h3></div><span class="who">御社</span></div></li>
+      <li class="step"><span class="dot"></span><div><div class="step-head"><span class="n">02</span><h3>条件の整理</h3></div><span class="who">いえプロ</span></div></li>
+      <li class="step"><span class="dot"></span><div><div class="step-head"><span class="n">03</span><h3>土地のご提案</h3></div><span class="who">いえプロ</span></div></li>
+      <li class="step co"><span class="dot"></span><div><div class="step-head"><span class="n">04</span><h3>建築可否の確認</h3></div><span class="who">御社×いえプロ</span></div></li>
+      <li class="step"><span class="dot"></span><div><div class="step-head"><span class="n">05</span><h3>ローン〜引渡し</h3></div><span class="who">いえプロ</span></div></li>
+      <li class="step co"><span class="dot"></span><div><div class="step-head"><span class="n">06</span><h3>建築請負契約へ</h3></div><span class="who">御社</span></div></li>
+    </ol>
+    <p class="legend"><span><i style="background:var(--accent-light)"></i>御社のご担当</span><span><i style="border:2px solid #C9D2DB"></i>いえプロのご担当</span></p>
+  </div>
+</section>
+
+</body>
+</html>

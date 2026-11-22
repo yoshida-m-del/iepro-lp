@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>カルーセル（1080×1350 × 6枚）</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&amp;family=Shippori+Mincho+B1:wght@600;700&amp;family=Zen+Kaku+Gothic+New:wght@400;500;700&amp;display=swap">
+<link rel="stylesheet" href="ig.css">
+<style>
+.body{position:absolute;left:96px;right:96px}
+
+/* C1 表紙 */
+.c1 .photo{left:0;top:0;width:1080px;height:640px}
+.c1 .photo img{object-position:50% 35%}
+.c1 .plane{position:absolute;right:0;top:600px;width:320px;height:80px;background:var(--plane)}
+.c1 .body{top:720px}
+.c1 .h-xl{font-size:84px;line-height:1.45;margin-top:30px}
+.c1 .swipe{position:absolute;right:96px;bottom:96px}
+.c1 .foot{right:auto}
+
+/* C2 お悩み */
+.c2 .body{top:150px}
+.c2 .h-l{margin-top:40px;font-size:68px}
+.c2 .list{margin-top:56px}
+.c2 .check{padding:30px 0}
+.c2 .check h3{font-size:42px}
+.c2 .check p{font-size:27px}
+
+/* C3 いちばんの強み */
+.c3 .photo{left:0;top:0;width:1080px;height:560px}
+.c3 .photo img{object-position:50% 30%}
+.c3 .body{top:630px}
+.c3 .head{display:flex;align-items:center;gap:28px}
+.c3 .head .num{font-style:italic;font-size:96px;color:var(--accent-light)}
+.c3 .h-l{margin-top:22px;font-size:68px}
+.c3 .sub{margin-top:24px;font-size:30px;line-height:1.95}
+
+/* C4 強み 02〜05 */
+.c4 .body{top:150px}
+.c4 .h-l{margin-top:40px;font-size:62px}
+.c4 .grid{display:grid;grid-template-columns:1fr 1fr;margin-top:56px;border-top:2px solid var(--line)}
+.c4 .pt{padding:38px 0 36px;border-bottom:2px solid var(--line)}
+.c4 .pt:nth-child(odd){padding-right:36px;border-right:2px solid var(--line)}
+.c4 .pt:nth-child(even){padding-left:40px}
+.c4 .pt .n{font-family:var(--f-latin);font-style:italic;font-size:52px;color:var(--accent);line-height:1}
+.c4 .pt h3{font-family:var(--f-mincho);font-weight:600;font-feature-settings:"palt";font-size:38px;line-height:1.55;letter-spacing:.04em;margin-top:18px}
+
+/* C5 実績 */
+.c5 .body{top:150px}
+.c5 .h-l{margin-top:40px;font-size:58px}
+.c5 .stats{display:grid;grid-template-columns:repeat(2,1fr);margin-top:56px;border-top:2px solid var(--line-dark)}
+.c5 .stat{padding:36px 0 34px;border-bottom:2px solid var(--line-dark)}
+.c5 .stat:nth-child(odd){padding-right:40px;border-right:2px solid var(--line-dark)}
+.c5 .stat:nth-child(even){padding-left:48px}
+.c5 .k{font-size:28px;letter-spacing:.1em;color:#C9D2DB}
+.c5 .v{margin-top:12px;display:flex;align-items:baseline;gap:10px}
+.c5 .v .num{font-size:128px}
+.c5 .v .unit{font-size:32px}
+.c5 .note{margin-top:26px;font-size:24px;color:#C9D2DB;letter-spacing:.06em}
+
+/* C6 CTA */
+.c6 .body{top:150px}
+.c6 .h-xl{font-size:80px;line-height:1.45;margin-top:36px}
+.c6 .points{margin-top:56px;border-top:2px solid var(--line)}
+.c6 .points li{display:flex;align-items:baseline;gap:28px;padding:28px 0;border-bottom:2px solid var(--line)}
+.c6 .points .k{font-family:var(--f-latin);font-style:italic;font-size:36px;color:var(--accent);width:64px;flex:none}
+.c6 .points p{font-family:var(--f-mincho);font-weight:600;font-feature-settings:"palt";font-size:42px;letter-spacing:.05em}
+.c6 .tel{margin-top:46px;display:flex;align-items:baseline;gap:24px}
+.c6 .tel .t{font-size:28px;color:var(--ink-sub);letter-spacing:.08em}
+.c6 .tel .no{font-family:var(--f-latin);font-weight:600;font-size:64px;letter-spacing:.04em}
+.c6 .hours{font-size:26px;color:var(--ink-sub);letter-spacing:.06em;margin-top:4px}
+</style>
+</head>
+<body>
+
+<!-- C1：表紙 -->
+<section class="frame feed c1">
+  <div class="photo"><img src="../../images/service-plan.jpg" alt=""></div>
+  <div class="plane"></div>
+  <p class="page" style="color:#fff">01 / 06</p>
+  <div class="body">
+    <p class="label">For House Builders</p>
+    <h1 class="h-xl"><span class="nb">土地なしのお客様、</span><br><span class="nb">どうしていますか？</span></h1>
+  </div>
+  <div class="foot"><img class="logo" src="../../images/logo.png" alt=""></div>
+  <p class="swipe">Swipe</p>
+</section>
+
+<!-- C2：お悩み -->
+<section class="frame feed alt c2">
+  <p class="page">02 / 06</p>
+  <div class="body">
+    <p class="label">Problem</p>
+    <h2 class="h-l"><span class="nb">こんなお悩み、</span><span class="nb">ありませんか？</span></h2>
+    <ul class="list">
+      <li class="check"><span class="idx">(01)</span><div><h3>土地なし客の商談が止まってしまう</h3><p>建てたい家のイメージはあるのに、土地が見つからない。</p></div></li>
+      <li class="check"><span class="idx">(02)</span><div><h3>土地探しに営業の時間を取られる</h3><p>本来の家づくりの提案に集中できない。</p></div></li>
+      <li class="check"><span class="idx">(03)</span><div><h3>購入後に建てられない問題が発覚</h3><p>法規制や高低差、地盤の問題が後から見つかる。</p></div></li>
+      <li class="check"><span class="idx">(04)</span><div><h3><span class="nb">土地と建物をセットで提案する</span><span class="nb">他社に流れる</span></h3></div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- C3：いちばんの強み -->
+<section class="frame feed dark c3">
+  <div class="photo"><img src="../../images/service-laptop.jpg" alt=""></div>
+  <p class="page" style="color:#fff">03 / 06</p>
+  <div class="body">
+    <div class="head"><span class="num">(01)</span><span class="tag">いちばんの強み</span></div>
+    <h2 class="h-l"><span class="nb">土地の話も、</span><span class="nb">建物の話も。</span></h2>
+    <p class="sub">注文住宅・建売住宅・企画住宅と、住宅を販売してきた経験者が在籍。間取りや建築費とのバランス、工務店さまの段取りを理解したうえで、お客様と土地探しを進めます。</p>
+  </div>
+</section>
+
+<!-- C4：強み 02〜05 -->
+<section class="frame feed c4">
+  <p class="page">04 / 06</p>
+  <div class="body">
+    <p class="label">Solution</p>
+    <h2 class="h-l"><span class="nb">御社は、</span><span class="nb">家づくりに</span><span class="nb">集中できます。</span></h2>
+    <div class="grid">
+      <div class="pt"><p class="n">02</p><h3><span class="nb">建てられる土地を、</span><span class="nb">建築コストまで</span><span class="nb">見て提案</span></h3></div>
+      <div class="pt"><p class="n">03</p><h3><span class="nb">市場に出る前の</span><span class="nb">土地情報</span></h3></div>
+      <div class="pt"><p class="n">04</p><h3><span class="nb">ローンから</span><span class="nb">引渡しまで</span><span class="nb">一貫対応</span></h3></div>
+      <div class="pt"><p class="n">05</p><h3><span class="nb">お客様は</span><span class="nb">御社の</span><span class="nb">お客様のまま</span></h3></div>
+    </div>
+  </div>
+  <div class="foot"><img class="logo" src="../../images/logo.png" alt=""></div>
+</section>
+
+<!-- C5：実績 -->
+<section class="frame feed dark c5">
+  <p class="page">05 / 06</p>
+  <div class="body">
+    <p class="label">Track Record</p>
+    <h2 class="h-l"><span class="nb">土地の仕入れから仲介まで、</span><span class="nb">自社で一貫して</span><span class="nb">手がけています。</span></h2>
+    <div class="stats">
+      <div class="stat"><p class="k">土地仲介</p><p class="v"><span class="num">112</span><span class="unit">件／年</span></p></div>
+      <div class="stat"><p class="k">取引件数</p><p class="v"><span class="num">210</span><span class="unit">件／年</span></p></div>
+      <div class="stat"><p class="k">土地仕入れ</p><p class="v"><span class="num">30</span><span class="unit">区画／年</span></p></div>
+      <div class="stat"><p class="k">紹介からの成約率</p><p class="v"><span class="num">40</span><span class="unit">%</span></p></div>
+    </div>
+    <p class="note">※件数は第3期の実績です。</p>
+  </div>
+</section>
+
+<!-- C6：お問い合わせ -->
+<section class="frame feed c6">
+  <p class="page">06 / 06</p>
+  <div class="body">
+    <p class="label">Contact</p>
+    <h2 class="h-xl"><span class="nb">まずは1組から、</span><br><span class="nb">ご相談ください。</span></h2>
+    <ul class="points">
+      <li><span class="k">01</span><p>工務店さまの費用は無料</p></li>
+      <li><span class="k">02</span><p>ご紹介から24時間以内にご連絡</p></li>
+      <li><span class="k">03</span><p>関西圏全域に対応</p></li>
+    </ul>
+    <div class="tel"><span class="t">TEL</span><span class="no">06-6185-1252</span></div>
+    <p class="hours">営業時間 9:00〜18:00（定休日：火・水）</p>
+  </div>
+  <div class="foot">
+    <img class="logo" src="../../images/logo.png" alt="">
+    <p class="cta">詳しくはプロフィールのリンクから</p>
+  </div>
+</section>
+
+</body>
+</html>
