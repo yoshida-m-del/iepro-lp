@@ -9,6 +9,10 @@
 <style>
 body{margin:0;background:#F5F7F9}
 a{color:#3E6582}a:hover{color:#2E4D64}
+/* 見出しの文節：この単位の途中では改行しない（改行は文節の切れ目で起きる） */
+.nb{display:inline-block}
+/* 幅の狭いスマホ（360px未満）では見出しを少し小さくし、文節の途中で改行されないようにする */
+@media (max-width: 359px){h2{font-size:23px !important}}
 /* ファーストビュー：横並び（文章｜写真） */
 .hero{max-width:1200px;margin:0 auto;padding:72px 24px 88px;box-sizing:border-box;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(28px,4.5vw,56px);align-items:stretch}
 .hero-text{min-width:0;display:flex;flex-direction:column;justify-content:center;gap:24px;container-type:inline-size}
@@ -40,6 +44,33 @@ a{color:#3E6582}a:hover{color:#2E4D64}
   .service-main{grid-template-columns:minmax(0,1fr)}
   .service-img{height:clamp(180px,50vw,240px);min-height:0;contain:none;object-position:37% 22%}
   .service-text{padding:28px 24px 32px}
+}
+/* 実績（TRACK RECORD）：パソコンは従来どおり */
+.rs{padding:88px 24px}
+.rs-inner{gap:48px}
+.rs-big{grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:40px}
+.rs-big>div{display:flex;flex-direction:column;gap:4px}
+.rs-label{font-size:15px}
+.rs-num{font-size:60px}
+.rs-unit{font-size:22px;margin-left:4px}
+.rs-desc{font-size:13px}
+.rs-desc-short{display:none}
+.rs-small{grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr));gap:24px}
+.rs-val{font-size:24px}
+/* 実績：スマホは大きい数字3つを横一列、小さい数字4つを2列×2段に */
+@media (max-width: 767px){
+  .rs{padding:56px 16px}
+  .rs-inner{gap:32px}
+  .rs-big{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+  .rs-big>div{gap:2px;padding:14px 4px 12px;border-radius:10px;background:rgba(255,255,255,.06)}
+  .rs-label{font-size:12px;line-height:1.5}
+  .rs-num{font-size:clamp(26px,8.6vw,36px);line-height:1.15;white-space:nowrap}
+  .rs-unit{font-size:11px;margin-left:2px}
+  .rs-desc{font-size:11px;line-height:1.5}
+  .rs-desc-long{display:none}
+  .rs-desc-short{display:inline}
+  .rs-small{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 16px}
+  .rs-val{font-size:20px}
 }
 /* スマホ用 画面下固定ボタン */
 .sp-cta{display:none}
@@ -116,35 +147,35 @@ a{color:#3E6582}a:hover{color:#2E4D64}
 <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 56px; align-items: flex-start">
 <div style="flex: 1 1 340px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
 <p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.12em; color: #3E6582">PROBLEM</p>
-<h2 style="margin: 0; font-family: 'Zen Kaku Gothic New', sans-serif; font-weight: 900; font-size: clamp(30px, 3.6vw, 44px); line-height: 1.4"><span style="display: inline-block">こんなお悩み、</span><span style="display: inline-block">ありませんか？</span></h2>
+<h2 style="margin: 0; font-family: 'Zen Kaku Gothic New', sans-serif; font-weight: 900; font-size: clamp(30px, 3.6vw, 44px); line-height: 1.4"><span class="nb">こんなお悩み、</span><span class="nb">ありませんか？</span></h2>
 <p style="margin: 0; font-size: 16px; color: #4A5562">注文住宅の商談では、お客様の多くがまだ土地を持っていません。土地探しが長引くほど、受注のチャンスは遠のいてしまいます。</p>
 </div>
 <div style="flex: 1.4 1 480px; min-width: 0; background: #FFFFFF; border-radius: 20px; padding: 12px 36px; box-sizing: border-box; display: flex; flex-direction: column">
 <div style="display: flex; gap: 20px; padding: 28px 0; border-bottom: 1px solid #DDE3E9">
 <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#3E6582" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; margin-top: 2px"><circle cx="12" cy="12" r="10"></circle><path d="m8 12.5 2.5 2.5L16 9.5"></path></svg>
 <div style="display: flex; flex-direction: column; gap: 4px">
-<h3 style="margin: 0; font-size: 19px; font-weight: 700; line-height: 1.5">土地なし客の商談が止まってしまう</h3>
+<h3 style="margin: 0; font-size: 19px; font-weight: 700; line-height: 1.5"><span class="nb">土地なし客の</span><span class="nb">商談が</span><span class="nb">止まってしまう</span></h3>
 <p style="margin: 0; font-size: 15px; color: #4A5562">建てたい家のイメージはあるのに、土地が見つからず検討が進まない。</p>
 </div>
 </div>
 <div style="display: flex; gap: 20px; padding: 28px 0; border-bottom: 1px solid #DDE3E9">
 <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#3E6582" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; margin-top: 2px"><circle cx="12" cy="12" r="10"></circle><path d="m8 12.5 2.5 2.5L16 9.5"></path></svg>
 <div style="display: flex; flex-direction: column; gap: 4px">
-<h3 style="margin: 0; font-size: 19px; font-weight: 700; line-height: 1.5">土地探しに営業の時間を取られる</h3>
+<h3 style="margin: 0; font-size: 19px; font-weight: 700; line-height: 1.5"><span class="nb">土地探しに</span><span class="nb">営業の時間を</span><span class="nb">取られる</span></h3>
 <p style="margin: 0; font-size: 15px; color: #4A5562">物件調査や不動産会社とのやり取りに追われ、本来の家づくりの提案に集中できない。</p>
 </div>
 </div>
 <div style="display: flex; gap: 20px; padding: 28px 0; border-bottom: 1px solid #DDE3E9">
 <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#3E6582" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; margin-top: 2px"><circle cx="12" cy="12" r="10"></circle><path d="m8 12.5 2.5 2.5L16 9.5"></path></svg>
 <div style="display: flex; flex-direction: column; gap: 4px">
-<h3 style="margin: 0; font-size: 19px; font-weight: 700; line-height: 1.5">購入後に建てられない問題が発覚</h3>
+<h3 style="margin: 0; font-size: 19px; font-weight: 700; line-height: 1.5"><span class="nb">購入後に</span><span class="nb">建てられない</span><span class="nb">問題が発覚</span></h3>
 <p style="margin: 0; font-size: 15px; color: #4A5562">法規制や高低差、地盤の問題が後から見つかり、プランの大幅な見直しが必要になる。</p>
 </div>
 </div>
 <div style="display: flex; gap: 20px; padding: 28px 0">
 <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#3E6582" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; margin-top: 2px"><circle cx="12" cy="12" r="10"></circle><path d="m8 12.5 2.5 2.5L16 9.5"></path></svg>
 <div style="display: flex; flex-direction: column; gap: 4px">
-<h3 style="margin: 0; font-size: 19px; font-weight: 700; line-height: 1.5">土地と建物をセットで提案する他社に流れる</h3>
+<h3 style="margin: 0; font-size: 19px; font-weight: 700; line-height: 1.5"><span class="nb">土地と建物を</span><span class="nb">セットで</span><span class="nb">提案する</span><span class="nb">他社に流れる</span></h3>
 <p style="margin: 0; font-size: 15px; color: #4A5562">土地情報を持つ会社にお客様が先に相談し、そのまま契約されてしまう。</p>
 </div>
 </div>
@@ -160,7 +191,7 @@ a{color:#3E6582}a:hover{color:#2E4D64}
 <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 48px">
 <div style="display: flex; flex-direction: column; gap: 16px; max-width: 860px">
 <p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.12em; color: #3E6582">FOUNDER</p>
-<h2 style="margin: 0; font-family: 'Zen Kaku Gothic New', sans-serif; font-weight: 900; font-size: clamp(28px, 3.4vw, 42px); line-height: 1.45"><span style="display: inline-block">注文住宅のプロがつくった会社だから、</span><span style="display: inline-block">「建てられる土地」がわかる。</span></h2>
+<h2 style="margin: 0; font-family: 'Zen Kaku Gothic New', sans-serif; font-weight: 900; font-size: clamp(28px, 3.4vw, 42px); line-height: 1.45"><span class="nb">注文住宅のプロが</span><span class="nb">つくった会社だから、</span><span class="nb">「建てられる土地」が</span><span class="nb">わかる。</span></h2>
 <p style="margin: 0; font-size: 17px; color: #4A5562; line-height: 1.9">「家づくりの成功は、正しい土地選びから始まる。」<br>注文住宅で500棟以上を手がけた清水の目線を、宅建士を中心とした22名のチーム全員で共有。建物から逆算して土地を選びます。</p>
 </div>
 <div class="founder">
@@ -184,7 +215,7 @@ a{color:#3E6582}a:hover{color:#2E4D64}
 <span style="flex: 1 1 260px; min-width: 0; font-size: 15px; color: #222A33">いえプロ不動産を立ち上げ、3年目で粗利2.5億円規模に</span>
 </div>
 </div>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); gap: 16px">
 <div style="background: #F5F7F9; border-radius: 16px; padding: 24px 28px; display: flex; flex-direction: column; gap: 4px">
 <p style="margin: 0; font-size: 14px; color: #4A5562">販売実績</p>
 <p style="margin: 0; font-family: 'Zen Kaku Gothic New', sans-serif; font-weight: 900; font-size: 52px; line-height: 1.1; color: #3E6582; white-space: nowrap">500</p>
@@ -210,7 +241,7 @@ a{color:#3E6582}a:hover{color:#2E4D64}
 <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 56px">
 <div style="text-align: center; display: flex; flex-direction: column; gap: 12px">
 <p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.12em; color: #D5E3EE">SOLUTION</p>
-<h2 style="margin: 0; font-family: 'Zen Kaku Gothic New', sans-serif; font-weight: 900; font-size: clamp(26px, 3.2vw, 38px); line-height: 1.4">いえプロの「土地探し連携」で、<br>御社は家づくりに集中できます。</h2>
+<h2 style="margin: 0; font-family: 'Zen Kaku Gothic New', sans-serif; font-weight: 900; font-size: clamp(26px, 3.2vw, 38px); line-height: 1.4"><span class="nb">いえプロの</span><span class="nb">「土地探し連携」で、</span><br><span class="nb">御社は</span><span class="nb">家づくりに</span><span class="nb">集中できます。</span></h2>
 </div>
 <div class="service-main" style="background: #FFFFFF; color: #222A33; border-radius: 20px; overflow: hidden">
 <img class="service-img" src="images/staff.jpg" alt="打ち合わせで説明する担当スタッフ">
@@ -219,74 +250,74 @@ a{color:#3E6582}a:hover{color:#2E4D64}
 <span style="font-family: 'Zen Kaku Gothic New', sans-serif; font-weight: 900; font-size: 64px; line-height: 1; color: #3E6582">01</span>
 <span style="font-size: 13px; font-weight: 700; color: #FFFFFF; background: #B04A12; border-radius: 999px; padding: 4px 14px">いちばんの強み</span>
 </div>
-<h3 style="margin: 0; font-family: 'Zen Kaku Gothic New', sans-serif; font-weight: 900; font-size: clamp(24px, 2.6vw, 32px); line-height: 1.45">土地の話も、建物の話も。</h3>
+<h3 style="margin: 0; font-family: 'Zen Kaku Gothic New', sans-serif; font-weight: 900; font-size: clamp(24px, 2.6vw, 32px); line-height: 1.45"><span class="nb">土地の話も、</span><span class="nb">建物の話も。</span></h3>
 <p style="margin: 0; font-size: 17px; color: #4A5562; line-height: 1.9">注文住宅・建売住宅・企画住宅と、住宅を販売してきた経験者が在籍しています。間取りや建築費とのバランス、工務店さまの段取りを理解したうえで、お客様と土地探しを進めます。「建物の話が通じる不動産会社」だから、商談の流れを止めません。</p>
 </div>
 </div>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 40px">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(230px, 100%), 1fr)); gap: 40px">
 <div style="border-top: 2px solid #A9C2D6; padding-top: 24px; display: flex; flex-direction: column; gap: 12px">
 <p style="margin: 0; font-family: 'Zen Kaku Gothic New', sans-serif; font-weight: 900; font-size: 44px; line-height: 1; color: #A9C2D6">02</p>
-<h3 style="margin: 0; font-size: 21px; font-weight: 700; line-height: 1.5">建てられる土地を、建築コストまで見て提案</h3>
+<h3 style="margin: 0; font-size: 21px; font-weight: 700; line-height: 1.5"><span class="nb">建てられる土地を、</span><span class="nb">建築コストまで</span><span class="nb">見て提案</span></h3>
 <p style="margin: 0; font-size: 15px; color: #E3ECF3">接道・法規制・高低差などを事前に確認し、御社のプランが入る土地だけをご提案。土地価格以外にかかる目に見えない建築コストもご案内します。</p>
 </div>
 <div style="border-top: 2px solid #A9C2D6; padding-top: 24px; display: flex; flex-direction: column; gap: 12px">
 <p style="margin: 0; font-family: 'Zen Kaku Gothic New', sans-serif; font-weight: 900; font-size: 44px; line-height: 1; color: #A9C2D6">03</p>
-<h3 style="margin: 0; font-size: 21px; font-weight: 700; line-height: 1.5">市場に出る前の土地情報</h3>
+<h3 style="margin: 0; font-size: 21px; font-weight: 700; line-height: 1.5"><span class="nb">市場に出る前の</span><span class="nb">土地情報</span></h3>
 <p style="margin: 0; font-size: 15px; color: #E3ECF3">売却相談 年間2,400件の反響から、公開前の土地情報に触れられます。自社で仕入れる土地（年間30区画）と仲介の土地、両方からご提案します。</p>
 </div>
 <div style="border-top: 2px solid #A9C2D6; padding-top: 24px; display: flex; flex-direction: column; gap: 12px">
 <p style="margin: 0; font-family: 'Zen Kaku Gothic New', sans-serif; font-weight: 900; font-size: 44px; line-height: 1; color: #A9C2D6">04</p>
-<h3 style="margin: 0; font-size: 21px; font-weight: 700; line-height: 1.5">ローンから引渡しまで一貫対応</h3>
+<h3 style="margin: 0; font-size: 21px; font-weight: 700; line-height: 1.5"><span class="nb">ローンから</span><span class="nb">引渡しまで</span><span class="nb">一貫対応</span></h3>
 <p style="margin: 0; font-size: 15px; color: #E3ECF3">ローン手続き、価格交渉、契約・決済、お引渡しまで、不動産の手続きはいえプロが担います。</p>
 </div>
 <div style="border-top: 2px solid #A9C2D6; padding-top: 24px; display: flex; flex-direction: column; gap: 12px">
 <p style="margin: 0; font-family: 'Zen Kaku Gothic New', sans-serif; font-weight: 900; font-size: 44px; line-height: 1; color: #A9C2D6">05</p>
-<h3 style="margin: 0; font-size: 21px; font-weight: 700; line-height: 1.5">お客様は御社のお客様のまま</h3>
+<h3 style="margin: 0; font-size: 21px; font-weight: 700; line-height: 1.5"><span class="nb">お客様は</span><span class="nb">御社の</span><span class="nb">お客様のまま</span></h3>
 <p style="margin: 0; font-size: 15px; color: #E3ECF3">建築は御社にお任せいただく前提で動きます。ご紹介のお客様に、他の住宅会社をすすめることはありません。</p>
 </div>
 </div>
 </div>
 </section>
 
-<section id="results" style="background: #1B2530; color: #FFFFFF; padding: 88px 24px">
-<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 48px">
+<section id="results" class="rs" style="background: #1B2530; color: #FFFFFF">
+<div class="rs-inner" style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column">
 <div style="text-align: center; display: flex; flex-direction: column; gap: 12px">
 <p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.12em; color: #A9C2D6">TRACK RECORD</p>
-<h2 style="margin: 0; font-family: 'Zen Kaku Gothic New', sans-serif; font-weight: 900; font-size: clamp(26px, 3.2vw, 38px); line-height: 1.4"><span style="display: inline-block">土地の仕入れから仲介まで、</span><span style="display: inline-block">自社で一貫して手がけています。</span></h2>
+<h2 style="margin: 0; font-family: 'Zen Kaku Gothic New', sans-serif; font-weight: 900; font-size: clamp(26px, 3.2vw, 38px); line-height: 1.4"><span class="nb">土地の仕入れから</span><span class="nb">仲介まで、</span><span class="nb">自社で一貫して</span><span class="nb">手がけています。</span></h2>
 </div>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 40px; text-align: center">
+<div class="rs-big" style="display: grid; text-align: center">
 <div style="display: flex; flex-direction: column; gap: 4px">
-<p style="margin: 0; font-size: 15px; color: #C5CED8">土地仲介</p>
-<p style="margin: 0; font-family: 'Zen Kaku Gothic New', sans-serif; font-weight: 900; font-size: 60px; line-height: 1.2">112<span style="font-size: 22px; color: #A9C2D6; margin-left: 4px">件／年</span></p>
-<p style="margin: 0; font-size: 13px; color: #C5CED8">注文住宅の土地付け仲介件数</p>
-</div>
-<div style="display: flex; flex-direction: column; gap: 4px">
-<p style="margin: 0; font-size: 15px; color: #C5CED8">取引件数</p>
-<p style="margin: 0; font-family: 'Zen Kaku Gothic New', sans-serif; font-weight: 900; font-size: 60px; line-height: 1.2">210<span style="font-size: 22px; color: #A9C2D6; margin-left: 4px">件／年</span></p>
-<p style="margin: 0; font-size: 13px; color: #C5CED8">すべての契約件数</p>
+<p class="rs-label" style="margin: 0; color: #C5CED8">土地仲介</p>
+<p class="rs-num" style="margin: 0; font-family: 'Zen Kaku Gothic New', sans-serif; font-weight: 900; line-height: 1.2">112<span class="rs-unit" style="color: #A9C2D6">件／年</span></p>
+<p class="rs-desc" style="margin: 0; color: #C5CED8"><span class="rs-desc-long">注文住宅の土地付け仲介件数</span><span class="rs-desc-short">注文住宅の土地付け</span></p>
 </div>
 <div style="display: flex; flex-direction: column; gap: 4px">
-<p style="margin: 0; font-size: 15px; color: #C5CED8">土地仕入れ</p>
-<p style="margin: 0; font-family: 'Zen Kaku Gothic New', sans-serif; font-weight: 900; font-size: 60px; line-height: 1.2">30<span style="font-size: 22px; color: #A9C2D6; margin-left: 4px">区画／年</span></p>
-<p style="margin: 0; font-size: 13px; color: #C5CED8">自社で仕入れた建築用地</p>
+<p class="rs-label" style="margin: 0; color: #C5CED8">取引件数</p>
+<p class="rs-num" style="margin: 0; font-family: 'Zen Kaku Gothic New', sans-serif; font-weight: 900; line-height: 1.2">210<span class="rs-unit" style="color: #A9C2D6">件／年</span></p>
+<p class="rs-desc" style="margin: 0; color: #C5CED8"><span class="rs-desc-long">すべての契約件数</span><span class="rs-desc-short">すべての契約</span></p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px">
+<p class="rs-label" style="margin: 0; color: #C5CED8">土地仕入れ</p>
+<p class="rs-num" style="margin: 0; font-family: 'Zen Kaku Gothic New', sans-serif; font-weight: 900; line-height: 1.2">30<span class="rs-unit" style="color: #A9C2D6">区画／年</span></p>
+<p class="rs-desc" style="margin: 0; color: #C5CED8"><span class="rs-desc-long">自社で仕入れた建築用地</span><span class="rs-desc-short">自社仕入れの用地</span></p>
 </div>
 </div>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px">
+<div class="rs-small" style="display: grid">
 <div style="border-top: 1px solid #4A5A6B; padding-top: 14px; display: flex; flex-direction: column; gap: 2px">
 <p style="margin: 0; font-size: 13px; color: #C5CED8">紹介からの成約率</p>
-<p style="margin: 0; font-size: 24px; font-weight: 700">40%</p>
+<p class="rs-val" style="margin: 0; font-weight: 700">40%</p>
 </div>
 <div style="border-top: 1px solid #4A5A6B; padding-top: 14px; display: flex; flex-direction: column; gap: 2px">
 <p style="margin: 0; font-size: 13px; color: #C5CED8">紹介から契約まで</p>
-<p style="margin: 0; font-size: 24px; font-weight: 700">1〜2カ月</p>
+<p class="rs-val" style="margin: 0; font-weight: 700">1〜2カ月</p>
 </div>
 <div style="border-top: 1px solid #4A5A6B; padding-top: 14px; display: flex; flex-direction: column; gap: 2px">
 <p style="margin: 0; font-size: 13px; color: #C5CED8">主なエリア</p>
-<p style="margin: 0; font-size: 24px; font-weight: 700">関西圏全域</p>
+<p class="rs-val" style="margin: 0; font-weight: 700">関西圏全域</p>
 </div>
 <div style="border-top: 1px solid #4A5A6B; padding-top: 14px; display: flex; flex-direction: column; gap: 2px">
 <p style="margin: 0; font-size: 13px; color: #C5CED8">売上高（1期目比）</p>
-<p style="margin: 0; font-size: 24px; font-weight: 700">6.5倍</p>
+<p class="rs-val" style="margin: 0; font-weight: 700">6.5倍</p>
 </div>
 </div>
 <p style="margin: 0; text-align: center; font-size: 13px; color: #C5CED8">※件数は第3期の実績です。第4期は土地仲介210件を目標にしています。</p>
@@ -314,7 +345,7 @@ a{color:#3E6582}a:hover{color:#2E4D64}
 <h2 style="margin: 0; font-family: 'Zen Kaku Gothic New', sans-serif; font-weight: 900; font-size: clamp(30px, 3.6vw, 44px); line-height: 1.4">協業の流れ</h2>
 <p style="margin: 0; font-size: 16px; color: #4A5562">ご紹介から24時間以内にご連絡し、土地の決済・お引渡しまでいえプロが担当します。建築可否は必ず御社と一緒に確認するので、建てられない土地を買ってしまう心配はありません。</p>
 </div>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 20px">
 <div style="background: #FFFFFF; border-radius: 14px; border-top: 4px solid #B04A12; padding: 24px 26px; display: flex; flex-direction: column; gap: 8px">
 <p style="margin: 0; font-size: 14px; font-weight: 700; color: #B04A12">STEP1｜御社</p>
 <h3 style="margin: 0; font-size: 20px; font-weight: 700">お客様のご紹介</h3>
@@ -373,7 +404,7 @@ a{color:#3E6582}a:hover{color:#2E4D64}
 <p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.12em; color: #3E6582">BENEFITS</p>
 <h2 style="margin: 0; font-family: 'Zen Kaku Gothic New', sans-serif; font-weight: 900; font-size: clamp(26px, 3.2vw, 38px); line-height: 1.4">協業のメリット</h2>
 </div>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 24px">
 <div style="background: #F5F7F9; border-radius: 16px; border-top: 4px solid #B04A12; padding: 32px 36px; display: flex; flex-direction: column; gap: 14px">
 <h3 style="margin: 0; font-size: 22px; font-weight: 700">御社のメリット</h3>
 <ul style="margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 8px; font-size: 16px">
@@ -406,7 +437,7 @@ a{color:#3E6582}a:hover{color:#2E4D64}
 <div style="padding: 28px 4px; border-bottom: 1px solid #DDE3E9; display: flex; flex-direction: column; gap: 14px">
 <div style="display: flex; gap: 16px; align-items: flex-start">
 <span style="flex: none; width: 36px; height: 36px; border-radius: 50%; background: #3E6582; color: #FFFFFF; font-weight: 700; display: flex; align-items: center; justify-content: center">Q</span>
-<h3 style="margin: 0; font-size: 18px; font-weight: 700; line-height: 1.6; padding-top: 3px">工務店側の費用はかかりますか？</h3>
+<h3 style="margin: 0; font-size: 18px; font-weight: 700; line-height: 1.6; padding-top: 3px"><span class="nb">工務店側の</span><span class="nb">費用は</span><span class="nb">かかりますか？</span></h3>
 </div>
 <div style="display: flex; gap: 16px; align-items: flex-start">
 <span style="flex: none; width: 36px; height: 36px; border-radius: 50%; border: 2px solid #B04A12; color: #B04A12; font-weight: 700; display: flex; align-items: center; justify-content: center; box-sizing: border-box">A</span>
@@ -416,7 +447,7 @@ a{color:#3E6582}a:hover{color:#2E4D64}
 <div style="padding: 28px 4px; border-bottom: 1px solid #DDE3E9; display: flex; flex-direction: column; gap: 14px">
 <div style="display: flex; gap: 16px; align-items: flex-start">
 <span style="flex: none; width: 36px; height: 36px; border-radius: 50%; background: #3E6582; color: #FFFFFF; font-weight: 700; display: flex; align-items: center; justify-content: center">Q</span>
-<h3 style="margin: 0; font-size: 18px; font-weight: 700; line-height: 1.6; padding-top: 3px">お客様を他の住宅会社に取られる心配はありませんか？</h3>
+<h3 style="margin: 0; font-size: 18px; font-weight: 700; line-height: 1.6; padding-top: 3px"><span class="nb">お客様を</span><span class="nb">他の住宅会社に</span><span class="nb">取られる心配は</span><span class="nb">ありませんか？</span></h3>
 </div>
 <div style="display: flex; gap: 16px; align-items: flex-start">
 <span style="flex: none; width: 36px; height: 36px; border-radius: 50%; border: 2px solid #B04A12; color: #B04A12; font-weight: 700; display: flex; align-items: center; justify-content: center; box-sizing: border-box">A</span>
@@ -426,7 +457,7 @@ a{color:#3E6582}a:hover{color:#2E4D64}
 <div style="padding: 28px 4px; border-bottom: 1px solid #DDE3E9; display: flex; flex-direction: column; gap: 14px">
 <div style="display: flex; gap: 16px; align-items: flex-start">
 <span style="flex: none; width: 36px; height: 36px; border-radius: 50%; background: #3E6582; color: #FFFFFF; font-weight: 700; display: flex; align-items: center; justify-content: center">Q</span>
-<h3 style="margin: 0; font-size: 18px; font-weight: 700; line-height: 1.6; padding-top: 3px">紹介してから、どのくらいで動いてもらえますか？</h3>
+<h3 style="margin: 0; font-size: 18px; font-weight: 700; line-height: 1.6; padding-top: 3px"><span class="nb">紹介してから、</span><span class="nb">どのくらいで</span><span class="nb">動いてもらえますか？</span></h3>
 </div>
 <div style="display: flex; gap: 16px; align-items: flex-start">
 <span style="flex: none; width: 36px; height: 36px; border-radius: 50%; border: 2px solid #B04A12; color: #B04A12; font-weight: 700; display: flex; align-items: center; justify-content: center; box-sizing: border-box">A</span>
@@ -436,7 +467,7 @@ a{color:#3E6582}a:hover{color:#2E4D64}
 <div style="padding: 28px 4px; border-bottom: 1px solid #DDE3E9; display: flex; flex-direction: column; gap: 14px">
 <div style="display: flex; gap: 16px; align-items: flex-start">
 <span style="flex: none; width: 36px; height: 36px; border-radius: 50%; background: #3E6582; color: #FFFFFF; font-weight: 700; display: flex; align-items: center; justify-content: center">Q</span>
-<h3 style="margin: 0; font-size: 18px; font-weight: 700; line-height: 1.6; padding-top: 3px">対応エリアを教えてください。</h3>
+<h3 style="margin: 0; font-size: 18px; font-weight: 700; line-height: 1.6; padding-top: 3px"><span class="nb">対応エリアを</span><span class="nb">教えてください。</span></h3>
 </div>
 <div style="display: flex; gap: 16px; align-items: flex-start">
 <span style="flex: none; width: 36px; height: 36px; border-radius: 50%; border: 2px solid #B04A12; color: #B04A12; font-weight: 700; display: flex; align-items: center; justify-content: center; box-sizing: border-box">A</span>
@@ -446,7 +477,7 @@ a{color:#3E6582}a:hover{color:#2E4D64}
 <div style="padding: 28px 4px; border-bottom: 1px solid #DDE3E9; display: flex; flex-direction: column; gap: 14px">
 <div style="display: flex; gap: 16px; align-items: flex-start">
 <span style="flex: none; width: 36px; height: 36px; border-radius: 50%; background: #3E6582; color: #FFFFFF; font-weight: 700; display: flex; align-items: center; justify-content: center">Q</span>
-<h3 style="margin: 0; font-size: 18px; font-weight: 700; line-height: 1.6; padding-top: 3px">1件だけの紹介でも相談できますか？</h3>
+<h3 style="margin: 0; font-size: 18px; font-weight: 700; line-height: 1.6; padding-top: 3px"><span class="nb">1件だけの紹介でも</span><span class="nb">相談できますか？</span></h3>
 </div>
 <div style="display: flex; gap: 16px; align-items: flex-start">
 <span style="flex: none; width: 36px; height: 36px; border-radius: 50%; border: 2px solid #B04A12; color: #B04A12; font-weight: 700; display: flex; align-items: center; justify-content: center; box-sizing: border-box">A</span>
@@ -456,7 +487,7 @@ a{color:#3E6582}a:hover{color:#2E4D64}
 <div style="padding: 28px 4px; border-bottom: 1px solid #DDE3E9; display: flex; flex-direction: column; gap: 14px">
 <div style="display: flex; gap: 16px; align-items: flex-start">
 <span style="flex: none; width: 36px; height: 36px; border-radius: 50%; background: #3E6582; color: #FFFFFF; font-weight: 700; display: flex; align-items: center; justify-content: center">Q</span>
-<h3 style="margin: 0; font-size: 18px; font-weight: 700; line-height: 1.6; padding-top: 3px">打ち合わせに工務店の担当者も同席できますか？</h3>
+<h3 style="margin: 0; font-size: 18px; font-weight: 700; line-height: 1.6; padding-top: 3px"><span class="nb">打ち合わせに</span><span class="nb">工務店の担当者も</span><span class="nb">同席できますか？</span></h3>
 </div>
 <div style="display: flex; gap: 16px; align-items: flex-start">
 <span style="flex: none; width: 36px; height: 36px; border-radius: 50%; border: 2px solid #B04A12; color: #B04A12; font-weight: 700; display: flex; align-items: center; justify-content: center; box-sizing: border-box">A</span>
@@ -472,8 +503,8 @@ a{color:#3E6582}a:hover{color:#2E4D64}
 <div style="display: flex; flex-wrap: wrap; gap: 48px; align-items: flex-start">
 <div style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
 <p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.12em; color: #3E6582">COMPANY PROFILE</p>
-<h2 style="margin: 0; font-family: 'Zen Kaku Gothic New', sans-serif; font-weight: 900; font-size: clamp(26px, 3.2vw, 38px); line-height: 1.4"><span style="display: inline-block">1957年創業、</span><span style="display: inline-block">Gハウスの不動産事業部です。</span></h2>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px">
+<h2 style="margin: 0; font-family: 'Zen Kaku Gothic New', sans-serif; font-weight: 900; font-size: clamp(26px, 3.2vw, 38px); line-height: 1.4"><span class="nb">1957年創業、</span><span class="nb">Gハウスの</span><span class="nb">不動産事業部です。</span></h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(140px, 100%), 1fr)); gap: 12px">
 <div style="background: #FFFFFF; border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 2px"><p style="margin: 0; font-family: 'Zen Kaku Gothic New', sans-serif; font-weight: 900; font-size: 32px; line-height: 1.2; color: #3E6582">2023.09</p><p style="margin: 0; font-size: 13px; color: #4A5562">事業スタート</p></div>
 <div style="background: #FFFFFF; border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 2px"><p style="margin: 0; font-family: 'Zen Kaku Gothic New', sans-serif; font-weight: 900; font-size: 32px; line-height: 1.2; color: #3E6582">22<span style="font-size: 16px; margin-left: 2px">名</span></p><p style="margin: 0; font-size: 13px; color: #4A5562">体制（宅建士 半数）</p></div>
 </div>
@@ -503,7 +534,7 @@ a{color:#3E6582}a:hover{color:#2E4D64}
 <section id="contact" style="background: #3E6582; padding: 96px 24px">
 <div style="max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 48px; align-items: flex-start">
 <div style="flex: 1 1 360px; min-width: 0; color: #FFFFFF; display: flex; flex-direction: column; gap: 20px">
-<h2 style="margin: 0; font-family: 'Zen Kaku Gothic New', sans-serif; font-weight: 900; font-size: clamp(26px, 3.2vw, 38px); line-height: 1.4">まずは土地なしのお客様<br>1組からご相談ください。</h2>
+<h2 style="margin: 0; font-family: 'Zen Kaku Gothic New', sans-serif; font-weight: 900; font-size: clamp(26px, 3.2vw, 38px); line-height: 1.4"><span class="nb">まずは</span><span class="nb">土地なしのお客様</span><br><span class="nb">1組から</span><span class="nb">ご相談ください。</span></h2>
 <p style="margin: 0; font-size: 16px; color: #E3ECF3">連携の進め方や条件を、担当者が直接ご説明します。「今の商談で土地が決まらない」といったご相談だけでも歓迎です。</p>
 <div style="display: flex; flex-direction: column; gap: 4px; margin-top: 8px">
 <p style="margin: 0; font-size: 14px; color: #E3ECF3">お電話でのお問い合わせ</p>
@@ -521,7 +552,7 @@ a{color:#3E6582}a:hover{color:#2E4D64}
 <label for="f-name" style="font-size: 14px; font-weight: 700">ご担当者名 <span style="color: #A33A0E">必須</span></label>
 <input id="f-name" type="text" placeholder="山田 太郎" style="font: inherit; font-size: 16px; padding: 12px 14px; border: 1px solid #B3BCC6; border-radius: 6px; min-height: 48px; box-sizing: border-box">
 </div>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr)); gap: 16px">
 <div style="display: flex; flex-direction: column; gap: 6px">
 <label for="f-tel" style="font-size: 14px; font-weight: 700">電話番号</label>
 <input id="f-tel" type="tel" placeholder="03-0000-0000" style="font: inherit; font-size: 16px; padding: 12px 14px; border: 1px solid #B3BCC6; border-radius: 6px; min-height: 48px; box-sizing: border-box">
