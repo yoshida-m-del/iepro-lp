@@ -257,7 +257,7 @@ details ul { margin: 8px 0 0; padding-left: 1.2em; display: grid; gap: 2px; colo
         <fieldset class="field" id="fs-purpose">
           <legend class="label">ご希望の内容 <span class="req">必須</span></legend>
           <div class="choices">
-            <div class="choice"><input type="radio" name="purpose" id="p-visit" value="visit"><label for="p-visit"><span class="t">来店面談</span><span class="s">店舗またはご希望の場所で相談</span></label></div>
+            <div class="choice"><input type="radio" name="purpose" id="p-visit" value="visit"><label for="p-visit"><span class="t">来店物件相談</span><span class="s">店舗またはご希望の場所で相談</span></label></div>
             <div class="choice"><input type="radio" name="purpose" id="p-view" value="view"><label for="p-view"><span class="t">内覧</span><span class="s">ご希望の物件を見学</span></label></div>
           </div>
           <p class="err" id="err-purpose" hidden></p>
@@ -389,8 +389,8 @@ details ul { margin: 8px 0 0; padding-left: 1.2em; display: grid; gap: 2px; colo
       <h2 id="h-memo">会議用メモ：フォームの仕様（案）</h2>
       <ul>
         <li>必須：お名前・電話番号・メールアドレス・ご希望の内容・第1希望日時・同意</li>
-        <li>ご希望の内容は「来店面談」「内覧」の2択（オンライン面談はなし）</li>
-        <li>「内覧」を選ぶと物件所在地が必須、「来店面談」を選ぶと面談場所（5拠点＋その他）が必須</li>
+        <li>ご希望の内容は「来店物件相談」「内覧」の2択（オンライン面談はなし）</li>
+        <li>「内覧」を選ぶと物件所在地が必須、「来店物件相談」を選ぶと面談場所（5拠点＋その他）が必須</li>
         <li>面談場所で「その他」を選ぶと、ご自宅や近くの喫茶店などを入力する欄が出て必須になる</li>
         <li>日程はカレンダーから選択。12/3〜12/25、火・水は選択不可、前日までの予約のみ</li>
         <li>時間は10:00〜20:00の30分刻み。第2・第3希望は任意、同じ日時の重複は不可</li>
@@ -425,7 +425,7 @@ details ul { margin: 8px 0 0; padding-left: 1.2em; display: grid; gap: 2px; colo
     $('#oi-map').setAttribute('aria-label', name + 'の地図（イメージ）');
     box.hidden = false;
   }
-  var PURPOSE = { online: 'オンライン面談', visit: '来店面談', view: '内覧' };
+  var PURPOSE = { online: 'オンライン面談', visit: '来店物件相談', view: '内覧' };
   var TIMES = [];
   for (var h = 10; h <= 20; h++) { TIMES.push(h + ':00'); if (h < 20) TIMES.push(h + ':30'); }
   var slots = [{ date: null }, { date: null }, { date: null }];
@@ -502,7 +502,7 @@ details ul { margin: 8px 0 0; padding-left: 1.2em; display: grid; gap: 2px; colo
     if (!v) { g.hidden = true; return; }
     var t = {
       online: 'オンライン面談はギフト券の対象外です。その後ご内覧いただくと3,000円分の対象になります。',
-      visit: 'ご来店面談でギフト券1,000円分、その後のご内覧でさらに2,000円分（合計3,000円分）。',
+      visit: 'ご来店物件相談でギフト券1,000円分、その後のご内覧でさらに2,000円分（合計3,000円分）。',
       view: 'ご内覧でギフト券3,000円分。'
     }[v];
     if (v !== 'online') t += '<br><b>【案】12月14日（月）までのご内覧で、さらに+2,000円分。</b>';
