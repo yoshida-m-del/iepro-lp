@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body style="margin:0">
+<title>クリスマスキャンペーン予約フォーム</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap">
+<style>
+/* Layout: one narrow column of numbered form steps under a navy campaign band; steps follow the real order of filling in */
+:root {
+  --bg: #F4F6F9;
+  --surface: #FFFFFF;
+  --field: #FFFFFF;
+  --ink: #1B2537;
+  --muted: #566175;
+  --line: #D3DAE4;
+  --band: #14213D;
+  --band-ink: #F4F1EC;
+  --band-muted: #B9C4D6;
+  --band-line: #34446A;
+  --gold: #F2A65E;
+  --accent: #C9500E;
+  --on-accent: #FFFFFF;
+  --navy: #14213D;
+  --accent-soft: #FBEADB;
+  --danger: #B42318;
+  --danger-soft: #FDECEA;
+  --disabled: #E9ECF1;
+  --disabled-ink: #9AA3B2;
+  --focus: #2F6FEB;
+  --font: 'Noto Sans JP', 'Hiragino Sans', 'Yu Gothic', Meiryo, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1522; --surface: #161F31; --field: #111A2A; --ink: #E6EBF3; --muted: #A2ADBF; --line: #2C3850;
+    --band: #0A1120; --band-ink: #F4F1EC; --band-muted: #9FB0C7; --band-line: #26324A; --gold: #F2A65E;
+    --accent: #F2A65E; --on-accent: #1E1208; --accent-soft: #33241A; --danger: #F98A80; --danger-soft: #3A1D1D;
+    --disabled: #1A2232; --disabled-ink: #56627A; --focus: #7AA7FF; --navy: #E6EBF3;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1522; --surface: #161F31; --field: #111A2A; --ink: #E6EBF3; --muted: #A2ADBF; --line: #2C3850;
+  --band: #0A1120; --band-ink: #F4F1EC; --band-muted: #9FB0C7; --band-line: #26324A; --gold: #F2A65E;
+  --accent: #F2A65E; --on-accent: #1E1208; --accent-soft: #33241A; --danger: #F98A80; --danger-soft: #3A1D1D;
+  --disabled: #1A2232; --disabled-ink: #56627A; --focus: #7AA7FF; --navy: #E6EBF3;
+  color-scheme: dark;
+}
+
+body { background: var(--bg); color: var(--ink); font-family: var(--font); font-size: 16px; line-height: 1.7; }
+[hidden] { display: none !important; }
+.wrap { max-width: 760px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3, p { margin: 0; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+
+.demo-flag { background: var(--accent-soft); color: var(--ink); font-size: 13px; }
+.demo-flag .wrap { padding-block: 8px; text-align: center; }
+
+.top { background: var(--surface); border-bottom: 1px solid var(--line); }
+.topbar { border-bottom: 1px solid var(--line); }
+.topbar-in { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding-block: 14px; }
+.logo { display: block; width: 190px; max-width: 50vw; height: auto; }
+.topnote { font-size: 12px; color: var(--muted); }
+.hero-photo-wrap { max-width: 760px; margin: 0 auto; }
+.hero-photo { display: block; width: 100%; max-width: 100%; height: auto; aspect-ratio: 1200 / 680; object-fit: cover; }
+.hero { padding-block: 26px 28px; display: grid; justify-items: center; text-align: center; gap: 6px; }
+.pill { background: var(--accent); color: var(--on-accent); border-radius: 999px; padding: 3px 14px; font-size: 13px; font-weight: 700; }
+.hero-lead { font-size: 16px; font-weight: 700; color: var(--navy); line-height: 1.5; margin-top: 4px; }
+.hero-gift { font-size: 24px; font-weight: 900; }
+.hero-num { font-size: clamp(60px, 16vw, 84px); font-weight: 900; line-height: 1.05; color: var(--accent); letter-spacing: -1px; font-variant-numeric: tabular-nums; }
+.hero-num .s { font-size: .3em; letter-spacing: 0; }
+.hero-num .u { font-size: .36em; letter-spacing: 0; }
+.hero-note { font-size: 13px; color: var(--muted); }
+.hero-sub { font-size: 15px; font-weight: 700; color: var(--navy); margin-top: 6px; }
+.hero-sub b { font-size: 22px; font-weight: 900; }
+.period { margin-top: 14px; width: 100%; box-sizing: border-box; background: var(--band); color: var(--band-ink); border-radius: 10px; padding: 12px; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px 12px; }
+.period-lbl { border: 1px solid var(--band-ink); border-radius: 4px; padding: 0 8px; font-size: 12px; font-weight: 700; }
+.period-date { font-size: 19px; font-weight: 700; }
+.period-lim { background: var(--gold); color: #14213D; border-radius: 999px; padding: 2px 12px; font-size: 13px; font-weight: 900; }
+.chips { list-style: none; padding: 0; margin: 8px 0 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; }
+.chips li { border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px; font-size: 12px; font-weight: 700; color: var(--navy); background: var(--surface); }
+.chips li.muted { color: var(--muted); }
+.hero-early { font-size: 14px; font-weight: 700; color: var(--accent); margin-top: 4px; }
+.sec-title { font-size: 21px; font-weight: 900; color: var(--navy); margin-top: 22px; }
+.sec-title::after { content: ""; display: block; width: 40px; height: 3px; background: var(--accent); margin: 8px auto 0; }
+
+main .wrap { padding-block: 24px 64px; display: grid; gap: 20px; }
+form { display: grid; gap: 20px; }
+.step { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 24px; display: grid; gap: 20px; min-width: 0; }
+.step h2 { font-size: 18px; font-weight: 700; display: flex; align-items: center; gap: 10px; }
+.num { width: 30px; height: 30px; border-radius: 50%; background: var(--band); color: var(--band-ink); display: inline-grid; place-items: center; font-size: 14px; flex: none; }
+.hint { color: var(--muted); font-size: 13px; }
+
+.field { display: grid; gap: 6px; min-width: 0; border: 0; padding: 0; margin: 0; }
+.label { font-weight: 700; font-size: 15px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.req, .opt { font-size: 11px; font-weight: 700; border-radius: 4px; padding: 1px 7px; letter-spacing: .04em; }
+.req { background: var(--accent); color: var(--on-accent); }
+.opt { background: var(--disabled); color: var(--muted); }
+input[type=text], input[type=tel], input[type=email], select, textarea, .date-btn {
+  font: inherit; font-size: 16px; width: 100%; box-sizing: border-box; padding: 10px 12px;
+  border: 1px solid var(--line); border-radius: 8px; background: var(--field); color: var(--ink);
+}
+textarea { min-height: 96px; resize: vertical; }
+input::placeholder, textarea::placeholder { color: var(--disabled-ink); opacity: 1; }
+.field.invalid input[type=text], .field.invalid input[type=tel], .field.invalid input[type=email],
+.field.invalid select, .field.invalid .date-btn, .field.invalid .choice label { border-color: var(--danger); }
+.err { color: var(--danger); font-size: 13px; font-weight: 500; }
+
+.choices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.offices { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 10px; }
+.choice { position: relative; min-width: 0; }
+.choice input { position: absolute; opacity: 0; inset: 0; margin: 0; }
+.choice label { display: grid; gap: 2px; height: 100%; box-sizing: border-box; border: 2px solid var(--line); border-radius: 10px; padding: 12px 14px; cursor: pointer; background: var(--field); }
+.choice input:checked + label { border-color: var(--accent); background: var(--accent-soft); }
+.choice input:focus-visible + label { outline: 3px solid var(--focus); outline-offset: 2px; }
+.choice .t { font-weight: 700; }
+.choice .s { font-size: 13px; color: var(--muted); }
+
+.sub { display: grid; gap: 16px; padding: 16px; border-radius: 10px; background: var(--bg); }
+.office-info { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 16px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px; }
+.office-text { display: grid; gap: 4px; align-content: start; min-width: 0; }
+.office-name { font-weight: 700; font-size: 16px; }
+.maplink { color: var(--accent); font-weight: 700; font-size: 14px; margin-top: 6px; }
+.map { position: relative; min-height: 160px; border-radius: 8px; overflow: hidden; display: grid; place-items: center; align-content: center; gap: 6px; color: var(--accent);
+  background-color: var(--bg);
+  background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 28px 28px; }
+.map-cap { font-size: 12px; color: var(--muted); background: var(--surface); padding: 2px 8px; border-radius: 4px; }
+@media (max-width: 560px) { .office-info { grid-template-columns: 1fr; } }
+.gift { background: var(--accent-soft); border-radius: 8px; padding: 12px 16px; font-size: 14px; }
+.notes { margin: 0; padding-left: 1.2em; font-size: 13px; color: var(--muted); display: grid; gap: 2px; }
+
+.slots { display: grid; gap: 14px; }
+.slot { display: grid; grid-template-columns: 112px minmax(0, 1fr) 140px 64px; gap: 10px; align-items: center; }
+.slot .cal, .slot .err { grid-column: 1 / -1; }
+.slot-label { font-weight: 700; font-size: 15px; display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+.date-btn { text-align: left; cursor: pointer; color: var(--muted); }
+.date-btn.has { color: var(--ink); font-weight: 700; }
+.linkbtn { font: inherit; font-size: 13px; background: none; border: 0; color: var(--muted); text-decoration: underline; cursor: pointer; padding: 4px; }
+
+.cal { border: 1px solid var(--line); border-radius: 10px; padding: 12px; background: var(--surface); display: grid; gap: 10px; }
+.cal-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 6px; }
+.cal-grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px; }
+.wd { font-size: 12px; text-align: center; color: var(--muted); }
+.day { font: inherit; min-height: 50px; border: 1px solid var(--line); border-radius: 8px; background: var(--field); color: var(--ink);
+  display: grid; place-items: center; align-content: center; gap: 0; cursor: pointer; padding: 2px; font-variant-numeric: tabular-nums; }
+.day small { font-size: 10px; line-height: 1.2; color: var(--muted); min-height: 12px; display: grid; place-items: center; }
+.day:disabled { background: var(--disabled); color: var(--disabled-ink); cursor: not-allowed; }
+.day:disabled small { color: var(--disabled-ink); }
+.day[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.day[aria-pressed="true"] small { color: var(--on-accent); }
+.dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); display: inline-block; }
+.day[aria-pressed="true"] .dot { background: var(--on-accent); }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 12px; color: var(--muted); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+
+.check { display: flex; gap: 10px; align-items: flex-start; }
+.check input { width: 20px; height: 20px; margin-top: 4px; accent-color: var(--accent); flex: none; }
+details { font-size: 14px; }
+details summary { cursor: pointer; font-weight: 700; }
+details ul { margin: 8px 0 0; padding-left: 1.2em; display: grid; gap: 2px; color: var(--muted); }
+
+.actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: flex-end; align-items: center; }
+.btn { font: inherit; font-weight: 700; font-size: 16px; border-radius: 999px; padding: 13px 22px; cursor: pointer; border: 2px solid transparent; }
+.btn.primary { background: var(--accent); color: var(--on-accent); font-size: 18px; padding: 15px 36px; }
+.btn.primary::after { content: "  ›"; }
+.btn.ghost { background: transparent; border-color: var(--line); color: var(--ink); }
+.summary-err { background: var(--danger-soft); color: var(--danger); border-radius: 8px; padding: 10px 14px; font-size: 14px; font-weight: 700; }
+
+.confirm dl { display: grid; grid-template-columns: 140px minmax(0, 1fr); margin: 0; border-top: 1px solid var(--line); }
+.confirm dt, .confirm dd { margin: 0; padding: 10px 4px; border-bottom: 1px solid var(--line); overflow-wrap: anywhere; }
+.confirm dt { color: var(--muted); font-size: 14px; }
+.confirm dd { font-weight: 500; }
+
+.memo { border: 1px dashed var(--line); border-radius: 12px; padding: 20px 24px; display: grid; gap: 10px; }
+.memo h2 { font-size: 15px; }
+.memo ul { margin: 0; padding-left: 1.2em; font-size: 14px; color: var(--muted); display: grid; gap: 4px; }
+
+@media (max-width: 560px) {
+  .choices { grid-template-columns: 1fr; }
+  .step { padding: 18px; }
+  .slot { grid-template-columns: minmax(0, 1fr) 120px; }
+  .slot-label { grid-column: 1 / -1; }
+  .slot .linkbtn { grid-column: 1 / -1; justify-self: start; }
+  .confirm dl { grid-template-columns: 1fr; }
+  .confirm dt { border-bottom: 0; padding-bottom: 0; }
+  .day { min-height: 44px; }
+}
+</style>
+
+<div class="demo-flag"><div class="wrap">フォーム案（デモ）：入力内容はどこにも送信・保存されません</div></div>
+
+<header class="top">
+  <div class="topbar">
+    <div class="wrap topbar-in">
+      <picture>
+        <source srcset="images/logo-white.png" media="(prefers-color-scheme: dark)">
+        <img class="logo" src="images/logo-blue.png" alt="いえプロ不動産（株式会社Gハウスいえプロ不動産）" width="190" height="31">
+      </picture>
+      <span class="topnote">12月限定のご案内</span>
+    </div>
+  </div>
+  <div class="hero-photo-wrap">
+    <img class="hero-photo" src="images/hero.jpg" alt="いえプロ不動産が手がけた住まいの外観" width="1200" height="680">
+  </div>
+  <div class="wrap hero">
+    <span class="pill">クリスマスキャンペーン</span>
+    <h1 class="hero-lead">ご来店・ご内覧でもらえる<br><span class="hero-gift">ギフト券</span></h1>
+    <p class="hero-num"><span class="s">最大</span>5,000<span class="u">円分</span></p>
+    <p class="hero-note">Amazonギフト券 または QUOカード</p>
+    <p class="hero-sub">＋ ご成約で <b>仲介手数料50%OFF</b></p>
+    <div class="period">
+      <span class="period-lbl">実施期間</span>
+      <span class="period-date">12/3（木）〜12/25（金）</span>
+      <span class="period-lim">先着10名様</span>
+    </div>
+    <ul class="chips">
+      <li>WEB・お電話で予約</li>
+      <li>1世帯1回</li>
+      <li>過去にご内覧の方もOK</li>
+    </ul>
+    <p class="hero-early">【案】12/14（月）までのご内覧で、さらに+2,000円</p>
+    <h2 class="sec-title">ご予約フォーム</h2>
+    <p class="hero-note">最短30秒で完了・無理な営業はいたしません</p>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <form id="f" novalidate>
+      <section class="step" aria-labelledby="h-1">
+        <h2 id="h-1"><span class="num">1</span>お客様情報</h2>
+        <div class="field">
+          <label class="label" for="name">お名前 <span class="req">必須</span></label>
+          <input type="text" id="name" autocomplete="name" placeholder="例）山田 太郎">
+          <p class="err" id="err-name" hidden></p>
+        </div>
+        <div class="field">
+          <label class="label" for="tel">電話番号 <span class="req">必須</span></label>
+          <input type="tel" id="tel" autocomplete="tel" inputmode="tel" placeholder="例）090-1234-5678">
+          <p class="hint">ご来店の場合、前日に当社から確認のお電話をします。</p>
+          <p class="err" id="err-tel" hidden></p>
+        </div>
+        <div class="field">
+          <label class="label" for="email">メールアドレス <span class="req">必須</span></label>
+          <input type="email" id="email" autocomplete="email" inputmode="email" placeholder="例）name@example.com">
+          <p class="err" id="err-email" hidden></p>
+        </div>
+      </section>
+
+      <section class="step" aria-labelledby="h-2">
+        <h2 id="h-2"><span class="num">2</span>ご希望の内容</h2>
+        <fieldset class="field" id="fs-purpose">
+          <legend class="label">ご希望の内容 <span class="req">必須</span></legend>
+          <div class="choices">
+            <div class="choice"><input type="radio" name="purpose" id="p-visit" value="visit"><label for="p-visit"><span class="t">来店面談</span><span class="s">店舗またはご希望の場所で相談</span></label></div>
+            <div class="choice"><input type="radio" name="purpose" id="p-view" value="view"><label for="p-view"><span class="t">内覧</span><span class="s">ご希望の物件を見学</span></label></div>
+          </div>
+          <p class="err" id="err-purpose" hidden></p>
+        </fieldset>
+
+        <div class="sub" id="block-view" hidden>
+          <div class="field">
+            <label class="label" for="address">ご内覧希望物件の所在地 <span class="req">必須</span></label>
+            <input type="text" id="address" autocomplete="off" placeholder="例）大阪市旭区新森○丁目">
+            <p class="err" id="err-address" hidden></p>
+          </div>
+          <div class="field">
+            <label class="label" for="propname">物件名・掲載URLなど <span class="opt">任意</span></label>
+            <input type="text" id="propname" autocomplete="off" placeholder="例）SUUMO掲載の物件名">
+          </div>
+        </div>
+
+        <div class="sub" id="block-visit" hidden>
+          <fieldset class="field">
+            <legend class="label">面談場所 <span class="req">必須</span></legend>
+            <div class="offices" id="offices"></div>
+            <p class="err" id="err-office" hidden></p>
+          </fieldset>
+          <div class="office-info" id="office-info" hidden aria-live="polite">
+            <div class="office-text">
+              <p class="office-name" id="oi-name"></p>
+              <p id="oi-addr"></p>
+              <p class="hint">※住所は仮の表記です</p>
+              <a class="maplink" id="oi-link" href="https://www.google.com/maps" target="_blank" rel="noopener">Googleマップで開く</a>
+            </div>
+            <div class="map" role="img" id="oi-map" aria-label="店舗の地図（イメージ）">
+              <svg class="pin" viewBox="0 0 24 32" width="30" height="40" aria-hidden="true"><path d="M12 0C5.4 0 0 5.2 0 11.7 0 20.5 12 32 12 32s12-11.5 12-20.3C24 5.2 18.6 0 12 0z" fill="currentColor"/><circle cx="12" cy="11.5" r="4.5" fill="var(--surface)"/></svg>
+              <span class="map-cap">地図エリア（本番ではGoogleマップを埋め込み）</span>
+            </div>
+          </div>
+          <div class="field" id="other-place-field" hidden>
+            <label class="label" for="other-place">ご希望の面談場所 <span class="req">必須</span></label>
+            <input type="text" id="other-place" autocomplete="off" placeholder="例）自宅、近くの喫茶店、ファミレス など">
+            <p class="hint">ご自宅や、お近くの喫茶店・ファミレスなど、ご都合のよい場所をご記入ください。店名や住所がわかればあわせてご記入ください。</p>
+            <p class="err" id="err-other-place" hidden></p>
+          </div>
+          <ul class="notes">
+            <li>来店日の前日までにご予約ください。</li>
+            <li>前日に当社から確認のお電話をします。ご対応いただけない場合は特典の対象外です。</li>
+            <li>当日は本人確認書類をお持ちください。</li>
+          </ul>
+        </div>
+
+        <p class="gift" id="gift" hidden></p>
+      </section>
+
+      <section class="step" aria-labelledby="h-3">
+        <h2 id="h-3"><span class="num">3</span>ご希望日時</h2>
+        <ul class="notes">
+          <li>受付期間：12月3日（木）〜12月25日（金）／前日までのご予約</li>
+          <li>受付時間：10:00〜20:00（平日の夜もご相談いただけます）</li>
+          <li>火曜日・水曜日は定休日のため選べません</li>
+        </ul>
+        <div class="slots">
+          <div class="slot field">
+            <span class="slot-label">第1希望 <span class="req">必須</span></span>
+            <button type="button" class="date-btn" id="date-1" aria-expanded="false" aria-controls="cal-1">日付を選択</button>
+            <select id="time-1" aria-label="第1希望の時間"></select>
+            <span></span>
+            <div class="cal" id="cal-1" hidden></div>
+            <p class="err" id="err-slot-1" hidden></p>
+          </div>
+          <div class="slot field">
+            <span class="slot-label">第2希望 <span class="opt">任意</span></span>
+            <button type="button" class="date-btn" id="date-2" aria-expanded="false" aria-controls="cal-2">日付を選択</button>
+            <select id="time-2" aria-label="第2希望の時間"></select>
+            <button type="button" class="linkbtn" id="clear-2">クリア</button>
+            <div class="cal" id="cal-2" hidden></div>
+            <p class="err" id="err-slot-2" hidden></p>
+          </div>
+          <div class="slot field">
+            <span class="slot-label">第3希望 <span class="opt">任意</span></span>
+            <button type="button" class="date-btn" id="date-3" aria-expanded="false" aria-controls="cal-3">日付を選択</button>
+            <select id="time-3" aria-label="第3希望の時間"></select>
+            <button type="button" class="linkbtn" id="clear-3">クリア</button>
+            <div class="cal" id="cal-3" hidden></div>
+            <p class="err" id="err-slot-3" hidden></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="step" aria-labelledby="h-4">
+        <h2 id="h-4"><span class="num">4</span>その他・ご確認</h2>
+        <div class="field">
+          <label class="label" for="memo">ご質問・ご要望 <span class="opt">任意</span></label>
+          <textarea id="memo" placeholder="例）駐車場の有無を知りたい／子ども連れで伺います"></textarea>
+        </div>
+        <details>
+          <summary>キャンペーンの主な適用条件</summary>
+          <ul>
+            <li>1年以内に住宅のご購入をご希望のお客様が対象です</li>
+            <li>キャンペーン期間中、1世帯1回・先着10名様まで</li>
+            <li>ギフト券はAmazonギフト券またはQUOカードから選べます</li>
+            <li>購入の意思が確認できないと当社スタッフが判断した場合は対象外です</li>
+            <li>仲介手数料50%OFFは、期間中にご相談・ご内覧のうえ当社仲介でご成約された方が対象です</li>
+          </ul>
+        </details>
+        <div class="field">
+          <div class="check">
+            <input type="checkbox" id="consent">
+            <label for="consent">個人情報の取り扱いに同意し、キャンペーンの適用条件を確認しました <span class="req">必須</span></label>
+          </div>
+          <p class="err" id="err-consent" hidden></p>
+        </div>
+      </section>
+
+      <p class="summary-err" id="summary-err" hidden role="alert">入力内容に確認が必要な項目があります。赤字の説明をご確認ください。</p>
+      <div class="actions">
+        <button type="button" class="btn ghost" id="sample">サンプルを入力</button>
+        <button type="submit" class="btn primary">予約内容を確認する</button>
+      </div>
+    </form>
+
+    <section class="step confirm" id="confirm" hidden aria-labelledby="h-c">
+      <h2 id="h-c"><span class="num">✓</span>ご予約内容の確認</h2>
+      <dl id="confirm-list"></dl>
+      <p class="hint">本番では、送信後に自動返信メールでご予約内容をお知らせし、担当者から日時確定のご連絡をします。このフォーム案では送信されません。</p>
+      <div class="actions">
+        <button type="button" class="btn ghost" id="back">入力画面に戻る</button>
+      </div>
+    </section>
+
+    <aside class="memo" aria-labelledby="h-memo">
+      <h2 id="h-memo">会議用メモ：フォームの仕様（案）</h2>
+      <ul>
+        <li>必須：お名前・電話番号・メールアドレス・ご希望の内容・第1希望日時・同意</li>
+        <li>ご希望の内容は「来店面談」「内覧」の2択（オンライン面談はなし）</li>
+        <li>「内覧」を選ぶと物件所在地が必須、「来店面談」を選ぶと面談場所（5拠点＋その他）が必須</li>
+        <li>面談場所で「その他」を選ぶと、ご自宅や近くの喫茶店などを入力する欄が出て必須になる</li>
+        <li>日程はカレンダーから選択。12/3〜12/25、火・水は選択不可、前日までの予約のみ</li>
+        <li>時間は10:00〜20:00の30分刻み。第2・第3希望は任意、同じ日時の重複は不可</li>
+        <li>「内覧」を選んだときだけ、12/14までの日付に【案】早期ボーナスの印を表示</li>
+        <li>来店店舗を選ぶと住所と地図を表示（住所は仮。本番はGoogleマップを埋め込み）</li>
+        <li>導線：メール・SMS・LINE → キャンペーンLP → この予約フォーム</li>
+      </ul>
+    </aside>
+  </div>
+</main>
+
+<script>
+(function () {
+  var $ = function (s) { return document.querySelector(s); };
+  var START = new Date(2026, 11, 3), END = new Date(2026, 11, 25), EARLY = new Date(2026, 11, 14);
+  var CLOSED = [2, 3], WD = '日月火水木金土';
+  var OFFICES = ['新森本社', '奈良事務所', '豊中市事務所', '京都長岡京事務所', '西宮事務所', 'その他'];
+  var OFFICE_INFO = {
+    '新森本社': { addr: '〒535-00○○ 大阪府大阪市旭区新森○丁目○-○', q: '大阪府大阪市旭区新森' },
+    '奈良事務所': { addr: '〒630-○○○○ 奈良県奈良市○○町○-○', q: '奈良県奈良市' },
+    '豊中市事務所': { addr: '〒560-○○○○ 大阪府豊中市○○町○-○', q: '大阪府豊中市' },
+    '京都長岡京事務所': { addr: '〒617-○○○○ 京都府長岡京市○○○-○', q: '京都府長岡京市' },
+    '西宮事務所': { addr: '〒662-○○○○ 兵庫県西宮市○○町○-○', q: '兵庫県西宮市' }
+  };
+  function showOffice(name) {
+    var info = OFFICE_INFO[name], box = $('#office-info');
+    $('#other-place-field').hidden = name !== 'その他';
+    if (!info) { box.hidden = true; return; }
+    $('#oi-name').textContent = name;
+    $('#oi-addr').textContent = info.addr;
+    $('#oi-link').href = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(info.q);
+    $('#oi-map').setAttribute('aria-label', name + 'の地図（イメージ）');
+    box.hidden = false;
+  }
+  var PURPOSE = { online: 'オンライン面談', visit: '来店面談', view: '内覧' };
+  var TIMES = [];
+  for (var h = 10; h <= 20; h++) { TIMES.push(h + ':00'); if (h < 20) TIMES.push(h + ':30'); }
+  var slots = [{ date: null }, { date: null }, { date: null }];
+
+  function today0() { var t = new Date(); return new Date(t.getFullYear(), t.getMonth(), t.getDate()); }
+  function minDate() { var t = today0(); t.setDate(t.getDate() + 1); return t > START ? t : START; }
+  function avail(d) { return d >= minDate() && d <= END && CLOSED.indexOf(d.getDay()) < 0; }
+  function fmt(d) { return (d.getMonth() + 1) + '月' + d.getDate() + '日（' + WD[d.getDay()] + '）'; }
+  function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+  function purpose() { var r = document.querySelector('input[name=purpose]:checked'); return r ? r.value : ''; }
+
+  OFFICES.forEach(function (o, i) {
+    $('#offices').insertAdjacentHTML('beforeend',
+      '<div class="choice"><input type="radio" name="office" id="office-' + i + '" value="' + o + '"><label for="office-' + i + '"><span class="t">' + o + '</span>' + (o === 'その他' ? '<span class="s">ご自宅・お近くのお店など</span>' : '') + '</label></div>');
+  });
+  document.querySelectorAll('input[name=office]').forEach(function (r) { r.addEventListener('change', function () { clearErr('office'); showOffice(r.value); }); });
+
+  for (var i = 1; i <= 3; i++) {
+    $('#time-' + i).innerHTML = '<option value="">時間を選択</option>' + TIMES.map(function (t) { return '<option value="' + t + '">' + t + '</option>'; }).join('');
+  }
+
+  function setDate(i, d) {
+    slots[i - 1].date = d;
+    var b = $('#date-' + i);
+    b.textContent = d ? fmt(d) : '日付を選択';
+    b.classList.toggle('has', !!d);
+  }
+
+  function closeCals() {
+    for (var j = 1; j <= 3; j++) { $('#cal-' + j).hidden = true; $('#date-' + j).setAttribute('aria-expanded', 'false'); }
+  }
+
+  function renderCal(i) {
+    var c = $('#cal-' + i), sel = slots[i - 1].date, showEarly = purpose() === 'view';
+    var html = '<div class="cal-head"><strong>2026年12月</strong><span class="hint">キャンペーン期間 12/3（木）〜12/25（金）</span></div><div class="cal-grid">';
+    for (var w = 0; w < 7; w++) html += '<div class="wd">' + WD[w] + '</div>';
+    for (var k = 0; k < new Date(2026, 11, 1).getDay(); k++) html += '<div></div>';
+    for (var d = 1; d <= 31; d++) {
+      var dt = new Date(2026, 11, d), ok = avail(dt), closed = CLOSED.indexOf(dt.getDay()) >= 0, early = showEarly && ok && dt <= EARLY;
+      var on = sel && sel.getTime() === dt.getTime();
+      var sub = closed ? '定休日' : (dt > END || dt < START ? '期間外' : (early ? '<span class="dot"></span>' : ''));
+      var aria = '12月' + d + '日' + WD[dt.getDay()] + '曜日' + (closed ? '、定休日' : (!ok ? '、選択できません' : '')) + (early ? '、早期ボーナス対象' : '');
+      html += '<button type="button" class="day" data-d="' + d + '"' + (ok ? '' : ' disabled') + ' aria-pressed="' + (on ? 'true' : 'false') + '" aria-label="' + aria + '"><span>' + d + '</span><small>' + sub + '</small></button>';
+    }
+    html += '</div><div class="legend">' + (showEarly ? '<span><span class="dot"></span>【案】ご内覧で早期ボーナス対象（12/14まで）</span>' : '') + '<span>火・水は定休日</span><span>前日までのご予約</span></div>';
+    c.innerHTML = html;
+    c.querySelectorAll('.day:not([disabled])').forEach(function (b) {
+      b.addEventListener('click', function () {
+        setDate(i, new Date(2026, 11, +b.getAttribute('data-d')));
+        closeCals();
+        clearErr('slot-' + i);
+        $('#time-' + i).focus();
+      });
+    });
+  }
+
+  [1, 2, 3].forEach(function (i) {
+    var b = $('#date-' + i);
+    b.addEventListener('click', function () {
+      var wasOpen = !$('#cal-' + i).hidden;
+      closeCals();
+      if (!wasOpen) { renderCal(i); $('#cal-' + i).hidden = false; b.setAttribute('aria-expanded', 'true'); }
+    });
+    $('#time-' + i).addEventListener('change', function () { clearErr('slot-' + i); });
+    var clr = $('#clear-' + i);
+    if (clr) clr.addEventListener('click', function () { setDate(i, null); $('#time-' + i).value = ''; closeCals(); clearErr('slot-' + i); });
+  });
+
+  function updatePurpose() {
+    var v = purpose();
+    $('#block-view').hidden = v !== 'view';
+    $('#block-visit').hidden = v !== 'visit';
+    var g = $('#gift');
+    if (!v) { g.hidden = true; return; }
+    var t = {
+      online: 'オンライン面談はギフト券の対象外です。その後ご内覧いただくと3,000円分の対象になります。',
+      visit: 'ご来店面談でギフト券1,000円分、その後のご内覧でさらに2,000円分（合計3,000円分）。',
+      view: 'ご内覧でギフト券3,000円分。'
+    }[v];
+    if (v !== 'online') t += '<br><b>【案】12月14日（月）までのご内覧で、さらに+2,000円分。</b>';
+    g.innerHTML = t + '<br>ご成約で仲介手数料50%OFF。';
+    g.hidden = false;
+    clearErr('purpose');
+    for (var j = 1; j <= 3; j++) { if (!$('#cal-' + j).hidden) renderCal(j); }
+  }
+  document.querySelectorAll('input[name=purpose]').forEach(function (r) { r.addEventListener('change', updatePurpose); });
+
+  function setErr(id, msg) {
+    var e = $('#err-' + id);
+    e.textContent = msg; e.hidden = !msg;
+    var f = e.closest('.field');
+    if (f) f.classList.toggle('invalid', !!msg);
+  }
+  function clearErr(id) { setErr(id, ''); }
+  ['name', 'tel', 'email', 'address'].forEach(function (id) { $('#' + id).addEventListener('input', function () { clearErr(id); }); });
+  $('#consent').addEventListener('change', function () { clearErr('consent'); });
+  $('#other-place').addEventListener('input', function () { clearErr('other-place'); });
+  var ALL = ['name', 'tel', 'email', 'purpose', 'address', 'office', 'other-place','slot-1', 'slot-2', 'slot-3', 'consent'];
+
+  function normTel(s) {
+    return s.replace(/[０-９]/g, function (c) { return String.fromCharCode(c.charCodeAt(0) - 0xFEE0); }).replace(/[-‐ー－−\s]/g, '');
+  }
+
+  function validate() {
+    var first = null;
+    function bad(id, msg) { setErr(id, msg); if (!first) first = id; }
+    ALL.forEach(clearErr);
+    if (!$('#name').value.trim()) bad('name', 'お名前を入力してください。');
+    var tel = normTel($('#tel').value);
+    if (!tel) bad('tel', '電話番号を入力してください。');
+    else if (!/^0\d{9,10}$/.test(tel)) bad('tel', '電話番号は0から始まる10〜11桁の数字で入力してください。');
+    var em = $('#email').value.trim();
+    if (!em) bad('email', 'メールアドレスを入力してください。');
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) bad('email', 'メールアドレスの形式を確認してください（例：name@example.com）。');
+    var p = purpose();
+    if (!p) bad('purpose', 'ご希望の内容を選んでください。');
+    if (p === 'view' && !$('#address').value.trim()) bad('address', 'ご内覧を希望される物件の所在地を入力してください。');
+    var off = document.querySelector('input[name=office]:checked');
+    if (p === 'visit' && !off) bad('office', '面談場所を選んでください。');
+    if (p === 'visit' && off && off.value === 'その他' && !$('#other-place').value.trim()) bad('other-place', 'ご希望の面談場所を入力してください（例：自宅、近くの喫茶店）。');
+    var keys = [];
+    for (var i = 1; i <= 3; i++) {
+      var d = slots[i - 1].date, t = $('#time-' + i).value;
+      if (i === 1 && (!d || !t)) { bad('slot-1', !d && !t ? '第1希望の日付と時間を選んでください。' : (!d ? '第1希望の日付を選んでください。' : '第1希望の時間を選んでください。')); continue; }
+      if (i > 1 && (!!d !== !!t)) { bad('slot-' + i, '第' + i + '希望は日付と時間の両方を選んでください。'); continue; }
+      if (d && t) {
+        var key = d.getTime() + '_' + t;
+        if (keys.indexOf(key) >= 0) bad('slot-' + i, 'ほかの希望と同じ日時です。別の日時を選んでください。');
+        keys.push(key);
+      }
+    }
+    if (!$('#consent').checked) bad('consent', '個人情報の取り扱いへの同意が必要です。');
+    return first;
+  }
+
+  function showConfirm() {
+    var p = purpose(), rows = [];
+    rows.push(['お名前', $('#name').value.trim()]);
+    rows.push(['電話番号', $('#tel').value.trim()]);
+    rows.push(['メールアドレス', $('#email').value.trim()]);
+    rows.push(['ご希望の内容', PURPOSE[p]]);
+    if (p === 'view') {
+      rows.push(['物件の所在地', $('#address').value.trim()]);
+      if ($('#propname').value.trim()) rows.push(['物件名・URL', $('#propname').value.trim()]);
+    }
+    if (p === 'visit') {
+      var on = document.querySelector('input[name=office]:checked').value;
+      if (on === 'その他') {
+        rows.push(['面談場所', 'その他：' + $('#other-place').value.trim()]);
+      } else {
+        rows.push(['面談場所', on]);
+        rows.push(['店舗の住所', OFFICE_INFO[on].addr + '（仮）']);
+      }
+    }
+    for (var i = 1; i <= 3; i++) {
+      var d = slots[i - 1].date, t = $('#time-' + i).value;
+      if (d && t) rows.push(['第' + i + '希望', fmt(d) + ' ' + t]);
+    }
+    if ($('#memo').value.trim()) rows.push(['ご質問・ご要望', $('#memo').value.trim()]);
+    var gift = p === 'online' ? '対象外（ご内覧に進むと3,000円分）'
+      : p === 'visit' ? '1,000円分（ご内覧でさらに2,000円分）'
+      : '3,000円分' + (slots[0].date <= EARLY ? '＋【案】早期ボーナス2,000円分（第1希望日でご内覧の場合）' : '');
+    rows.push(['ギフト券', gift]);
+    $('#confirm-list').innerHTML = rows.map(function (r) { return '<dt>' + esc(r[0]) + '</dt><dd>' + esc(r[1]) + '</dd>'; }).join('');
+    $('#f').hidden = true;
+    $('#confirm').hidden = false;
+    $('#confirm').scrollIntoView({ block: 'start' });
+  }
+
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  $('#f').addEventListener('submit', function (e) {
+    e.preventDefault();
+    closeCals();
+    var first = validate();
+    if (first) {
+      $('#summary-err').hidden = false;
+      var el = $('#err-' + first), target = el.closest('.field') || el;
+      target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' });
+      return;
+    }
+    $('#summary-err').hidden = true;
+    showConfirm();
+  });
+
+  $('#back').addEventListener('click', function () {
+    $('#confirm').hidden = true;
+    $('#f').hidden = false;
+    $('#f').scrollIntoView({ block: 'start' });
+  });
+
+  $('#sample').addEventListener('click', function () {
+    $('#name').value = '山田 太郎（サンプル）';
+    $('#tel').value = '090-1234-5678';
+    $('#email').value = 'sample@example.com';
+    $('#p-view').checked = true;
+    updatePurpose();
+    $('#address').value = '大阪市旭区新森（サンプル）';
+    var ds = [];
+    for (var d = 1; d <= 25 && ds.length < 2; d++) { var dt = new Date(2026, 11, d); if (avail(dt)) ds.push(dt); }
+    if (ds[0]) { setDate(1, ds[0]); $('#time-1').value = '14:00'; }
+    if (ds[1]) { setDate(2, ds[1]); $('#time-2').value = '19:00'; }
+    $('#consent').checked = true;
+    closeCals();
+    ALL.forEach(clearErr);
+    $('#summary-err').hidden = true;
+  });
+})();
+</script>
+
+</body>
+</html>
