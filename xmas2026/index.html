@@ -286,7 +286,8 @@ details ul { margin: 8px 0 0; padding-left: 1.2em; display: grid; gap: 2px; colo
             <div class="office-text">
               <p class="office-name" id="oi-name"></p>
               <p id="oi-addr"></p>
-              <p class="hint">※住所は仮の表記です</p>
+              <p class="hint" id="oi-access"></p>
+              <p class="hint" id="oi-tel"></p>
               <a class="maplink" id="oi-link" href="https://www.google.com/maps" target="_blank" rel="noopener">Googleマップで開く</a>
             </div>
             <div class="map" role="img" id="oi-map" aria-label="店舗の地図（イメージ）">
@@ -397,7 +398,7 @@ details ul { margin: 8px 0 0; padding-left: 1.2em; display: grid; gap: 2px; colo
         <li>日程はカレンダーから選択。12/3〜12/25、火・水は選択不可、前日までの予約のみ</li>
         <li>時間は10:00〜20:00の30分刻み。第2・第3希望は任意、同じ日時の重複は不可</li>
         <li>「内覧」を選んだときだけ、12/14までの日付に【案】早期ボーナスの印を表示</li>
-        <li>来店店舗を選ぶと住所と地図を表示（住所は仮。本番はGoogleマップを埋め込み）</li>
+        <li>店舗を選ぶと住所・最寄駅・電話番号と地図を表示（西宮オフィスは住所確認中。本番はGoogleマップを埋め込み）</li>
         <li>導線：メール・SMS・LINE → キャンペーンLP → この予約フォーム</li>
       </ul>
     </aside>
@@ -409,13 +410,13 @@ details ul { margin: 8px 0 0; padding-left: 1.2em; display: grid; gap: 2px; colo
   var $ = function (s) { return document.querySelector(s); };
   var START = new Date(2026, 11, 3), END = new Date(2026, 11, 25), EARLY = new Date(2026, 11, 14);
   var CLOSED = [2, 3], WD = '日月火水木金土';
-  var OFFICES = ['新森本社', '奈良事務所', '豊中市事務所', '京都長岡京事務所', '西宮事務所', 'その他'];
+  var OFFICES = ['新森オフィス', '奈良オフィス', '豊中オフィス', '京都オフィス', '西宮オフィス', 'その他'];
   var OFFICE_INFO = {
-    '新森本社': { addr: '〒535-00○○ 大阪府大阪市旭区新森○丁目○-○', q: '大阪府大阪市旭区新森' },
-    '奈良事務所': { addr: '〒630-○○○○ 奈良県奈良市○○町○-○', q: '奈良県奈良市' },
-    '豊中市事務所': { addr: '〒560-○○○○ 大阪府豊中市○○町○-○', q: '大阪府豊中市' },
-    '京都長岡京事務所': { addr: '〒617-○○○○ 京都府長岡京市○○○-○', q: '京都府長岡京市' },
-    '西宮事務所': { addr: '〒662-○○○○ 兵庫県西宮市○○町○-○', q: '兵庫県西宮市' }
+    '新森オフィス': { addr: '〒535-0022 大阪府大阪市旭区新森6-3-25 エクセレント新森1階', tel: '06-6185-1252', access: ['Osaka Metro今里筋線「新森古市駅」より徒歩約5分', '京阪本線「森小路駅」より徒歩約18分'], q: '大阪府大阪市旭区新森6-3-25' },
+    '奈良オフィス': { addr: '〒630-8244 奈良県奈良市三条町606-7 スクエア奈良三条1階', tel: '0742-94-4512', access: ['JR「奈良駅」より徒歩約3分', '近鉄奈良線「近鉄奈良駅」より徒歩約13分'], q: '奈良県奈良市三条町606-7' },
+    '豊中オフィス': { addr: '〒561-0852 大阪府豊中市服部本町1-2-8', tel: '06-4867-3014', access: ['阪急宝塚線「服部天神駅」より徒歩約4分'], q: '大阪府豊中市服部本町1-2-8' },
+    '京都オフィス': { addr: '〒600-8891 京都府京都市下京区西七条東八反田町33 パデシオン京都七条1階', tel: '075-925-5550', access: ['JR嵯峨野線「丹波口駅」「梅小路京都西駅」より徒歩約11分', '市バス・京阪京都交通バス「七条千本」停留所より徒歩約6分'], q: '京都府京都市下京区西七条東八反田町33' },
+    '西宮オフィス': { addr: '兵庫県西宮市（住所確認中）', tel: '', access: [], q: '兵庫県西宮市', tbd: true }
   };
   function showOffice(name) {
     var info = OFFICE_INFO[name], box = $('#office-info');
@@ -423,6 +424,8 @@ details ul { margin: 8px 0 0; padding-left: 1.2em; display: grid; gap: 2px; colo
     if (!info) { box.hidden = true; return; }
     $('#oi-name').textContent = name;
     $('#oi-addr').textContent = info.addr;
+    $('#oi-access').innerHTML = info.access.map(function (a) { return esc(a); }).join('<br>');
+    $('#oi-tel').textContent = info.tel ? 'TEL：' + info.tel : '';
     $('#oi-link').href = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(info.q);
     $('#oi-map').setAttribute('aria-label', name + 'の地図（イメージ）');
     box.hidden = false;
@@ -579,7 +582,7 @@ details ul { margin: 8px 0 0; padding-left: 1.2em; display: grid; gap: 2px; colo
         rows.push(['面談場所', 'その他：' + $('#other-place').value.trim()]);
       } else {
         rows.push(['面談場所', on]);
-        rows.push(['店舗の住所', OFFICE_INFO[on].addr + '（仮）']);
+        rows.push(['店舗の住所', OFFICE_INFO[on].addr]);
       }
     }
     for (var i = 1; i <= 3; i++) {
