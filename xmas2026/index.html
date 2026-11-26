@@ -212,7 +212,8 @@ details ul { margin: 8px 0 0; padding-left: 1.2em; display: grid; gap: 2px; colo
     <h1 class="hero-lead">ご来店・ご内覧でもらえる<br><span class="hero-gift">ギフト券</span></h1>
     <p class="hero-num"><span class="s">最大</span>5,000<span class="u">円分</span></p>
     <p class="hero-note">Amazonギフト券 または QUOカード</p>
-    <p class="hero-sub">＋ ご成約で <b>仲介手数料50%OFF</b></p>
+    <p class="hero-sub">＋ ご成約で <b>仲介手数料最大50%OFF</b></p>
+    <p class="hero-note">物件価格に応じて10万円引き〜50%OFF（1,000万円以下は対象外）</p>
     <div class="period">
       <span class="period-lbl">実施期間</span>
       <span class="period-date">12/3（木）〜12/25（金）</span>
@@ -357,7 +358,8 @@ details ul { margin: 8px 0 0; padding-left: 1.2em; display: grid; gap: 2px; colo
             <li>キャンペーン期間中、1世帯1回・先着10名様まで</li>
             <li>ギフト券はAmazonギフト券またはQUOカードから選べます</li>
             <li>購入の意思が確認できないと当社スタッフが判断した場合は対象外です</li>
-            <li>仲介手数料50%OFFは、期間中にご相談・ご内覧のうえ当社仲介でご成約された方が対象です</li>
+            <li>仲介手数料の割引は、期間中にご相談・ご内覧のうえ当社仲介でご成約された方が対象です</li>
+            <li>割引は物件価格により異なります：1,000万円以下は対象外／1,000万円超〜2,000万円未満は一律10万円引き／2,000万円台は20%OFF／3,000万円台は40%OFF／4,000万円以上は50%OFF</li>
           </ul>
         </details>
         <div class="field">
@@ -506,7 +508,7 @@ details ul { margin: 8px 0 0; padding-left: 1.2em; display: grid; gap: 2px; colo
       view: 'ご内覧でギフト券3,000円分。'
     }[v];
     if (v !== 'online') t += '<br><b>【案】12月14日（月）までのご内覧で、さらに+2,000円分。</b>';
-    g.innerHTML = t + '<br>ご成約で仲介手数料50%OFF。';
+    g.innerHTML = t + '<br>ご成約で仲介手数料最大50%OFF。';
     g.hidden = false;
     clearErr('purpose');
     for (var j = 1; j <= 3; j++) { if (!$('#cal-' + j).hidden) renderCal(j); }
