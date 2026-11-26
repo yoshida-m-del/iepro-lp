@@ -1,4 +1,4 @@
-// ポスティングチラシ候補5案（A4両面）の HTML を組み立てる
+// ポスティングチラシ候補（A4両面）の HTML を組み立てる
 // 使い方（このフォルダで）: node build-posting.js  → src/posting.html を書き出す
 // その後 node render-posting.js で PDF と画像を作る。
 //
@@ -157,80 +157,6 @@ const d06 = {
   <div class="pad pat" style="top:130mm"><p class="ttl">よくある住み替えのかたち</p><div class="g2">${pats()}</div></div>
   <div class="cta">
     <div class="pad ctah"><h2 class="mincho">ご実家のこと、<em>まずはご相談</em>ください。</h2></div>
-    <div class="pad main"><div>${tel()}<p class="hours">${HOURS}</p><p class="gh">${GH}｜${AREA} 限定｜仲介売却・直接買取</p></div><div class="badges">${badges()}</div>${qr()}</div>
-    <div class="pad company">${company('white')}</div>
-  </div>`,
-};
-
-// ================= 10 図解（白地×青・矢印と囲み） =================
-const d10 = {
-  front: `
-  <div class="ban"><div class="pad">
-    <div class="strip">${strip('white')}</div>
-    <div class="bs"><p class="ar">${AREA} 限定</p><p class="bt">売却のご相談・無料査定</p></div>
-  </div></div>
-  <div class="pad hero" style="top:44mm;text-align:center">
-    <p class="label" style="justify-content:center">Self Check</p>
-    <h1 class="mincho">YES / NO で分かる、わが家の「売り時」</h1>
-  </div>
-  <div class="chart10">
-    <svg viewBox="0 0 190 104" font-family="Shippori Mincho B1, serif" font-weight="600">
-      <g stroke="#3E6582" stroke-width=".7" fill="none">
-        <path d="M95 20 V28 M40 28 H150 M40 28 V36 M150 28 V36"/>
-        <path d="M40 56 V64 M20 64 H60 M20 64 V74 M60 64 V74"/>
-        <path d="M150 56 V64 M130 64 H170 M130 64 V74 M170 64 V74"/>
-      </g>
-      <g font-family="Cormorant Garamond, serif" font-style="italic" font-size="6" fill="#B04A12" font-weight="600">
-        <text x="43" y="34.5">YES</text><text x="138" y="34.5">NO</text>
-        <text x="23" y="72">YES</text><text x="63" y="72">NO</text>
-        <text x="133" y="72">YES</text><text x="172" y="72">NO</text>
-      </g>
-      <rect x="30" y="0" width="130" height="20" rx="3" fill="#EEF3F7" stroke="#3E6582" stroke-width=".8"/>
-      <text x="95" y="12.6" text-anchor="middle" font-size="7.2" fill="#1F2A33">家を建てて（買って）15年以上たつ</text>
-      <rect x="2" y="36" width="76" height="20" rx="3" fill="#EEF3F7" stroke="#3E6582" stroke-width=".8"/>
-      <text x="40" y="48.4" text-anchor="middle" font-size="6.8" fill="#1F2A33">使っていない部屋がある</text>
-      <rect x="112" y="36" width="76" height="20" rx="3" fill="#EEF3F7" stroke="#3E6582" stroke-width=".8"/>
-      <text x="150" y="44.6" text-anchor="middle" font-size="6.4" fill="#1F2A33">近所で新築や</text>
-      <text x="150" y="52.2" text-anchor="middle" font-size="6.4" fill="#1F2A33">建て替えが増えている</text>
-      <g font-family="Cormorant Garamond, serif" font-size="15" fill="#fff" text-anchor="middle">
-        <circle cx="20" cy="88" r="13" fill="#B04A12"/><text x="20" y="93">A</text>
-        <circle cx="60" cy="88" r="13" fill="#3E6582"/><text x="60" y="93">B</text>
-        <circle cx="130" cy="88" r="13" fill="#3E6582"/><text x="130" y="93">B</text>
-        <circle cx="170" cy="88" r="13" fill="#1F3346"/><text x="170" y="93">C</text>
-      </g>
-    </svg>
-  </div>
-  <div class="pad res10" style="top:106mm">
-    <div class="ra"><p class="rh"><i>A</i>今が検討どき</p><p class="rt">住み替え・売却の選択肢が広い時期。まずは今の価格を知って計画を。</p><p class="go">おすすめ<b>訪問査定</b></p></div>
-    <div class="rb"><p class="rh"><i>B</i>情報を集める時期</p><p class="rt">急ぐ必要はありません。相場の動きを定期的にチェックしましょう。</p><p class="go">おすすめ<b>机上査定</b></p></div>
-    <div class="rc"><p class="rh"><i>C</i>今はじっくり</p><p class="rt">資産としての価値の目安だけでも、知っておくと安心です。</p><p class="go">おすすめ<b>机上査定</b></p></div>
-  </div>
-  <p class="pad resn" style="top:133mm">どの結果でも査定は無料です。お電話・QRで<b>診断結果（A・B・C）</b>をお伝えいただければ、合った方法をご案内します。</p>
-  <div class="seal">${SEAL.replace(' ', '<br>').replace('の', 'の<br>')}</div>
-  <div class="pad mid" style="top:143mm">
-    <div class="rbox"><p class="tab">取り扱い物件</p><div class="types">${types()}</div></div>
-    <div class="rbox"><p class="tab">このようなご相談が増えています</p><ul class="cons">${cons()}</ul></div>
-  </div>
-  <div class="pad ask" style="top:194mm">
-    ${WL}
-    <div class="ways">${ways().replace('</div><div class="w1">', '</div><span class="or">or</span><div class="w1">')}</div>
-    <div class="badges">${badges()}</div>
-  </div>
-  <div class="fc">
-    <div class="pad main"><div>${tel()}<p class="hours">${HOURS}</p></div>${qr()}</div>
-    <div class="pad company">${company('blue')}</div>
-  </div>`,
-  back: `
-  <div class="pad head" style="top:14mm"><p class="label">Why Now</p><h2 class="mincho">「売り時」を左右する、<em>4つの変化</em></h2></div>
-  <ol class="pad chain" style="top:37mm">${chain()}</ol>
-  <div class="pad rg" style="top:66mm">
-    <div class="rbox"><p class="tab">住宅ローン金利の推移（目安）</p>${chart({ ...LIGHT, grid: '#DCE5EC', line: '#3E6582', lo: '#3E6582' })}</div>
-    <div class="rbox"><p class="tab">同じ月々の返済額で借りられる金額</p>${loan()}</div>
-  </div>
-  <p class="pad kari" style="top:121mm">${RNOTE}</p>
-  <div class="pad pat" style="top:131mm"><p class="tab">よくある住み替えのかたち</p><div class="g2">${pats()}</div></div>
-  <div class="cta">
-    <div class="pad ctah"><h2 class="mincho">わが家の<em>売り時</em>、一緒に確かめましょう。</h2></div>
     <div class="pad main"><div>${tel()}<p class="hours">${HOURS}</p><p class="gh">${GH}｜${AREA} 限定｜仲介売却・直接買取</p></div><div class="badges">${badges()}</div>${qr()}</div>
     <div class="pad company">${company('white')}</div>
   </div>`,
@@ -396,7 +322,7 @@ const d00 = {
   </div>`,
 };
 
-const LIST = [['05', '雑誌風（住み替え）', 'd05', d05], ['06', '紺の高級感（相続・空き家）', 'd06', d06], ['10', '図解（売り時診断）', 'd10', d10], ['29', 'ミニマル（問いかけ）', 'd29', d29], ['30', '数字を大きく', 'd30', d30], ['00', '営業ラフ清書版', 'd00', d00]];
+const LIST = [['05', '雑誌風（住み替え）', 'd05', d05], ['06', '紺の高級感（相続・空き家）', 'd06', d06], ['29', 'ミニマル（問いかけ）', 'd29', d29], ['30', '数字を大きく', 'd30', d30], ['00', '営業ラフ清書版', 'd00', d00]];
 // QRコード：予約フォーム（sell-form/）へ。URL末尾の ?f=案番号 でどのチラシから来たかを記録する
 // 画像は img/qr-form-<案番号>.svg（https://yoshida-m-del.github.io/iepro-lp/sell-form/?f=<案番号>）
 const withQr = (html, id) => html.replace(/<div class="qrph">[^<]*(?:<br>[^<]*)?<\/div>/g, '<img class="qrimg" src="../img/qr-form-' + id + '.svg" alt="予約フォームのQRコード">');

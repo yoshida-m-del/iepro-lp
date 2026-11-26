@@ -1,5 +1,5 @@
 /* =========================================================
-   ポスティングチラシ候補5案（posting.html 用。flyer.css の上に重ねる）
+   ポスティングチラシ候補（posting.html 用。flyer.css の上に重ねる）
    内容は5案共通。.d05〜.d30 ごとにレイアウト・配色・見せ方を変える。
    ========================================================= */
 /* ---------- 共通 ---------- */
@@ -169,92 +169,6 @@ em{font-style:normal;color:var(--accent)}
 .d06 .cta .main{top:31mm}
 .d06 .cta .tel .no{color:#fff}
 .d06 .cta .company{top:70mm}
-
-/* =========================================================
-   10 図解：白地×青。角丸の囲み・タブ・矢印で情報を整理
-   ========================================================= */
-.sheet.d10{background:#fff}
-.d10 .ban{position:absolute;left:0;top:0;width:216mm;height:38mm;background:var(--blue)}
-.d10 .ban .pad{top:13mm;display:flex;justify-content:space-between;align-items:center}
-.d10 .ban .strip p{color:#E3E8ED;border-left-color:rgba(255,255,255,.35)}
-.d10 .bs{text-align:right;color:#fff}
-.d10 .bs .ar{font-family:var(--f-mincho);font-weight:600;font-size:8.6pt;letter-spacing:.1em;opacity:.9}
-.d10 .bs .bt{font-family:var(--f-mincho);font-weight:700;font-size:17pt;letter-spacing:.1em}
-.d10 .hero h1{font-size:17pt;margin-top:2.4mm;color:var(--navy)}
-.d10 .chart10{position:absolute;left:var(--safe);right:var(--safe);top:59mm;height:45mm}
-.d10 .chart10 svg{width:100%;height:100%}
-.d10 .res10{display:grid;grid-template-columns:repeat(3,1fr);gap:3mm}
-.d10 .res10>div{border:.5mm solid var(--blue);border-top-width:1.6mm;border-radius:2.4mm;padding:2mm 3mm 2.2mm;background:#fff}
-.d10 .res10 .ra{border-color:var(--accent)}
-.d10 .res10 .rc{border-color:var(--navy)}
-.d10 .res10 .rh{font-family:var(--f-mincho);font-weight:600;font-size:9.6pt;letter-spacing:.04em;display:flex;align-items:center;gap:1.6mm}
-.d10 .res10 .rh i{display:inline-grid;place-items:center;width:5.4mm;height:5.4mm;border-radius:50%;color:#fff;font-style:normal;font-family:var(--f-latin);font-size:9pt;background:var(--blue)}
-.d10 .res10 .ra .rh i{background:var(--accent)}
-.d10 .res10 .rc .rh i{background:var(--navy)}
-.d10 .res10 .rt{font-size:6.6pt;line-height:1.55;color:var(--ink-sub);margin-top:1mm}
-.d10 .res10 .go{font-size:6.4pt;color:var(--ink-sub);margin-top:1.2mm;padding-top:1.2mm;border-top:.2mm dashed #DCE5EC;letter-spacing:.06em}
-.d10 .res10 .go b{font-family:var(--f-mincho);font-weight:600;font-size:9pt;color:var(--blue);margin-left:2mm}
-.d10 .res10 .ra .go b{color:var(--accent)}
-.d10 .resn{font-size:7pt;color:var(--ink-sub);text-align:center;letter-spacing:.03em}
-.d10 .resn b{color:var(--ink)}
-.d10 .legend{display:flex;justify-content:center;gap:7mm;font-family:var(--f-mincho);font-weight:600;font-size:8pt;letter-spacing:.04em}
-.d10 .legend i{display:inline-grid;place-items:center;width:5mm;height:5mm;border-radius:50%;color:#fff;font-style:normal;font-family:var(--f-latin);font-size:8pt;margin-right:1.6mm;vertical-align:-.6mm}
-.d10 .seal{right:13mm;top:43mm;width:26mm;height:26mm;background:var(--accent);color:#fff}
-.d10 .mid{display:grid;grid-template-columns:78mm 1fr;gap:5mm}
-.d10 .rbox{position:relative;border:.6mm solid var(--blue);border-radius:3mm;padding:6mm 4mm 3mm}
-.d10 .tab{position:absolute;left:4mm;top:-3mm;background:var(--blue);color:#fff;font-family:var(--f-mincho);font-weight:600;font-size:8.6pt;padding:.8mm 3mm;border-radius:99px;letter-spacing:.06em;line-height:1.4}
-.d10 .types div{background:#EEF3F7;border-radius:2mm}
-.d10 .types svg{stroke:var(--blue)}
-.d10 .cons li{border-bottom-color:#DCE5EC}
-.d10 .ask{border:.8mm solid var(--accent);border-radius:4mm;padding:3.4mm 5mm;text-align:center}
-.d10 .ask h2{font-size:13.5pt;color:var(--navy)}
-.d10 .ways{grid-template-columns:1fr 9mm 1fr;align-items:center}
-.d10 .ways .w0,.d10 .ways .w1{background:#EEF3F7;border-radius:2mm}
-.d10 .ways .w1{background:#FBEDE4}
-.d10 .ways .who{color:var(--ink-sub)}
-.d10 .ways .or{width:9mm;height:9mm;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;font-family:var(--f-latin);font-style:italic;font-size:10pt}
-.d10 .ask .badges{justify-content:center;margin-top:2.6mm}
-.d10 .ask .badges span{width:auto;height:auto;border-radius:99px;padding:1.2mm 4mm;background:var(--blue);color:#fff}
-.d10 .ask .badges br{display:none}
-.d10 .fc{top:237mm;background:#fff;border-top:1.6mm solid var(--blue)}
-.d10 .fc .msg{color:var(--navy)}
-.d10 .fc .tel .no{color:var(--blue)}
-.d10 .fc .tel .t{color:var(--accent)}
-.d10 .fc .hours,.d10 .fc .qr p{color:var(--ink-sub)}
-.d10 .fc .company{top:34mm;border-top-color:#DCE5EC}
-.d10 .fc .company .info{color:var(--ink-sub)}
-.d10 .fc .company .info b{color:var(--ink)}
-.d10 .head h2{font-size:15.5pt;line-height:1.45;margin-top:2.6mm;letter-spacing:.05em;color:var(--navy)}
-.d10 .chain{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2mm}
-.d10 .chain li{clip-path:polygon(0 0,90% 0,100% 50%,90% 100%,0 100%,10% 50%);padding:3mm 7mm 3mm 8.5mm;color:#fff;min-height:23mm}
-.d10 .chain li:first-child{clip-path:polygon(0 0,90% 0,100% 50%,90% 100%,0 100%);padding-left:4mm}
-.d10 .chain li:nth-child(1){background:#7494AC}
-.d10 .chain li:nth-child(2){background:#3E6582}
-.d10 .chain li:nth-child(3){background:#2A4A64}
-.d10 .chain li:nth-child(4){background:var(--accent)}
-.d10 .chain b{display:block;font-family:var(--f-mincho);font-weight:600;font-size:10pt;letter-spacing:.04em}
-.d10 .chain span{display:block;font-size:6.6pt;line-height:1.5;margin-top:.8mm;opacity:.95}
-.d10 .rg{display:grid;grid-template-columns:1.1fr 1fr;gap:5mm}
-.d10 .rg .chart{height:30mm}
-.d10 .loan .a .num{color:var(--blue)}
-.d10 .loan .diff{background:var(--accent);color:#fff;border-radius:2mm}
-.d10 .pat .tab{position:static;display:inline-block;margin-bottom:2.6mm}
-.d10 .g2>div{border:.6mm solid var(--blue);border-radius:3mm;padding:3mm 4mm}
-.d10 .g2 .p1{border-color:var(--accent)}
-.d10 .g2 .who{color:var(--blue);font-weight:700}
-.d10 .g2 .p1 .who{color:var(--accent)}
-.d10 .g2 .t{color:var(--ink-sub)}
-.d10 .cta{position:absolute;left:0;right:0;top:184mm;bottom:0;background:var(--blue);color:#fff}
-.d10 .cta .ctah{top:11mm;text-align:center}
-.d10 .cta .ctah h2{font-size:18pt;letter-spacing:.08em}
-.d10 .cta em{color:#FFD9C2}
-.d10 .cta .main{top:28mm}
-.d10 .cta .tel .no{color:#fff}
-.d10 .cta .tel .t{color:#FFD9C2}
-.d10 .cta .hours,.d10 .cta .gh,.d10 .cta .qr p{color:#E3E8ED}
-.d10 .cta .badges span{background:#fff;color:var(--blue)}
-.d10 .cta .company{top:66mm;border-top-color:rgba(255,255,255,.3)}
-.d10 .cta .company .info{color:#E3E8ED}
 
 /* =========================================================
    29 ミニマル：白地、縦書きの問いかけ、塗りの箱を使わず罫線だけで構成
