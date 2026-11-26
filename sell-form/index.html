@@ -107,6 +107,7 @@ input::placeholder, textarea::placeholder { color: var(--disabled-ink); opacity:
 .choices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
 .choices.c3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .choices.c4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.offices { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); grid-auto-rows: 1fr; gap: 10px; }
 .choice { position: relative; min-width: 0; }
 .choice input { position: absolute; opacity: 0; inset: 0; margin: 0; }
 .choice label { display: grid; gap: 2px; height: 100%; box-sizing: border-box; border: 2px solid var(--line); border-radius: 10px; padding: 12px 14px; cursor: pointer; background: var(--field); }
@@ -132,8 +133,6 @@ input::placeholder, textarea::placeholder { color: var(--disabled-ink); opacity:
 .map-cap { font-size: 12px; color: var(--muted); background: var(--surface); padding: 2px 8px; border-radius: 4px; }
 @media (max-width: 560px) { .office-info { grid-template-columns: 1fr; } }
 .notes { margin: 0; padding-left: 1.2em; font-size: 13px; color: var(--muted); display: grid; gap: 2px; }
-.diag { background: var(--bg); border-radius: 10px; padding: 14px; display: grid; gap: 10px; }
-.diag .letter { display: inline-grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; color: #fff; font-weight: 900; font-size: 13px; margin-right: 6px; vertical-align: -5px; }
 
 .slots { display: grid; gap: 14px; }
 .slot { display: grid; grid-template-columns: 112px minmax(0, 1fr) 140px 64px; gap: 10px; align-items: center; }
@@ -220,7 +219,7 @@ details ul { margin: 8px 0 0; padding-left: 1.2em; display: grid; gap: 2px; colo
     <p class="hero-note">売るか決めていなくても大丈夫です。「価格を知りたい」だけでもお気軽に。</p>
     <ul class="badges"><li>査定<br>無料</li><li>秘密<br>厳守</li><li>相談<br>無料</li></ul>
     <div class="ways">
-      <div class="way"><span class="t">来店相談</span><span class="s">新森オフィスで、売却の進め方や相場をご説明します</span></div>
+      <div class="way"><span class="t">来店相談</span><span class="s">お近くのオフィス（新森・奈良・豊中・京都・神戸）で、売却の進め方や相場をご説明します</span></div>
       <div class="way"><span class="t">訪問査定</span><span class="s">ご自宅・物件に伺い、室内を拝見して査定します</span></div>
     </div>
     <h2 class="sec-title">ご予約フォーム</h2>
@@ -265,22 +264,27 @@ details ul { margin: 8px 0 0; padding-left: 1.2em; display: grid; gap: 2px; colo
         <fieldset class="field" id="fs-method">
           <legend class="label">ご希望の方法 <span class="req">必須</span></legend>
           <div class="choices">
-            <div class="choice"><input type="radio" name="method" id="m-visit" value="visit"><label for="m-visit"><span class="t">来店相談</span><span class="s">新森オフィスでご相談</span></label></div>
+            <div class="choice"><input type="radio" name="method" id="m-visit" value="visit"><label for="m-visit"><span class="t">来店相談</span><span class="s">お近くのオフィスでご相談</span></label></div>
             <div class="choice"><input type="radio" name="method" id="m-home" value="home"><label for="m-home"><span class="t">訪問査定</span><span class="s">ご自宅・物件に伺って査定（約1時間）</span></label></div>
           </div>
           <p class="err" id="err-method" hidden></p>
         </fieldset>
 
         <div class="sub" id="block-visit" hidden>
-          <div class="office-info" aria-live="polite">
+          <fieldset class="field">
+            <legend class="label">面談場所 <span class="req">必須</span></legend>
+            <div class="offices" id="offices"></div>
+            <p class="err" id="err-office" hidden></p>
+          </fieldset>
+          <div class="office-info" id="office-info" hidden aria-live="polite">
             <div class="office-text">
-              <p class="office-name">新森オフィス</p>
-              <p>〒535-0022 大阪府大阪市旭区新森6-3-25 エクセレント新森1階</p>
-              <p class="hint">Osaka Metro今里筋線「新森古市駅」より徒歩約5分<br>京阪本線「森小路駅」より徒歩約18分</p>
-              <p class="hint">TEL：06-6185-1252</p>
-              <a class="maplink" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A4%A7%E9%98%AA%E5%B8%82%E6%97%AD%E5%8C%BA%E6%96%B0%E6%A3%AE6-3-25" target="_blank" rel="noopener">Googleマップで開く</a>
+              <p class="office-name" id="oi-name"></p>
+              <p id="oi-addr"></p>
+              <p class="hint" id="oi-access"></p>
+              <p class="hint" id="oi-tel"></p>
+              <a class="maplink" id="oi-link" href="https://www.google.com/maps" target="_blank" rel="noopener">Googleマップで開く</a>
             </div>
-            <div class="map" role="img" aria-label="新森オフィスの地図（イメージ）">
+            <div class="map" role="img" id="oi-map" aria-label="店舗の地図（イメージ）">
               <svg viewBox="0 0 24 32" width="30" height="40" aria-hidden="true"><path d="M12 0C5.4 0 0 5.2 0 11.7 0 20.5 12 32 12 32s12-11.5 12-20.3C24 5.2 18.6 0 12 0z" fill="currentColor"/><circle cx="12" cy="11.5" r="4.5" fill="var(--surface)"/></svg>
               <span class="map-cap">地図エリア（本番ではGoogleマップを埋め込み）</span>
             </div>
@@ -333,16 +337,6 @@ details ul { margin: 8px 0 0; padding-left: 1.2em; display: grid; gap: 2px; colo
           </div>
         </fieldset>
 
-        <fieldset class="field diag">
-          <legend class="label">チラシの「売り時診断」の結果 <span class="opt">任意</span></legend>
-          <p class="hint">チラシの診断チャートをお試しいただいた方は、結果をお選びください。</p>
-          <div class="choices c4 small">
-            <div class="choice"><input type="radio" name="diag" id="d-a" value="A 今が検討どき"><label for="d-a"><span class="t"><span class="letter" style="background:#B04A12">A</span>今が検討どき</span></label></div>
-            <div class="choice"><input type="radio" name="diag" id="d-b" value="B 情報を集める時期"><label for="d-b"><span class="t"><span class="letter" style="background:#3E6582">B</span>情報収集</span></label></div>
-            <div class="choice"><input type="radio" name="diag" id="d-c" value="C 今はじっくり"><label for="d-c"><span class="t"><span class="letter" style="background:#1F3346">C</span>じっくり</span></label></div>
-            <div class="choice"><input type="radio" name="diag" id="d-none" value="未診断"><label for="d-none"><span class="t">試していない</span></label></div>
-          </div>
-        </fieldset>
       </section>
 
       <section class="step" aria-labelledby="h-3">
@@ -429,8 +423,8 @@ details ul { margin: 8px 0 0; padding-left: 1.2em; display: grid; gap: 2px; colo
       <ul>
         <li>導線：ポスティングチラシのQRコード → このフォーム（チラシごとにURL末尾を変えて、どのチラシから来たかを記録。例：?f=05）</li>
         <li>必須：お名前・電話番号・メールアドレス・ご希望の方法・物件の種類・所在地・第1希望日時・同意</li>
-        <li>ご希望の方法は「来店相談（新森オフィス）」「訪問査定」の2択。来店相談を選ぶと店舗の住所・最寄駅・地図を表示</li>
-        <li>ご相談のきっかけはチラシの「ご相談の例」7項目から複数選択、売り方（仲介・買取・未定）と売り時診断の結果は任意</li>
+        <li>ご希望の方法は「来店相談」「訪問査定」の2択。来店相談を選ぶと面談場所（新森・奈良・豊中・京都・神戸の5オフィス）が必須。オフィスを選ぶと住所・最寄駅・電話番号と地図を表示（クリスマスキャンペーン予約フォーム案と同じ）</li>
+        <li>ご相談のきっかけはチラシの「ご相談の例」7項目から複数選択、売り方（仲介・買取・未定）は任意</li>
         <li>日程はカレンダーから選択。明日〜2か月先、火・水は選択不可。時間は9:30〜17:00の30分刻み。第2・第3希望は任意、同じ日時の重複は不可</li>
         <li>本番化のときは、LPのお問い合わせフォームと同じ Google Apps Script でスプレッドシート記録＋通知メールにできます</li>
       </ul>
@@ -443,7 +437,23 @@ details ul { margin: 8px 0 0; padding-left: 1.2em; display: grid; gap: 2px; colo
 (function () {
   var $ = function (s) { return document.querySelector(s); };
   var CLOSED = [2, 3], WD = '日月火水木金土', RANGE_DAYS = 60;
-  var METHOD = { visit: '来店相談（新森オフィス）', home: '訪問査定' };
+  var METHOD = { visit: '来店相談', home: '訪問査定' };
+  // 面談場所（クリスマスキャンペーン予約フォーム案と同じ拠点情報）
+  var OFFICES = ['新森オフィス', '奈良オフィス', '豊中オフィス', '京都オフィス', '神戸オフィス'];
+  var OFFICE_SHORT = {
+    '新森オフィス': '新森古市駅 徒歩約5分',
+    '奈良オフィス': 'JR奈良駅 徒歩約3分',
+    '豊中オフィス': '服部天神駅 徒歩約4分',
+    '京都オフィス': '七条千本バス停 徒歩約6分',
+    '神戸オフィス': '甲南山手駅・深江駅 徒歩12分'
+  };
+  var OFFICE_INFO = {
+    '新森オフィス': { addr: '〒535-0022 大阪府大阪市旭区新森6-3-25 エクセレント新森1階', tel: '06-6185-1252', access: ['Osaka Metro今里筋線「新森古市駅」より徒歩約5分', '京阪本線「森小路駅」より徒歩約18分'], q: '大阪府大阪市旭区新森6-3-25' },
+    '奈良オフィス': { addr: '〒630-8244 奈良県奈良市三条町606-7 スクエア奈良三条1階', tel: '0742-94-4512', access: ['JR「奈良駅」より徒歩約3分', '近鉄奈良線「近鉄奈良駅」より徒歩約13分'], q: '奈良県奈良市三条町606-7' },
+    '豊中オフィス': { addr: '〒561-0852 大阪府豊中市服部本町1-2-8', tel: '06-4867-3014', access: ['阪急宝塚線「服部天神駅」より徒歩約4分'], q: '大阪府豊中市服部本町1-2-8' },
+    '京都オフィス': { addr: '〒600-8891 京都府京都市下京区西七条東八反田町33 パデシオン京都七条1階', tel: '075-925-5550', access: ['JR嵯峨野線「丹波口駅」「梅小路京都西駅」より徒歩約11分', '市バス・京阪京都交通バス「七条千本」停留所より徒歩約6分'], q: '京都府京都市下京区西七条東八反田町33' },
+    '神戸オフィス': { addr: '〒658-0016 兵庫県神戸市東灘区本山中町2丁目1-7 セリーヌ本山2階', tel: '078-891-9929', access: ['JR神戸線「甲南山手駅」より徒歩12分', 'JR神戸線「摂津本山駅」より徒歩13分', '阪神線「深江駅」より徒歩12分'], q: '兵庫県神戸市東灘区本山中町2丁目1-7' }
+  };
   var REASONS = [
     '住み替えで、今の家を売りたい',
     '実家の管理・固定資産税の負担をなくしたい（施設入居・ご逝去）',
@@ -454,7 +464,7 @@ details ul { margin: 8px 0 0; padding-left: 1.2em; display: grid; gap: 2px; colo
     '売るかどうか、まず金額を知りたい'
   ];
   // どのチラシのQRから来たか（URLの ?f=05 など）
-  var FLYERS = { '05': '05 雑誌風（住み替え）', '06': '06 紺の高級感（相続・空き家）', '10': '10 図解（売り時診断）', '29': '29 ミニマル（問いかけ）', '30': '30 数字を大きく', '00': '00 営業ラフ清書版' };
+  var FLYERS = { '05': '05 雑誌風（住み替え）', '06': '06 紺の高級感（相続・空き家）', '29': '29 ミニマル（問いかけ）', '30': '30 数字を大きく', '00': '00 営業ラフ清書版' };
   var srcMatch = location.search.match(/[?&]f=([\w-]+)/);
   var SRC = srcMatch ? (FLYERS[srcMatch[1]] || 'チラシ（' + srcMatch[1] + '）') : '';
   $('#src-note').textContent = SRC ? '今回の流入元：' + SRC : '今回の流入元：URLにチラシの指定なし（例：このページのURLの末尾に ?f=05 を付けると「05 雑誌風」として記録）';
@@ -463,6 +473,24 @@ details ul { margin: 8px 0 0; padding-left: 1.2em; display: grid; gap: 2px; colo
   REASONS.forEach(function (r, i) {
     $('#reasons').insertAdjacentHTML('beforeend', '<div class="check"><input type="checkbox" id="r-' + i + '" value="' + esc(r) + '"><label for="r-' + i + '">' + esc(r) + '</label></div>');
   });
+
+  // 面談場所の選択肢と、選んだオフィスの住所・地図
+  OFFICES.forEach(function (o, i) {
+    $('#offices').insertAdjacentHTML('beforeend',
+      '<div class="choice"><input type="radio" name="office" id="office-' + i + '" value="' + o + '"><label for="office-' + i + '"><span class="t">' + o + '</span><span class="s">' + OFFICE_SHORT[o] + '</span></label></div>');
+  });
+  function showOffice(name) {
+    var info = OFFICE_INFO[name], box = $('#office-info');
+    if (!info) { box.hidden = true; return; }
+    $('#oi-name').textContent = name;
+    $('#oi-addr').textContent = info.addr;
+    $('#oi-access').innerHTML = info.access.map(function (a) { return esc(a); }).join('<br>');
+    $('#oi-tel').textContent = 'TEL：' + info.tel;
+    $('#oi-link').href = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(info.q);
+    $('#oi-map').setAttribute('aria-label', name + 'の地図（イメージ）');
+    box.hidden = false;
+  }
+  document.querySelectorAll('input[name=office]').forEach(function (r) { r.addEventListener('change', function () { clearErr('office'); showOffice(r.value); }); });
 
   var TIMES = [];
   for (var h = 9; h <= 17; h++) { if (h > 9) TIMES.push(h + ':00'); if (h < 17) TIMES.push(h + ':30'); }
@@ -550,7 +578,7 @@ details ul { margin: 8px 0 0; padding-left: 1.2em; display: grid; gap: 2px; colo
   function clearErr(id) { setErr(id, ''); }
   ['name', 'tel', 'email', 'address'].forEach(function (id) { $('#' + id).addEventListener('input', function () { clearErr(id); }); });
   $('#consent').addEventListener('change', function () { clearErr('consent'); });
-  var ALL = ['name', 'tel', 'email', 'method', 'ptype', 'address', 'slot-1', 'slot-2', 'slot-3', 'consent'];
+  var ALL = ['name', 'tel', 'email', 'method', 'office', 'ptype', 'address', 'slot-1', 'slot-2', 'slot-3', 'consent'];
 
   function normTel(s) {
     return s.replace(/[０-９]/g, function (c) { return String.fromCharCode(c.charCodeAt(0) - 0xFEE0); }).replace(/[-‐ー－−\s]/g, '');
@@ -567,6 +595,8 @@ details ul { margin: 8px 0 0; padding-left: 1.2em; display: grid; gap: 2px; colo
     if (!em) bad('email', 'メールアドレスを入力してください。');
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) bad('email', 'メールアドレスの形式を確認してください（例：name@example.com）。');
     if (!method()) bad('method', 'ご希望の方法を選んでください。');
+    var off = document.querySelector('input[name=office]:checked');
+    if (method() === 'visit' && !off) bad('office', '面談場所を選んでください。');
     if (!radio('ptype')) bad('ptype', '物件の種類を選んでください。');
     if (!$('#address').value.trim()) bad('address', method() === 'home' ? '伺う物件の所在地を入力してください。' : '物件の所在地を入力してください（町名までで大丈夫です）。');
     var keys = [];
@@ -591,14 +621,17 @@ details ul { margin: 8px 0 0; padding-left: 1.2em; display: grid; gap: 2px; colo
     rows.push(['メールアドレス', $('#email').value.trim()]);
     if ($('#calltime').value) rows.push(['つながりやすい時間帯', $('#calltime').value]);
     rows.push(['ご希望の方法', METHOD[method()]]);
-    if (method() === 'visit') rows.push(['店舗の住所', '〒535-0022 大阪府大阪市旭区新森6-3-25 エクセレント新森1階']);
+    if (method() === 'visit') {
+      var on = document.querySelector('input[name=office]:checked').value;
+      rows.push(['面談場所', on]);
+      rows.push(['オフィスの住所', OFFICE_INFO[on].addr]);
+    }
     rows.push(['物件の種類', radio('ptype')]);
     rows.push(['物件の所在地', $('#address').value.trim()]);
     if ($('#pinfo').value.trim()) rows.push(['広さ・築年数など', $('#pinfo').value.trim()]);
     var rs = [].slice.call(document.querySelectorAll('#reasons input:checked')).map(function (x) { return x.value; });
     if (rs.length) rows.push(['ご相談のきっかけ', rs.join(' ／ ')]);
     if (radio('way')) rows.push(['売り方のご希望', radio('way')]);
-    if (radio('diag')) rows.push(['売り時診断の結果', radio('diag')]);
     for (var i = 1; i <= 3; i++) {
       var d = slots[i - 1].date, t = $('#time-' + i).value;
       if (d && t) rows.push(['第' + i + '希望', fmt(d) + ' ' + t]);
@@ -636,13 +669,13 @@ details ul { margin: 8px 0 0; padding-left: 1.2em; display: grid; gap: 2px; colo
     $('#tel').value = '090-1234-5678';
     $('#email').value = 'sample@example.com';
     $('#calltime').value = '12:00〜15:00';
-    $('#m-home').checked = true; updateMethod();
+    $('#m-visit').checked = true; updateMethod();
+    $('#office-1').checked = true; showOffice('奈良オフィス');
     $('#t-house').checked = true;
     $('#address').value = '大阪市旭区新森（サンプル）';
     $('#pinfo').value = '4LDK・約100㎡・築22年';
     $('#r-0').checked = true; $('#r-6').checked = true;
     $('#w-undecided').checked = true;
-    $('#d-a').checked = true;
     var ds = [], dt = new Date(MIN);
     while (ds.length < 2 && dt <= MAX) { if (avail(dt)) ds.push(new Date(dt)); dt.setDate(dt.getDate() + 1); }
     if (ds[0]) { setDate(1, ds[0]); $('#time-1').value = '10:00'; }
