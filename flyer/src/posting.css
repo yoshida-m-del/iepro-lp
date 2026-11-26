@@ -1,0 +1,471 @@
+/* =========================================================
+   ポスティングチラシ候補5案（posting.html 用。flyer.css の上に重ねる）
+   内容は5案共通。.d05〜.d30 ごとにレイアウト・配色・見せ方を変える。
+   ========================================================= */
+/* ---------- 共通 ---------- */
+.kari{font-size:6.2pt;letter-spacing:.04em;color:#8A949E;line-height:1.5}
+.qr{gap:1mm}
+.qr p{font-size:6.4pt;line-height:1.35}
+.qrph{width:20mm;height:20mm;background:#fff;display:grid;place-items:center;text-align:center;font-size:6pt;line-height:1.4;color:#8A949E;border:.3mm dashed #B8BEC4}
+.one-page .sheet{display:none}
+.one-page .sheet.show{display:block}
+em{font-style:normal;color:var(--accent)}
+.hero{position:absolute}
+.plane{position:absolute}
+.strip{top:14mm;display:flex;align-items:center;gap:3mm}
+.strip img{height:8mm;width:auto}
+.strip p{font-size:6.6pt;line-height:1.45;letter-spacing:.06em;color:var(--ink-sub);border-left:.3mm solid var(--line);padding-left:3mm}
+.types{display:grid;grid-template-columns:1fr 1fr;gap:1.8mm}
+.types div{display:flex;align-items:center;gap:1.8mm;padding:2.2mm 2mm;background:#fff}
+.types svg{width:7.5mm;height:7.5mm;flex:none;fill:none;stroke:var(--navy);stroke-width:1.3;stroke-linejoin:round;stroke-linecap:round}
+.types span{font-family:var(--f-mincho);font-weight:600;font-size:8.8pt;letter-spacing:.02em;white-space:nowrap}
+.cons li{display:flex;gap:1.8mm;font-size:7.6pt;line-height:1.5;letter-spacing:.03em;padding:.55mm 0;border-bottom:.2mm dashed var(--line)}
+.cons li::before{content:"✓";color:var(--accent);font-weight:700;flex:none}
+.ask h2{font-size:14pt;line-height:1.45;letter-spacing:.05em}
+.ask .sub{font-size:7.2pt;color:var(--ink-sub);margin-top:1.2mm;letter-spacing:.03em}
+.ways{display:grid;grid-template-columns:1fr 1fr auto;gap:3mm;margin-top:3mm;align-items:stretch}
+.ways .w0,.ways .w1{padding:2.4mm 3.6mm}
+.ways .who{font-size:7pt;letter-spacing:.04em}
+.ways h3{font-family:var(--f-mincho);font-weight:700;font-size:14pt;letter-spacing:.12em;margin-top:.6mm}
+.wl{font-size:7.4pt;color:var(--ink-sub);letter-spacing:.03em;line-height:1.6}
+.wl b{font-family:var(--f-mincho);font-weight:600;font-size:11pt;color:var(--ink);margin-right:3mm;letter-spacing:.06em}
+.badges{display:flex;gap:1.6mm;align-items:center}
+.badges span{width:15mm;height:15mm;border-radius:50%;display:grid;place-items:center;text-align:center;font-family:var(--f-mincho);font-weight:700;font-size:7.8pt;line-height:1.3;letter-spacing:.08em}
+.tel .no{font-size:25pt}
+.msg{font-family:var(--f-mincho);font-weight:600;font-size:10pt;letter-spacing:.06em}
+.hours{font-size:7pt;margin-top:.6mm;letter-spacing:.04em}
+.gh{font-size:6.4pt;margin-top:.8mm;letter-spacing:.03em}
+.fc{position:absolute;left:0;right:0;top:240mm;bottom:0}
+.fc .main{top:5mm;display:flex;justify-content:space-between;align-items:flex-start;gap:6mm}
+.company{top:34mm;padding-top:2.4mm;border-top:.3mm solid var(--line-dark)}
+.company .logo{height:9mm}
+.seal{position:absolute;border-radius:50%;display:grid;place-items:center;text-align:center;font-family:var(--f-mincho);font-weight:600;font-size:7.6pt;line-height:1.45;letter-spacing:.04em;z-index:2}
+.chart{display:block;width:100%;height:27mm;margin-top:1.2mm}
+.ct{font-size:7.3pt;font-weight:700;letter-spacing:.04em;line-height:1.5}
+.loan .lr{display:flex;align-items:center;justify-content:space-between;margin-top:3mm}
+.loan .r{font-size:7pt;color:var(--ink-sub);letter-spacing:.04em}
+.loan .a{font-family:var(--f-mincho);font-weight:600;font-size:9pt;white-space:nowrap}
+.loan .a .num{font-size:19pt;margin-right:.6mm}
+.loan .arr{color:var(--accent);font-size:13pt}
+.loan .diff{margin-top:3mm;text-align:center;padding:1.6mm 2mm;font-family:var(--f-mincho);font-weight:600;font-size:9pt;letter-spacing:.04em}
+.loan .diff .num{font-size:18pt;margin:0 1mm}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:4mm}
+.g2 .who{font-size:6.8pt;letter-spacing:.04em}
+.g2 h3{font-family:var(--f-mincho);font-weight:600;font-feature-settings:"palt";font-size:10.5pt;letter-spacing:.06em;margin-top:.8mm}
+.g2 .t{font-size:7pt;line-height:1.65;margin-top:.8mm}
+.cta .main{display:flex;align-items:flex-start;gap:5mm}
+.cta .main>div:first-child{flex:1;min-width:0}
+
+/* =========================================================
+   05 雑誌風：生成り地、右に大きな写真、2段組。裏は左に縦の流れ、右にグラフ
+   ========================================================= */
+.d05 .hero h1{font-size:18.5pt;line-height:1.5;margin-top:3mm}
+.d05 .rooms{display:grid;grid-template-columns:1fr 1fr;gap:1.6mm;margin-top:4.5mm}
+.d05 .rooms span{background:var(--bg-alt);color:#9AA2AA;padding:1.8mm 2.4mm;font-family:var(--f-mincho);font-weight:600;font-size:8pt;letter-spacing:.04em}
+.d05 .rooms span.on{background:#fff;color:var(--ink);border-top:.6mm solid var(--blue)}
+.d05 .rooms b{display:block;font-family:var(--f-gothic);font-size:6.6pt;font-weight:700;margin-top:.4mm}
+.d05 .rooms span.on b{color:var(--blue)}
+.d05 .boshu{position:absolute;left:0;top:122mm;width:100mm;height:32mm;background:var(--navy);padding:0 6mm 0 var(--safe);display:flex;flex-direction:column;justify-content:center}
+.d05 .boshu .ar{font-family:var(--f-mincho);font-weight:600;font-size:9.6pt;color:var(--accent-light);letter-spacing:.08em}
+.d05 .boshu .bt{font-family:var(--f-mincho);font-weight:700;font-size:15pt;line-height:1.3;letter-spacing:.08em;color:#fff;margin-top:1.4mm}
+.d05 .seal{left:168mm;top:117mm;width:28mm;height:28mm;background:var(--accent);border:.6mm solid #fff;color:#fff}
+.d05 .mid{display:grid;grid-template-columns:76mm 1fr;gap:8mm}
+.d05 .ttl{font-family:var(--f-mincho);font-weight:600;font-size:9.6pt;letter-spacing:.06em;color:var(--navy);border-bottom:.3mm solid var(--line);padding-bottom:1.4mm;margin-bottom:2.2mm}
+.d05 .ask h2{font-size:13.5pt}
+.d05 .ask em{background:linear-gradient(transparent 62%,rgba(232,165,124,.5) 62%);color:inherit}
+.d05 .ways .w0{background:#fff;border-top:.8mm solid var(--blue)}
+.d05 .ways .w1{background:#fff;border-top:.8mm solid var(--accent)}
+.d05 .ways .who,.d05 .g2 .who,.d05 .g2 .t{color:var(--ink-sub)}
+.d05 .badges span{background:#fff;border:.4mm solid var(--accent);color:var(--navy)}
+.d05 .fc{background:var(--plane)}
+.d05 .fc .msg,.d05 .fc .tel .no{color:var(--navy)}
+.d05 .fc .tel .t{color:var(--accent)}
+.d05 .fc .hours,.d05 .fc .gh,.d05 .fc .qr p{color:var(--ink-sub)}
+.d05 .fc .company{border-top-color:rgba(31,51,70,.2)}
+.d05 .fc .company .info{color:var(--ink-sub)}
+.d05 .fc .company .info b{color:var(--ink)}
+.d05 .head h2{font-size:15.5pt;line-height:1.45;margin-top:2.6mm;letter-spacing:.05em}
+.d05 .tl{counter-reset:c}
+.d05 .tl li{position:relative;padding:0 0 4.4mm 10mm}
+.d05 .tl li::before{counter-increment:c;content:counter(c);position:absolute;left:0;top:0;width:6.5mm;height:6.5mm;border-radius:50%;background:var(--navy);color:#fff;font-family:var(--f-latin);font-size:10pt;display:grid;place-items:center;line-height:1}
+.d05 .tl li:last-child::before{background:var(--accent)}
+.d05 .tl li::after{content:"";position:absolute;left:3.1mm;top:7.4mm;bottom:.8mm;width:.3mm;background:var(--line)}
+.d05 .tl li:last-child::after{display:none}
+.d05 .tl b{display:block;font-family:var(--f-mincho);font-weight:600;font-size:11.5pt;letter-spacing:.05em;line-height:1.4}
+.d05 .tl li:last-child b{color:var(--accent)}
+.d05 .tl span{display:block;font-size:7.4pt;line-height:1.65;color:var(--ink-sub);margin-top:.8mm}
+.d05 .rcol{display:flex;flex-direction:column;gap:3mm}
+.d05 .box{background:#fff;padding:3mm 4mm}
+.d05 .ct{color:var(--navy)}
+.d05 .loan .a .num{color:var(--navy)}
+.d05 .loan .diff{background:var(--navy);color:#fff}
+.d05 .loan .diff .num{color:var(--accent-light)}
+.d05 .pat .ttl{border-bottom:none;display:flex;align-items:center;gap:2.4mm;margin-bottom:2mm;font-size:10.5pt}
+.d05 .pat .ttl::before{content:"";width:6mm;height:.3mm;background:var(--accent)}
+.d05 .g2>div{background:#fff;border-top:.8mm solid var(--blue);padding:2.6mm 3.6mm 3mm}
+.d05 .g2 .p1{border-top-color:var(--accent)}
+.d05 .ctah h2{text-align:center;font-size:19pt;letter-spacing:.08em}
+.d05.bk .fc .main{top:7mm}
+
+/* =========================================================
+   06 紺の高級感：表は全面紺＋金の線。裏は上部紺、中段は生成りのカード
+   ========================================================= */
+.d06{--gold:#D9B77A}
+.d06.fr{background:var(--navy-deep);color:#fff}
+.d06 .shade{position:absolute;left:0;top:0;width:216mm;height:130mm;background:linear-gradient(180deg,rgba(24,42,58,.45) 0%,rgba(24,42,58,.15) 28%,rgba(24,42,58,.8) 70%,var(--navy-deep) 100%),linear-gradient(90deg,rgba(24,42,58,.75),rgba(24,42,58,0) 70%)}
+.d06 .strip p{color:#E3E8ED;border-left-color:var(--line-dark)}
+.d06 .label{color:var(--gold)}
+.d06 .hero h1{font-size:24pt;line-height:1.45;margin-top:3mm;color:#fff}
+.d06 .hero .lead{font-size:8.4pt;line-height:1.9;color:#E3E8ED;margin-top:3mm;letter-spacing:.04em}
+.d06 .boshu{text-align:center}
+.d06 .boshu .ar{font-family:var(--f-mincho);font-weight:600;font-size:9.6pt;color:var(--gold);letter-spacing:.2em}
+.d06 .boshu .bt{font-family:var(--f-mincho);font-weight:700;font-size:21pt;letter-spacing:.14em;display:flex;align-items:center;justify-content:center;gap:5mm;margin-top:.8mm}
+.d06 .boshu .bt::before,.d06 .boshu .bt::after{content:"";width:22mm;height:.3mm;background:var(--gold)}
+.d06 .seal{right:13mm;top:100mm;width:27mm;height:27mm;background:rgba(24,42,58,.88);border:.4mm solid var(--gold);color:var(--gold)}
+.d06 .types{grid-template-columns:repeat(4,1fr);gap:2.4mm}
+.d06 .types div{background:transparent;border:.3mm solid rgba(217,183,122,.6);justify-content:center;padding:2.4mm}
+.d06 .types svg{stroke:var(--gold)}
+.d06 .types span{color:#fff}
+.d06 .consw .ttl{text-align:center;font-family:var(--f-mincho);font-weight:600;font-size:9.6pt;color:var(--gold);letter-spacing:.1em}
+.d06 .cons{columns:2;column-gap:6mm;margin-top:2mm}
+.d06 .cons li{break-inside:avoid;color:#E3E8ED;border-bottom-color:rgba(255,255,255,.15);font-size:7.3pt}
+.d06 .cons li::before{color:var(--gold)}
+.d06 .ask{text-align:center}
+.d06 .ask h2{color:#fff}
+.d06 .ask em{color:var(--gold)}
+.d06 .ask .sub{color:#C9D2DB}
+.d06 .wl{color:#C9D2DB}
+.d06 .wl b{color:var(--gold)}
+.d06 .ways{text-align:left}
+.d06 .ways .w0,.d06 .ways .w1{background:rgba(255,255,255,.06);border:.3mm solid rgba(217,183,122,.6)}
+.d06 .ways .who{color:#C9D2DB}
+.d06 .badges span{border:.3mm solid var(--gold);color:#fff}
+.d06 .fc{background:var(--navy)}
+.d06 .fc .msg,.d06 .fc .tel .no{color:#fff}
+.d06 .tel .t{color:var(--gold)}
+.d06 .fc .hours,.d06 .fc .qr p,.d06 .cta .hours,.d06 .cta .gh,.d06 .cta .qr p{color:#C9D2DB}
+.d06 .bkh{position:absolute;left:0;top:0;width:216mm;height:68mm;background:var(--navy-deep)}
+.d06.bk .head h2{font-size:15.5pt;line-height:1.45;margin-top:2.6mm;letter-spacing:.05em;color:#fff}
+.d06.bk .head em{color:var(--gold)}
+.d06 .chain{display:grid;grid-template-columns:repeat(4,1fr);gap:4mm}
+.d06 .chain li{border-left:.4mm solid var(--gold);padding:.6mm 0 .6mm 3mm}
+.d06 .chain b{display:block;font-family:var(--f-mincho);font-weight:600;font-size:10.5pt;color:#fff;letter-spacing:.05em}
+.d06 .chain li:last-child b{color:var(--gold)}
+.d06 .chain span{display:block;font-size:7pt;color:#C9D2DB;line-height:1.6;margin-top:.8mm}
+.d06 .rg{display:grid;grid-template-columns:1fr 1fr;gap:5mm}
+.d06 .box{background:#fff;border-top:.8mm solid var(--gold);padding:3mm 4mm}
+.d06 .ct{color:var(--navy)}
+.d06 .loan .a .num{color:var(--navy)}
+.d06 .loan .diff{background:var(--navy-deep);color:#fff}
+.d06 .loan .diff .num{color:var(--gold)}
+.d06 .pat .ttl{font-family:var(--f-mincho);font-weight:600;font-size:10.5pt;letter-spacing:.06em;color:var(--navy);display:flex;align-items:center;gap:2.4mm;margin-bottom:2mm}
+.d06 .pat .ttl::before{content:"";width:6mm;height:.3mm;background:var(--gold)}
+.d06 .g2>div{background:#fff;border-left:.8mm solid var(--gold);padding:2.6mm 3.6mm 3mm}
+.d06 .g2 .who,.d06 .g2 .t{color:var(--ink-sub)}
+.d06 .cta{position:absolute;left:0;right:0;top:176mm;bottom:0;background:var(--navy-deep);color:#fff}
+.d06 .cta .ctah{top:13mm;text-align:center}
+.d06 .cta .ctah h2{font-size:18pt;letter-spacing:.08em}
+.d06 .cta em{color:var(--gold)}
+.d06 .cta .main{top:31mm}
+.d06 .cta .tel .no{color:#fff}
+.d06 .cta .company{top:70mm}
+
+/* =========================================================
+   10 図解：白地×青。角丸の囲み・タブ・矢印で情報を整理
+   ========================================================= */
+.sheet.d10{background:#fff}
+.d10 .ban{position:absolute;left:0;top:0;width:216mm;height:38mm;background:var(--blue)}
+.d10 .ban .pad{top:13mm;display:flex;justify-content:space-between;align-items:center}
+.d10 .ban .strip p{color:#E3E8ED;border-left-color:rgba(255,255,255,.35)}
+.d10 .bs{text-align:right;color:#fff}
+.d10 .bs .ar{font-family:var(--f-mincho);font-weight:600;font-size:8.6pt;letter-spacing:.1em;opacity:.9}
+.d10 .bs .bt{font-family:var(--f-mincho);font-weight:700;font-size:17pt;letter-spacing:.1em}
+.d10 .hero h1{font-size:17pt;margin-top:2.4mm;color:var(--navy)}
+.d10 .chart10{position:absolute;left:var(--safe);right:var(--safe);top:59mm;height:45mm}
+.d10 .chart10 svg{width:100%;height:100%}
+.d10 .res10{display:grid;grid-template-columns:repeat(3,1fr);gap:3mm}
+.d10 .res10>div{border:.5mm solid var(--blue);border-top-width:1.6mm;border-radius:2.4mm;padding:2mm 3mm 2.2mm;background:#fff}
+.d10 .res10 .ra{border-color:var(--accent)}
+.d10 .res10 .rc{border-color:var(--navy)}
+.d10 .res10 .rh{font-family:var(--f-mincho);font-weight:600;font-size:9.6pt;letter-spacing:.04em;display:flex;align-items:center;gap:1.6mm}
+.d10 .res10 .rh i{display:inline-grid;place-items:center;width:5.4mm;height:5.4mm;border-radius:50%;color:#fff;font-style:normal;font-family:var(--f-latin);font-size:9pt;background:var(--blue)}
+.d10 .res10 .ra .rh i{background:var(--accent)}
+.d10 .res10 .rc .rh i{background:var(--navy)}
+.d10 .res10 .rt{font-size:6.6pt;line-height:1.55;color:var(--ink-sub);margin-top:1mm}
+.d10 .res10 .go{font-size:6.4pt;color:var(--ink-sub);margin-top:1.2mm;padding-top:1.2mm;border-top:.2mm dashed #DCE5EC;letter-spacing:.06em}
+.d10 .res10 .go b{font-family:var(--f-mincho);font-weight:600;font-size:9pt;color:var(--blue);margin-left:2mm}
+.d10 .res10 .ra .go b{color:var(--accent)}
+.d10 .resn{font-size:7pt;color:var(--ink-sub);text-align:center;letter-spacing:.03em}
+.d10 .resn b{color:var(--ink)}
+.d10 .legend{display:flex;justify-content:center;gap:7mm;font-family:var(--f-mincho);font-weight:600;font-size:8pt;letter-spacing:.04em}
+.d10 .legend i{display:inline-grid;place-items:center;width:5mm;height:5mm;border-radius:50%;color:#fff;font-style:normal;font-family:var(--f-latin);font-size:8pt;margin-right:1.6mm;vertical-align:-.6mm}
+.d10 .seal{right:13mm;top:43mm;width:26mm;height:26mm;background:var(--accent);color:#fff}
+.d10 .mid{display:grid;grid-template-columns:78mm 1fr;gap:5mm}
+.d10 .rbox{position:relative;border:.6mm solid var(--blue);border-radius:3mm;padding:6mm 4mm 3mm}
+.d10 .tab{position:absolute;left:4mm;top:-3mm;background:var(--blue);color:#fff;font-family:var(--f-mincho);font-weight:600;font-size:8.6pt;padding:.8mm 3mm;border-radius:99px;letter-spacing:.06em;line-height:1.4}
+.d10 .types div{background:#EEF3F7;border-radius:2mm}
+.d10 .types svg{stroke:var(--blue)}
+.d10 .cons li{border-bottom-color:#DCE5EC}
+.d10 .ask{border:.8mm solid var(--accent);border-radius:4mm;padding:3.4mm 5mm;text-align:center}
+.d10 .ask h2{font-size:13.5pt;color:var(--navy)}
+.d10 .ways{grid-template-columns:1fr 9mm 1fr;align-items:center}
+.d10 .ways .w0,.d10 .ways .w1{background:#EEF3F7;border-radius:2mm}
+.d10 .ways .w1{background:#FBEDE4}
+.d10 .ways .who{color:var(--ink-sub)}
+.d10 .ways .or{width:9mm;height:9mm;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;font-family:var(--f-latin);font-style:italic;font-size:10pt}
+.d10 .ask .badges{justify-content:center;margin-top:2.6mm}
+.d10 .ask .badges span{width:auto;height:auto;border-radius:99px;padding:1.2mm 4mm;background:var(--blue);color:#fff}
+.d10 .ask .badges br{display:none}
+.d10 .fc{top:237mm;background:#fff;border-top:1.6mm solid var(--blue)}
+.d10 .fc .msg{color:var(--navy)}
+.d10 .fc .tel .no{color:var(--blue)}
+.d10 .fc .tel .t{color:var(--accent)}
+.d10 .fc .hours,.d10 .fc .qr p{color:var(--ink-sub)}
+.d10 .fc .company{top:34mm;border-top-color:#DCE5EC}
+.d10 .fc .company .info{color:var(--ink-sub)}
+.d10 .fc .company .info b{color:var(--ink)}
+.d10 .head h2{font-size:15.5pt;line-height:1.45;margin-top:2.6mm;letter-spacing:.05em;color:var(--navy)}
+.d10 .chain{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2mm}
+.d10 .chain li{clip-path:polygon(0 0,90% 0,100% 50%,90% 100%,0 100%,10% 50%);padding:3mm 7mm 3mm 8.5mm;color:#fff;min-height:23mm}
+.d10 .chain li:first-child{clip-path:polygon(0 0,90% 0,100% 50%,90% 100%,0 100%);padding-left:4mm}
+.d10 .chain li:nth-child(1){background:#7494AC}
+.d10 .chain li:nth-child(2){background:#3E6582}
+.d10 .chain li:nth-child(3){background:#2A4A64}
+.d10 .chain li:nth-child(4){background:var(--accent)}
+.d10 .chain b{display:block;font-family:var(--f-mincho);font-weight:600;font-size:10pt;letter-spacing:.04em}
+.d10 .chain span{display:block;font-size:6.6pt;line-height:1.5;margin-top:.8mm;opacity:.95}
+.d10 .rg{display:grid;grid-template-columns:1.1fr 1fr;gap:5mm}
+.d10 .rg .chart{height:30mm}
+.d10 .loan .a .num{color:var(--blue)}
+.d10 .loan .diff{background:var(--accent);color:#fff;border-radius:2mm}
+.d10 .pat .tab{position:static;display:inline-block;margin-bottom:2.6mm}
+.d10 .g2>div{border:.6mm solid var(--blue);border-radius:3mm;padding:3mm 4mm}
+.d10 .g2 .p1{border-color:var(--accent)}
+.d10 .g2 .who{color:var(--blue);font-weight:700}
+.d10 .g2 .p1 .who{color:var(--accent)}
+.d10 .g2 .t{color:var(--ink-sub)}
+.d10 .cta{position:absolute;left:0;right:0;top:184mm;bottom:0;background:var(--blue);color:#fff}
+.d10 .cta .ctah{top:11mm;text-align:center}
+.d10 .cta .ctah h2{font-size:18pt;letter-spacing:.08em}
+.d10 .cta em{color:#FFD9C2}
+.d10 .cta .main{top:28mm}
+.d10 .cta .tel .no{color:#fff}
+.d10 .cta .tel .t{color:#FFD9C2}
+.d10 .cta .hours,.d10 .cta .gh,.d10 .cta .qr p{color:#E3E8ED}
+.d10 .cta .badges span{background:#fff;color:var(--blue)}
+.d10 .cta .company{top:66mm;border-top-color:rgba(255,255,255,.3)}
+.d10 .cta .company .info{color:#E3E8ED}
+
+/* =========================================================
+   29 ミニマル：白地、縦書きの問いかけ、塗りの箱を使わず罫線だけで構成
+   ========================================================= */
+.sheet.d29{background:#FBFAF7}
+.d29 .vq{position:absolute;right:22mm;top:30mm;writing-mode:vertical-rl;font-family:var(--f-mincho);font-weight:600;font-size:19pt;letter-spacing:.2em;line-height:1.2;color:var(--ink);margin:0}
+.d29 .vrule{position:absolute;right:15mm;top:30mm;width:.3mm;height:22mm;background:var(--accent)}
+.d29 .lead29 .ar{font-size:8.6pt;letter-spacing:.24em;color:var(--accent)}
+.d29 .lead29 .bt{font-family:var(--f-mincho);font-weight:700;font-size:24pt;line-height:1.35;letter-spacing:.12em;margin-top:3mm}
+.d29 .poem{margin-top:9mm}
+.d29 .poem p{font-family:var(--f-mincho);font-weight:600;font-feature-settings:"palt";font-size:9.6pt;line-height:2.2;letter-spacing:.08em}
+.d29 .sealt{margin-top:6mm;font-size:7.2pt;letter-spacing:.16em;color:var(--ink-sub);border-top:.2mm solid var(--line);padding-top:2mm;display:inline-block}
+.d29 .rows{border-top:.3mm solid var(--ink)}
+.d29 .row{display:grid;grid-template-columns:28mm 1fr;gap:5mm;padding:2.6mm 0;border-bottom:.2mm solid #D9D5CD;align-items:baseline}
+.d29 .row .k{font-family:var(--f-mincho);font-weight:600;font-size:8pt;letter-spacing:.1em;color:var(--ink-sub);line-height:1.5}
+.d29 .tp{font-family:var(--f-mincho);font-weight:600;font-size:11pt;letter-spacing:.14em}
+.d29 .tp i{font-style:normal;color:var(--accent);margin:0 2.4mm}
+.d29 .cons{columns:2;column-gap:5mm}
+.d29 .cons li{break-inside:avoid;border:none;padding:.3mm 0;font-size:7.3pt}
+.d29 .cons li::before{content:"・"}
+.d29 .ways{display:flex;gap:10mm;margin:0}
+.d29 .ways .w0,.d29 .ways .w1{padding:0}
+.d29 .ways .who{color:var(--ink-sub)}
+.d29 .ways h3{font-size:12.5pt}
+.d29 .row h2{font-size:11.5pt;line-height:1.45;letter-spacing:.05em}
+.d29 .row .sub{font-size:7pt;color:var(--ink-sub);margin-top:.8mm}
+.d29 .badges span{width:auto;height:auto;border-radius:0;border:.3mm solid var(--ink);padding:1mm 3.4mm;color:var(--ink)}
+.d29 .badges br{display:none}
+.d29 .contact{display:flex;align-items:center;justify-content:space-between;gap:6mm;border-top:.3mm solid var(--ink);padding-top:4mm}
+.d29 .contact .tel .no{color:var(--ink);font-size:26pt}
+.d29 .contact .hours,.d29 .contact .gh,.d29 .qr p{color:var(--ink-sub)}
+.d29 .contact .badges{margin-top:2mm}
+.d29 .co{display:flex;align-items:center;gap:5mm}
+.d29 .co .logo{height:7mm}
+.d29 .co .info{font-size:6.4pt;color:var(--ink-sub);line-height:1.7;letter-spacing:.04em}
+.d29 .co .info b{color:var(--ink)}
+.d29 .head h2{font-size:15pt;line-height:1.45;margin-top:2.6mm;letter-spacing:.05em}
+.d29 .chain{border-top:.3mm solid var(--ink);counter-reset:c}
+.d29 .chain li{display:grid;grid-template-columns:14mm 42mm 1fr;align-items:baseline;padding:2.8mm 0;border-bottom:.2mm solid #D9D5CD}
+.d29 .chain li::before{counter-increment:c;content:"0" counter(c);font-family:var(--f-latin);font-style:italic;font-size:14pt;color:var(--accent);line-height:1}
+.d29 .chain b{font-family:var(--f-mincho);font-weight:600;font-size:11pt;letter-spacing:.05em}
+.d29 .chain span{font-size:7.6pt;color:var(--ink-sub);letter-spacing:.03em}
+.d29 .rg{display:grid;grid-template-columns:1fr 1fr}
+.d29 .rg>div:first-child{padding-right:6mm;border-right:.2mm solid #D9D5CD}
+.d29 .rg>div:last-child{padding-left:6mm}
+.d29 .ct{color:var(--ink-sub);font-weight:500;letter-spacing:.08em}
+.d29 .loan .diff{background:none;color:var(--ink);border-top:.3mm solid var(--accent);border-bottom:.3mm solid var(--accent)}
+.d29 .loan .diff .num{color:var(--accent)}
+.d29 .pat .ct{margin-bottom:2.4mm}
+.d29 .g2{gap:0}
+.d29 .g2>div:first-child{padding-right:6mm;border-right:.2mm solid #D9D5CD}
+.d29 .g2>div:last-child{padding-left:6mm}
+.d29 .g2 .who,.d29 .g2 .t{color:var(--ink-sub)}
+.d29.bk .contact{justify-content:flex-start;gap:12mm}
+.d29 .ctah h2{text-align:center;font-size:17pt;letter-spacing:.12em}
+
+/* =========================================================
+   30 数字を大きく：紺×オレンジの太い面と、大きな数字
+   ========================================================= */
+.d30 .top30{position:absolute;left:0;top:0;width:216mm;height:108mm;background:var(--navy)}
+.d30 .strip p{color:#E3E8ED;border-left-color:var(--line-dark)}
+.d30 .hero .label{color:var(--accent-light)}
+.d30 .hero h1{font-size:17pt;margin-top:2.6mm;color:#fff}
+.d30 .nums{display:grid;grid-template-columns:repeat(3,1fr);color:#fff}
+.d30 .nums>div{padding:0 4mm;border-left:.3mm solid var(--line-dark)}
+.d30 .nums>div:first-child{border-left:none;padding-left:0}
+.d30 .nums .big{display:flex;align-items:baseline;gap:1.6mm;white-space:nowrap}
+.d30 .nums .num{font-size:60pt}
+.d30 .nums .unit{font-size:11pt;color:var(--accent-light)}
+.d30 .nums .cap{font-family:var(--f-mincho);font-weight:600;font-size:8.4pt;line-height:1.5;margin-top:1.6mm}
+.d30 .band{position:absolute;left:0;right:0;top:108mm;height:22mm;background:var(--accent)}
+.d30 .band .pad{top:0;height:22mm;display:flex;align-items:center;gap:4mm;color:#fff}
+.d30 .band .ar{font-family:var(--f-mincho);font-weight:600;font-size:10.5pt;letter-spacing:.08em}
+.d30 .band .bt{font-family:var(--f-mincho);font-weight:700;font-size:22pt;letter-spacing:.1em}
+.d30 .seal{right:13mm;top:101mm;width:28mm;height:28mm;background:var(--navy);border:.6mm solid #fff;color:#fff}
+.d30 .mid{display:grid;grid-template-columns:64mm 1fr;gap:8mm}
+.d30 .cnt .n{font-family:var(--f-latin);font-weight:500;font-size:60pt;line-height:.9;color:var(--accent)}
+.d30 .cnt .nl{font-family:var(--f-mincho);font-weight:600;font-size:10pt;color:var(--navy);margin-top:1mm;letter-spacing:.06em}
+.d30 .cnt .types{margin-top:2.6mm}
+.d30 .types div{border-left:1mm solid var(--navy)}
+.d30 .ttl{font-family:var(--f-mincho);font-weight:600;font-size:10pt;letter-spacing:.06em;color:var(--navy);border-bottom:.6mm solid var(--navy);padding-bottom:1.4mm;margin-bottom:1.6mm}
+.d30 .ask h2{font-size:15pt}
+.d30 .ways .w0{background:var(--navy);color:#fff}
+.d30 .ways .w1{background:var(--accent);color:#fff}
+.d30 .ways .who{color:rgba(255,255,255,.8)}
+.d30 .badges span{border:.5mm solid var(--navy);color:var(--navy);background:#fff}
+.d30 .fc{background:#fff;border-top:1.6mm solid var(--navy)}
+.d30 .fc .msg{color:var(--navy)}
+.d30 .fc .tel .no{color:var(--navy);font-size:30pt}
+.d30 .fc .tel .t{color:var(--accent)}
+.d30 .fc .hours,.d30 .fc .qr p{color:var(--ink-sub)}
+.d30 .fc .company{border-top-color:var(--line)}
+.d30 .fc .company .info{color:var(--ink-sub)}
+.d30 .fc .company .info b{color:var(--ink)}
+.d30 .head h2{font-size:15pt;line-height:1.45;margin-top:2.6mm;letter-spacing:.05em}
+.d30 .b580{display:grid;grid-template-columns:auto 1fr;gap:7mm;align-items:center;background:var(--accent);color:#fff;padding:3mm 6mm}
+.d30 .b580 .big{font-family:var(--f-latin);font-weight:500;font-size:62pt;line-height:1;white-space:nowrap}
+.d30 .b580 .big small{font-family:var(--f-mincho);font-weight:600;font-size:12pt;margin:0 1mm}
+.d30 .b580 .cap{font-family:var(--f-mincho);font-weight:600;font-size:8.4pt;line-height:1.65;letter-spacing:.03em}
+.d30 .b580 .lr2{margin-top:2mm;font-size:7.6pt;display:flex;gap:3mm;align-items:baseline;white-space:nowrap}
+.d30 .b580 .lr2 b{font-family:var(--f-latin);font-size:16pt;font-weight:600}
+.d30 .chain{display:grid;grid-template-columns:repeat(4,1fr);gap:4mm;counter-reset:c}
+.d30 .chain li{border-top:1mm solid var(--navy);padding-top:2mm}
+.d30 .chain li::before{counter-increment:c;content:"0" counter(c);display:block;font-family:var(--f-latin);font-size:24pt;color:var(--accent);line-height:1}
+.d30 .chain b{display:block;font-family:var(--f-mincho);font-weight:600;font-size:10.5pt;margin-top:1mm;letter-spacing:.04em}
+.d30 .chain span{display:block;font-size:7pt;color:var(--ink-sub);line-height:1.6;margin-top:.6mm}
+.d30 .cbox{background:var(--navy);padding:3mm 5mm}
+.d30 .cbox .ct{color:#fff}
+.d30 .cbox .chart{height:29mm}
+.d30 .g2 .p0{background:var(--navy);color:#fff;padding:3mm 4mm}
+.d30 .g2 .p0 .who,.d30 .g2 .p0 .t{color:#C9D2DB}
+.d30 .g2 .p1{background:#fff;border-top:1mm solid var(--accent);padding:2.6mm 4mm 3mm}
+.d30 .g2 .p1 .who,.d30 .g2 .p1 .t{color:var(--ink-sub)}
+.d30 .cta{position:absolute;left:0;right:0;top:208mm;bottom:0;background:var(--navy);color:#fff}
+.d30 .cta .main{top:7mm}
+.d30 .cta h2{font-size:14pt;letter-spacing:.06em;margin-bottom:1.6mm}
+.d30 .cta em{color:var(--accent-light)}
+.d30 .cta .tel .no{color:#fff}
+.d30 .cta .tel .t{color:var(--accent-light)}
+.d30 .cta .hours,.d30 .cta .gh,.d30 .cta .qr p{color:#C9D2DB}
+.d30 .cta .badges span{border:.3mm solid var(--accent-light);color:#fff;background:transparent}
+.d30 .cta .company{top:50mm}
+
+/* =========================================================
+   00 営業ラフ清書版：紺×金。写真で安心感、エリア・電話・QR・無料特典を大きく
+   ========================================================= */
+.d00{--gold:#C9A35C;--goldl:#E8D3A6;--gline:#E6DCC8;--goldg:linear-gradient(135deg,#F3E4C0 0%,#D7B676 50%,#B48B45 100%)}
+.d00 .shade{position:absolute;left:0;top:0;width:216mm;height:128mm;background:linear-gradient(180deg,rgba(22,28,38,.62),rgba(22,28,38,.45) 45%,rgba(22,28,38,.72))}
+.d00 .strip p{color:#E9E4DA;border-left-color:rgba(255,255,255,.35)}
+.d00 .seal{right:13mm;top:12mm;width:30mm;height:30mm;background:var(--goldg);color:#2A2418;border:.6mm solid #fff;box-shadow:0 0 0 .4mm #B48B45;font-size:8pt;font-weight:700;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.d00 .seal span{display:block;font-size:9.4pt;border-bottom:.3mm solid rgba(42,36,24,.45);margin-bottom:.8mm;padding:0 1mm .4mm}
+.d00 .h00{text-align:center;color:#fff}
+.d00 .h00 .en{font-family:var(--f-latin);font-style:italic;font-size:13pt;color:var(--goldl);letter-spacing:.06em}
+.d00 .h00 .area{display:inline-block;font-family:var(--f-mincho);font-weight:700;font-size:17pt;letter-spacing:.08em;border-bottom:.4mm solid var(--goldl);padding:0 2mm 1mm;margin-top:1mm}
+.d00 .mainrow{display:flex;justify-content:center;align-items:center;gap:4mm;margin-top:4mm}
+.d00 .mainrow .lead{font-family:var(--f-mincho);font-weight:600;font-size:9pt;line-height:1.5;text-align:left;color:#E9E4DA;letter-spacing:.04em}
+.d00 .mainrow h1{font-family:var(--f-mincho);font-weight:700;font-size:50pt;letter-spacing:.04em;line-height:1;text-shadow:0 1mm 3mm rgba(0,0,0,.35)}
+.d00 .boshu{font-family:var(--f-mincho);font-weight:700;font-size:32pt;letter-spacing:.14em;margin-top:3mm;line-height:1.1;background:var(--goldg);-webkit-background-clip:text;background-clip:text;color:transparent}
+.d00 .store{position:absolute;right:13mm;top:90mm;width:48mm;margin:0}
+.d00 .store img{display:block;width:100%;height:30mm;object-fit:cover;border:.8mm solid #fff}
+.d00 .store figcaption{font-size:6.6pt;color:#fff;margin-top:1mm;text-align:right;letter-spacing:.06em}
+.d00 .row00{display:grid;grid-template-columns:90mm 1fr;gap:6mm;align-items:start}
+.d00 .types{gap:2mm}
+.d00 .types div{border:.3mm solid var(--gline);padding:3mm;gap:2.4mm}
+.d00 .types svg{width:9mm;height:9mm}
+.d00 .types span{font-size:10pt}
+.d00 .consb .ttl{font-family:var(--f-mincho);font-weight:700;font-size:9.6pt;color:#8A6A2E;letter-spacing:.06em;border-bottom:.3mm solid var(--gline);padding-bottom:1mm}
+.d00 .cons li{font-size:7.3pt;padding:.35mm 0;border-bottom-color:var(--gline)}
+.d00 .cons li::before{color:#B48B45}
+.d00 .ask{text-align:center}
+.d00 .ask h2{font-size:15pt}
+.d00 .ask em{font-size:21pt;color:var(--navy);background:linear-gradient(transparent 65%,rgba(212,176,114,.55) 65%);padding:0 1mm}
+.d00 .ask .sub{font-size:7.6pt;line-height:1.6;margin-top:1.4mm;color:var(--ink)}
+.d00 .ways{margin:0;grid-template-columns:1fr 1fr auto}
+.d00 .ways .w0,.d00 .ways .w1{position:relative;overflow:hidden;height:25mm;padding:2mm 3mm 2mm 46%;background:#fff;border:.3mm solid var(--gline);display:flex;flex-direction:column;justify-content:center;text-align:center}
+.d00 .ways img{position:absolute;left:0;top:0;width:42%;height:100%;object-fit:cover}
+.d00 .ways .who{font-size:7.2pt;line-height:1.4;color:var(--ink-sub)}
+.d00 .ways h3{font-size:17pt;color:var(--navy);border-top:.3mm solid var(--gold);margin-top:1.2mm;padding-top:1mm}
+.d00 .badges span{width:17mm;height:17mm;background:var(--goldg);color:#2A2418;font-size:9pt;box-shadow:inset 0 0 0 .5mm rgba(255,255,255,.6)}
+.d00 .fc{top:237mm;background:var(--navy)}
+.d00 .fc .main{top:5mm;display:flex;align-items:center;gap:5mm}
+.d00 .fc .lg{height:13mm;width:auto;padding-right:5mm;border-right:.3mm solid rgba(255,255,255,.3)}
+.d00 .fc .mid{flex:1;text-align:center;color:#fff}
+.d00 .fc .msg{font-size:8.8pt}
+.d00 .tel{align-items:center;gap:2mm}
+.d00 .fc .tel{justify-content:center;margin-top:.8mm}
+.d00 .tel .ic svg{width:7.5mm;height:7.5mm;color:#fff;display:block}
+.d00 .tel .no{color:#fff}
+.d00 .fc .tel .no{font-size:30pt}
+.d00 .fc .hours{font-size:7.4pt;color:#E9E4DA;margin-top:1mm}
+.d00 .fc .hours span{background:#fff;color:var(--navy);padding:.2mm 2mm;border-radius:1mm;margin-right:2mm;font-weight:700}
+.d00 .qrbox{display:flex;align-items:center;gap:2mm;background:#fff;border-radius:2mm;padding:2mm 3mm}
+.d00 .qrbox p{font-size:6.8pt;color:var(--navy);line-height:1.45;text-align:center;font-weight:700}
+.d00 .qrbox .qrph{width:17mm;height:17mm}
+.d00 .fc .co{top:33mm;font-size:6.4pt;color:#C9D2DB;text-align:center;line-height:1.7;border-top:.3mm solid rgba(255,255,255,.2);padding-top:2mm}
+.d00 .bshade{position:absolute;left:0;top:0;width:216mm;height:60mm;background:linear-gradient(180deg,rgba(24,42,58,.9),rgba(24,42,58,.8))}
+.d00 .bh{text-align:center;color:#fff}
+.d00 .bh .pre{font-family:var(--f-mincho);font-weight:600;font-size:9.6pt;color:var(--goldl);letter-spacing:.14em}
+.d00 .bh h2{font-family:var(--f-mincho);font-weight:700;font-size:17pt;line-height:1.45;margin-top:1.4mm;letter-spacing:.06em}
+.d00 .bh h2 em,.d00 .cta h2 em{background:var(--goldg);-webkit-background-clip:text;background-clip:text;color:transparent}
+.d00 .bh h2 em{font-size:26pt}
+.d00 .c3{display:grid;grid-template-columns:1fr 8mm 1fr 8mm 1fr;align-items:center}
+.d00 .c3>div{background:#fff;border:.3mm solid var(--gline);border-radius:2.4mm;height:36mm;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:1.6mm}
+.d00 .c3 svg{width:15mm;height:12.5mm}
+.d00 .c3 p{font-family:var(--f-mincho);font-weight:700;font-size:10.5pt;line-height:1.45}
+.d00 .c3 mark{background:linear-gradient(transparent 55%,rgba(235,150,150,.45) 55%);color:inherit;font-size:13.5pt;padding:0 .6mm}
+.d00 .c3 mark.y{background:linear-gradient(transparent 55%,rgba(246,212,100,.65) 55%)}
+.d00 .c3 small{display:block;font-size:8pt}
+.d00 .c3 .ar{justify-self:center;width:0;height:0;border-left:4mm solid #9A7432;border-top:3.4mm solid transparent;border-bottom:3.4mm solid transparent}
+.d00 .more{display:flex;align-items:center;gap:2.4mm;font-size:7.2pt;letter-spacing:.02em}
+.d00 .more b{background:var(--navy);color:#fff;padding:.6mm 2.4mm;border-radius:1mm}
+.d00 .more span{border:.3mm solid var(--gline);background:#fff;padding:.6mm 2.4mm;border-radius:1mm}
+.d00 .data{display:grid;grid-template-columns:1fr 1fr;gap:5mm}
+.d00 .data .box{background:#fff;border:.3mm solid var(--gline);border-radius:2.4mm;padding:0 4mm 3mm}
+.d00 .pill{background:var(--navy);color:#fff;font-weight:700;font-size:7.6pt;text-align:center;border-radius:99px;padding:1mm 3mm;margin:-2.6mm 0 1mm;line-height:1.4;letter-spacing:.04em}
+.d00 .pill.g{background:linear-gradient(135deg,#8A6A2E,#B48B45)}
+.d00 .loan .a .num{color:var(--navy)}
+.d00 .loan .diff{background:var(--goldg);color:#2A2418;border-radius:1.4mm}
+.d00 .loan .diff .num{color:var(--navy)}
+.d00 .pat .pt{font-family:var(--f-mincho);font-weight:700;font-size:9.6pt;color:var(--navy);margin-bottom:1.6mm;letter-spacing:.06em}
+.d00 .g2>div{background:#fff;border:.3mm solid var(--gline);border-left:1mm solid var(--gold);padding:2.2mm 3.4mm 2.4mm}
+.d00 .g2 .who,.d00 .g2 .t{color:var(--ink-sub)}
+.d00 .cta{position:absolute;left:0;right:0;top:200mm;bottom:0;background:var(--navy);color:#fff}
+.d00 .cta .right{position:absolute;left:80mm;right:13mm;top:9mm}
+.d00 .cta .dk{font-family:var(--f-mincho);font-weight:600;font-size:11pt;color:#E9E4DA;letter-spacing:.08em}
+.d00 .cta h2{font-family:var(--f-mincho);font-weight:700;font-size:19pt;line-height:1.3;letter-spacing:.04em}
+.d00 .cta h2 em{font-size:23pt}
+.d00 .cta .row{display:flex;justify-content:space-between;align-items:flex-start;gap:4mm;margin-top:3mm}
+.d00 .cta .tel .no{font-size:25pt}
+.d00 .cta .hours{font-size:6.8pt;color:#C9D2DB}
+.d00 .cta .badges{margin-top:2mm}
+.d00 .cta .badges span{width:13mm;height:13mm;font-size:7pt}
+.d00 .cta .qr p{color:#C9D2DB}
+.d00 .cta .co{margin-top:3mm;font-size:6.2pt;color:#C9D2DB;line-height:1.7;border-top:.3mm solid rgba(255,255,255,.2);padding-top:1.6mm}

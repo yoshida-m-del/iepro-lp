@@ -2,199 +2,11 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<title>いえプロ不動産 ポスティングチラシ 候補6案（A4両面）</title>
+<title>いえプロ不動産 ポスティングチラシ 候補5案（A4両面）</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&amp;family=Shippori+Mincho+B1:wght@600;700&amp;family=Zen+Kaku+Gothic+New:wght@400;500;700&amp;display=swap">
 <link rel="stylesheet" href="flyer.css">
-<style>
-/* =========================================================
-   売主さま向けポスティングチラシ 候補6案（05/06/10/20/29/30）
-   1案 = 表・裏の2ページ。投票用の検討版：数字・一部サービス内容は仮。
-   ========================================================= */
-.h1{font-size:27pt;line-height:1.42}
-.h2{font-size:15pt;line-height:1.5;margin-top:3.5mm}
-.lead{font-size:9pt;line-height:1.95;letter-spacing:.04em;color:var(--ink-sub)}
-.on-dark .lead{color:#C9D2DB}
-.ink-sub{color:var(--ink-sub)}
-.kari{font-size:6.4pt;letter-spacing:.04em;color:#8A949E}
-.on-dark .kari{color:#9FB0C0}
-.plane{position:absolute;background:var(--plane)}
-
-/* 表面の下帯（電話＋ロゴ） */
-.fband{position:absolute;left:0;right:0;top:258mm;bottom:0}
-.fband .pad{top:6.5mm;display:flex;align-items:flex-end;justify-content:space-between;gap:6mm}
-.fband .tel .no{font-size:22pt;color:#fff}
-.fband .tel .t{color:var(--accent-light)}
-.fband .logo{height:9mm;width:auto}
-.fband .msg{font-family:var(--f-mincho);font-weight:600;font-size:10pt;letter-spacing:.06em;color:#fff;line-height:1.5}
-
-/* 裏面のお問い合わせ帯 */
-.cta{position:absolute;left:0;right:0;top:232mm;bottom:0}
-.cta .main{top:6mm;display:flex;align-items:flex-start;justify-content:space-between;gap:6mm}
-.cta h2{font-size:13pt;line-height:1.5;margin-top:3mm}
-.cta .tel{margin-top:2.6mm}
-.cta .tel .no{color:#fff}
-.cta .tel .t{color:var(--accent-light)}
-.cta .hours{font-size:7pt;color:#C9D2DB;margin-top:.6mm;letter-spacing:.04em}
-.cta .qr p{color:#C9D2DB}
-.cta .company{top:42mm;padding-top:2.6mm;border-top:.3mm solid var(--line-dark)}
-.cta .company .logo{height:9mm}
-.qrph{width:22mm;height:22mm;background:#fff;display:grid;place-items:center;text-align:center;font-size:6pt;line-height:1.4;color:#8A949E;border:.3mm dashed #B8BEC4}
-
-/* 汎用：番号つき3列 */
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);border-top:.3mm solid var(--line)}
-.grid3>div{padding:3.2mm 4mm 0;border-left:.3mm solid var(--line)}
-.grid3>div:first-child{border-left:none;padding-left:0}
-.grid3 .n{font-family:var(--f-latin);font-style:italic;font-size:14pt;color:var(--accent);line-height:1}
-.grid3 h3{font-family:var(--f-mincho);font-weight:600;font-feature-settings:"palt";font-size:10pt;line-height:1.5;letter-spacing:.03em;margin-top:1.8mm}
-.grid3 p{font-size:7.2pt;line-height:1.75;color:var(--ink-sub);margin-top:1.4mm}
-
-/* ---------- 05 住み替え ---------- */
-.p05f .photo{left:0;top:0;width:216mm;height:116mm}
-.p05f .photo img{object-position:40% 30%}
-.p05f .hero{top:126mm}
-.p05f .rooms{top:202mm;display:grid;grid-template-columns:repeat(4,1fr);gap:2.4mm}
-.p05f .rooms>div{background:#fff;padding:7mm 3mm 6.6mm;border-top:.8mm solid var(--blue);text-align:center}
-.p05f .rooms>div.idle{background:var(--bg-alt);border-top-color:var(--line);color:#9AA2AA}
-.p05f .rooms h3{font-family:var(--f-mincho);font-weight:600;font-size:11.5pt;letter-spacing:.06em}
-.p05f .rooms p{font-size:7.4pt;margin-top:1.4mm;letter-spacing:.04em}
-.p05f .rooms>div:not(.idle) p{color:var(--blue);font-weight:700}
-.p05f .rooms-note{top:240mm;font-size:8.6pt;color:var(--ink-sub);letter-spacing:.04em}
-
-.p05b .head{top:14mm}
-.p05b .cmp{top:42mm}
-.cmpt{width:100%;border-collapse:collapse;font-size:8pt;letter-spacing:.03em}
-.cmpt th,.cmpt td{border-bottom:.3mm solid var(--line);padding:2.6mm 2mm;text-align:center;vertical-align:middle}
-.cmpt thead th{background:var(--navy);color:#fff;font-family:var(--f-mincho);font-weight:600;font-size:10.5pt;letter-spacing:.12em;padding:3mm 2mm}
-.cmpt tbody th{text-align:left;font-weight:700;color:var(--ink);width:38mm;padding-left:0}
-.cmpt .mk{font-family:var(--f-mincho);font-size:13pt;line-height:1;display:block;color:var(--blue)}
-.cmpt .mk.ok{color:var(--accent)}
-.cmpt .mk.ng{color:#A7AEB5}
-.cmpt small{display:block;font-size:6.6pt;color:var(--ink-sub);margin-top:.8mm}
-.p05b .support{top:127mm}
-.p05b .support .label{margin-bottom:3.5mm}
-.p05b .flow{top:183mm}
-.steps4{display:grid;grid-template-columns:repeat(4,1fr);gap:2mm;margin-top:3mm}
-.steps4 li{background:#fff;border-top:.8mm solid var(--blue);padding:2.4mm 2.6mm 2.8mm}
-.steps4 .s{font-family:var(--f-latin);font-size:7pt;letter-spacing:.14em;color:var(--ink-sub)}
-.steps4 .s b{font-style:italic;font-weight:500;font-size:11pt;letter-spacing:0;color:var(--blue);margin-left:.8mm}
-.steps4 h3{font-family:var(--f-mincho);font-weight:600;font-feature-settings:"palt";font-size:9pt;line-height:1.45;margin-top:1mm}
-.steps4 p{font-size:6.6pt;line-height:1.6;color:var(--ink-sub);margin-top:.8mm}
-
-/* ---------- 06 相続・空き家 ---------- */
-.p06f{background:var(--navy-deep)}
-.p06f .photo{left:0;top:0;width:216mm;height:176mm}
-.p06f .photo img{object-position:50% 45%}
-.p06f .photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(24,42,58,0) 45%,rgba(24,42,58,.85) 88%,var(--navy-deep) 100%)}
-.p06f .hero{top:176mm;color:#fff}
-.p06f .h1{font-size:28pt;margin-top:4mm}
-.p06f .lead{margin-top:4mm}
-.p06f .chips{margin-top:5mm}
-.p06f .fband{background:var(--navy);border-top:.3mm solid var(--line-dark)}
-
-.p06b .head{top:14mm}
-.p06b .checks{top:40mm;border-top:.3mm solid var(--line)}
-.checks li{display:flex;gap:4mm;padding:4mm 0;border-bottom:.3mm solid var(--line);align-items:flex-start}
-.checks .box{width:4.6mm;height:4.6mm;border:.4mm solid var(--blue);flex:none;margin-top:.6mm;background:#fff}
-.checks h3{font-family:var(--f-mincho);font-weight:600;font-feature-settings:"palt";font-size:10.5pt;line-height:1.5;letter-spacing:.04em}
-.checks p{font-size:7.4pt;line-height:1.7;color:var(--ink-sub);margin-top:.6mm}
-.checks .tag{font-size:6.6pt;font-weight:700;color:var(--accent);border:.3mm solid var(--accent);padding:.2mm 1.6mm;margin-left:2mm;vertical-align:.4mm;letter-spacing:.06em}
-.p06b .one{top:150mm}
-.p06b .one .h2{font-size:13pt}
-.p06b .one .grid3{margin-top:3.5mm}
-
-/* ---------- 10 売り時診断 ---------- */
-.p10f .head{top:16mm}
-.p10f .chart{position:absolute;left:var(--safe);right:var(--safe);top:70mm;height:118mm}
-.p10f .chart svg{width:100%;height:100%;overflow:visible}
-.p10f .after{top:206mm;text-align:center}
-.p10f .after p{font-family:var(--f-mincho);font-weight:600;font-size:13pt;letter-spacing:.08em}
-.p10f .after .accent{color:var(--accent)}
-.p10f .after small{display:block;font-family:var(--f-gothic);font-weight:400;font-size:7.6pt;color:var(--ink-sub);margin-top:2mm;letter-spacing:.04em}
-
-.p10b .head{top:14mm}
-.p10b .results{top:40mm;display:flex;flex-direction:column;gap:3.6mm}
-.res{display:grid;grid-template-columns:22mm 1fr 44mm;gap:5mm;align-items:center;background:#fff;padding:5mm 5mm}
-.res .badge{width:20mm;height:20mm;border-radius:50%;display:grid;place-items:center;color:#fff;font-family:var(--f-latin);font-weight:600;font-size:26pt;line-height:1}
-.res h3{font-family:var(--f-mincho);font-weight:600;font-feature-settings:"palt";font-size:12.5pt;letter-spacing:.05em}
-.res p{font-size:7.6pt;line-height:1.75;color:var(--ink-sub);margin-top:1.2mm}
-.res .rec{border-left:.3mm solid var(--line);padding-left:4mm}
-.res .rec .k{font-family:var(--f-latin);font-size:7pt;letter-spacing:.2em;color:var(--ink-sub);text-transform:uppercase}
-.res .rec .v{font-family:var(--f-mincho);font-weight:600;font-size:10pt;margin-top:1mm;line-height:1.4}
-.p10b .two{top:148mm}
-.p10b .two .h2{font-size:12pt}
-.two-t{width:100%;border-collapse:collapse;margin-top:3mm;font-size:7.8pt}
-.two-t th,.two-t td{border-bottom:.3mm solid var(--line);padding:2.2mm 2mm;text-align:center}
-.two-t thead th{font-family:var(--f-mincho);font-weight:600;font-size:9.5pt;color:var(--navy);border-bottom:.5mm solid var(--navy)}
-.two-t tbody th{text-align:left;padding-left:0;width:34mm;font-weight:700}
-
-/* ---------- 20 4コマ ---------- */
-.p20f .head{top:14mm}
-.p20f .koma{top:40mm;display:flex;flex-direction:column;gap:3mm}
-.k{display:grid;grid-template-columns:9mm 1fr;gap:3mm;align-items:stretch}
-.k .kn{font-family:var(--f-latin);font-style:italic;font-size:15pt;color:var(--accent);line-height:1;padding-top:1mm}
-.k .box{position:relative;height:46mm;background:#fff;border:.6mm solid var(--navy);overflow:hidden}
-.k .fig{position:absolute;bottom:0;width:24mm;height:36mm}
-.k .bub{position:absolute;background:#fff;border:.4mm solid var(--navy);border-radius:5mm;padding:2.6mm 4mm;font-family:var(--f-mincho);font-weight:600;font-feature-settings:"palt";font-size:11pt;line-height:1.45;letter-spacing:.04em}
-.k .bub::after{content:"";position:absolute;bottom:-2.4mm;width:4mm;height:4mm;background:#fff;border-right:.4mm solid var(--navy);border-bottom:.4mm solid var(--navy)}
-.k .bub.l::after{left:7mm;transform:rotate(45deg)}
-.k .bub.r::after{right:7mm;transform:rotate(45deg)}
-.k .sub{position:absolute;font-size:7pt;color:var(--accent);font-weight:700;letter-spacing:.04em}
-.k .box.mood{background:repeating-linear-gradient(90deg,#fff 0 3mm,#F1EEE8 3mm 3.4mm)}
-.p20f .next{top:242mm;text-align:right;font-family:var(--f-mincho);font-weight:600;font-size:11pt;letter-spacing:.06em}
-.p20f .next .accent{color:var(--accent)}
-
-.p20b .head{top:14mm}
-.p20b .why{top:38mm;font-size:8.6pt;line-height:2;color:var(--ink-sub);letter-spacing:.03em}
-.p20b .pts{top:66mm}
-.p20b .pts .label{margin-bottom:3.5mm}
-.p20b .staff{top:112mm;display:grid;grid-template-columns:62mm 1fr;gap:7mm;align-items:center}
-.p20b .staff .ph{height:56mm;overflow:hidden;border-radius:0 0 0 10mm}
-.p20b .staff .ph img{width:100%;height:100%;object-fit:cover;object-position:50% 25%}
-.p20b .staff q{display:block;font-family:var(--f-mincho);font-weight:600;font-feature-settings:"palt";font-size:12.5pt;line-height:1.65;letter-spacing:.05em;quotes:"「" "」"}
-.p20b .staff p{font-size:7.6pt;line-height:1.8;color:var(--ink-sub);margin-top:2.4mm}
-
-/* ---------- 29 問いかけ ---------- */
-.p29f .rule{position:absolute;left:50%;top:126mm;width:.3mm;height:16mm;background:var(--accent)}
-.p29f .q{position:absolute;left:0;right:0;top:148mm;text-align:center;font-family:var(--f-mincho);font-weight:600;font-feature-settings:"palt";font-size:17pt;letter-spacing:.16em;color:var(--ink)}
-.p29f .logo{position:absolute;left:50%;transform:translateX(-50%);top:268mm;height:8mm}
-
-.p29b .txt{top:78mm;left:34mm;font-family:var(--f-mincho);font-weight:600;font-feature-settings:"palt";font-size:11.5pt;line-height:2.5;letter-spacing:.1em;color:var(--ink)}
-.p29b .contact{top:196mm;left:34mm;right:34mm;display:flex;align-items:center;gap:7mm;padding-top:6mm;border-top:.3mm solid var(--line)}
-.p29b .contact .tel .no{font-size:22pt}
-.p29b .contact .hours{font-size:7pt;color:var(--ink-sub);margin-top:.8mm}
-.p29b .co{top:262mm;left:34mm;right:34mm;display:flex;align-items:center;gap:5mm}
-.p29b .co img{height:7mm}
-.p29b .co p{font-size:6.4pt;line-height:1.7;color:var(--ink-sub);letter-spacing:.04em}
-
-/* ---------- 30 数字 ---------- */
-.p30f{background:var(--navy)}
-.p30f .head{top:16mm;color:#fff}
-.p30f .nums{top:46mm;color:#fff}
-.p30f .nums>div{padding:10mm 0 10mm;border-top:.3mm solid var(--line-dark);display:grid;grid-template-columns:1fr 58mm;align-items:end;gap:6mm}
-.p30f .nums>div:last-child{border-bottom:.3mm solid var(--line-dark)}
-.p30f .big{display:flex;align-items:baseline;gap:2.4mm;white-space:nowrap}
-.p30f .big .num{font-size:92pt;letter-spacing:-.01em}
-.p30f .big .unit{font-size:15pt;color:var(--accent-light)}
-.p30f .cap{font-family:var(--f-mincho);font-weight:600;font-size:11pt;line-height:1.6;letter-spacing:.06em;padding-bottom:3.6mm}
-.p30f .cap small{display:block;font-family:var(--f-gothic);font-weight:400;font-size:7.2pt;color:#C9D2DB;margin-top:1mm;letter-spacing:.04em}
-.p30f .fband{border-top:.3mm solid var(--line-dark)}
-
-.p30b .photo{left:0;top:0;width:216mm;height:78mm}
-.p30b .photo img{object-position:50% 30%}
-.p30b .head{top:88mm}
-.p30b .why{top:112mm;display:flex;flex-direction:column}
-.p30b .why>div{display:grid;grid-template-columns:44mm 1fr;gap:6mm;padding:7mm 0;border-top:.3mm solid var(--line);align-items:baseline}
-.p30b .why>div:last-child{border-bottom:.3mm solid var(--line)}
-.p30b .why .v{display:flex;align-items:baseline;gap:1.4mm;white-space:nowrap}
-.p30b .why .v .num{font-size:30pt;color:var(--navy)}
-.p30b .why .v .unit{font-size:9pt}
-.p30b .why h3{font-family:var(--f-mincho);font-weight:600;font-feature-settings:"palt";font-size:10.5pt;letter-spacing:.04em}
-.p30b .why p{font-size:7.6pt;line-height:1.75;color:var(--ink-sub);margin-top:1mm}
-
-/* 1ページだけ表示（?page=N。画像書き出し用） */
-.one-page .sheet{display:none}
-.one-page .sheet.show{display:block}
-</style>
+<link rel="stylesheet" href="posting.css">
+<!-- このファイルは build-posting.js で自動生成しています。直接は編集しないでください。 -->
 </head>
 <body>
 <script>
@@ -203,383 +15,379 @@ if(location.search.indexOf('guides')>-1)document.documentElement.classList.add('
 document.addEventListener('DOMContentLoaded',function(){var s=document.querySelectorAll('.sheet')[+m[1]-1];if(s)s.classList.add('show');});})();
 </script>
 
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <symbol id="ps" viewBox="0 0 40 60"><circle cx="20" cy="12" r="9" fill="currentColor"/><path fill="currentColor" d="M3 60 C3 36 10 26 20 26 C30 26 37 36 37 60Z"/></symbol>
-  <symbol id="hs" viewBox="0 0 100 80"><path fill="currentColor" d="M8 40 L50 6 L92 40 V78 H8Z"/><rect x="42" y="50" width="16" height="28" fill="#fff" opacity=".7"/></symbol>
-</svg>
-
-<!-- ==================== 05 住み替え：表 ==================== -->
-<section class="sheet p05f">
+<!-- ==================== 05 雑誌風（住み替え）：表 ==================== -->
+<section class="sheet fr d05">
   <!-- 写真：flyer/img/consult.jpg（既存チラシ素材） -->
-  <div class="photo"><img src="../img/consult.jpg" alt=""></div>
-  <div class="plane" style="right:0;top:109mm;width:70mm;height:14mm"></div>
-  <div class="pad hero">
+  <div class="photo" style="left:100mm;top:0;width:116mm;height:150mm"><img src="../img/consult.jpg" alt="" style="object-position:44% 30%"></div>
+  <div class="plane" style="left:100mm;top:150mm;width:116mm;height:4mm;background:var(--accent)"></div>
+  <div class="pad strip" style="right:120mm"><img src="../img/logo-blue.png" alt="いえプロ不動産"><p>注文住宅のGハウスが手がける<br>不動産売却サービス</p></div>
+  <div class="pad hero" style="top:38mm;right:122mm">
     <p class="label">Life Change</p>
-    <h1 class="mincho h1" style="margin-top:4mm"><span class="nb">お子さまが巣立ったら、</span><br><span class="nb">その家、</span><span class="nb">広すぎませんか。</span></h1>
-    <p class="lead" style="margin-top:4mm">使わない部屋の掃除、2階への上り下り、毎年の固定資産税。<br>これからの暮らしに合った住まい方を、一緒に考えてみませんか。</p>
+    <h1 class="mincho">お子さまが<br>巣立ったら、<br>その家、<br>広すぎませんか。</h1>
+    <div class="rooms"><span class="on">リビング<b>毎日使う</b></span><span>子ども部屋<b>物置に</b></span><span>子ども部屋<b>使っていない</b></span><span>2階<b>上がらない</b></span></div>
   </div>
-  <div class="pad rooms">
-    <div><h3>リビング</h3><p>毎日使う</p></div>
-    <div class="idle"><h3>子ども部屋</h3><p>物置になった</p></div>
-    <div class="idle"><h3>子ども部屋</h3><p>使っていない</p></div>
-    <div class="idle"><h3>2階</h3><p>上がらなくなった</p></div>
+  <div class="boshu"><p class="ar">城東区・鶴見区・旭区 限定</p><p class="bt">住み替え・売却の<br>ご相談を承ります</p></div>
+  <div class="seal">地域密着<br>旭区新森の<br>不動産会社</div>
+  <div class="pad mid" style="top:162mm">
+    <div><p class="ttl">取り扱い物件</p><div class="types"><div><svg viewBox="0 0 24 24"><path d="M3 11 12 4l9 7v9H3z"/><path d="M10 20v-5h4v5"/></svg><span>戸建て</span></div><div><svg viewBox="0 0 24 24"><path d="M5 21V3h9v18M14 9h5v12M3 21h18"/><path d="M8 7h3M8 11h3M8 15h3M16 13h1M16 17h1"/></svg><span>マンション</span></div><div><svg viewBox="0 0 24 24"><path d="M2 20 6 14h12l4 6z"/><path d="M12 13s-4-3.6-4-6.4a4 4 0 0 1 8 0C16 9.4 12 13 12 13z"/><circle cx="12" cy="6.6" r="1.3"/></svg><span>土地</span></div><div><svg viewBox="0 0 24 24"><path d="M3 11 12 4l9 7v9H3z"/><path d="M9.5 12.5l5 5M14.5 12.5l-5 5"/></svg><span>空き家</span></div></div></div>
+    <div><p class="ttl">このようなご相談が増えています</p><ul class="cons"><li>住み替えで、今の家を売りたい</li><li>相続した不動産・実家を整理したい（施設入居・ご逝去）</li><li>空き家の処分に困っている（遠方にお住まいの方も）</li><li>住宅ローンの返済が気になる</li><li>老後資金の確保・事業資金の調達・保有資産の組み替え</li><li>財産分与・連帯保証・ペアローンを解消したい</li><li>売るかどうか、まず金額を知りたい</li></ul></div>
   </div>
-  <p class="pad rooms-note">売る・貸す・リフォーム。3つの選択肢を、裏面で比べています。</p>
-  <div class="fband on-dark">
-    <div class="pad">
-      <div><p class="msg">住み替えのご相談は、いえプロへ。</p><div class="tel" style="margin-top:1.6mm"><span class="t">TEL</span><span class="no">06-6185-1252</span></div></div>
-      <img class="logo" src="../img/logo-white.png" alt="いえプロ不動産">
-    </div>
+  <div class="pad ask" style="top:209mm">
+    <p class="wl"><b>売り方は、2つ</b>売るか決めていなくても、価格を知りたいだけでも大丈夫です。</p>
+    <div class="ways"><div class="w0"><p class="who">できるだけ高く売りたい方</p><h3>仲介売却</h3></div><div class="w1"><p class="who">早く・確実に売却したい方</p><h3>直接買取</h3></div><div class="badges"><span>査定<br>無料</span><span>秘密<br>厳守</span><span>相談<br>無料</span></div></div>
+  </div>
+  <div class="fc">
+    <div class="pad main"><div><div class="tel"><span class="t">TEL</span><span class="no">06-6185-1252</span></div><p class="hours">営業時間 9:00〜18:00（定休日：火・水）</p></div><div class="qr"><div class="qrph">QRコード<br>（査定フォーム）</div><p>WEBから簡単査定<br>24時間受付</p></div></div>
+    <div class="pad company"><img class="logo" src="../img/logo-blue.png" alt="いえプロ不動産"><p class="info"><b>株式会社Gハウス いえプロ不動産</b>　https://iepro-fudosan.com<br>〒535-0022 大阪府大阪市旭区新森6-3-25 エクセレント新森1階<br>宅地建物取引業免許 国土交通大臣（1）第11002号</p></div>
+  </div>
+</section>
+<!-- ==================== 05 雑誌風（住み替え）：裏 ==================== -->
+<section class="sheet bk d05">
+  <div class="pad head" style="top:14mm"><p class="label">Why Now</p><h2 class="mincho">住み替えの前に知っておきたい、<em>相場</em>の話</h2></div>
+  <ol class="pad tl" style="top:38mm;right:112mm"><li><b>金利が上昇</b><span>住宅ローンの支払額がアップし、買い手の予算が下がる</span></li><li><b>建築費が高騰</b><span>マンションの管理費・修繕積立金も値上げ</span></li><li><b>売却物件が増加</b><span>売りに出る物件が増え、供給過多に</span></li><li><b>売値がダウン</b><span>売却できる金額が下がる可能性があります</span></li></ol>
+  <div class="pad rcol" style="top:38mm;left:110mm">
+    <div class="box"><p class="ct">住宅ローン金利の推移（目安）</p><svg class="chart" viewBox="0 0 92 46" font-family="Zen Kaku Gothic New, sans-serif">
+        <g stroke="#E4DED3" stroke-width=".25"><path d="M2 8 H90 M2 20 H90 M2 32 H90"/></g>
+        <polygon points="8,38 8,32 23,29.6 38,24.8 53,20 68,14 83,8 83,38" fill="#E8A57C" opacity="0.22"/>
+        <polyline points="8,32 23,29.6 38,24.8 53,20 68,14 83,8" fill="none" stroke="#1F3346" stroke-width=".7"/>
+        <circle cx="8" cy="32" r="1.1" fill="#fff" stroke="#1F3346" stroke-width=".5"/><circle cx="23" cy="29.6" r="1.1" fill="#fff" stroke="#1F3346" stroke-width=".5"/><circle cx="38" cy="24.8" r="1.1" fill="#fff" stroke="#1F3346" stroke-width=".5"/><circle cx="53" cy="20" r="1.1" fill="#fff" stroke="#1F3346" stroke-width=".5"/><circle cx="68" cy="14" r="1.1" fill="#fff" stroke="#1F3346" stroke-width=".5"/><circle cx="83" cy="8" r="1.1" fill="#fff" stroke="#1F3346" stroke-width=".5"/>
+        <text x="8" y="27.5" font-size="3.8" font-weight="700" fill="#1F3346" text-anchor="middle">約0.5%</text>
+        <text x="83" y="4.6" font-size="3.8" font-weight="700" fill="#B04A12" text-anchor="middle">約1.5%</text>
+        <text x="8" y="44" font-size="2.9" fill="#4E5862" text-anchor="middle">2021</text><text x="23" y="44" font-size="2.9" fill="#4E5862" text-anchor="middle">2022</text><text x="38" y="44" font-size="2.9" fill="#4E5862" text-anchor="middle">2023</text><text x="53" y="44" font-size="2.9" fill="#4E5862" text-anchor="middle">2024</text><text x="68" y="44" font-size="2.9" fill="#4E5862" text-anchor="middle">2025</text><text x="83" y="44" font-size="2.9" fill="#4E5862" text-anchor="middle">2026（予測）</text>
+      </svg></div>
+    <div class="box"><p class="ct">同じ月々の返済額（10万円・35年）で借りられる金額の目安</p><div class="loan">
+        <div class="lr"><div><p class="r">金利 0.5%</p><p class="a">約<span class="num">3,850</span>万円</p></div><span class="arr">→</span><div><p class="r">金利 1.5%</p><p class="a">約<span class="num">3,270</span>万円</p></div></div>
+        <p class="diff">金利が上がると、約<span class="num">580</span>万円も予算が減少</p>
+      </div></div>
+  </div>
+  <p class="pad kari" style="top:124mm">※月々10万円・35年・元利均等返済・ボーナス払いなしで試算。金利の推移は目安で、将来の金利や価格を保証するものではありません。</p>
+  <div class="pad pat" style="top:134mm"><p class="ttl">よくある住み替えのかたち</p><div class="g2"><div class="p0"><p class="who">戸建て → 駅前のマンション</p><h3>階段のない、ワンフロアの暮らしへ</h3><p class="t">年齢とともに2階への上り下りが負担に。駅やお店、病院に近いマンションなら、車がなくても暮らせます。</p></div><div class="p1"><p class="who">マンション → 戸建て</p><h3>管理費・修繕積立金の負担を見直す</h3><p class="t">建築費の高騰で管理費・修繕積立金の値上げが続いています。毎月の管理費・積立金がかからない戸建てへ。</p></div></div></div>
+  <div class="pad ctah" style="top:186mm"><h2 class="mincho">住み替えのご相談は、<em>いえプロ</em>へ。</h2></div>
+  <div class="fc" style="top:212mm">
+    <div class="pad main"><div><div class="tel"><span class="t">TEL</span><span class="no">06-6185-1252</span></div><p class="hours">営業時間 9:00〜18:00（定休日：火・水）</p><p class="gh">注文住宅のGハウスが手がける不動産売却サービス｜城東区・鶴見区・旭区 限定｜仲介売却・直接買取</p></div><div class="badges"><span>査定<br>無料</span><span>秘密<br>厳守</span><span>相談<br>無料</span></div><div class="qr"><div class="qrph">QRコード<br>（査定フォーム）</div><p>WEBから簡単査定<br>24時間受付</p></div></div>
+    <div class="pad company" style="top:44mm"><img class="logo" src="../img/logo-blue.png" alt="いえプロ不動産"><p class="info"><b>株式会社Gハウス いえプロ不動産</b>　https://iepro-fudosan.com<br>〒535-0022 大阪府大阪市旭区新森6-3-25 エクセレント新森1階<br>宅地建物取引業免許 国土交通大臣（1）第11002号</p></div>
   </div>
 </section>
 
-<!-- ==================== 05 住み替え：裏 ==================== -->
-<section class="sheet p05b">
-  <div class="pad head">
-    <p class="label">Compare</p>
-    <h2 class="mincho h2">売る・貸す・リフォーム。<span class="nb">3つの選択肢を比べる</span></h2>
-  </div>
-  <div class="pad cmp">
-    <table class="cmpt">
-      <thead><tr><th style="background:none"></th><th>売る</th><th>貸す</th><th>リフォーム</th></tr></thead>
-      <tbody>
-        <tr><th>まとまった資金</th><td><span class="mk ok">◎</span><small>次の住まいの資金に</small></td><td><span class="mk">△</span><small>家賃収入が少しずつ</small></td><td><span class="mk ng">×</span><small>費用がかかる</small></td></tr>
-        <tr><th>管理の手間</th><td><span class="mk ok">◎</span><small>なくなる</small></td><td><span class="mk ng">×</span><small>入居者対応・修繕</small></td><td><span class="mk">△</span><small>これまで通り</small></td></tr>
-        <tr><th>今の家に住み続ける</th><td><span class="mk ng">×</span></td><td><span class="mk ng">×</span></td><td><span class="mk ok">◎</span></td></tr>
-        <tr><th>固定資産税</th><td><span class="mk ok">◎</span><small>かからなくなる</small></td><td><span class="mk">△</span><small>家賃から払える</small></td><td><span class="mk ng">×</span><small>かかり続ける</small></td></tr>
-      </tbody>
-    </table>
-    <p class="small ink-sub" style="margin-top:2.4mm">どれが合うかは、ご家族ごとに違います。売却価格と賃料の両方を出して、比べてからお決めください。</p>
-  </div>
-  <div class="pad support">
-    <p class="label">Support</p>
-    <div class="grid3">
-      <div><p class="n">01</p><h3>売却と購入を、同時に進める</h3><p>「先に売るか、先に買うか」から一緒に決めます。仮住まいが要らない段取りもご提案します。</p></div>
-      <div><p class="n">02</p><h3>建物の話もできる不動産会社</h3><p>注文住宅・建売住宅の販売経験者が在籍。次の住まいの間取りや建築費の相談もできます。</p></div>
-      <div><p class="n">03</p><h3>売却査定と賃料査定を両方</h3><p>「売ったらいくら」「貸したらいくら」を並べてお見せします。どちらも無料です。</p></div>
-    </div>
-  </div>
-  <div class="pad flow">
-    <p class="label">Flow</p>
-    <ol class="steps4">
-      <li><p class="s">STEP<b>01</b></p><h3>ご相談</h3><p>お電話・QRから。ご家族同席も歓迎です。</p></li>
-      <li><p class="s">STEP<b>02</b></p><h3>売却・賃料の査定</h3><p>近隣の事例をもとに価格を出します。</p></li>
-      <li><p class="s">STEP<b>03</b></p><h3>住み替えプラン</h3><p>資金計画と次の住まいの条件を整理します。</p></li>
-      <li><p class="s">STEP<b>04</b></p><h3>売却・購入</h3><p>引越しの日程まで合わせて進めます。</p></li>
-    </ol>
-  </div>
-  <div class="cta on-dark">
-    <div class="pad main">
-      <div>
-        <p class="label">Contact</p>
-        <h2 class="mincho">住み替えのご相談・無料査定</h2>
-        <div class="tel"><span class="t">TEL</span><span class="no">06-6185-1252</span></div>
-        <p class="hours">営業時間 9:00〜18:00（定休日：火・水）</p>
-      </div>
-      <div class="qr"><div class="qrph">QRコード<br>（査定フォーム）</div><p>24時間<br>受付中</p></div>
-    </div>
-    <div class="pad company">
-      <img class="logo" src="../img/logo-white.png" alt="いえプロ不動産">
-      <p class="info"><b>いえプロ不動産</b>（株式会社Gハウス 不動産事業部）<br>〒535-0022 大阪府大阪市旭区新森6-3-25 エクセレント新森1階<br>宅地建物取引業免許 国土交通大臣（1）第11002号　<span class="kari">※検討用の案です</span></p>
-    </div>
-  </div>
-</section>
-
-<!-- ==================== 06 相続・空き家：表 ==================== -->
-<section class="sheet p06f on-dark">
+<!-- ==================== 06 紺の高級感（相続・空き家）：表 ==================== -->
+<section class="sheet fr d06">
   <!-- 写真：images/hero-street.jpg（LP素材） -->
-  <div class="photo"><img src="../../images/hero-street.jpg" alt=""></div>
-  <div class="pad hero">
+  <div class="photo" style="left:0;top:0;width:216mm;height:130mm"><img src="../../images/hero-street.jpg" alt="" style="object-position:72% 40%"></div>
+  <div class="shade"></div>
+  <div class="pad strip"><img src="../img/logo-white.png" alt="いえプロ不動産"><p>注文住宅のGハウスが手がける<br>不動産売却サービス</p></div>
+  <div class="pad hero" style="top:60mm">
     <p class="label">Inheritance &amp; Vacant House</p>
-    <h1 class="mincho h1"><span class="nb">ご実家、</span><br><span class="nb">このままで</span><span class="nb">大丈夫ですか。</span></h1>
-    <p class="lead">相続した家、誰も住んでいない実家のご相談を承っています。<br>売るかどうか決まっていなくても大丈夫です。</p>
-    <p class="chips"><span>相続登記</span><span>空き家の管理</span><span>売却・活用</span><span>税金のこと</span></p>
+    <h1 class="mincho">ご実家、<br>このままで大丈夫ですか。</h1>
+    <p class="lead">相続した家、誰も住んでいない実家、遠方の空き家。<br>売るかどうか決まっていなくても大丈夫です。</p>
   </div>
-  <div class="fband">
-    <div class="pad">
-      <div><p class="msg">相続・空き家のご相談窓口</p><div class="tel" style="margin-top:1.6mm"><span class="t">TEL</span><span class="no">06-6185-1252</span></div></div>
-      <img class="logo" src="../img/logo-white.png" alt="いえプロ不動産">
-    </div>
+  <div class="pad boshu" style="top:134mm"><p class="ar">城東区・鶴見区・旭区 限定</p><p class="bt">相続・空き家のご相談窓口</p></div>
+  <div class="seal">地域密着<br>旭区新森の<br>不動産会社</div>
+  <div class="pad types" style="top:154mm"><div><svg viewBox="0 0 24 24"><path d="M3 11 12 4l9 7v9H3z"/><path d="M10 20v-5h4v5"/></svg><span>戸建て</span></div><div><svg viewBox="0 0 24 24"><path d="M5 21V3h9v18M14 9h5v12M3 21h18"/><path d="M8 7h3M8 11h3M8 15h3M16 13h1M16 17h1"/></svg><span>マンション</span></div><div><svg viewBox="0 0 24 24"><path d="M2 20 6 14h12l4 6z"/><path d="M12 13s-4-3.6-4-6.4a4 4 0 0 1 8 0C16 9.4 12 13 12 13z"/><circle cx="12" cy="6.6" r="1.3"/></svg><span>土地</span></div><div><svg viewBox="0 0 24 24"><path d="M3 11 12 4l9 7v9H3z"/><path d="M9.5 12.5l5 5M14.5 12.5l-5 5"/></svg><span>空き家</span></div></div>
+  <div class="pad consw" style="top:170mm"><p class="ttl">このようなご相談が増えています</p><ul class="cons"><li>住み替えで、今の家を売りたい</li><li>相続した不動産・実家を整理したい（施設入居・ご逝去）</li><li>空き家の処分に困っている（遠方にお住まいの方も）</li><li>住宅ローンの返済が気になる</li><li>老後資金の確保・事業資金の調達・保有資産の組み替え</li><li>財産分与・連帯保証・ペアローンを解消したい</li><li>売るかどうか、まず金額を知りたい</li></ul></div>
+  <div class="pad ask" style="top:205mm">
+    <p class="wl"><b>売り方は、2つ</b>売るか決めていなくても、価格を知りたいだけでも大丈夫です。</p>
+    <div class="ways"><div class="w0"><p class="who">できるだけ高く売りたい方</p><h3>仲介売却</h3></div><div class="w1"><p class="who">早く・確実に売却したい方</p><h3>直接買取</h3></div><div class="badges"><span>査定<br>無料</span><span>秘密<br>厳守</span><span>相談<br>無料</span></div></div>
+  </div>
+  <div class="fc">
+    <div class="pad main"><div><div class="tel"><span class="t">TEL</span><span class="no">06-6185-1252</span></div><p class="hours">営業時間 9:00〜18:00（定休日：火・水）</p></div><div class="qr"><div class="qrph">QRコード<br>（査定フォーム）</div><p>WEBから簡単査定<br>24時間受付</p></div></div>
+    <div class="pad company"><img class="logo" src="../img/logo-white.png" alt="いえプロ不動産"><p class="info"><b>株式会社Gハウス いえプロ不動産</b>　https://iepro-fudosan.com<br>〒535-0022 大阪府大阪市旭区新森6-3-25 エクセレント新森1階<br>宅地建物取引業免許 国土交通大臣（1）第11002号</p></div>
+  </div>
+</section>
+<!-- ==================== 06 紺の高級感（相続・空き家）：裏 ==================== -->
+<section class="sheet bk d06">
+  <div class="bkh"></div>
+  <div class="pad head" style="top:14mm"><p class="label">Why Now</p><h2 class="mincho">持ち続けるほど、<em>売りにくく</em>なることも</h2></div>
+  <ol class="pad chain" style="top:37mm"><li><b>金利が上昇</b><span>住宅ローンの支払額がアップし、買い手の予算が下がる</span></li><li><b>建築費が高騰</b><span>マンションの管理費・修繕積立金も値上げ</span></li><li><b>売却物件が増加</b><span>売りに出る物件が増え、供給過多に</span></li><li><b>売値がダウン</b><span>売却できる金額が下がる可能性があります</span></li></ol>
+  <div class="pad rg" style="top:76mm">
+    <div class="box"><p class="ct">住宅ローン金利の推移（目安）</p><svg class="chart" viewBox="0 0 92 46" font-family="Zen Kaku Gothic New, sans-serif">
+        <g stroke="#E4DED3" stroke-width=".25"><path d="M2 8 H90 M2 20 H90 M2 32 H90"/></g>
+        <polygon points="8,38 8,32 23,29.6 38,24.8 53,20 68,14 83,8 83,38" fill="#E8A57C" opacity="0.22"/>
+        <polyline points="8,32 23,29.6 38,24.8 53,20 68,14 83,8" fill="none" stroke="#1F3346" stroke-width=".7"/>
+        <circle cx="8" cy="32" r="1.1" fill="#fff" stroke="#1F3346" stroke-width=".5"/><circle cx="23" cy="29.6" r="1.1" fill="#fff" stroke="#1F3346" stroke-width=".5"/><circle cx="38" cy="24.8" r="1.1" fill="#fff" stroke="#1F3346" stroke-width=".5"/><circle cx="53" cy="20" r="1.1" fill="#fff" stroke="#1F3346" stroke-width=".5"/><circle cx="68" cy="14" r="1.1" fill="#fff" stroke="#1F3346" stroke-width=".5"/><circle cx="83" cy="8" r="1.1" fill="#fff" stroke="#1F3346" stroke-width=".5"/>
+        <text x="8" y="27.5" font-size="3.8" font-weight="700" fill="#1F3346" text-anchor="middle">約0.5%</text>
+        <text x="83" y="4.6" font-size="3.8" font-weight="700" fill="#B04A12" text-anchor="middle">約1.5%</text>
+        <text x="8" y="44" font-size="2.9" fill="#4E5862" text-anchor="middle">2021</text><text x="23" y="44" font-size="2.9" fill="#4E5862" text-anchor="middle">2022</text><text x="38" y="44" font-size="2.9" fill="#4E5862" text-anchor="middle">2023</text><text x="53" y="44" font-size="2.9" fill="#4E5862" text-anchor="middle">2024</text><text x="68" y="44" font-size="2.9" fill="#4E5862" text-anchor="middle">2025</text><text x="83" y="44" font-size="2.9" fill="#4E5862" text-anchor="middle">2026（予測）</text>
+      </svg></div>
+    <div class="box"><p class="ct">同じ月々の返済額（10万円・35年）で借りられる金額の目安</p><div class="loan">
+        <div class="lr"><div><p class="r">金利 0.5%</p><p class="a">約<span class="num">3,850</span>万円</p></div><span class="arr">→</span><div><p class="r">金利 1.5%</p><p class="a">約<span class="num">3,270</span>万円</p></div></div>
+        <p class="diff">金利が上がると、約<span class="num">580</span>万円も予算が減少</p>
+      </div></div>
+  </div>
+  <p class="pad kari" style="top:121mm">※月々10万円・35年・元利均等返済・ボーナス払いなしで試算。金利の推移は目安で、将来の金利や価格を保証するものではありません。</p>
+  <div class="pad pat" style="top:130mm"><p class="ttl">よくある住み替えのかたち</p><div class="g2"><div class="p0"><p class="who">戸建て → 駅前のマンション</p><h3>階段のない、ワンフロアの暮らしへ</h3><p class="t">年齢とともに2階への上り下りが負担に。駅やお店、病院に近いマンションなら、車がなくても暮らせます。</p></div><div class="p1"><p class="who">マンション → 戸建て</p><h3>管理費・修繕積立金の負担を見直す</h3><p class="t">建築費の高騰で管理費・修繕積立金の値上げが続いています。毎月の管理費・積立金がかからない戸建てへ。</p></div></div></div>
+  <div class="cta">
+    <div class="pad ctah"><h2 class="mincho">ご実家のこと、<em>まずはご相談</em>ください。</h2></div>
+    <div class="pad main"><div><div class="tel"><span class="t">TEL</span><span class="no">06-6185-1252</span></div><p class="hours">営業時間 9:00〜18:00（定休日：火・水）</p><p class="gh">注文住宅のGハウスが手がける不動産売却サービス｜城東区・鶴見区・旭区 限定｜仲介売却・直接買取</p></div><div class="badges"><span>査定<br>無料</span><span>秘密<br>厳守</span><span>相談<br>無料</span></div><div class="qr"><div class="qrph">QRコード<br>（査定フォーム）</div><p>WEBから簡単査定<br>24時間受付</p></div></div>
+    <div class="pad company"><img class="logo" src="../img/logo-white.png" alt="いえプロ不動産"><p class="info"><b>株式会社Gハウス いえプロ不動産</b>　https://iepro-fudosan.com<br>〒535-0022 大阪府大阪市旭区新森6-3-25 エクセレント新森1階<br>宅地建物取引業免許 国土交通大臣（1）第11002号</p></div>
   </div>
 </section>
 
-<!-- ==================== 06 相続・空き家：裏 ==================== -->
-<section class="sheet p06b">
-  <div class="pad head">
-    <p class="label">Checklist</p>
-    <h2 class="mincho h2">ご実家のことで、<span class="nb">気になっていませんか。</span></h2>
-  </div>
-  <ul class="pad checks">
-    <li><span class="box"></span><div><h3>相続した家の名義変更はお済みですか<span class="tag">2024年4月から義務化</span></h3><p>相続登記をしないままだと、売却の手続きに進めません。</p></div></li>
-    <li><span class="box"></span><div><h3>誰も住んでいないのに、固定資産税を払い続けていませんか</h3><p>住まなくなった家にも、税金と維持費は毎年かかります。</p></div></li>
-    <li><span class="box"></span><div><h3>空き家を売るときの「3,000万円特別控除」をご存じですか</h3><p>条件を満たすと、売却益から最大3,000万円が控除されます。期限があるので早めの確認を。</p></div></li>
-    <li><span class="box"></span><div><h3>草木の手入れや換気に通うのが、負担になっていませんか</h3><p>空き家は傷みが早く、ご近所からの苦情につながることもあります。</p></div></li>
-    <li><span class="box"></span><div><h3>ご兄弟で、どうするか話し合えていますか</h3><p>価格の目安があると、ご家族での話し合いが進めやすくなります。</p></div></li>
-  </ul>
-  <div class="pad one">
-    <p class="label">One Stop</p>
-    <h2 class="mincho h2">窓口ひとつで、相続から売却まで。</h2>
-    <div class="grid3">
-      <div><p class="n">01</p><h3>相続登記</h3><p>司法書士と連携して、名義変更の手続きを進めます。</p></div>
-      <div><p class="n">02</p><h3>税金のご相談</h3><p>税理士と連携して、特例が使えるかを確認します。</p></div>
-      <div><p class="n">03</p><h3>売却・活用</h3><p>売る・貸す・解体して土地で売る、を比べてご提案します。</p></div>
-    </div>
-    <p class="kari" style="margin-top:2.4mm">※特例の適用には要件があります。連携先の体制は検討用の仮の内容です。</p>
-  </div>
-  <div class="cta on-dark">
-    <div class="pad main">
-      <div>
-        <p class="label">Contact</p>
-        <h2 class="mincho">相続・空き家のご相談は無料です</h2>
-        <div class="tel"><span class="t">TEL</span><span class="no">06-6185-1252</span></div>
-        <p class="hours">営業時間 9:00〜18:00（定休日：火・水）</p>
-      </div>
-      <div class="qr"><div class="qrph">QRコード<br>（相談フォーム）</div><p>24時間<br>受付中</p></div>
-    </div>
-    <div class="pad company">
-      <img class="logo" src="../img/logo-white.png" alt="いえプロ不動産">
-      <p class="info"><b>いえプロ不動産</b>（株式会社Gハウス 不動産事業部）<br>〒535-0022 大阪府大阪市旭区新森6-3-25 エクセレント新森1階<br>宅地建物取引業免許 国土交通大臣（1）第11002号</p>
-    </div>
-  </div>
-</section>
-
-<!-- ==================== 10 売り時診断：表 ==================== -->
-<section class="sheet p10f">
-  <div class="pad head" style="text-align:center">
+<!-- ==================== 10 図解（売り時診断）：表 ==================== -->
+<section class="sheet fr d10">
+  <div class="ban"><div class="pad">
+    <div class="strip"><img src="../img/logo-white.png" alt="いえプロ不動産"><p>注文住宅のGハウスが手がける<br>不動産売却サービス</p></div>
+    <div class="bs"><p class="ar">城東区・鶴見区・旭区 限定</p><p class="bt">売却のご相談・無料査定</p></div>
+  </div></div>
+  <div class="pad hero" style="top:44mm;text-align:center">
     <p class="label" style="justify-content:center">Self Check</p>
-    <h1 class="mincho h1" style="margin-top:4mm;font-size:25pt">YES / NO で分かる、<br>わが家の「売り時」</h1>
+    <h1 class="mincho">YES / NO で分かる、わが家の「売り時」</h1>
   </div>
-  <div class="chart">
-    <svg viewBox="0 0 190 118" font-family="Shippori Mincho B1, serif" font-weight="600">
-      <g stroke="#1F3346" stroke-width=".5" fill="none">
-        <path d="M95 22 V31 M40 31 H150 M40 31 V41 M150 31 V41"/>
-        <path d="M40 63 V72 M20 72 H60 M20 72 V84 M60 72 V84"/>
-        <path d="M150 63 V72 M130 72 H170 M130 72 V84 M170 72 V84"/>
+  <div class="chart10">
+    <svg viewBox="0 0 190 104" font-family="Shippori Mincho B1, serif" font-weight="600">
+      <g stroke="#3E6582" stroke-width=".7" fill="none">
+        <path d="M95 20 V28 M40 28 H150 M40 28 V36 M150 28 V36"/>
+        <path d="M40 56 V64 M20 64 H60 M20 64 V74 M60 64 V74"/>
+        <path d="M150 56 V64 M130 64 H170 M130 64 V74 M170 64 V74"/>
       </g>
-      <g font-family="Cormorant Garamond, serif" font-style="italic" font-size="5" fill="#B04A12" font-weight="600">
-        <text x="43" y="38">YES</text><text x="140" y="38">NO</text>
-        <text x="23" y="80">YES</text><text x="63" y="80">NO</text>
-        <text x="133" y="80">YES</text><text x="173" y="80">NO</text>
+      <g font-family="Cormorant Garamond, serif" font-style="italic" font-size="6" fill="#B04A12" font-weight="600">
+        <text x="43" y="34.5">YES</text><text x="138" y="34.5">NO</text>
+        <text x="23" y="72">YES</text><text x="63" y="72">NO</text>
+        <text x="133" y="72">YES</text><text x="172" y="72">NO</text>
       </g>
-      <rect x="30" y="0" width="130" height="22" fill="#fff" stroke="#1F3346" stroke-width=".6"/>
-      <text x="95" y="13.5" text-anchor="middle" font-size="5.6" fill="#1F2A33">家を建てて（買って）15年以上たつ</text>
-      <rect x="2" y="41" width="76" height="22" fill="#fff" stroke="#1F3346" stroke-width=".6"/>
-      <text x="40" y="54.5" text-anchor="middle" font-size="5.6" fill="#1F2A33">使っていない部屋がある</text>
-      <rect x="112" y="41" width="76" height="22" fill="#fff" stroke="#1F3346" stroke-width=".6"/>
-      <text x="150" y="51" text-anchor="middle" font-size="5.6" fill="#1F2A33">近所で新築や</text>
-      <text x="150" y="58" text-anchor="middle" font-size="5.6" fill="#1F2A33">建て替えが増えている</text>
-      <g font-family="Cormorant Garamond, serif" font-size="14" fill="#fff" text-anchor="middle">
-        <circle cx="20" cy="99" r="14" fill="#B04A12"/><text x="20" y="104">A</text>
-        <circle cx="60" cy="99" r="14" fill="#3E6582"/><text x="60" y="104">B</text>
-        <circle cx="130" cy="99" r="14" fill="#3E6582"/><text x="130" y="104">B</text>
-        <circle cx="170" cy="99" r="14" fill="#1F3346"/><text x="170" y="104">C</text>
+      <rect x="30" y="0" width="130" height="20" rx="3" fill="#EEF3F7" stroke="#3E6582" stroke-width=".8"/>
+      <text x="95" y="12.6" text-anchor="middle" font-size="7.2" fill="#1F2A33">家を建てて（買って）15年以上たつ</text>
+      <rect x="2" y="36" width="76" height="20" rx="3" fill="#EEF3F7" stroke="#3E6582" stroke-width=".8"/>
+      <text x="40" y="48.4" text-anchor="middle" font-size="6.8" fill="#1F2A33">使っていない部屋がある</text>
+      <rect x="112" y="36" width="76" height="20" rx="3" fill="#EEF3F7" stroke="#3E6582" stroke-width=".8"/>
+      <text x="150" y="44.6" text-anchor="middle" font-size="6.4" fill="#1F2A33">近所で新築や</text>
+      <text x="150" y="52.2" text-anchor="middle" font-size="6.4" fill="#1F2A33">建て替えが増えている</text>
+      <g font-family="Cormorant Garamond, serif" font-size="15" fill="#fff" text-anchor="middle">
+        <circle cx="20" cy="88" r="13" fill="#B04A12"/><text x="20" y="93">A</text>
+        <circle cx="60" cy="88" r="13" fill="#3E6582"/><text x="60" y="93">B</text>
+        <circle cx="130" cy="88" r="13" fill="#3E6582"/><text x="130" y="93">B</text>
+        <circle cx="170" cy="88" r="13" fill="#1F3346"/><text x="170" y="93">C</text>
       </g>
     </svg>
   </div>
-  <div class="pad after">
-    <p>あなたは <span class="accent">A・B・C</span> のどのタイプ？</p>
-    <small>それぞれの意味と、いま考えておきたいことは裏面へ。</small>
+  <div class="pad res10" style="top:106mm">
+    <div class="ra"><p class="rh"><i>A</i>今が検討どき</p><p class="rt">住み替え・売却の選択肢が広い時期。まずは今の価格を知って計画を。</p><p class="go">おすすめ<b>訪問査定</b></p></div>
+    <div class="rb"><p class="rh"><i>B</i>情報を集める時期</p><p class="rt">急ぐ必要はありません。相場の動きを定期的にチェックしましょう。</p><p class="go">おすすめ<b>机上査定</b></p></div>
+    <div class="rc"><p class="rh"><i>C</i>今はじっくり</p><p class="rt">資産としての価値の目安だけでも、知っておくと安心です。</p><p class="go">おすすめ<b>机上査定</b></p></div>
   </div>
-  <div class="fband on-dark">
-    <div class="pad">
-      <div><p class="msg">わが家の価格を知りたい方は</p><div class="tel" style="margin-top:1.6mm"><span class="t">TEL</span><span class="no">06-6185-1252</span></div></div>
-      <img class="logo" src="../img/logo-white.png" alt="いえプロ不動産">
-    </div>
+  <p class="pad resn" style="top:133mm">どの結果でも査定は無料です。お電話・QRで<b>診断結果（A・B・C）</b>をお伝えいただければ、合った方法をご案内します。</p>
+  <div class="seal">地域密着<br>旭区新森の<br>不動産会社</div>
+  <div class="pad mid" style="top:143mm">
+    <div class="rbox"><p class="tab">取り扱い物件</p><div class="types"><div><svg viewBox="0 0 24 24"><path d="M3 11 12 4l9 7v9H3z"/><path d="M10 20v-5h4v5"/></svg><span>戸建て</span></div><div><svg viewBox="0 0 24 24"><path d="M5 21V3h9v18M14 9h5v12M3 21h18"/><path d="M8 7h3M8 11h3M8 15h3M16 13h1M16 17h1"/></svg><span>マンション</span></div><div><svg viewBox="0 0 24 24"><path d="M2 20 6 14h12l4 6z"/><path d="M12 13s-4-3.6-4-6.4a4 4 0 0 1 8 0C16 9.4 12 13 12 13z"/><circle cx="12" cy="6.6" r="1.3"/></svg><span>土地</span></div><div><svg viewBox="0 0 24 24"><path d="M3 11 12 4l9 7v9H3z"/><path d="M9.5 12.5l5 5M14.5 12.5l-5 5"/></svg><span>空き家</span></div></div></div>
+    <div class="rbox"><p class="tab">このようなご相談が増えています</p><ul class="cons"><li>住み替えで、今の家を売りたい</li><li>相続した不動産・実家を整理したい（施設入居・ご逝去）</li><li>空き家の処分に困っている（遠方にお住まいの方も）</li><li>住宅ローンの返済が気になる</li><li>老後資金の確保・事業資金の調達・保有資産の組み替え</li><li>財産分与・連帯保証・ペアローンを解消したい</li><li>売るかどうか、まず金額を知りたい</li></ul></div>
+  </div>
+  <div class="pad ask" style="top:194mm">
+    <p class="wl"><b>売り方は、2つ</b>売るか決めていなくても、価格を知りたいだけでも大丈夫です。</p>
+    <div class="ways"><div class="w0"><p class="who">できるだけ高く売りたい方</p><h3>仲介売却</h3></div><span class="or">or</span><div class="w1"><p class="who">早く・確実に売却したい方</p><h3>直接買取</h3></div></div>
+    <div class="badges"><span>査定<br>無料</span><span>秘密<br>厳守</span><span>相談<br>無料</span></div>
+  </div>
+  <div class="fc">
+    <div class="pad main"><div><div class="tel"><span class="t">TEL</span><span class="no">06-6185-1252</span></div><p class="hours">営業時間 9:00〜18:00（定休日：火・水）</p></div><div class="qr"><div class="qrph">QRコード<br>（査定フォーム）</div><p>WEBから簡単査定<br>24時間受付</p></div></div>
+    <div class="pad company"><img class="logo" src="../img/logo-blue.png" alt="いえプロ不動産"><p class="info"><b>株式会社Gハウス いえプロ不動産</b>　https://iepro-fudosan.com<br>〒535-0022 大阪府大阪市旭区新森6-3-25 エクセレント新森1階<br>宅地建物取引業免許 国土交通大臣（1）第11002号</p></div>
+  </div>
+</section>
+<!-- ==================== 10 図解（売り時診断）：裏 ==================== -->
+<section class="sheet bk d10">
+  <div class="pad head" style="top:14mm"><p class="label">Why Now</p><h2 class="mincho">「売り時」を左右する、<em>4つの変化</em></h2></div>
+  <ol class="pad chain" style="top:37mm"><li><b>金利が上昇</b><span>住宅ローンの支払額がアップし、買い手の予算が下がる</span></li><li><b>建築費が高騰</b><span>マンションの管理費・修繕積立金も値上げ</span></li><li><b>売却物件が増加</b><span>売りに出る物件が増え、供給過多に</span></li><li><b>売値がダウン</b><span>売却できる金額が下がる可能性があります</span></li></ol>
+  <div class="pad rg" style="top:66mm">
+    <div class="rbox"><p class="tab">住宅ローン金利の推移（目安）</p><svg class="chart" viewBox="0 0 92 46" font-family="Zen Kaku Gothic New, sans-serif">
+        <g stroke="#DCE5EC" stroke-width=".25"><path d="M2 8 H90 M2 20 H90 M2 32 H90"/></g>
+        <polygon points="8,38 8,32 23,29.6 38,24.8 53,20 68,14 83,8 83,38" fill="#E8A57C" opacity="0.22"/>
+        <polyline points="8,32 23,29.6 38,24.8 53,20 68,14 83,8" fill="none" stroke="#3E6582" stroke-width=".7"/>
+        <circle cx="8" cy="32" r="1.1" fill="#fff" stroke="#3E6582" stroke-width=".5"/><circle cx="23" cy="29.6" r="1.1" fill="#fff" stroke="#3E6582" stroke-width=".5"/><circle cx="38" cy="24.8" r="1.1" fill="#fff" stroke="#3E6582" stroke-width=".5"/><circle cx="53" cy="20" r="1.1" fill="#fff" stroke="#3E6582" stroke-width=".5"/><circle cx="68" cy="14" r="1.1" fill="#fff" stroke="#3E6582" stroke-width=".5"/><circle cx="83" cy="8" r="1.1" fill="#fff" stroke="#3E6582" stroke-width=".5"/>
+        <text x="8" y="27.5" font-size="3.8" font-weight="700" fill="#3E6582" text-anchor="middle">約0.5%</text>
+        <text x="83" y="4.6" font-size="3.8" font-weight="700" fill="#B04A12" text-anchor="middle">約1.5%</text>
+        <text x="8" y="44" font-size="2.9" fill="#4E5862" text-anchor="middle">2021</text><text x="23" y="44" font-size="2.9" fill="#4E5862" text-anchor="middle">2022</text><text x="38" y="44" font-size="2.9" fill="#4E5862" text-anchor="middle">2023</text><text x="53" y="44" font-size="2.9" fill="#4E5862" text-anchor="middle">2024</text><text x="68" y="44" font-size="2.9" fill="#4E5862" text-anchor="middle">2025</text><text x="83" y="44" font-size="2.9" fill="#4E5862" text-anchor="middle">2026（予測）</text>
+      </svg></div>
+    <div class="rbox"><p class="tab">同じ月々の返済額で借りられる金額</p><div class="loan">
+        <div class="lr"><div><p class="r">金利 0.5%</p><p class="a">約<span class="num">3,850</span>万円</p></div><span class="arr">→</span><div><p class="r">金利 1.5%</p><p class="a">約<span class="num">3,270</span>万円</p></div></div>
+        <p class="diff">金利が上がると、約<span class="num">580</span>万円も予算が減少</p>
+      </div></div>
+  </div>
+  <p class="pad kari" style="top:121mm">※月々10万円・35年・元利均等返済・ボーナス払いなしで試算。金利の推移は目安で、将来の金利や価格を保証するものではありません。</p>
+  <div class="pad pat" style="top:131mm"><p class="tab">よくある住み替えのかたち</p><div class="g2"><div class="p0"><p class="who">戸建て → 駅前のマンション</p><h3>階段のない、ワンフロアの暮らしへ</h3><p class="t">年齢とともに2階への上り下りが負担に。駅やお店、病院に近いマンションなら、車がなくても暮らせます。</p></div><div class="p1"><p class="who">マンション → 戸建て</p><h3>管理費・修繕積立金の負担を見直す</h3><p class="t">建築費の高騰で管理費・修繕積立金の値上げが続いています。毎月の管理費・積立金がかからない戸建てへ。</p></div></div></div>
+  <div class="cta">
+    <div class="pad ctah"><h2 class="mincho">わが家の<em>売り時</em>、一緒に確かめましょう。</h2></div>
+    <div class="pad main"><div><div class="tel"><span class="t">TEL</span><span class="no">06-6185-1252</span></div><p class="hours">営業時間 9:00〜18:00（定休日：火・水）</p><p class="gh">注文住宅のGハウスが手がける不動産売却サービス｜城東区・鶴見区・旭区 限定｜仲介売却・直接買取</p></div><div class="badges"><span>査定<br>無料</span><span>秘密<br>厳守</span><span>相談<br>無料</span></div><div class="qr"><div class="qrph">QRコード<br>（査定フォーム）</div><p>WEBから簡単査定<br>24時間受付</p></div></div>
+    <div class="pad company"><img class="logo" src="../img/logo-white.png" alt="いえプロ不動産"><p class="info"><b>株式会社Gハウス いえプロ不動産</b>　https://iepro-fudosan.com<br>〒535-0022 大阪府大阪市旭区新森6-3-25 エクセレント新森1階<br>宅地建物取引業免許 国土交通大臣（1）第11002号</p></div>
   </div>
 </section>
 
-<!-- ==================== 10 売り時診断：裏 ==================== -->
-<section class="sheet p10b">
-  <div class="pad head">
-    <p class="label">Result</p>
-    <h2 class="mincho h2">診断結果と、いま考えておきたいこと</h2>
+<!-- ==================== 29 ミニマル（問いかけ）：表 ==================== -->
+<section class="sheet fr d29">
+  <div class="pad strip"><img src="../img/logo-blue.png" alt="いえプロ不動産"><p>注文住宅のGハウスが手がける<br>不動産売却サービス</p></div>
+  <p class="vq">その家に、あと何年住みますか。</p>
+  <div class="vrule"></div>
+  <div class="pad lead29" style="top:62mm;right:72mm">
+    <p class="ar">城東区・鶴見区・旭区 限定</p>
+    <div class="poem"><p>5年なら、今のうちに準備を。</p><p>20年なら、価値を知っておくと安心です。</p><p>まだ決めていないなら、</p><p>一度だけ、話を聞いてみてください。</p></div>
+    <p class="sealt">地域密着 旭区新森の不動産会社</p>
   </div>
-  <div class="pad results">
-    <div class="res"><span class="badge" style="background:var(--accent)">A</span><div><h3>今が検討どき</h3><p>住み替えや売却の選択肢が広い時期です。まずは今の価格を知って、資金計画を立ててみましょう。</p></div><div class="rec"><p class="k">Recommend</p><p class="v">訪問査定<br><span class="kari" style="font-family:var(--f-gothic)">約1時間・無料</span></p></div></div>
-    <div class="res"><span class="badge" style="background:var(--blue)">B</span><div><h3>情報を集める時期</h3><p>急ぐ必要はありませんが、相場の動きは知っておきたい時期です。半年に一度の価格チェックがおすすめです。</p></div><div class="rec"><p class="k">Recommend</p><p class="v">机上査定<br><span class="kari" style="font-family:var(--f-gothic)">訪問なし・無料</span></p></div></div>
-    <div class="res"><span class="badge" style="background:var(--navy)">C</span><div><h3>今はじっくり</h3><p>今の暮らしを大切にする時期です。資産としての価値の目安だけ知っておくと、いざという時に安心です。</p></div><div class="rec"><p class="k">Recommend</p><p class="v">相場レポート<br><span class="kari" style="font-family:var(--f-gothic)">郵送・無料（仮）</span></p></div></div>
+  <div class="pad rows" style="top:156mm">
+    <div class="row"><p class="k">取り扱い物件</p><p class="v tp">戸建て<i>／</i>マンション<i>／</i>土地<i>／</i>空き家</p></div>
+    <div class="row"><p class="k">このような<br>ご相談が<br>増えています</p><ul class="v cons"><li>住み替えで、今の家を売りたい</li><li>相続した不動産・実家を整理したい（施設入居・ご逝去）</li><li>空き家の処分に困っている（遠方にお住まいの方も）</li><li>住宅ローンの返済が気になる</li><li>老後資金の確保・事業資金の調達・保有資産の組み替え</li><li>財産分与・連帯保証・ペアローンを解消したい</li><li>売るかどうか、まず金額を知りたい</li></ul></div>
+    <div class="row"><p class="k">売り方</p><div class="v ways"><div class="w0"><p class="who">できるだけ高く売りたい方</p><h3>仲介売却</h3></div><div class="w1"><p class="who">早く・確実に売却したい方</p><h3>直接買取</h3></div></div></div>
+    <div class="row"><p class="k">ご相談</p><div class="v"><p class="sub">売るか決めていなくても、価格を知りたいだけでも大丈夫です。</p><div class="badges" style="margin-top:2mm"><span>査定<br>無料</span><span>秘密<br>厳守</span><span>相談<br>無料</span></div></div></div>
   </div>
-  <div class="pad two">
-    <p class="label">Two Ways</p>
-    <h2 class="mincho h2">査定は2種類から選べます</h2>
-    <table class="two-t">
-      <thead><tr><th></th><th>机上査定</th><th>訪問査定</th></tr></thead>
-      <tbody>
-        <tr><th>お家への訪問</th><td>なし</td><td>あり（約1時間）</td></tr>
-        <tr><th>結果のお知らせ</th><td>最短当日</td><td>2〜3日</td></tr>
-        <tr><th>価格の精度</th><td>目安</td><td>より正確</td></tr>
-      </tbody>
-    </table>
+  <div class="pad contact" style="top:238mm">
+    <div><div class="tel"><span class="t">TEL</span><span class="no">06-6185-1252</span></div><p class="hours">営業時間 9:00〜18:00（定休日：火・水）</p></div><div class="qr"><div class="qrph">QRコード<br>（査定フォーム）</div><p>WEBから簡単査定<br>24時間受付</p></div>
   </div>
-  <div class="cta on-dark">
+  <div class="pad co" style="top:272mm"><img class="logo" src="../img/logo-blue.png" alt="いえプロ不動産"><p class="info"><b>株式会社Gハウス いえプロ不動産</b>　https://iepro-fudosan.com<br>〒535-0022 大阪府大阪市旭区新森6-3-25 エクセレント新森1階<br>宅地建物取引業免許 国土交通大臣（1）第11002号</p></div>
+</section>
+<!-- ==================== 29 ミニマル（問いかけ）：裏 ==================== -->
+<section class="sheet bk d29">
+  <div class="pad head" style="top:18mm"><p class="label">Why Now</p><h2 class="mincho">これから、<em>相場</em>はどう動くのか</h2></div>
+  <ol class="pad chain" style="top:42mm"><li><b>金利が上昇</b><span>住宅ローンの支払額がアップし、買い手の予算が下がる</span></li><li><b>建築費が高騰</b><span>マンションの管理費・修繕積立金も値上げ</span></li><li><b>売却物件が増加</b><span>売りに出る物件が増え、供給過多に</span></li><li><b>売値がダウン</b><span>売却できる金額が下がる可能性があります</span></li></ol>
+  <div class="pad rg" style="top:95mm">
+    <div><p class="ct">住宅ローン金利の推移（目安）</p><svg class="chart" viewBox="0 0 92 46" font-family="Zen Kaku Gothic New, sans-serif">
+        <g stroke="#E6E3DD" stroke-width=".25"><path d="M2 8 H90 M2 20 H90 M2 32 H90"/></g>
+        <polygon points="8,38 8,32 23,29.6 38,24.8 53,20 68,14 83,8 83,38" fill="#B04A12" opacity="0.08"/>
+        <polyline points="8,32 23,29.6 38,24.8 53,20 68,14 83,8" fill="none" stroke="#1F2A33" stroke-width=".7"/>
+        <circle cx="8" cy="32" r="1.1" fill="#fff" stroke="#1F2A33" stroke-width=".5"/><circle cx="23" cy="29.6" r="1.1" fill="#fff" stroke="#1F2A33" stroke-width=".5"/><circle cx="38" cy="24.8" r="1.1" fill="#fff" stroke="#1F2A33" stroke-width=".5"/><circle cx="53" cy="20" r="1.1" fill="#fff" stroke="#1F2A33" stroke-width=".5"/><circle cx="68" cy="14" r="1.1" fill="#fff" stroke="#1F2A33" stroke-width=".5"/><circle cx="83" cy="8" r="1.1" fill="#fff" stroke="#1F2A33" stroke-width=".5"/>
+        <text x="8" y="27.5" font-size="3.8" font-weight="700" fill="#1F2A33" text-anchor="middle">約0.5%</text>
+        <text x="83" y="4.6" font-size="3.8" font-weight="700" fill="#B04A12" text-anchor="middle">約1.5%</text>
+        <text x="8" y="44" font-size="2.9" fill="#6B737B" text-anchor="middle">2021</text><text x="23" y="44" font-size="2.9" fill="#6B737B" text-anchor="middle">2022</text><text x="38" y="44" font-size="2.9" fill="#6B737B" text-anchor="middle">2023</text><text x="53" y="44" font-size="2.9" fill="#6B737B" text-anchor="middle">2024</text><text x="68" y="44" font-size="2.9" fill="#6B737B" text-anchor="middle">2025</text><text x="83" y="44" font-size="2.9" fill="#6B737B" text-anchor="middle">2026（予測）</text>
+      </svg></div>
+    <div><p class="ct">同じ月々の返済額（10万円・35年）で借りられる金額の目安</p><div class="loan">
+        <div class="lr"><div><p class="r">金利 0.5%</p><p class="a">約<span class="num">3,850</span>万円</p></div><span class="arr">→</span><div><p class="r">金利 1.5%</p><p class="a">約<span class="num">3,270</span>万円</p></div></div>
+        <p class="diff">金利が上がると、約<span class="num">580</span>万円も予算が減少</p>
+      </div></div>
+  </div>
+  <p class="pad kari" style="top:138mm">※月々10万円・35年・元利均等返済・ボーナス払いなしで試算。金利の推移は目安で、将来の金利や価格を保証するものではありません。</p>
+  <div class="pad pat" style="top:148mm"><p class="ct">よくある住み替えのかたち</p><div class="g2"><div class="p0"><p class="who">戸建て → 駅前のマンション</p><h3>階段のない、ワンフロアの暮らしへ</h3><p class="t">年齢とともに2階への上り下りが負担に。駅やお店、病院に近いマンションなら、車がなくても暮らせます。</p></div><div class="p1"><p class="who">マンション → 戸建て</p><h3>管理費・修繕積立金の負担を見直す</h3><p class="t">建築費の高騰で管理費・修繕積立金の値上げが続いています。毎月の管理費・積立金がかからない戸建てへ。</p></div></div></div>
+  <div class="pad contact" style="top:198mm">
+    <div class="qr"><div class="qrph">QRコード<br>（査定フォーム）</div><p>WEBから簡単査定<br>24時間受付</p></div><div><div class="tel"><span class="t">TEL</span><span class="no">06-6185-1252</span></div><p class="hours">営業時間 9:00〜18:00（定休日：火・水）</p><p class="gh">注文住宅のGハウスが手がける不動産売却サービス｜城東区・鶴見区・旭区 限定｜仲介売却・直接買取</p><div class="badges"><span>査定<br>無料</span><span>秘密<br>厳守</span><span>相談<br>無料</span></div></div>
+  </div>
+  <div class="pad co" style="top:256mm"><img class="logo" src="../img/logo-blue.png" alt="いえプロ不動産"><p class="info"><b>株式会社Gハウス いえプロ不動産</b>　https://iepro-fudosan.com<br>〒535-0022 大阪府大阪市旭区新森6-3-25 エクセレント新森1階<br>宅地建物取引業免許 国土交通大臣（1）第11002号</p></div>
+</section>
+
+<!-- ==================== 30 数字を大きく：表 ==================== -->
+<section class="sheet fr d30">
+  <div class="top30"></div>
+  <div class="pad strip"><img src="../img/logo-white.png" alt="いえプロ不動産"><p>注文住宅のGハウスが手がける<br>不動産売却サービス</p></div>
+  <div class="pad hero" style="top:32mm"><p class="label">Numbers</p><h1 class="mincho">数字で見る、いえプロの売却サポート</h1></div>
+  <div class="pad nums" style="top:52mm">
+    <div><p class="big"><span class="num">127</span><span class="unit">件</span></p><p class="cap">売却をお手伝いした件数</p></div>
+    <div><p class="big"><span class="num">2.8</span><span class="unit">か月</span></p><p class="cap">売り出しから成約までの平均期間</p></div>
+    <div><p class="big"><span class="num">96</span><span class="unit">%</span></p><p class="cap">売り出し価格に対する成約価格</p></div>
+  </div>
+  <p class="pad kari" style="top:99mm;color:#9FB0C0">※数字は検討用の仮の値です（2021〜2026年）。</p>
+  <div class="band"><div class="pad"><span class="ar">城東区・鶴見区・旭区 限定</span><span class="bt">不動産売却のご相談受付中</span></div></div>
+  <div class="seal">地域密着<br>旭区新森の<br>不動産会社</div>
+  <div class="pad mid" style="top:138mm">
+    <div class="cnt"><p class="n">4</p><p class="nl">種類の不動産に対応</p><div class="types"><div><svg viewBox="0 0 24 24"><path d="M3 11 12 4l9 7v9H3z"/><path d="M10 20v-5h4v5"/></svg><span>戸建て</span></div><div><svg viewBox="0 0 24 24"><path d="M5 21V3h9v18M14 9h5v12M3 21h18"/><path d="M8 7h3M8 11h3M8 15h3M16 13h1M16 17h1"/></svg><span>マンション</span></div><div><svg viewBox="0 0 24 24"><path d="M2 20 6 14h12l4 6z"/><path d="M12 13s-4-3.6-4-6.4a4 4 0 0 1 8 0C16 9.4 12 13 12 13z"/><circle cx="12" cy="6.6" r="1.3"/></svg><span>土地</span></div><div><svg viewBox="0 0 24 24"><path d="M3 11 12 4l9 7v9H3z"/><path d="M9.5 12.5l5 5M14.5 12.5l-5 5"/></svg><span>空き家</span></div></div></div>
+    <div><p class="ttl">このようなご相談が増えています</p><ul class="cons"><li>住み替えで、今の家を売りたい</li><li>相続した不動産・実家を整理したい（施設入居・ご逝去）</li><li>空き家の処分に困っている（遠方にお住まいの方も）</li><li>住宅ローンの返済が気になる</li><li>老後資金の確保・事業資金の調達・保有資産の組み替え</li><li>財産分与・連帯保証・ペアローンを解消したい</li><li>売るかどうか、まず金額を知りたい</li></ul></div>
+  </div>
+  <div class="pad ask" style="top:200mm">
+    <p class="wl"><b>売り方は、2つ</b>売るか決めていなくても、価格を知りたいだけでも大丈夫です。</p>
+    <div class="ways"><div class="w0"><p class="who">できるだけ高く売りたい方</p><h3>仲介売却</h3></div><div class="w1"><p class="who">早く・確実に売却したい方</p><h3>直接買取</h3></div><div class="badges"><span>査定<br>無料</span><span>秘密<br>厳守</span><span>相談<br>無料</span></div></div>
+  </div>
+  <div class="fc">
+    <div class="pad main"><div><div class="tel"><span class="t">TEL</span><span class="no">06-6185-1252</span></div><p class="hours">営業時間 9:00〜18:00（定休日：火・水）</p></div><div class="qr"><div class="qrph">QRコード<br>（査定フォーム）</div><p>WEBから簡単査定<br>24時間受付</p></div></div>
+    <div class="pad company"><img class="logo" src="../img/logo-blue.png" alt="いえプロ不動産"><p class="info"><b>株式会社Gハウス いえプロ不動産</b>　https://iepro-fudosan.com<br>〒535-0022 大阪府大阪市旭区新森6-3-25 エクセレント新森1階<br>宅地建物取引業免許 国土交通大臣（1）第11002号</p></div>
+  </div>
+</section>
+<!-- ==================== 30 数字を大きく：裏 ==================== -->
+<section class="sheet bk d30">
+  <div class="pad head" style="top:14mm"><p class="label">Why Now</p><h2 class="mincho">数字で見る、<em>今の住宅市場</em></h2></div>
+  <div class="pad b580" style="top:34mm">
+    <p class="big"><small>約</small>580<small>万円</small></p>
+    <div><p class="cap">金利が0.5%から1.5%に上がると、同じ月々の返済額（10万円・35年）で借りられる金額が、これだけ減ります。</p>
+      <p class="lr2"><span>金利0.5%　約<b>3,850</b>万円</span><span class="arr">→</span><span>金利1.5%　約<b>3,270</b>万円</span></p></div>
+  </div>
+  <ol class="pad chain" style="top:76mm"><li><b>金利が上昇</b><span>住宅ローンの支払額がアップし、買い手の予算が下がる</span></li><li><b>建築費が高騰</b><span>マンションの管理費・修繕積立金も値上げ</span></li><li><b>売却物件が増加</b><span>売りに出る物件が増え、供給過多に</span></li><li><b>売値がダウン</b><span>売却できる金額が下がる可能性があります</span></li></ol>
+  <div class="pad cbox" style="top:118mm"><p class="ct">住宅ローン金利の推移（目安）</p><svg class="chart" viewBox="0 0 92 46" font-family="Zen Kaku Gothic New, sans-serif">
+        <g stroke="rgba(255,255,255,.14)" stroke-width=".25"><path d="M2 8 H90 M2 20 H90 M2 32 H90"/></g>
+        <polygon points="8,38 8,32 23,29.6 38,24.8 53,20 68,14 83,8 83,38" fill="#6F8FA8" opacity="0.55"/>
+        <polyline points="8,32 23,29.6 38,24.8 53,20 68,14 83,8" fill="none" stroke="#fff" stroke-width=".7"/>
+        <circle cx="8" cy="32" r="1.1" fill="#1F3346" stroke="#fff" stroke-width=".5"/><circle cx="23" cy="29.6" r="1.1" fill="#1F3346" stroke="#fff" stroke-width=".5"/><circle cx="38" cy="24.8" r="1.1" fill="#1F3346" stroke="#fff" stroke-width=".5"/><circle cx="53" cy="20" r="1.1" fill="#1F3346" stroke="#fff" stroke-width=".5"/><circle cx="68" cy="14" r="1.1" fill="#1F3346" stroke="#fff" stroke-width=".5"/><circle cx="83" cy="8" r="1.1" fill="#1F3346" stroke="#fff" stroke-width=".5"/>
+        <text x="8" y="27.5" font-size="3.8" font-weight="700" fill="#fff" text-anchor="middle">約0.5%</text>
+        <text x="83" y="4.6" font-size="3.8" font-weight="700" fill="#E8A57C" text-anchor="middle">約1.5%</text>
+        <text x="8" y="44" font-size="2.9" fill="#C9D2DB" text-anchor="middle">2021</text><text x="23" y="44" font-size="2.9" fill="#C9D2DB" text-anchor="middle">2022</text><text x="38" y="44" font-size="2.9" fill="#C9D2DB" text-anchor="middle">2023</text><text x="53" y="44" font-size="2.9" fill="#C9D2DB" text-anchor="middle">2024</text><text x="68" y="44" font-size="2.9" fill="#C9D2DB" text-anchor="middle">2025</text><text x="83" y="44" font-size="2.9" fill="#C9D2DB" text-anchor="middle">2026（予測）</text>
+      </svg></div>
+  <p class="pad kari" style="top:162mm">※月々10万円・35年・元利均等返済・ボーナス払いなしで試算。金利の推移は目安で、将来の金利や価格を保証するものではありません。</p>
+  <div class="pad pat" style="top:170mm"><div class="g2"><div class="p0"><p class="who">戸建て → 駅前のマンション</p><h3>階段のない、ワンフロアの暮らしへ</h3><p class="t">年齢とともに2階への上り下りが負担に。駅やお店、病院に近いマンションなら、車がなくても暮らせます。</p></div><div class="p1"><p class="who">マンション → 戸建て</p><h3>管理費・修繕積立金の負担を見直す</h3><p class="t">建築費の高騰で管理費・修繕積立金の値上げが続いています。毎月の管理費・積立金がかからない戸建てへ。</p></div></div></div>
+  <div class="cta">
+    <div class="pad main"><div><h2 class="mincho">次は、<em>あなたのお家</em>で。</h2><div class="tel"><span class="t">TEL</span><span class="no">06-6185-1252</span></div><p class="hours">営業時間 9:00〜18:00（定休日：火・水）</p><p class="gh">注文住宅のGハウスが手がける不動産売却サービス｜城東区・鶴見区・旭区 限定｜仲介売却・直接買取</p></div><div class="badges"><span>査定<br>無料</span><span>秘密<br>厳守</span><span>相談<br>無料</span></div><div class="qr"><div class="qrph">QRコード<br>（査定フォーム）</div><p>WEBから簡単査定<br>24時間受付</p></div></div>
+    <div class="pad company"><img class="logo" src="../img/logo-white.png" alt="いえプロ不動産"><p class="info"><b>株式会社Gハウス いえプロ不動産</b>　https://iepro-fudosan.com<br>〒535-0022 大阪府大阪市旭区新森6-3-25 エクセレント新森1階<br>宅地建物取引業免許 国土交通大臣（1）第11002号</p></div>
+  </div>
+</section>
+
+<!-- ==================== 00 営業ラフ清書版：表 ==================== -->
+<section class="sheet fr d00">
+  <!-- 写真：モデルハウス写真/本社/240809_shop_004.jpg → img/shop-interior-004.jpg -->
+  <div class="photo" style="left:0;top:0;width:216mm;height:128mm"><img src="../img/shop-interior-004.jpg" alt="" style="object-position:50% 50%"></div>
+  <div class="shade"></div>
+  <div class="pad strip"><img src="../img/logo-white.png" alt="いえプロ不動産"><p>注文住宅のGハウスが手がける<br>不動産売却サービス</p></div>
+  <div class="seal"><span>地域密着</span>旭区新森の<br>不動産会社</div>
+  <div class="pad h00" style="top:34mm">
+    <p class="en">Joto / Tsurumi / Asahi</p>
+    <p class="area">城東区・鶴見区・旭区 限定</p>
+    <div class="mainrow"><p class="lead">ご自宅の<br>売却を<br>お考えの方へ</p><h1>不動産売却</h1></div>
+    <p class="boshu">大募集！</p>
+  </div>
+  <!-- 写真：スタッフ・事務所写真/office/250227_office_001.jpg → img/office-front-01.jpg -->
+  <figure class="store"><img src="../img/office-front-01.jpg" alt=""><figcaption>ご来店でのご相談も承ります</figcaption></figure>
+  <div class="pad row00" style="top:134mm">
+    <div class="types"><div><svg viewBox="0 0 24 24"><path d="M3 11 12 4l9 7v9H3z"/><path d="M10 20v-5h4v5"/></svg><span>戸建て</span></div><div><svg viewBox="0 0 24 24"><path d="M5 21V3h9v18M14 9h5v12M3 21h18"/><path d="M8 7h3M8 11h3M8 15h3M16 13h1M16 17h1"/></svg><span>マンション</span></div><div><svg viewBox="0 0 24 24"><path d="M2 20 6 14h12l4 6z"/><path d="M12 13s-4-3.6-4-6.4a4 4 0 0 1 8 0C16 9.4 12 13 12 13z"/><circle cx="12" cy="6.6" r="1.3"/></svg><span>土地</span></div><div><svg viewBox="0 0 24 24"><path d="M3 11 12 4l9 7v9H3z"/><path d="M9.5 12.5l5 5M14.5 12.5l-5 5"/></svg><span>空き家</span></div></div>
+    <div class="consb"><p class="ttl">このようなご相談が増えています</p><ul class="cons"><li>住み替えで、今の家を売りたい</li><li>相続した不動産・実家を整理したい（施設入居・ご逝去）</li><li>空き家の処分に困っている（遠方にお住まいの方も）</li><li>住宅ローンの返済が気になる</li><li>老後資金の確保・事業資金の調達・保有資産の組み替え</li><li>財産分与・連帯保証・ペアローンを解消したい</li><li>売るかどうか、まず金額を知りたい</li></ul></div>
+  </div>
+  <div class="pad ask" style="top:180mm">
+    <h2 class="mincho">あなたの不動産、<em>今いくら</em>で売れるかご存じですか？</h2>
+    <p class="sub">売るか決めていなくても大丈夫です。<br>「価格を知りたい」「相談だけしたい」でも、お気軽にご連絡ください。</p>
+  </div>
+  <div class="pad ways" style="top:206mm">
+    <!-- 写真：スタッフ・事務所写真/image/250227_image_046.jpg・250227_image_085.jpg -->
+    <div class="w0"><img src="../img/staff-document-046.jpg" alt=""><p class="who">できるだけ<br>高く売りたい方</p><h3>仲介売却</h3></div>
+    <div class="w1"><img src="../img/staff-consult-085.jpg" alt=""><p class="who">早く・確実に<br>売却したい方</p><h3>直接買取</h3></div>
+    <div class="badges"><span>査定<br>無料</span><span>秘密<br>厳守</span><span>相談<br>無料</span></div>
+  </div>
+  <div class="fc">
     <div class="pad main">
-      <div>
-        <p class="label">Contact</p>
-        <h2 class="mincho">どのタイプでも、査定は無料です</h2>
-        <div class="tel"><span class="t">TEL</span><span class="no">06-6185-1252</span></div>
-        <p class="hours">営業時間 9:00〜18:00（定休日：火・水）</p>
-      </div>
-      <div class="qr"><div class="qrph">QRコード<br>（査定フォーム）</div><p>24時間<br>受付中</p></div>
+      <img class="lg" src="../img/logo-white.png" alt="いえプロ不動産">
+      <div class="mid"><p class="msg">地域の不動産は、私たちにお任せください！</p><div class="tel"><span class="ic"><svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z" fill="currentColor"/></svg></span><span class="no">06-6185-1252</span></div><p class="hours"><span>営業時間</span>9:00〜18:00　｜　定休日　火・水</p></div>
+      <div class="qrbox"><p>WEBからも<br>簡単査定<br>（24時間受付）</p><div class="qrph">QRコード</div></div>
     </div>
-    <div class="pad company">
-      <img class="logo" src="../img/logo-white.png" alt="いえプロ不動産">
-      <p class="info"><b>いえプロ不動産</b>（株式会社Gハウス 不動産事業部）<br>〒535-0022 大阪府大阪市旭区新森6-3-25 エクセレント新森1階<br>宅地建物取引業免許 国土交通大臣（1）第11002号　<span class="kari">※検討用の案です</span></p>
+    <p class="pad co">株式会社Gハウス いえプロ不動産　https://iepro-fudosan.com　〒535-0022 大阪府大阪市旭区新森6-3-25 エクセレント新森1階<br>宅地建物取引業免許 国土交通大臣（1）第11002号</p>
+  </div>
+</section>
+<!-- ==================== 00 営業ラフ清書版：裏 ==================== -->
+<section class="sheet bk d00">
+  <!-- 写真：スタッフ・事務所写真/office/250227_office_004.jpg → img/office-interior-04.jpg -->
+  <div class="photo" style="left:0;top:0;width:216mm;height:60mm"><img src="../img/office-interior-04.jpg" alt="" style="object-position:50% 60%"></div>
+  <div class="bshade"></div>
+  <div class="pad strip"><img src="../img/logo-white.png" alt="いえプロ不動産"><p>注文住宅のGハウスが手がける<br>不動産売却サービス</p></div>
+  <div class="pad bh" style="top:26mm"><p class="pre">不動産のご売却をお考えの方へ</p><h2>今、不動産を<em>早めに売る</em>ことを<br>おすすめする理由</h2></div>
+  <div class="pad c3" style="top:66mm">
+    <div><svg viewBox="0 0 48 40"><path d="M6 34h8V24H6zM18 34h8V18h-8zM30 34h8V11h-8z" fill="#C9A35C" opacity=".55"/><path d="M4 26 18 15l8 5 16-14" fill="none" stroke="#1F3346" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M36 6h6v6" fill="none" stroke="#1F3346" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><p>住宅ローンの<br><mark>金利が上昇中</mark></p></div>
+    <span class="ar"></span>
+    <div><svg viewBox="0 0 48 40"><circle cx="17" cy="11" r="6" fill="#1F3346"/><path d="M5 36c0-8 5-13 12-13s12 5 12 13z" fill="#1F3346"/><circle cx="33" cy="14" r="5" fill="#C9A35C"/><path d="M24 36c0-7 4-11 9-11s9 4 9 11z" fill="#C9A35C"/><path d="M36 3c3 0 5 2 5 4s-2 3-3 4" fill="none" stroke="#1F3346" stroke-width="1.6" stroke-linecap="round"/><circle cx="38" cy="14" r=".1"/></svg><p>買い手の<br><mark class="y">予算が下がる</mark></p></div>
+    <span class="ar"></span>
+    <div><svg viewBox="0 0 48 40"><path d="M5 19 20 7l15 12v17H5z" fill="none" stroke="#1F3346" stroke-width="2.4" stroke-linejoin="round"/><path d="M15 26h4v4h-4zM21 26h4v4h-4z" fill="#1F3346"/><path d="M33 8l10 14M43 22h-6M43 22v-6" fill="none" stroke="#C0563A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><p>売却できる<br><mark>金額が下がる</mark><small>可能性があります</small></p></div>
+  </div>
+  <div class="pad more" style="top:106mm"><b>さらに</b><span>建築費の高騰で、マンションの管理費・修繕積立金も値上げ</span><span>売却物件が増え、物件が供給過多に</span></div>
+  <div class="pad data" style="top:117mm">
+    <div class="box"><p class="pill">住宅ローン金利の推移（目安）</p><svg class="chart" viewBox="0 0 92 46" font-family="Zen Kaku Gothic New, sans-serif">
+        <g stroke="#E4DED3" stroke-width=".25"><path d="M2 8 H90 M2 20 H90 M2 32 H90"/></g>
+        <polygon points="8,38 8,32 23,29.6 38,24.8 53,20 68,14 83,8 83,38" fill="#D4B072" opacity="0.3"/>
+        <polyline points="8,32 23,29.6 38,24.8 53,20 68,14 83,8" fill="none" stroke="#1F3346" stroke-width=".7"/>
+        <circle cx="8" cy="32" r="1.1" fill="#fff" stroke="#1F3346" stroke-width=".5"/><circle cx="23" cy="29.6" r="1.1" fill="#fff" stroke="#1F3346" stroke-width=".5"/><circle cx="38" cy="24.8" r="1.1" fill="#fff" stroke="#1F3346" stroke-width=".5"/><circle cx="53" cy="20" r="1.1" fill="#fff" stroke="#1F3346" stroke-width=".5"/><circle cx="68" cy="14" r="1.1" fill="#fff" stroke="#1F3346" stroke-width=".5"/><circle cx="83" cy="8" r="1.1" fill="#fff" stroke="#1F3346" stroke-width=".5"/>
+        <text x="8" y="27.5" font-size="3.8" font-weight="700" fill="#1F3346" text-anchor="middle">約0.5%</text>
+        <text x="83" y="4.6" font-size="3.8" font-weight="700" fill="#9A7432" text-anchor="middle">約1.5%</text>
+        <text x="8" y="44" font-size="2.9" fill="#4E5862" text-anchor="middle">2021</text><text x="23" y="44" font-size="2.9" fill="#4E5862" text-anchor="middle">2022</text><text x="38" y="44" font-size="2.9" fill="#4E5862" text-anchor="middle">2023</text><text x="53" y="44" font-size="2.9" fill="#4E5862" text-anchor="middle">2024</text><text x="68" y="44" font-size="2.9" fill="#4E5862" text-anchor="middle">2025</text><text x="83" y="44" font-size="2.9" fill="#4E5862" text-anchor="middle">2026（予測）</text>
+      </svg></div>
+    <div class="box"><p class="pill g">同じ月々の返済額（10万円・35年）の場合<br>借入できる金額の目安</p><div class="loan">
+        <div class="lr"><div><p class="r">金利 0.5%</p><p class="a">約<span class="num">3,850</span>万円</p></div><span class="arr">→</span><div><p class="r">金利 1.5%</p><p class="a">約<span class="num">3,270</span>万円</p></div></div>
+        <p class="diff">金利が上がると、約<span class="num">580</span>万円も予算が減少</p>
+      </div></div>
+  </div>
+  <p class="pad kari" style="top:158mm">※月々10万円・35年・元利均等返済・ボーナス払いなしで試算。金利の推移は目安で、将来の金利や価格を保証するものではありません。</p>
+  <div class="pad pat" style="top:165mm"><p class="pt">よくある住み替えのかたち</p><div class="g2"><div class="p0"><p class="who">戸建て → 駅前のマンション</p><h3>階段のない、ワンフロアの暮らしへ</h3><p class="t">年齢とともに2階への上り下りが負担に。駅やお店、病院に近いマンションなら、車がなくても暮らせます。</p></div><div class="p1"><p class="who">マンション → 戸建て</p><h3>管理費・修繕積立金の負担を見直す</h3><p class="t">建築費の高騰で管理費・修繕積立金の値上げが続いています。毎月の管理費・積立金がかからない戸建てへ。</p></div></div></div>
+  <div class="cta">
+    <!-- 写真：スタッフ・事務所写真/image/250227_image_194.jpg → img/staff-guide-194.jpg -->
+    <div class="photo" style="left:0;top:0;width:74mm;height:100%"><img src="../img/staff-guide-194.jpg" alt="" style="object-position:38% 30%"></div>
+    <div class="right">
+      <p class="dk">だからこそ、</p>
+      <h2><em>今のうちに</em>売却のご相談を！</h2>
+      <div class="row"><div><div class="tel"><span class="ic"><svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z" fill="currentColor"/></svg></span><span class="no">06-6185-1252</span></div><p class="hours">営業時間 9:00〜18:00（定休日：火・水）</p><div class="badges"><span>査定<br>無料</span><span>秘密<br>厳守</span><span>相談<br>無料</span></div></div><div class="qr"><div class="qrph">QRコード<br>（査定フォーム）</div><p>WEBから簡単査定<br>24時間受付</p></div></div>
+      <p class="co">注文住宅のGハウスが手がける不動産売却サービス｜城東区・鶴見区・旭区 限定｜仲介売却・直接買取<br>株式会社Gハウス いえプロ不動産　https://iepro-fudosan.com<br>〒535-0022 大阪府大阪市旭区新森6-3-25 エクセレント新森1階　宅地建物取引業免許 国土交通大臣（1）第11002号</p>
     </div>
   </div>
 </section>
-
-<!-- ==================== 20 4コマ：表 ==================== -->
-<section class="sheet p20f">
-  <div class="pad head">
-    <p class="label">Story</p>
-    <h1 class="mincho h1" style="margin-top:3.5mm;font-size:22pt">家を売るとき、よくある話。</h1>
-  </div>
-  <div class="pad koma">
-    <div class="k"><span class="kn">1</span><div class="box">
-      <svg class="fig" style="left:14mm;color:var(--navy)"><use href="#ps"/></svg>
-      <svg style="position:absolute;right:16mm;bottom:0;width:46mm;height:36mm;color:var(--plane)"><use href="#hs"/></svg>
-      <div class="bub l" style="left:30mm;top:6mm">そろそろ、家を売ろうかな。</div>
-    </div></div>
-    <div class="k"><span class="kn">2</span><div class="box">
-      <svg class="fig" style="right:14mm;color:#8A949E"><use href="#ps"/></svg>
-      <svg class="fig" style="left:14mm;color:var(--navy)"><use href="#ps"/></svg>
-      <div class="bub r" style="right:32mm;top:5mm">うちなら、高く売れますよ！</div>
-      <p class="sub" style="right:32mm;top:24mm">※相場より800万円高い査定額</p>
-    </div></div>
-    <div class="k"><span class="kn">3</span><div class="box mood">
-      <p style="position:absolute;left:0;right:0;top:10mm;text-align:center;font-family:var(--f-mincho);font-weight:600;font-size:17pt;letter-spacing:.2em">半年後……</p>
-      <p style="position:absolute;left:0;right:0;top:27mm;text-align:center;font-size:9pt;letter-spacing:.1em">内覧 <b style="font-family:var(--f-latin);font-size:18pt;color:var(--accent)">0</b> 件</p>
-    </div></div>
-    <div class="k"><span class="kn">4</span><div class="box">
-      <svg class="fig" style="left:14mm;color:var(--navy);transform:rotate(-8deg);transform-origin:bottom"><use href="#ps"/></svg>
-      <div class="bub l" style="left:30mm;top:6mm">結局、値下げ……。</div>
-      <div style="position:absolute;right:14mm;top:9mm;text-align:right;font-family:var(--f-latin);line-height:1.15"><p style="font-size:13pt;color:#9AA2AA;text-decoration:line-through">4,980<span style="font-family:var(--f-gothic);font-size:7pt">万円</span></p><p style="font-size:22pt;color:var(--accent);font-weight:600">4,180<span style="font-family:var(--f-gothic);font-size:9pt">万円</span></p></div><p class="sub" style="left:36mm;top:25mm;color:var(--ink-sub)">最初から相場どおりなら、もっと早く売れていたかも。</p>
-    </div></div>
-  </div>
-  <p class="pad next">なぜ、こうなるの？ <span class="accent">答えは裏面へ</span></p>
-  <div class="fband on-dark">
-    <div class="pad">
-      <div><p class="msg">根拠つきの査定は、いえプロへ。</p><div class="tel" style="margin-top:1.6mm"><span class="t">TEL</span><span class="no">06-6185-1252</span></div></div>
-      <img class="logo" src="../img/logo-white.png" alt="いえプロ不動産">
-    </div>
-  </div>
-</section>
-
-<!-- ==================== 20 4コマ：裏 ==================== -->
-<section class="sheet p20b">
-  <div class="pad head">
-    <p class="label">Point</p>
-    <h2 class="mincho h2">高い査定額が、<span class="nb">いい査定とは限りません。</span></h2>
-  </div>
-  <p class="pad why">いちばん高い査定額を出した会社に頼んだら、実は相場より高すぎた——というケースは少なくありません。<br>売れ残ると「何か問題がある家？」と思われ、結果的に安く売ることになってしまいます。</p>
-  <div class="pad pts">
-    <p class="label">3 Points</p>
-    <div class="grid3">
-      <div><p class="n">01</p><h3>査定額の「根拠」を聞く</h3><p>どの事例を参考にした価格なのか、説明できる会社を選びましょう。</p></div>
-      <div><p class="n">02</p><h3>近所の成約事例と比べる</h3><p>「売り出し価格」ではなく「実際に売れた価格」と比べるのがポイントです。</p></div>
-      <div><p class="n">03</p><h3>売り出し後の作戦まで確認する</h3><p>反響がなかったときにどうするか。最初に決めておくと安心です。</p></div>
-    </div>
-  </div>
-  <div class="pad staff">
-    <!-- 写真：flyer/img/shimizu.jpg（既存チラシ素材） -->
-    <div class="ph"><img src="../img/shimizu.jpg" alt=""></div>
-    <div>
-      <q>根拠のない数字は、出しません。</q>
-      <p>いえプロの査定書には、近隣の成約事例と、項目ごとの評価をすべて載せています。「なぜこの価格なのか」を納得していただいてから、売り出しを始めます。</p>
-      <p class="kari" style="margin-top:1.6mm">いえプロ不動産 スタッフ</p>
-    </div>
-  </div>
-  <div class="pad" style="top:182mm">
-    <p class="label">Report</p>
-    <h2 class="mincho h2" style="font-size:12pt">査定書に入っているもの</h2>
-    <p class="chips" style="margin-top:3mm"><span>近隣の成約事例 5件以上</span><span>項目ごとの評価</span><span>売り出し価格のご提案</span><span>売れるまでの期間の目安</span></p>
-  </div>
-  <div class="cta on-dark">
-    <div class="pad main">
-      <div>
-        <p class="label">Contact</p>
-        <h2 class="mincho">根拠つきの査定書をお渡しします</h2>
-        <div class="tel"><span class="t">TEL</span><span class="no">06-6185-1252</span></div>
-        <p class="hours">営業時間 9:00〜18:00（定休日：火・水）</p>
-      </div>
-      <div class="qr"><div class="qrph">QRコード<br>（査定フォーム）</div><p>24時間<br>受付中</p></div>
-    </div>
-    <div class="pad company">
-      <img class="logo" src="../img/logo-white.png" alt="いえプロ不動産">
-      <p class="info"><b>いえプロ不動産</b>（株式会社Gハウス 不動産事業部）<br>〒535-0022 大阪府大阪市旭区新森6-3-25 エクセレント新森1階<br>宅地建物取引業免許 国土交通大臣（1）第11002号　<span class="kari">※検討用の案です</span></p>
-    </div>
-  </div>
-</section>
-
-<!-- ==================== 29 問いかけ：表 ==================== -->
-<section class="sheet p29f">
-  <div class="rule"></div>
-  <p class="q">その家に、あと何年住みますか。</p>
-  <img class="logo" src="../img/logo-blue.png" alt="いえプロ不動産">
-</section>
-
-<!-- ==================== 29 問いかけ：裏 ==================== -->
-<section class="sheet p29b">
-  <p class="pad txt">5年なら、今のうちに準備を。<br>20年なら、価値を知っておくと安心です。<br>まだ決めていないなら、<br>一度だけ、話を聞いてみてください。</p>
-  <div class="pad contact">
-    <div class="qr"><div class="qrph">QRコード<br>（査定フォーム）</div></div>
-    <div><div class="tel"><span class="t">TEL</span><span class="no">06-6185-1252</span></div><p class="hours">営業時間 9:00〜18:00（定休日：火・水）　売却査定は無料です</p></div>
-  </div>
-  <div class="pad co">
-    <img src="../img/logo-blue.png" alt="いえプロ不動産">
-    <p>いえプロ不動産（株式会社Gハウス 不動産事業部）<br>〒535-0022 大阪府大阪市旭区新森6-3-25 エクセレント新森1階<br>宅地建物取引業免許 国土交通大臣（1）第11002号</p>
-  </div>
-</section>
-
-<!-- ==================== 30 数字：表 ==================== -->
-<section class="sheet p30f on-dark">
-  <div class="pad head">
-    <p class="label">Numbers</p>
-    <h1 class="mincho" style="margin-top:3.5mm;font-size:17pt;line-height:1.5">数字で見る、いえプロの売却サポート</h1>
-  </div>
-  <div class="pad nums">
-    <div><p class="big"><span class="num">127</span><span class="unit">件</span></p><p class="cap">売却をお手伝いした件数<small>2021〜2026年（仮）</small></p></div>
-    <div><p class="big"><span class="num">2.8</span><span class="unit">か月</span></p><p class="cap">売り出しから成約までの<br>平均期間<small>（仮）</small></p></div>
-    <div><p class="big"><span class="num">96</span><span class="unit">%</span></p><p class="cap">売り出し価格に対する<br>成約価格の平均<small>（仮）</small></p></div>
-  </div>
-  <p class="pad kari" style="top:243mm">※数字は検討用の仮の値です。</p>
-  <div class="fband">
-    <div class="pad">
-      <div><p class="msg">次は、あなたのお家で。</p><div class="tel" style="margin-top:1.6mm"><span class="t">TEL</span><span class="no">06-6185-1252</span></div></div>
-      <img class="logo" src="../img/logo-white.png" alt="いえプロ不動産">
-    </div>
-  </div>
-</section>
-
-<!-- ==================== 30 数字：裏 ==================== -->
-<section class="sheet p30b">
-  <!-- 写真：flyer/img/team.jpg（既存チラシ素材） -->
-  <div class="photo"><img src="../img/team.jpg" alt=""></div>
-  <div class="pad head">
-    <p class="label">Behind the Numbers</p>
-    <h2 class="mincho h2">数字の裏側</h2>
-  </div>
-  <div class="pad why">
-    <div><p class="v"><span class="num">127</span><span class="unit">件</span></p><div><h3>この町の取引を、見続けてきました</h3><p>通りごと、学区ごとの価格の違いまで分かるから、根拠のある査定ができます。</p></div></div>
-    <div><p class="v"><span class="num">2.8</span><span class="unit">か月</span></p><div><h3>最初の価格を、相場に合わせる</h3><p>高すぎる価格で売り出さないので、長く売れ残ることが少なくなります。</p></div></div>
-    <div><p class="v"><span class="num">96</span><span class="unit">%</span></p><div><h3>大きな値下げをせずに売れています</h3><p>建物の良さも伝わる販売資料で、価格に納得して買ってくださる方を探します。</p></div></div>
-  </div>
-  <div class="cta on-dark">
-    <div class="pad main">
-      <div>
-        <p class="label">Contact</p>
-        <h2 class="mincho">無料査定のお申し込み</h2>
-        <div class="tel"><span class="t">TEL</span><span class="no">06-6185-1252</span></div>
-        <p class="hours">営業時間 9:00〜18:00（定休日：火・水）</p>
-      </div>
-      <div class="qr"><div class="qrph">QRコード<br>（査定フォーム）</div><p>24時間<br>受付中</p></div>
-    </div>
-    <div class="pad company">
-      <img class="logo" src="../img/logo-white.png" alt="いえプロ不動産">
-      <p class="info"><b>いえプロ不動産</b>（株式会社Gハウス 不動産事業部）<br>〒535-0022 大阪府大阪市旭区新森6-3-25 エクセレント新森1階<br>宅地建物取引業免許 国土交通大臣（1）第11002号　<span class="kari">※数字は仮の値です</span></p>
-    </div>
-  </div>
-</section>
-
 </body>
 </html>
