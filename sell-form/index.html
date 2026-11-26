@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body style="margin:0">
+<title>売却相談ご予約フォーム</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap">
+<style>
+/* Layout: ポスティングチラシのQRから開く、売主さま向けの来店・訪問予約フォーム。
+   クリスマスキャンペーン予約フォーム案（xmas2026/）と同じ作り：番号付きの入力ステップ → 確認画面 */
+:root {
+  --bg: #F4F6F9;
+  --surface: #FFFFFF;
+  --field: #FFFFFF;
+  --ink: #1B2537;
+  --muted: #566175;
+  --line: #D3DAE4;
+  --band: #1F3346;
+  --band-ink: #F4F1EC;
+  --gold: #C9A35C;
+  --accent: #B04A12;
+  --on-accent: #FFFFFF;
+  --navy: #1F3346;
+  --accent-soft: #FBEADB;
+  --danger: #B42318;
+  --danger-soft: #FDECEA;
+  --disabled: #E9ECF1;
+  --disabled-ink: #9AA3B2;
+  --focus: #2F6FEB;
+  --font: 'Noto Sans JP', 'Hiragino Sans', 'Yu Gothic', Meiryo, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1522; --surface: #161F31; --field: #111A2A; --ink: #E6EBF3; --muted: #A2ADBF; --line: #2C3850;
+    --band: #0A1120; --band-ink: #F4F1EC; --gold: #E0C285;
+    --accent: #F2A65E; --on-accent: #1E1208; --accent-soft: #33241A; --danger: #F98A80; --danger-soft: #3A1D1D;
+    --disabled: #1A2232; --disabled-ink: #56627A; --focus: #7AA7FF; --navy: #E6EBF3;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1522; --surface: #161F31; --field: #111A2A; --ink: #E6EBF3; --muted: #A2ADBF; --line: #2C3850;
+  --band: #0A1120; --band-ink: #F4F1EC; --gold: #E0C285;
+  --accent: #F2A65E; --on-accent: #1E1208; --accent-soft: #33241A; --danger: #F98A80; --danger-soft: #3A1D1D;
+  --disabled: #1A2232; --disabled-ink: #56627A; --focus: #7AA7FF; --navy: #E6EBF3;
+  color-scheme: dark;
+}
+
+body { background: var(--bg); color: var(--ink); font-family: var(--font); font-size: 16px; line-height: 1.7; }
+[hidden] { display: none !important; }
+.wrap { max-width: 760px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3, p { margin: 0; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+
+.demo-flag { background: var(--accent-soft); color: var(--ink); font-size: 13px; }
+.demo-flag .wrap { padding-block: 8px; text-align: center; }
+
+.top { background: var(--surface); border-bottom: 1px solid var(--line); }
+.topbar { border-bottom: 1px solid var(--line); }
+.topbar-in { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding-block: 14px; }
+.logo { display: block; width: 170px; max-width: 46vw; height: auto; }
+.topnote { font-size: 12px; color: var(--muted); text-align: right; line-height: 1.5; word-break: auto-phrase; }
+.hero-photo-wrap { max-width: 760px; margin: 0 auto; position: relative; }
+.hero-photo { display: block; width: 100%; max-width: 100%; height: auto; aspect-ratio: 1200 / 560; object-fit: cover; object-position: 50% 45%; }
+.hero-cap { position: absolute; left: 12px; bottom: 10px; background: rgba(20, 28, 40, .72); color: #fff; font-size: 12px; padding: 3px 10px; border-radius: 4px; }
+.hero { padding-block: 24px 26px; display: grid; justify-items: center; text-align: center; gap: 6px; }
+.pill { background: var(--band); color: var(--band-ink); border-radius: 999px; padding: 3px 14px; font-size: 13px; font-weight: 700; }
+.hero-title { font-size: clamp(24px, 6.4vw, 32px); font-weight: 900; color: var(--navy); line-height: 1.35; margin-top: 4px; text-wrap: balance; }
+.hero-title .u { background: linear-gradient(transparent 62%, rgba(201, 163, 92, .45) 62%); }
+.hero-note { font-size: 14px; color: var(--muted); }
+.badges { list-style: none; padding: 0; margin: 10px 0 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+.badges li { width: 74px; height: 74px; border-radius: 50%; display: grid; place-items: center; text-align: center; font-size: 14px; font-weight: 900; line-height: 1.3; color: #2A2418;
+  background: linear-gradient(135deg, #F3E4C0 0%, #D7B676 50%, #B48B45 100%); }
+.ways { width: 100%; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 14px; }
+.way { border: 1px solid var(--line); border-radius: 10px; padding: 12px; background: var(--surface); display: grid; gap: 2px; }
+.way .t { font-weight: 900; color: var(--navy); font-size: 17px; }
+.way .s { font-size: 13px; color: var(--muted); }
+.sec-title { font-size: 21px; font-weight: 900; color: var(--navy); margin-top: 22px; }
+.sec-title::after { content: ""; display: block; width: 40px; height: 3px; background: var(--accent); margin: 8px auto 0; }
+
+main .wrap { padding-block: 24px 64px; display: grid; gap: 20px; }
+form { display: grid; gap: 20px; }
+.step { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 24px; display: grid; gap: 20px; min-width: 0; }
+.step h2 { font-size: 18px; font-weight: 700; display: flex; align-items: center; gap: 10px; }
+.num { width: 30px; height: 30px; border-radius: 50%; background: var(--band); color: var(--band-ink); display: inline-grid; place-items: center; font-size: 14px; flex: none; }
+.hint { color: var(--muted); font-size: 13px; }
+
+.field { display: grid; gap: 6px; min-width: 0; border: 0; padding: 0; margin: 0; }
+.label { font-weight: 700; font-size: 15px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.req, .opt { font-size: 11px; font-weight: 700; border-radius: 4px; padding: 1px 7px; letter-spacing: .04em; }
+.req { background: var(--accent); color: var(--on-accent); }
+.opt { background: var(--disabled); color: var(--muted); }
+input[type=text], input[type=tel], input[type=email], select, textarea, .date-btn {
+  font: inherit; font-size: 16px; width: 100%; box-sizing: border-box; padding: 10px 12px;
+  border: 1px solid var(--line); border-radius: 8px; background: var(--field); color: var(--ink);
+}
+textarea { min-height: 96px; resize: vertical; }
+input::placeholder, textarea::placeholder { color: var(--disabled-ink); opacity: 1; }
+.field.invalid input[type=text], .field.invalid input[type=tel], .field.invalid input[type=email],
+.field.invalid select, .field.invalid .date-btn, .field.invalid .choice label { border-color: var(--danger); }
+.err { color: var(--danger); font-size: 13px; font-weight: 500; }
+
+.choices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.choices.c3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.choices.c4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.choice { position: relative; min-width: 0; }
+.choice input { position: absolute; opacity: 0; inset: 0; margin: 0; }
+.choice label { display: grid; gap: 2px; height: 100%; box-sizing: border-box; border: 2px solid var(--line); border-radius: 10px; padding: 12px 14px; cursor: pointer; background: var(--field); }
+.choice input:checked + label { border-color: var(--accent); background: var(--accent-soft); }
+.choice input:focus-visible + label { outline: 3px solid var(--focus); outline-offset: 2px; }
+.choice .t { font-weight: 700; }
+.choice .s { font-size: 13px; color: var(--muted); }
+.choices.small .choice label { padding: 10px 12px; text-align: center; }
+
+.checks { display: grid; gap: 8px; }
+.check { display: flex; gap: 10px; align-items: flex-start; }
+.check input { width: 20px; height: 20px; margin-top: 4px; accent-color: var(--accent); flex: none; }
+
+.sub { display: grid; gap: 16px; padding: 16px; border-radius: 10px; background: var(--bg); }
+.office-info { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 16px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px; }
+.office-text { display: grid; gap: 4px; align-content: start; min-width: 0; }
+.office-name { font-weight: 700; font-size: 16px; }
+.maplink { color: var(--accent); font-weight: 700; font-size: 14px; margin-top: 6px; }
+.map { position: relative; min-height: 160px; border-radius: 8px; overflow: hidden; display: grid; place-items: center; align-content: center; gap: 6px; color: var(--accent);
+  background-color: var(--bg);
+  background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 28px 28px; }
+.map-cap { font-size: 12px; color: var(--muted); background: var(--surface); padding: 2px 8px; border-radius: 4px; }
+@media (max-width: 560px) { .office-info { grid-template-columns: 1fr; } }
+.notes { margin: 0; padding-left: 1.2em; font-size: 13px; color: var(--muted); display: grid; gap: 2px; }
+.diag { background: var(--bg); border-radius: 10px; padding: 14px; display: grid; gap: 10px; }
+.diag .letter { display: inline-grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; color: #fff; font-weight: 900; font-size: 13px; margin-right: 6px; vertical-align: -5px; }
+
+.slots { display: grid; gap: 14px; }
+.slot { display: grid; grid-template-columns: 112px minmax(0, 1fr) 140px 64px; gap: 10px; align-items: center; }
+.slot .cal, .slot .err { grid-column: 1 / -1; }
+.slot-label { font-weight: 700; font-size: 15px; display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+.date-btn { text-align: left; cursor: pointer; color: var(--muted); }
+.date-btn.has { color: var(--ink); font-weight: 700; }
+.linkbtn { font: inherit; font-size: 13px; background: none; border: 0; color: var(--muted); text-decoration: underline; cursor: pointer; padding: 4px; }
+
+.cal { border: 1px solid var(--line); border-radius: 10px; padding: 12px; background: var(--surface); display: grid; gap: 10px; }
+.cal-head { display: flex; justify-content: space-between; align-items: center; gap: 6px; }
+.cal-nav { font: inherit; font-size: 14px; border: 1px solid var(--line); background: var(--field); color: var(--ink); border-radius: 8px; padding: 4px 12px; cursor: pointer; }
+.cal-nav:disabled { color: var(--disabled-ink); background: var(--disabled); cursor: not-allowed; }
+.cal-grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px; }
+.wd { font-size: 12px; text-align: center; color: var(--muted); }
+.day { font: inherit; min-height: 50px; border: 1px solid var(--line); border-radius: 8px; background: var(--field); color: var(--ink);
+  display: grid; place-items: center; align-content: center; gap: 0; cursor: pointer; padding: 2px; font-variant-numeric: tabular-nums; }
+.day small { font-size: 10px; line-height: 1.2; color: var(--muted); min-height: 12px; display: grid; place-items: center; }
+.day:disabled { background: var(--disabled); color: var(--disabled-ink); cursor: not-allowed; }
+.day:disabled small { color: var(--disabled-ink); }
+.day[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.day[aria-pressed="true"] small { color: var(--on-accent); }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 12px; color: var(--muted); }
+
+details { font-size: 14px; }
+details summary { cursor: pointer; font-weight: 700; }
+details ul { margin: 8px 0 0; padding-left: 1.2em; display: grid; gap: 2px; color: var(--muted); }
+
+.actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: flex-end; align-items: center; }
+.btn { font: inherit; font-weight: 700; font-size: 16px; border-radius: 999px; padding: 13px 22px; cursor: pointer; border: 2px solid transparent; }
+.btn.primary { background: var(--accent); color: var(--on-accent); font-size: 18px; padding: 15px 36px; }
+.btn.primary::after { content: "  ›"; }
+.btn.ghost { background: transparent; border-color: var(--line); color: var(--ink); }
+.summary-err { background: var(--danger-soft); color: var(--danger); border-radius: 8px; padding: 10px 14px; font-size: 14px; font-weight: 700; }
+
+.telbox { background: var(--band); color: var(--band-ink); border-radius: 12px; padding: 16px 20px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px 16px; }
+.telbox .lb { font-size: 13px; }
+.telbox .no { font-size: 26px; font-weight: 900; letter-spacing: .02em; font-variant-numeric: tabular-nums; }
+.telbox .hr { font-size: 12px; opacity: .85; }
+
+.confirm dl { display: grid; grid-template-columns: 150px minmax(0, 1fr); margin: 0; border-top: 1px solid var(--line); }
+.confirm dt, .confirm dd { margin: 0; padding: 10px 4px; border-bottom: 1px solid var(--line); overflow-wrap: anywhere; }
+.confirm dt { color: var(--muted); font-size: 14px; }
+.confirm dd { font-weight: 500; }
+
+.memo { border: 1px dashed var(--line); border-radius: 12px; padding: 20px 24px; display: grid; gap: 10px; }
+.memo h2 { font-size: 15px; }
+.memo ul { margin: 0; padding-left: 1.2em; font-size: 14px; color: var(--muted); display: grid; gap: 4px; }
+
+@media (max-width: 560px) {
+  .choices, .choices.c3 { grid-template-columns: 1fr; }
+  .choices.c4, .choices.small { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .step { padding: 18px; }
+  .slot { grid-template-columns: minmax(0, 1fr) 120px; }
+  .slot-label { grid-column: 1 / -1; }
+  .slot .linkbtn { grid-column: 1 / -1; justify-self: start; }
+  .confirm dl { grid-template-columns: 1fr; }
+  .confirm dt { border-bottom: 0; padding-bottom: 0; }
+  .day { min-height: 44px; }
+  .badges li { width: 66px; height: 66px; font-size: 13px; }
+}
+</style>
+
+<div class="demo-flag"><div class="wrap">フォーム案（デモ）：入力内容はどこにも送信・保存されません</div></div>
+
+<header class="top">
+  <div class="topbar">
+    <div class="wrap topbar-in">
+      <picture>
+        <source srcset="images/logo-white.png" media="(prefers-color-scheme: dark)">
+        <img class="logo" src="images/logo-blue.png" alt="いえプロ不動産（株式会社Gハウス いえプロ不動産）" width="170" height="28">
+      </picture>
+      <span class="topnote">注文住宅のGハウスが手がける<br>不動産売却サービス</span>
+    </div>
+  </div>
+  <div class="hero-photo-wrap">
+    <!-- 写真：共有ドライブ スタッフ・事務所写真/office/250227_office_001.jpg -->
+    <img class="hero-photo" src="images/hero.jpg" alt="いえプロ不動産 店舗の外観" width="1200" height="680">
+    <span class="hero-cap">ご来店でのご相談も承ります</span>
+  </div>
+  <div class="wrap hero">
+    <span class="pill">城東区・鶴見区・旭区 限定</span>
+    <h1 class="hero-title">不動産売却のご相談・<br><span class="u">無料査定</span>のご予約</h1>
+    <p class="hero-note">売るか決めていなくても大丈夫です。「価格を知りたい」だけでもお気軽に。</p>
+    <ul class="badges"><li>査定<br>無料</li><li>秘密<br>厳守</li><li>相談<br>無料</li></ul>
+    <div class="ways">
+      <div class="way"><span class="t">来店相談</span><span class="s">新森オフィスで、売却の進め方や相場をご説明します</span></div>
+      <div class="way"><span class="t">訪問査定</span><span class="s">ご自宅・物件に伺い、室内を拝見して査定します</span></div>
+    </div>
+    <h2 class="sec-title">ご予約フォーム</h2>
+    <p class="hero-note">約1分で完了・無理な営業はいたしません</p>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <form id="f" novalidate>
+      <section class="step" aria-labelledby="h-1">
+        <h2 id="h-1"><span class="num">1</span>お客様情報</h2>
+        <div class="field">
+          <label class="label" for="name">お名前 <span class="req">必須</span></label>
+          <input type="text" id="name" autocomplete="name" placeholder="例）山田 太郎">
+          <p class="err" id="err-name" hidden></p>
+        </div>
+        <div class="field">
+          <label class="label" for="tel">電話番号 <span class="req">必須</span></label>
+          <input type="tel" id="tel" autocomplete="tel" inputmode="tel" placeholder="例）090-1234-5678">
+          <p class="hint">日時確定のご連絡に使います。</p>
+          <p class="err" id="err-tel" hidden></p>
+        </div>
+        <div class="field">
+          <label class="label" for="email">メールアドレス <span class="req">必須</span></label>
+          <input type="email" id="email" autocomplete="email" inputmode="email" placeholder="例）name@example.com">
+          <p class="err" id="err-email" hidden></p>
+        </div>
+        <div class="field">
+          <label class="label" for="calltime">お電話がつながりやすい時間帯 <span class="opt">任意</span></label>
+          <select id="calltime">
+            <option value="">指定なし</option>
+            <option>9:00〜12:00</option>
+            <option>12:00〜15:00</option>
+            <option>15:00〜18:00</option>
+          </select>
+        </div>
+      </section>
+
+      <section class="step" aria-labelledby="h-2">
+        <h2 id="h-2"><span class="num">2</span>ご相談の内容</h2>
+        <fieldset class="field" id="fs-method">
+          <legend class="label">ご希望の方法 <span class="req">必須</span></legend>
+          <div class="choices">
+            <div class="choice"><input type="radio" name="method" id="m-visit" value="visit"><label for="m-visit"><span class="t">来店相談</span><span class="s">新森オフィスでご相談</span></label></div>
+            <div class="choice"><input type="radio" name="method" id="m-home" value="home"><label for="m-home"><span class="t">訪問査定</span><span class="s">ご自宅・物件に伺って査定（約1時間）</span></label></div>
+          </div>
+          <p class="err" id="err-method" hidden></p>
+        </fieldset>
+
+        <div class="sub" id="block-visit" hidden>
+          <div class="office-info" aria-live="polite">
+            <div class="office-text">
+              <p class="office-name">新森オフィス</p>
+              <p>〒535-0022 大阪府大阪市旭区新森6-3-25 エクセレント新森1階</p>
+              <p class="hint">Osaka Metro今里筋線「新森古市駅」より徒歩約5分<br>京阪本線「森小路駅」より徒歩約18分</p>
+              <p class="hint">TEL：06-6185-1252</p>
+              <a class="maplink" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A4%A7%E9%98%AA%E5%B8%82%E6%97%AD%E5%8C%BA%E6%96%B0%E6%A3%AE6-3-25" target="_blank" rel="noopener">Googleマップで開く</a>
+            </div>
+            <div class="map" role="img" aria-label="新森オフィスの地図（イメージ）">
+              <svg viewBox="0 0 24 32" width="30" height="40" aria-hidden="true"><path d="M12 0C5.4 0 0 5.2 0 11.7 0 20.5 12 32 12 32s12-11.5 12-20.3C24 5.2 18.6 0 12 0z" fill="currentColor"/><circle cx="12" cy="11.5" r="4.5" fill="var(--surface)"/></svg>
+              <span class="map-cap">地図エリア（本番ではGoogleマップを埋め込み）</span>
+            </div>
+          </div>
+          <ul class="notes">
+            <li>前日に当社から確認のお電話をします。</li>
+            <li>登記簿謄本や購入時の資料があればお持ちください（なくても大丈夫です）。</li>
+          </ul>
+        </div>
+        <div class="sub" id="block-home" hidden>
+          <ul class="notes">
+            <li>当日は担当者が伺い、室内・外まわりを拝見します（所要時間 約1時間）。</li>
+            <li>査定結果は後日、根拠となる近隣の成約事例とあわせてご説明します。</li>
+            <li>前日に当社から確認のお電話をします。</li>
+          </ul>
+        </div>
+
+        <fieldset class="field" id="fs-ptype">
+          <legend class="label">物件の種類 <span class="req">必須</span></legend>
+          <div class="choices c4 small">
+            <div class="choice"><input type="radio" name="ptype" id="t-house" value="戸建て"><label for="t-house"><span class="t">戸建て</span></label></div>
+            <div class="choice"><input type="radio" name="ptype" id="t-mansion" value="マンション"><label for="t-mansion"><span class="t">マンション</span></label></div>
+            <div class="choice"><input type="radio" name="ptype" id="t-land" value="土地"><label for="t-land"><span class="t">土地</span></label></div>
+            <div class="choice"><input type="radio" name="ptype" id="t-akiya" value="空き家"><label for="t-akiya"><span class="t">空き家</span></label></div>
+          </div>
+          <p class="err" id="err-ptype" hidden></p>
+        </fieldset>
+        <div class="field">
+          <label class="label" for="address">物件の所在地 <span class="req">必須</span></label>
+          <input type="text" id="address" autocomplete="off" placeholder="例）大阪市旭区新森○丁目">
+          <p class="hint" id="addr-hint">町名までで大丈夫です。</p>
+          <p class="err" id="err-address" hidden></p>
+        </div>
+        <div class="field">
+          <label class="label" for="pinfo">広さ・間取り・築年数など <span class="opt">任意</span></label>
+          <input type="text" id="pinfo" autocomplete="off" placeholder="例）3LDK・約90㎡・築20年／マンション名">
+        </div>
+
+        <fieldset class="field">
+          <legend class="label">ご相談のきっかけ <span class="opt">任意・複数選択可</span></legend>
+          <div class="checks" id="reasons"></div>
+        </fieldset>
+
+        <fieldset class="field">
+          <legend class="label">売り方のご希望 <span class="opt">任意</span></legend>
+          <div class="choices c3 small">
+            <div class="choice"><input type="radio" name="way" id="w-chukai" value="仲介売却"><label for="w-chukai"><span class="t">仲介売却</span><span class="s">できるだけ高く</span></label></div>
+            <div class="choice"><input type="radio" name="way" id="w-kaitori" value="直接買取"><label for="w-kaitori"><span class="t">直接買取</span><span class="s">早く・確実に</span></label></div>
+            <div class="choice"><input type="radio" name="way" id="w-undecided" value="まだ決めていない"><label for="w-undecided"><span class="t">まだ決めていない</span><span class="s">相談して決めたい</span></label></div>
+          </div>
+        </fieldset>
+
+        <fieldset class="field diag">
+          <legend class="label">チラシの「売り時診断」の結果 <span class="opt">任意</span></legend>
+          <p class="hint">チラシの診断チャートをお試しいただいた方は、結果をお選びください。</p>
+          <div class="choices c4 small">
+            <div class="choice"><input type="radio" name="diag" id="d-a" value="A 今が検討どき"><label for="d-a"><span class="t"><span class="letter" style="background:#B04A12">A</span>今が検討どき</span></label></div>
+            <div class="choice"><input type="radio" name="diag" id="d-b" value="B 情報を集める時期"><label for="d-b"><span class="t"><span class="letter" style="background:#3E6582">B</span>情報収集</span></label></div>
+            <div class="choice"><input type="radio" name="diag" id="d-c" value="C 今はじっくり"><label for="d-c"><span class="t"><span class="letter" style="background:#1F3346">C</span>じっくり</span></label></div>
+            <div class="choice"><input type="radio" name="diag" id="d-none" value="未診断"><label for="d-none"><span class="t">試していない</span></label></div>
+          </div>
+        </fieldset>
+      </section>
+
+      <section class="step" aria-labelledby="h-3">
+        <h2 id="h-3"><span class="num">3</span>ご希望日時</h2>
+        <ul class="notes">
+          <li>受付時間：9:30〜17:00（前日までのご予約）</li>
+          <li>火曜日・水曜日は定休日のため選べません</li>
+          <li>2か月先までご予約いただけます</li>
+        </ul>
+        <div class="slots">
+          <div class="slot field">
+            <span class="slot-label">第1希望 <span class="req">必須</span></span>
+            <button type="button" class="date-btn" id="date-1" aria-expanded="false" aria-controls="cal-1">日付を選択</button>
+            <select id="time-1" aria-label="第1希望の時間"></select>
+            <span></span>
+            <div class="cal" id="cal-1" hidden></div>
+            <p class="err" id="err-slot-1" hidden></p>
+          </div>
+          <div class="slot field">
+            <span class="slot-label">第2希望 <span class="opt">任意</span></span>
+            <button type="button" class="date-btn" id="date-2" aria-expanded="false" aria-controls="cal-2">日付を選択</button>
+            <select id="time-2" aria-label="第2希望の時間"></select>
+            <button type="button" class="linkbtn" id="clear-2">クリア</button>
+            <div class="cal" id="cal-2" hidden></div>
+            <p class="err" id="err-slot-2" hidden></p>
+          </div>
+          <div class="slot field">
+            <span class="slot-label">第3希望 <span class="opt">任意</span></span>
+            <button type="button" class="date-btn" id="date-3" aria-expanded="false" aria-controls="cal-3">日付を選択</button>
+            <select id="time-3" aria-label="第3希望の時間"></select>
+            <button type="button" class="linkbtn" id="clear-3">クリア</button>
+            <div class="cal" id="cal-3" hidden></div>
+            <p class="err" id="err-slot-3" hidden></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="step" aria-labelledby="h-4">
+        <h2 id="h-4"><span class="num">4</span>その他・ご確認</h2>
+        <div class="field">
+          <label class="label" for="memo">ご質問・ご要望 <span class="opt">任意</span></label>
+          <textarea id="memo" placeholder="例）家族と一緒に話を聞きたい／遠方に住んでいるので電話で相談したい"></textarea>
+        </div>
+        <details>
+          <summary>個人情報の取り扱いについて</summary>
+          <ul>
+            <li>いただいた情報は、ご相談・査定のご連絡とご提案にのみ使います</li>
+            <li>ご本人の同意なく第三者に提供することはありません（法令に基づく場合を除く）</li>
+            <li>ご相談の内容はご近所やご家族を含め、外部に知られないよう取り扱います</li>
+          </ul>
+        </details>
+        <div class="field">
+          <div class="check">
+            <input type="checkbox" id="consent">
+            <label for="consent">個人情報の取り扱いに同意します <span class="req">必須</span></label>
+          </div>
+          <p class="err" id="err-consent" hidden></p>
+        </div>
+      </section>
+
+      <p class="summary-err" id="summary-err" hidden role="alert">入力内容に確認が必要な項目があります。赤字の説明をご確認ください。</p>
+      <div class="actions">
+        <button type="button" class="btn ghost" id="sample">サンプルを入力</button>
+        <button type="submit" class="btn primary">予約内容を確認する</button>
+      </div>
+    </form>
+
+    <section class="step confirm" id="confirm" hidden aria-labelledby="h-c">
+      <h2 id="h-c"><span class="num">✓</span>ご予約内容の確認</h2>
+      <dl id="confirm-list"></dl>
+      <p class="hint">本番では、送信後に自動返信メールでご予約内容をお知らせし、担当者から日時確定のご連絡をします。このフォーム案では送信されません。</p>
+      <div class="actions">
+        <button type="button" class="btn ghost" id="back">入力画面に戻る</button>
+      </div>
+    </section>
+
+    <div class="telbox">
+      <div><p class="lb">お電話でもご予約いただけます</p><p class="no">06-6185-1252</p></div>
+      <p class="hr">営業時間 9:00〜18:00<br>定休日 火・水</p>
+    </div>
+
+    <aside class="memo" aria-labelledby="h-memo">
+      <h2 id="h-memo">会議用メモ：フォームの仕様（案）</h2>
+      <ul>
+        <li>導線：ポスティングチラシのQRコード → このフォーム（チラシごとにURL末尾を変えて、どのチラシから来たかを記録。例：?f=05）</li>
+        <li>必須：お名前・電話番号・メールアドレス・ご希望の方法・物件の種類・所在地・第1希望日時・同意</li>
+        <li>ご希望の方法は「来店相談（新森オフィス）」「訪問査定」の2択。来店相談を選ぶと店舗の住所・最寄駅・地図を表示</li>
+        <li>ご相談のきっかけはチラシの「ご相談の例」7項目から複数選択、売り方（仲介・買取・未定）と売り時診断の結果は任意</li>
+        <li>日程はカレンダーから選択。明日〜2か月先、火・水は選択不可。時間は9:30〜17:00の30分刻み。第2・第3希望は任意、同じ日時の重複は不可</li>
+        <li>本番化のときは、LPのお問い合わせフォームと同じ Google Apps Script でスプレッドシート記録＋通知メールにできます</li>
+      </ul>
+      <p class="hint" id="src-note"></p>
+    </aside>
+  </div>
+</main>
+
+<script>
+(function () {
+  var $ = function (s) { return document.querySelector(s); };
+  var CLOSED = [2, 3], WD = '日月火水木金土', RANGE_DAYS = 60;
+  var METHOD = { visit: '来店相談（新森オフィス）', home: '訪問査定' };
+  var REASONS = [
+    '住み替えで、今の家を売りたい',
+    '実家の管理・固定資産税の負担をなくしたい（施設入居・ご逝去）',
+    '空き家の処分に困っている（遠方にお住まいの方も）',
+    '住宅ローンの返済が気になる',
+    '老後資金の確保・事業資金の調達・保有資産の組み替え',
+    '財産分与・連帯保証・ペアローンを解消したい',
+    '売るかどうか、まず金額を知りたい'
+  ];
+  // どのチラシのQRから来たか（URLの ?f=05 など）
+  var FLYERS = { '05': '05 雑誌風（住み替え）', '06': '06 紺の高級感（相続・空き家）', '10': '10 図解（売り時診断）', '29': '29 ミニマル（問いかけ）', '30': '30 数字を大きく', '00': '00 営業ラフ清書版' };
+  var srcMatch = location.search.match(/[?&]f=([\w-]+)/);
+  var SRC = srcMatch ? (FLYERS[srcMatch[1]] || 'チラシ（' + srcMatch[1] + '）') : '';
+  $('#src-note').textContent = SRC ? '今回の流入元：' + SRC : '今回の流入元：URLにチラシの指定なし（例：このページのURLの末尾に ?f=05 を付けると「05 雑誌風」として記録）';
+
+  function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+  REASONS.forEach(function (r, i) {
+    $('#reasons').insertAdjacentHTML('beforeend', '<div class="check"><input type="checkbox" id="r-' + i + '" value="' + esc(r) + '"><label for="r-' + i + '">' + esc(r) + '</label></div>');
+  });
+
+  var TIMES = [];
+  for (var h = 9; h <= 17; h++) { if (h > 9) TIMES.push(h + ':00'); if (h < 17) TIMES.push(h + ':30'); }
+  for (var i = 1; i <= 3; i++) {
+    $('#time-' + i).innerHTML = '<option value="">時間を選択</option>' + TIMES.map(function (t) { return '<option value="' + t + '">' + t + '</option>'; }).join('');
+  }
+
+  function today0() { var t = new Date(); return new Date(t.getFullYear(), t.getMonth(), t.getDate()); }
+  var MIN = today0(); MIN.setDate(MIN.getDate() + 1);
+  var MAX = today0(); MAX.setDate(MAX.getDate() + RANGE_DAYS);
+  function avail(d) { return d >= MIN && d <= MAX && CLOSED.indexOf(d.getDay()) < 0; }
+  function fmt(d) { return d.getFullYear() + '年' + (d.getMonth() + 1) + '月' + d.getDate() + '日（' + WD[d.getDay()] + '）'; }
+  function method() { var r = document.querySelector('input[name=method]:checked'); return r ? r.value : ''; }
+  function radio(name) { var r = document.querySelector('input[name=' + name + ']:checked'); return r ? r.value : ''; }
+
+  var slots = [{ date: null, view: null }, { date: null, view: null }, { date: null, view: null }];
+  function setDate(i, d) {
+    slots[i - 1].date = d;
+    var b = $('#date-' + i);
+    b.textContent = d ? fmt(d) : '日付を選択';
+    b.classList.toggle('has', !!d);
+  }
+  function closeCals() {
+    for (var j = 1; j <= 3; j++) { $('#cal-' + j).hidden = true; $('#date-' + j).setAttribute('aria-expanded', 'false'); }
+  }
+  function renderCal(i) {
+    var s = slots[i - 1], c = $('#cal-' + i);
+    if (!s.view) { var b = s.date || MIN; s.view = new Date(b.getFullYear(), b.getMonth(), 1); }
+    var y = s.view.getFullYear(), m = s.view.getMonth();
+    var canPrev = new Date(y, m, 1) > new Date(MIN.getFullYear(), MIN.getMonth(), 1);
+    var canNext = new Date(y, m + 1, 1) <= MAX;
+    var html = '<div class="cal-head"><button type="button" class="cal-nav" data-nav="-1"' + (canPrev ? '' : ' disabled') + ' aria-label="前の月">‹ 前月</button><strong>' + y + '年' + (m + 1) + '月</strong><button type="button" class="cal-nav" data-nav="1"' + (canNext ? '' : ' disabled') + ' aria-label="次の月">翌月 ›</button></div><div class="cal-grid">';
+    for (var w = 0; w < 7; w++) html += '<div class="wd">' + WD[w] + '</div>';
+    for (var k = 0; k < new Date(y, m, 1).getDay(); k++) html += '<div></div>';
+    var last = new Date(y, m + 1, 0).getDate();
+    for (var d = 1; d <= last; d++) {
+      var dt = new Date(y, m, d), ok = avail(dt), closed = CLOSED.indexOf(dt.getDay()) >= 0;
+      var on = s.date && s.date.getTime() === dt.getTime();
+      var sub = closed ? '定休日' : (!ok ? '受付外' : '');
+      var aria = (m + 1) + '月' + d + '日' + WD[dt.getDay()] + '曜日' + (closed ? '、定休日' : (!ok ? '、選択できません' : ''));
+      html += '<button type="button" class="day" data-d="' + d + '"' + (ok ? '' : ' disabled') + ' aria-pressed="' + (on ? 'true' : 'false') + '" aria-label="' + aria + '"><span>' + d + '</span><small>' + sub + '</small></button>';
+    }
+    html += '</div><div class="legend"><span>火・水は定休日</span><span>前日までのご予約</span></div>';
+    c.innerHTML = html;
+    c.querySelectorAll('.cal-nav').forEach(function (b) {
+      b.addEventListener('click', function () { s.view = new Date(y, m + (+b.getAttribute('data-nav')), 1); renderCal(i); });
+    });
+    c.querySelectorAll('.day:not([disabled])').forEach(function (b) {
+      b.addEventListener('click', function () {
+        setDate(i, new Date(y, m, +b.getAttribute('data-d')));
+        closeCals();
+        clearErr('slot-' + i);
+        $('#time-' + i).focus();
+      });
+    });
+  }
+  [1, 2, 3].forEach(function (i) {
+    var b = $('#date-' + i);
+    b.addEventListener('click', function () {
+      var wasOpen = !$('#cal-' + i).hidden;
+      closeCals();
+      if (!wasOpen) { renderCal(i); $('#cal-' + i).hidden = false; b.setAttribute('aria-expanded', 'true'); }
+    });
+    $('#time-' + i).addEventListener('change', function () { clearErr('slot-' + i); });
+    var clr = $('#clear-' + i);
+    if (clr) clr.addEventListener('click', function () { setDate(i, null); $('#time-' + i).value = ''; closeCals(); clearErr('slot-' + i); });
+  });
+
+  function updateMethod() {
+    var v = method();
+    $('#block-visit').hidden = v !== 'visit';
+    $('#block-home').hidden = v !== 'home';
+    $('#addr-hint').textContent = v === 'home' ? '伺う場所になります。番地までご記入ください。' : '町名までで大丈夫です。';
+    clearErr('method');
+  }
+  document.querySelectorAll('input[name=method]').forEach(function (r) { r.addEventListener('change', updateMethod); });
+  document.querySelectorAll('input[name=ptype]').forEach(function (r) { r.addEventListener('change', function () { clearErr('ptype'); }); });
+
+  function setErr(id, msg) {
+    var e = $('#err-' + id);
+    e.textContent = msg; e.hidden = !msg;
+    var f = e.closest('.field');
+    if (f) f.classList.toggle('invalid', !!msg);
+  }
+  function clearErr(id) { setErr(id, ''); }
+  ['name', 'tel', 'email', 'address'].forEach(function (id) { $('#' + id).addEventListener('input', function () { clearErr(id); }); });
+  $('#consent').addEventListener('change', function () { clearErr('consent'); });
+  var ALL = ['name', 'tel', 'email', 'method', 'ptype', 'address', 'slot-1', 'slot-2', 'slot-3', 'consent'];
+
+  function normTel(s) {
+    return s.replace(/[０-９]/g, function (c) { return String.fromCharCode(c.charCodeAt(0) - 0xFEE0); }).replace(/[-‐ー－−\s]/g, '');
+  }
+  function validate() {
+    var first = null;
+    function bad(id, msg) { setErr(id, msg); if (!first) first = id; }
+    ALL.forEach(clearErr);
+    if (!$('#name').value.trim()) bad('name', 'お名前を入力してください。');
+    var tel = normTel($('#tel').value);
+    if (!tel) bad('tel', '電話番号を入力してください。');
+    else if (!/^0\d{9,10}$/.test(tel)) bad('tel', '電話番号は0から始まる10〜11桁の数字で入力してください。');
+    var em = $('#email').value.trim();
+    if (!em) bad('email', 'メールアドレスを入力してください。');
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) bad('email', 'メールアドレスの形式を確認してください（例：name@example.com）。');
+    if (!method()) bad('method', 'ご希望の方法を選んでください。');
+    if (!radio('ptype')) bad('ptype', '物件の種類を選んでください。');
+    if (!$('#address').value.trim()) bad('address', method() === 'home' ? '伺う物件の所在地を入力してください。' : '物件の所在地を入力してください（町名までで大丈夫です）。');
+    var keys = [];
+    for (var i = 1; i <= 3; i++) {
+      var d = slots[i - 1].date, t = $('#time-' + i).value;
+      if (i === 1 && (!d || !t)) { bad('slot-1', !d && !t ? '第1希望の日付と時間を選んでください。' : (!d ? '第1希望の日付を選んでください。' : '第1希望の時間を選んでください。')); continue; }
+      if (i > 1 && (!!d !== !!t)) { bad('slot-' + i, '第' + i + '希望は日付と時間の両方を選んでください。'); continue; }
+      if (d && t) {
+        var key = d.getTime() + '_' + t;
+        if (keys.indexOf(key) >= 0) bad('slot-' + i, 'ほかの希望と同じ日時です。別の日時を選んでください。');
+        keys.push(key);
+      }
+    }
+    if (!$('#consent').checked) bad('consent', '個人情報の取り扱いへの同意が必要です。');
+    return first;
+  }
+
+  function showConfirm() {
+    var rows = [];
+    rows.push(['お名前', $('#name').value.trim()]);
+    rows.push(['電話番号', $('#tel').value.trim()]);
+    rows.push(['メールアドレス', $('#email').value.trim()]);
+    if ($('#calltime').value) rows.push(['つながりやすい時間帯', $('#calltime').value]);
+    rows.push(['ご希望の方法', METHOD[method()]]);
+    if (method() === 'visit') rows.push(['店舗の住所', '〒535-0022 大阪府大阪市旭区新森6-3-25 エクセレント新森1階']);
+    rows.push(['物件の種類', radio('ptype')]);
+    rows.push(['物件の所在地', $('#address').value.trim()]);
+    if ($('#pinfo').value.trim()) rows.push(['広さ・築年数など', $('#pinfo').value.trim()]);
+    var rs = [].slice.call(document.querySelectorAll('#reasons input:checked')).map(function (x) { return x.value; });
+    if (rs.length) rows.push(['ご相談のきっかけ', rs.join(' ／ ')]);
+    if (radio('way')) rows.push(['売り方のご希望', radio('way')]);
+    if (radio('diag')) rows.push(['売り時診断の結果', radio('diag')]);
+    for (var i = 1; i <= 3; i++) {
+      var d = slots[i - 1].date, t = $('#time-' + i).value;
+      if (d && t) rows.push(['第' + i + '希望', fmt(d) + ' ' + t]);
+    }
+    if ($('#memo').value.trim()) rows.push(['ご質問・ご要望', $('#memo').value.trim()]);
+    if (SRC) rows.push(['どのチラシから', SRC + '（自動で記録）']);
+    $('#confirm-list').innerHTML = rows.map(function (r) { return '<dt>' + esc(r[0]) + '</dt><dd>' + esc(r[1]) + '</dd>'; }).join('');
+    $('#f').hidden = true;
+    $('#confirm').hidden = false;
+    $('#confirm').scrollIntoView({ block: 'start' });
+  }
+
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  $('#f').addEventListener('submit', function (e) {
+    e.preventDefault();
+    closeCals();
+    var first = validate();
+    if (first) {
+      $('#summary-err').hidden = false;
+      var el = $('#err-' + first), target = el.closest('.field') || el;
+      target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' });
+      return;
+    }
+    $('#summary-err').hidden = true;
+    showConfirm();
+  });
+  $('#back').addEventListener('click', function () {
+    $('#confirm').hidden = true;
+    $('#f').hidden = false;
+    $('#f').scrollIntoView({ block: 'start' });
+  });
+
+  $('#sample').addEventListener('click', function () {
+    $('#name').value = '山田 太郎（サンプル）';
+    $('#tel').value = '090-1234-5678';
+    $('#email').value = 'sample@example.com';
+    $('#calltime').value = '12:00〜15:00';
+    $('#m-home').checked = true; updateMethod();
+    $('#t-house').checked = true;
+    $('#address').value = '大阪市旭区新森（サンプル）';
+    $('#pinfo').value = '4LDK・約100㎡・築22年';
+    $('#r-0').checked = true; $('#r-6').checked = true;
+    $('#w-undecided').checked = true;
+    $('#d-a').checked = true;
+    var ds = [], dt = new Date(MIN);
+    while (ds.length < 2 && dt <= MAX) { if (avail(dt)) ds.push(new Date(dt)); dt.setDate(dt.getDate() + 1); }
+    if (ds[0]) { setDate(1, ds[0]); $('#time-1').value = '10:00'; }
+    if (ds[1]) { setDate(2, ds[1]); $('#time-2').value = '14:00'; }
+    $('#consent').checked = true;
+    closeCals();
+    ALL.forEach(clearErr);
+    $('#summary-err').hidden = true;
+  });
+})();
+</script>
+
+</body>
+</html>
