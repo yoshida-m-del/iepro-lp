@@ -111,7 +111,7 @@ input::placeholder, textarea::placeholder { color: var(--disabled-ink); opacity:
 .err { color: var(--danger); font-size: 13px; font-weight: 500; }
 
 .choices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
-.offices { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 10px; }
+.offices { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); grid-auto-rows: 1fr; gap: 10px; }
 .choice { position: relative; min-width: 0; }
 .choice input { position: absolute; opacity: 0; inset: 0; margin: 0; }
 .choice label { display: grid; gap: 2px; height: 100%; box-sizing: border-box; border: 2px solid var(--line); border-radius: 10px; padding: 12px 14px; cursor: pointer; background: var(--field); }
@@ -411,6 +411,13 @@ details ul { margin: 8px 0 0; padding-left: 1.2em; display: grid; gap: 2px; colo
   var START = new Date(2026, 11, 3), END = new Date(2026, 11, 25), EARLY = new Date(2026, 11, 14);
   var CLOSED = [2, 3], WD = '日月火水木金土';
   var OFFICES = ['新森オフィス', '奈良オフィス', '豊中オフィス', '京都オフィス', '神戸オフィス', 'その他'];
+  var OFFICE_SHORT = {
+    '新森オフィス': '新森古市駅 徒歩約5分',
+    '奈良オフィス': 'JR奈良駅 徒歩約3分',
+    '豊中オフィス': '服部天神駅 徒歩約4分',
+    '京都オフィス': '七条千本バス停 徒歩約6分',
+    '神戸オフィス': '甲南山手駅・深江駅 徒歩12分'
+  };
   var OFFICE_INFO = {
     '新森オフィス': { addr: '〒535-0022 大阪府大阪市旭区新森6-3-25 エクセレント新森1階', tel: '06-6185-1252', access: ['Osaka Metro今里筋線「新森古市駅」より徒歩約5分', '京阪本線「森小路駅」より徒歩約18分'], q: '大阪府大阪市旭区新森6-3-25' },
     '奈良オフィス': { addr: '〒630-8244 奈良県奈良市三条町606-7 スクエア奈良三条1階', tel: '0742-94-4512', access: ['JR「奈良駅」より徒歩約3分', '近鉄奈良線「近鉄奈良駅」より徒歩約13分'], q: '奈良県奈良市三条町606-7' },
@@ -444,7 +451,7 @@ details ul { margin: 8px 0 0; padding-left: 1.2em; display: grid; gap: 2px; colo
 
   OFFICES.forEach(function (o, i) {
     $('#offices').insertAdjacentHTML('beforeend',
-      '<div class="choice"><input type="radio" name="office" id="office-' + i + '" value="' + o + '"><label for="office-' + i + '"><span class="t">' + o + '</span>' + (o === 'その他' ? '<span class="s">ご自宅・お近くのお店など</span>' : '') + '</label></div>');
+      '<div class="choice"><input type="radio" name="office" id="office-' + i + '" value="' + o + '"><label for="office-' + i + '"><span class="t">' + o + '</span><span class="s">' + (OFFICE_SHORT[o] || 'ご自宅・お近くのお店など') + '</span></label></div>');
   });
   document.querySelectorAll('input[name=office]').forEach(function (r) { r.addEventListener('change', function () { clearErr('office'); showOffice(r.value); }); });
 
