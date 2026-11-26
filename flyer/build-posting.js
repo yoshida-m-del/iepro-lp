@@ -16,7 +16,7 @@ const SEAL = '地域密着 旭区新森の不動産会社';
 const TYPES = [['house', '戸建て'], ['mansion', 'マンション'], ['land', '土地'], ['akiya', '空き家']];
 const CONS = [
   '住み替えで、今の家を売りたい',
-  '相続した不動産・実家を整理したい（施設入居・ご逝去）',
+  '実家の管理・固定資産税の負担をなくしたい（施設入居・ご逝去）',
   '空き家の処分に困っている（遠方にお住まいの方も）',
   '住宅ローンの返済が気になる',
   '老後資金の確保・事業資金の調達・保有資産の組み替え',
@@ -53,7 +53,7 @@ const ways = () => WAYS.map(([w, h], i) => `<div class="w${i}"><p class="who">${
 const badges = () => BADGES.map(([a, b]) => `<span>${a}<br>${b}</span>`).join('');
 const chain = () => CHAIN.map(([b, t]) => `<li><b>${b}</b><span>${t}</span></li>`).join('');
 const pats = () => PAT.map(([w, h, t], i) => `<div class="p${i}"><p class="who">${w}</p><h3>${h}</h3><p class="t">${t}</p></div>`).join('');
-const qr = (cap = 'WEBから簡単査定<br>24時間受付') => `<div class="qr"><div class="qrph">QRコード<br>（査定フォーム）</div><p>${cap}</p></div>`;
+const qr = (cap = 'WEBで予約・査定<br>24時間受付') => `<div class="qr"><div class="qrph">QRコード<br>（査定フォーム）</div><p>${cap}</p></div>`;
 const tel = () => `<div class="tel"><span class="t">TEL</span><span class="no">${TEL}</span></div>`;
 const company = (logo) => `<img class="logo" src="../img/logo-${logo}.png" alt="いえプロ不動産"><p class="info"><b>${CO[0].split('　')[0]}</b>　${CO[0].split('　')[1]}<br>${CO[1]}<br>${CO[2]}</p>`;
 const strip = (logo) => `<img src="../img/logo-${logo}.png" alt="いえプロ不動産"><p>${GH.replace('手がける', '手がける<br>')}</p>`;
@@ -360,7 +360,7 @@ const d00 = {
     <div class="pad main">
       <img class="lg" src="../img/logo-white.png" alt="いえプロ不動産">
       <div class="mid"><p class="msg">地域の不動産は、私たちにお任せください！</p><div class="tel"><span class="ic">${PHONE}</span><span class="no">${TEL}</span></div><p class="hours"><span>営業時間</span>9:00〜18:00　｜　定休日　火・水</p></div>
-      <div class="qrbox"><p>WEBからも<br>簡単査定<br>（24時間受付）</p><div class="qrph">QRコード</div></div>
+      <div class="qrbox"><p>WEBからも<br>ご予約・無料査定<br>（24時間受付）</p><div class="qrph">QRコード</div></div>
     </div>
     <p class="pad co">${CO[0].replace('　', '　')}　${CO[1]}<br>${CO[2]}</p>
   </div>`,
@@ -371,7 +371,7 @@ const d00 = {
   <div class="pad strip">${strip('white')}</div>
   <div class="pad bh" style="top:26mm"><p class="pre">不動産のご売却をお考えの方へ</p><h2>今、不動産を<em>早めに売る</em>ことを<br>おすすめする理由</h2></div>
   <div class="pad c3" style="top:66mm">
-    <div>${ICON3.up}<p>住宅ローンの<br><mark>金利が上昇中</mark></p></div>
+    <div>${ICON3.up}<p>住宅ローンの<br><mark>金利が上昇中</mark><small>支払額がアップ</small></p></div>
     <span class="ar"></span>
     <div>${ICON3.people}<p>買い手の<br><mark class="y">予算が下がる</mark></p></div>
     <span class="ar"></span>
@@ -397,12 +397,15 @@ const d00 = {
 };
 
 const LIST = [['05', '雑誌風（住み替え）', 'd05', d05], ['06', '紺の高級感（相続・空き家）', 'd06', d06], ['10', '図解（売り時診断）', 'd10', d10], ['29', 'ミニマル（問いかけ）', 'd29', d29], ['30', '数字を大きく', 'd30', d30], ['00', '営業ラフ清書版', 'd00', d00]];
+// QRコード：予約フォーム（sell-form/）へ。URL末尾の ?f=案番号 でどのチラシから来たかを記録する
+// 画像は img/qr-form-<案番号>.svg（https://yoshida-m-del.github.io/iepro-lp/sell-form/?f=<案番号>）
+const withQr = (html, id) => html.replace(/<div class="qrph">[^<]*(?:<br>[^<]*)?<\/div>/g, '<img class="qrimg" src="../img/qr-form-' + id + '.svg" alt="予約フォームのQRコード">');
 const sheets = LIST.map(([id, name, cls, d]) => `
 <!-- ==================== ${id} ${name}：表 ==================== -->
-<section class="sheet fr ${cls}">${d.front}
+<section class="sheet fr ${cls}">${withQr(d.front, id)}
 </section>
 <!-- ==================== ${id} ${name}：裏 ==================== -->
-<section class="sheet bk ${cls}">${d.back}
+<section class="sheet bk ${cls}">${withQr(d.back, id)}
 </section>`).join('\n');
 
 const html = `<!doctype html>

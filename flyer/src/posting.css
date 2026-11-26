@@ -469,3 +469,7 @@ em{font-style:normal;color:var(--accent)}
 .d00 .cta .badges span{width:13mm;height:13mm;font-size:7pt}
 .d00 .cta .qr p{color:#C9D2DB}
 .d00 .cta .co{margin-top:3mm;font-size:6.2pt;color:#C9D2DB;line-height:1.7;border-top:.3mm solid rgba(255,255,255,.2);padding-top:1.6mm}
+
+/* QRコード（予約フォームへ） */
+.qrimg{display:block;width:20mm;height:20mm;background:#fff}
+.d00 .qrbox .qrimg{width:18mm;height:18mm}
