@@ -115,7 +115,7 @@ a { color: inherit; }
 .route { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 4px 12px; padding: 14px 16px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
 .route .k { font-size: 12px; font-weight: 700; color: var(--muted); grid-column: 1 / -1; }
 .route .steps { font-size: 15px; font-weight: 700; color: var(--ink); line-height: 1.6; min-width: 0; }
-.route .steps .plus { color: var(--accent); }
+.route .steps .plus { color: var(--accent); white-space: nowrap; }
 .route .amt { font-size: 24px; font-weight: 900; color: var(--navy); white-space: nowrap; font-variant-numeric: tabular-nums; }
 .route .amt small { font-size: 13px; }
 .route.best { border: 2px solid var(--accent); background: var(--accent-soft); }
@@ -155,6 +155,16 @@ table.fee tr.na td, table.fee tr.na th { color: var(--muted); }
 
 /* shop */
 .shop img { display: block; width: 100%; max-width: 100%; height: auto; aspect-ratio: 552 / 368; object-fit: cover; border-radius: 12px; }
+.ways { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+.way { background: var(--surface); border: 2px solid var(--line); border-radius: 12px; padding: 18px; display: grid; gap: 6px; align-content: start; min-width: 0; }
+.way-k { justify-self: start; background: var(--band); color: var(--band-ink); border-radius: 4px; padding: 1px 10px; font-size: 12px; font-weight: 700; }
+.way h3 { font-size: 18px; font-weight: 900; color: var(--navy); line-height: 1.45; text-wrap: balance; }
+.way p { font-size: 14px; color: var(--muted); }
+.way .way-g { margin-top: 4px; padding-top: 10px; border-top: 1px dashed var(--line); font-size: 13px; font-weight: 700; color: var(--ink); }
+.way .way-g b { font-size: 20px; font-weight: 900; color: var(--accent); }
+.way .way-g span { display: block; font-size: 12px; font-weight: 500; color: var(--muted); }
+.shop-fig { margin: 0; display: grid; gap: 6px; }
+.sub-title { font-size: 17px; font-weight: 900; color: var(--navy); margin-top: 6px; }
 .offices { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; }
 .office { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; display: grid; gap: 4px; align-content: start; min-width: 0; }
 .office h3 { font-size: 16px; font-weight: 900; color: var(--navy); }
@@ -310,16 +320,30 @@ dl.sum dt { font-weight: 700; color: var(--navy); }
       <li><span class="no">3</span><div><h3>来店・内覧でギフト券をお渡し</h3><p>来店で1,000円分、内覧で合計3,000円分。12/14（月）までの内覧なら＋2,000円分。</p></div></li>
       <li><span class="no">4</span><div><h3>ご成約で仲介手数料最大50%OFF</h3><p>割引率は物件価格により異なります。</p></div></li>
     </ol>
-    <div class="cta">
-      <a class="btn" href="https://yoshida-m-del.github.io/iepro-lp/xmas2026/">12/24（木）までに予約する<span class="arr" aria-hidden="true">&gt;</span></a>
-      <p class="sub">先着10名様に達し次第終了します</p>
-    </div>
   </section>
 
-  <section class="wrap sec shop" aria-labelledby="h-shop">
-    <h2 class="sec-title" id="h-shop">ゆったり相談できる店舗です</h2>
-    <img src="images/shop.jpg" alt="新森オフィスの相談スペース" width="552" height="368" loading="lazy">
-    <p class="note">新森オフィスの相談スペース。お子さま連れでもお気軽にどうぞ。平日は夜20時までご相談いただけます。</p>
+  <section class="wrap sec shop" aria-labelledby="h-ways">
+    <h2 class="sec-title" id="h-ways">相談場所・内覧の方法を選べます</h2>
+    <p class="lead">ご都合に合わせて、2つの方法からお選びください。</p>
+    <div class="ways">
+      <div class="way">
+        <p class="way-k">来店物件相談</p>
+        <h3>お近くの店舗を選べます</h3>
+        <p>新森・奈良・豊中・京都・神戸の5店舗から、通いやすい店舗をお選びいただけます。ご自宅やお近くの喫茶店での面談もOKです。</p>
+        <p class="way-g">ギフト券 <b>1,000円分</b><span>その後のご内覧で合計3,000円分</span></p>
+      </div>
+      <div class="way">
+        <p class="way-k">直接内覧</p>
+        <h3>店舗に寄らず、物件を直接見学</h3>
+        <p>気になる物件が決まっている方は、ご来店なしで現地で直接ご内覧いただけます。予約フォームで「内覧」を選び、物件の所在地をご入力ください。</p>
+        <p class="way-g">ギフト券 <b>3,000円分</b><span>12/14（月）までのご内覧なら5,000円分</span></p>
+      </div>
+    </div>
+    <figure class="shop-fig">
+      <img src="images/shop.jpg" alt="新森オフィスの相談スペース" width="552" height="368" loading="lazy">
+      <figcaption class="note">店舗では、ゆったりした相談スペースでお話しいただけます（写真は新森オフィス）。お子さま連れでもお気軽にどうぞ。</figcaption>
+    </figure>
+    <h3 class="sub-title">店舗一覧</h3>
     <div class="offices">
       <div class="office"><h3>新森オフィス（本社）</h3><p>〒535-0022 大阪府大阪市旭区新森6-3-25 エクセレント新森1階</p><p>Osaka Metro今里筋線「新森古市駅」徒歩約5分</p><p class="tel">06-6185-1252</p><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A4%A7%E9%98%AA%E5%B8%82%E6%97%AD%E5%8C%BA%E6%96%B0%E6%A3%AE6-3-25" target="_blank" rel="noopener">地図を見る</a></div>
       <div class="office"><h3>奈良オフィス</h3><p>〒630-8244 奈良県奈良市三条町606-7 スクエア奈良三条1階</p><p>JR「奈良駅」徒歩約3分</p><p class="tel">0742-94-4512</p><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%A5%88%E8%89%AF%E7%9C%8C%E5%A5%88%E8%89%AF%E5%B8%82%E4%B8%89%E6%9D%A1%E7%94%BA606-7" target="_blank" rel="noopener">地図を見る</a></div>
@@ -329,6 +353,10 @@ dl.sum dt { font-weight: 700; color: var(--navy); }
       <div class="office other"><h3>ご自宅・お近くの喫茶店でも</h3><p>店舗に行くのが難しい方は、ご自宅やお近くの喫茶店など、ご希望の場所に担当者が伺います。予約フォームで「その他」を選んでください。</p></div>
     </div>
     <p class="note">来店受付 10:00〜20:00（平日の夜もご相談いただけます）／火・水曜日定休</p>
+    <div class="cta">
+      <a class="btn" href="https://yoshida-m-del.github.io/iepro-lp/xmas2026/">12/24（木）までに予約する<span class="arr" aria-hidden="true">&gt;</span></a>
+      <p class="sub">先着10名様に達し次第終了します</p>
+    </div>
   </section>
 
   <section class="wrap sec" aria-labelledby="h-faq">
