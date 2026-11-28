@@ -192,7 +192,6 @@ details ul { margin: 8px 0 0; padding-left: 1.2em; display: grid; gap: 2px; colo
 }
 </style>
 
-<div class="demo-flag"><div class="wrap">フォーム案（デモ）：入力内容はどこにも送信・保存されません</div></div>
 
 <header class="top">
   <div class="topbar">
@@ -224,7 +223,7 @@ details ul { margin: 8px 0 0; padding-left: 1.2em; display: grid; gap: 2px; colo
       <li>1世帯1回</li>
       <li>過去にご内覧の方もOK</li>
     </ul>
-    <p class="hero-early">【案】12/14（月）までのご内覧で、さらに+2,000円</p>
+    <p class="hero-early">12/14（月）までのご内覧で、さらに+2,000円</p>
     <h2 class="sec-title">ご予約フォーム</h2>
     <p class="hero-note">最短30秒で完了・無理な営業はいたしません</p>
   </div>
@@ -373,8 +372,12 @@ details ul { margin: 8px 0 0; padding-left: 1.2em; display: grid; gap: 2px; colo
       </section>
 
       <p class="summary-err" id="summary-err" hidden role="alert">入力内容に確認が必要な項目があります。赤字の説明をご確認ください。</p>
+      <!-- 迷惑メール（ボット）対策：人には見えない欄。入力があれば受付しない -->
+      <div style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;" aria-hidden="true">
+        <label for="website">ウェブサイト</label>
+        <input type="text" id="website" tabindex="-1" autocomplete="off">
+      </div>
       <div class="actions">
-        <button type="button" class="btn ghost" id="sample">サンプルを入力</button>
         <button type="submit" class="btn primary">予約内容を確認する</button>
       </div>
     </form>
@@ -382,32 +385,28 @@ details ul { margin: 8px 0 0; padding-left: 1.2em; display: grid; gap: 2px; colo
     <section class="step confirm" id="confirm" hidden aria-labelledby="h-c">
       <h2 id="h-c"><span class="num">✓</span>ご予約内容の確認</h2>
       <dl id="confirm-list"></dl>
-      <p class="hint">本番では、送信後に自動返信メールでご予約内容をお知らせし、担当者から日時確定のご連絡をします。このフォーム案では送信されません。</p>
+      <p class="hint">送信後、ご入力のメールアドレスに受付完了メールをお送りします。日時は担当者からのご連絡で確定します。</p>
+      <p class="summary-err" id="send-err" hidden role="alert"></p>
       <div class="actions">
         <button type="button" class="btn ghost" id="back">入力画面に戻る</button>
+        <button type="button" class="btn primary" id="send">この内容で予約する</button>
       </div>
     </section>
 
-    <aside class="memo" aria-labelledby="h-memo">
-      <h2 id="h-memo">会議用メモ：フォームの仕様（案）</h2>
-      <ul>
-        <li>必須：お名前・電話番号・メールアドレス・ご希望の内容・第1希望日時・同意</li>
-        <li>ご希望の内容は「来店物件相談」「内覧」の2択（オンライン面談はなし）</li>
-        <li>「内覧」を選ぶと物件所在地が必須、「来店物件相談」を選ぶと面談場所（5拠点＋その他）が必須</li>
-        <li>面談場所で「その他」を選ぶと、ご自宅や近くの喫茶店などを入力する欄が出て必須になる</li>
-        <li>日程はカレンダーから選択。12/3〜12/25、火・水は選択不可、前日までの予約のみ</li>
-        <li>時間は10:00〜20:00の30分刻み。第2・第3希望は任意、同じ日時の重複は不可</li>
-        <li>「内覧」を選んだときだけ、12/14までの日付に【案】早期ボーナスの印を表示</li>
-        <li>店舗を選ぶと住所・最寄駅・電話番号と地図を表示（神戸オフィスは住所確認中。本番はGoogleマップを埋め込み）</li>
-        <li>導線：メール・SMS・LINE → キャンペーンLP → この予約フォーム</li>
-      </ul>
-    </aside>
+    <section class="step" id="done" hidden aria-labelledby="h-done" tabindex="-1">
+      <h2 id="h-done"><span class="num">✓</span>ご予約を受け付けました</h2>
+      <p>お申し込みありがとうございます。ご入力のメールアドレスに受付完了メールをお送りしました。</p>
+      <p>担当者より、日時確定のご連絡をいたします。ご来店の場合は、前日に確認のお電話をします。</p>
+      <p class="hint">メールが届かない場合は、迷惑メールフォルダをご確認いただくか、お電話（06-6185-1252）でお問い合わせください。</p>
+    </section>
+
   </div>
 </main>
 
 <script>
 (function () {
   var $ = function (s) { return document.querySelector(s); };
+  var loadedAt = Date.now(), lastGift = '';
   var START = new Date(2026, 11, 3), END = new Date(2026, 11, 25), EARLY = new Date(2026, 11, 14);
   var CLOSED = [2, 3], WD = '日月火水木金土';
   var OFFICES = ['新森オフィス', '奈良オフィス', '豊中オフィス', '京都オフィス', '神戸オフィス', 'その他'];
@@ -482,7 +481,7 @@ details ul { margin: 8px 0 0; padding-left: 1.2em; display: grid; gap: 2px; colo
       var aria = '12月' + d + '日' + WD[dt.getDay()] + '曜日' + (closed ? '、定休日' : (!ok ? '、選択できません' : '')) + (early ? '、早期ボーナス対象' : '');
       html += '<button type="button" class="day" data-d="' + d + '"' + (ok ? '' : ' disabled') + ' aria-pressed="' + (on ? 'true' : 'false') + '" aria-label="' + aria + '"><span>' + d + '</span><small>' + sub + '</small></button>';
     }
-    html += '</div><div class="legend">' + (showEarly ? '<span><span class="dot"></span>【案】ご内覧で早期ボーナス対象（12/14まで）</span>' : '') + '<span>火・水は定休日</span><span>前日までのご予約</span></div>';
+    html += '</div><div class="legend">' + (showEarly ? '<span><span class="dot"></span>ご内覧で早期ボーナス対象（12/14まで）</span>' : '') + '<span>火・水は定休日</span><span>前日までのご予約</span></div>';
     c.innerHTML = html;
     c.querySelectorAll('.day:not([disabled])').forEach(function (b) {
       b.addEventListener('click', function () {
@@ -517,7 +516,7 @@ details ul { margin: 8px 0 0; padding-left: 1.2em; display: grid; gap: 2px; colo
       visit: 'ご来店物件相談でギフト券1,000円分、その後のご内覧でさらに2,000円分（合計3,000円分）。',
       view: 'ご内覧でギフト券3,000円分。'
     }[v];
-    if (v !== 'online') t += '<br><b>【案】12月14日（月）までのご内覧で、さらに+2,000円分。</b>';
+    if (v !== 'online') t += '<br><b>12月14日（月）までのご内覧で、さらに+2,000円分。</b>';
     g.innerHTML = t + '<br>ご成約で仲介手数料最大50%OFF。';
     g.hidden = false;
     clearErr('purpose');
@@ -599,8 +598,9 @@ details ul { margin: 8px 0 0; padding-left: 1.2em; display: grid; gap: 2px; colo
     if ($('#memo').value.trim()) rows.push(['ご質問・ご要望', $('#memo').value.trim()]);
     var gift = p === 'online' ? '対象外（ご内覧に進むと3,000円分）'
       : p === 'visit' ? '1,000円分（ご内覧でさらに2,000円分）'
-      : '3,000円分' + (slots[0].date <= EARLY ? '＋【案】早期ボーナス2,000円分（第1希望日でご内覧の場合）' : '');
+      : '3,000円分' + (slots[0].date <= EARLY ? '＋早期ボーナス2,000円分（第1希望日でご内覧の場合）' : '');
     rows.push(['ギフト券', gift]);
+    lastGift = gift;
     $('#confirm-list').innerHTML = rows.map(function (r) { return '<dt>' + esc(r[0]) + '</dt><dd>' + esc(r[1]) + '</dd>'; }).join('');
     $('#f').hidden = true;
     $('#confirm').hidden = false;
@@ -628,21 +628,60 @@ details ul { margin: 8px 0 0; padding-left: 1.2em; display: grid; gap: 2px; colo
     $('#f').scrollIntoView({ block: 'start' });
   });
 
-  $('#sample').addEventListener('click', function () {
-    $('#name').value = '山田 太郎（サンプル）';
-    $('#tel').value = '090-1234-5678';
-    $('#email').value = 'sample@example.com';
-    $('#p-view').checked = true;
-    updatePurpose();
-    $('#address').value = '大阪市旭区新森（サンプル）';
-    var ds = [];
-    for (var d = 1; d <= 25 && ds.length < 2; d++) { var dt = new Date(2026, 11, d); if (avail(dt)) ds.push(dt); }
-    if (ds[0]) { setDate(1, ds[0]); $('#time-1').value = '14:00'; }
-    if (ds[1]) { setDate(2, ds[1]); $('#time-2').value = '19:00'; }
-    $('#consent').checked = true;
-    closeCals();
-    ALL.forEach(clearErr);
-    $('#summary-err').hidden = true;
+  // ===== 送信（Google Apps Script → スプレッドシート記録＋通知メール＋自動返信） =====
+  // ▼ Apps Script をデプロイしたときの「ウェブアプリのURL」をここに貼り付けます
+  var GAS_URL = 'https://script.google.com/macros/s/AKfycby4RIBbQ96Js2miy4m7FJT1fsdDfE6hEixtiRIjHl0CVZ0zdSBsEw2SZFFHfJd8dZiXfQ/exec';
+
+  var sendBtn = $('#send'), sendText = sendBtn.textContent;
+  function sendErr(msg) { $('#send-err').textContent = msg; $('#send-err').hidden = !msg; }
+
+  function payload() {
+    var p = purpose(), place = '';
+    if (p === 'visit') {
+      var on = document.querySelector('input[name=office]:checked').value;
+      place = on === 'その他' ? 'その他：' + $('#other-place').value.trim() : on + '（' + OFFICE_INFO[on].addr + '）';
+    }
+    var s = [1, 2, 3].map(function (i) {
+      var d = slots[i - 1].date, t = $('#time-' + i).value;
+      return d && t ? fmt(d) + ' ' + t : '';
+    });
+    return new URLSearchParams({
+      name: $('#name').value.trim(),
+      tel: $('#tel').value.trim(),
+      email: $('#email').value.trim(),
+      purpose: p,
+      address: p === 'view' ? $('#address').value.trim() : '',
+      propname: p === 'view' ? $('#propname').value.trim() : '',
+      place: place,
+      slot1: s[0], slot2: s[1], slot3: s[2],
+      memo: $('#memo').value.trim(),
+      gift: lastGift,
+      website: $('#website').value,
+      elapsed: String(Date.now() - loadedAt)
+    });
+  }
+
+  sendBtn.addEventListener('click', function () {
+    if (!GAS_URL) { sendErr('ただいま準備中です。お手数ですが、お電話（06-6185-1252）でご予約ください。'); return; }
+    sendBtn.disabled = true;
+    $('#back').disabled = true;
+    sendBtn.textContent = '送信中…';
+    sendErr('');
+    fetch(GAS_URL, { method: 'POST', body: payload() })
+      .then(function (res) { return res.json(); })
+      .then(function (data) {
+        if (!data.ok) throw new Error(data.error || 'error');
+        $('#confirm').hidden = true;
+        $('#done').hidden = false;
+        $('#done').focus();
+        $('#done').scrollIntoView({ block: 'start' });
+      })
+      .catch(function () {
+        sendBtn.disabled = false;
+        $('#back').disabled = false;
+        sendBtn.textContent = sendText;
+        sendErr('送信できませんでした。時間をおいて再度お試しいただくか、お電話（06-6185-1252）でご予約ください。');
+      });
   });
 })();
 </script>
